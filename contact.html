@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — OasisDeal</title>
+<meta name="description" content="Get in touch with OasisDeal — suggest a deal, report a broken code, or ask a question." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/page.css" />
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a class="logo" href="index.html"><span class="mark">O</span>Oasis<span>Deal</span></a>
+    <a class="back" href="index.html">← Back to deals</a>
+  </nav>
+</header>
+
+<main class="wrap page">
+  <h1>Contact us</h1>
+  <p class="lead">Spotted a great deal? Found a code that stopped working? Just want to say hi? We'd love to hear from you.</p>
+
+  <form id="contactForm">
+    <label for="name">Your name</label>
+    <input type="text" id="name" placeholder="Zakaria" required />
+
+    <label for="email">Your email</label>
+    <input type="email" id="email" placeholder="you@email.com" required />
+
+    <label for="subject">Subject</label>
+    <input type="text" id="subject" placeholder="A deal you should feature..." required />
+
+    <label for="message">Message</label>
+    <textarea id="message" placeholder="Tell us what's on your mind..." required></textarea>
+
+    <button type="submit">Send message</button>
+    <p id="formNote" style="color:var(--brand); font-weight:600; min-height:20px; margin:0;"></p>
+  </form>
+
+  <div class="contact-methods">
+    <div class="method"><b>📧 Email</b><span>hello@oasisdeal.com</span></div>
+    <div class="method"><b>⏱️ Response time</b><span>Usually within 24 hours</span></div>
+    <div class="method"><b>🤝 Partnerships</b><span>Stores &amp; brands welcome</span></div>
+  </div>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>© <span id="year"></span> OasisDeal — find your savings oasis.</div>
+    <div class="links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="index.html#deals">Deals</a>
+    </div>
+  </div>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // No backend yet: open the user's email client pre-filled. Swap for Formspree/Web3Forms later.
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = encodeURIComponent(document.getElementById('name').value);
+    var subject = encodeURIComponent(document.getElementById('subject').value);
+    var msg = encodeURIComponent(document.getElementById('message').value + '\n\n— ' + document.getElementById('name').value + ' (' + document.getElementById('email').value + ')');
+    window.location.href = 'mailto:hello@oasisdeal.com?subject=' + subject + '&body=' + msg;
+    document.getElementById('formNote').textContent = '✓ Opening your email app to send...';
+  });
+</script>
+</body>
+</html>
