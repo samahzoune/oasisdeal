@@ -101,7 +101,9 @@ function dealPage(d) {
   .deal-thumb .store { position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,.45); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px; }
   .deal h1 { font-size: clamp(26px,4vw,36px); line-height: 1.15; margin-bottom: 6px; }
   .deal .catlabel { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--brand); margin-bottom: 10px; }
-  .deal .prices { display: flex; align-items: baseline; gap: 12px; margin: 16px 0; }
+  .deal .prices { display: flex; align-items: baseline; gap: 12px; margin: 16px 0 6px; }
+  .deal .fromlbl { font-size: 13px; color: var(--muted); font-weight: 600; }
+  .pricenote { font-size: 12.5px; color: var(--muted); max-width: 480px; margin: 0 0 18px; line-height: 1.5; }
   .deal .now { font-size: 34px; font-weight: 800; }
   .deal .was { font-size: 18px; color: var(--muted); text-decoration: line-through; }
   .deal .save { font-size: 13px; font-weight: 700; color: var(--brand); background: rgba(45,212,191,.1); padding: 4px 10px; border-radius: 999px; }
@@ -149,7 +151,8 @@ ${faqJsonld ? `<script type="application/ld+json">${JSON.stringify(faqJsonld)}</
     <div>
       <div class="catlabel">${esc(d.cat)}</div>
       <h1>${esc(d.title)}</h1>
-      <div class="prices"><span class="now">$${d.now}</span><span class="was">$${d.was}</span><span class="save">Save ${d.off}</span></div>
+      <div class="prices"><span class="fromlbl">from</span><span class="now">$${d.now}</span><span class="was">$${d.was}</span><span class="save">Save ${d.off}</span></div>
+      <p class="pricenote">≈ Approximate price. The live price on AliExpress varies by product option, region, coupons and time — always confirm the current price before you buy.</p>
       ${d.code ? `<div class="coupon"><code id="code">${esc(d.code)}</code><button id="copy" data-code="${esc(d.code)}">Copy code</button></div>` : ''}
       <a class="getdeal" href="${esc(d.affiliateUrl || d.url)}" target="_blank" rel="nofollow sponsored noopener">Get this deal →</a>
     </div>
@@ -208,7 +211,7 @@ function categoryPage(cat, items) {
           <div class="cat-thumb"><span class="cat-off">-${d.off}</span>${d.image ? `<img class="cat-img" src="${esc(aimg(d.image, 480))}" alt="${esc(d.title)}" loading="lazy" decoding="async">` : d.emoji}</div>
           <div class="cat-body">
             <div class="cat-title">${esc(d.title)}</div>
-            <div class="cat-price"><span class="cn">$${d.now}</span> <s>$${d.was}</s></div>
+            <div class="cat-price"><span class="fl">from</span> <span class="cn">$${d.now}</span> <s>$${d.was}</s></div>
           </div>
         </a>`).join('');
   return `<!DOCTYPE html>
@@ -245,7 +248,7 @@ function categoryPage(cat, items) {
   .cat-off { position: absolute; top: 10px; right: 10px; z-index: 2; background: #fb7185; color: #fff; font-weight: 800; font-size: 12px; padding: 4px 10px; border-radius: 999px; }
   .cat-body { padding: 14px; }
   .cat-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
-  .cat-price { margin-top: 8px; font-size: 15px; font-weight: 800; } .cat-price .cn { color: var(--text); } .cat-price s { color: var(--muted); font-weight: 500; font-size: 13px; }
+  .cat-price { margin-top: 8px; font-size: 15px; font-weight: 800; } .cat-price .cn { color: var(--text); } .cat-price s { color: var(--muted); font-weight: 500; font-size: 13px; } .cat-price .fl { font-size: 11px; color: var(--muted); font-weight: 600; }
   .othercats { margin-top: 40px; display: flex; gap: 10px; flex-wrap: wrap; }
   .othercats a { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg-soft); color: var(--muted); font-size: 14px; font-weight: 600; }
   .othercats a:hover { color: var(--brand); border-color: var(--brand); text-decoration: none; }
@@ -315,7 +318,7 @@ function homeCard(d) {
         <div class="body">
           <div class="cat">${esc(d.cat)}</div>
           <a class="title" href="${page}">${esc(d.title)}</a>
-          <div class="price"><span class="now">$${d.now}</span><span class="was">$${d.was}</span><span class="poff">-${d.off}</span></div>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$${d.now}</span><span class="was">$${d.was}</span><span class="poff">-${d.off}</span></div>
           ${d.code ? `<div class="coupon"><code>${esc(d.code)}</code><button class="copy" data-code="${esc(d.code)}">Copy</button></div>` : ''}
           <a class="getdeal" href="${esc(d.affiliateUrl || d.url)}" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
         </div>
