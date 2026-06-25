@@ -1,0 +1,148 @@
+{
+  "deals": [
+    {
+      "slug": "wireless-noise-cancelling-headphones",
+      "title": "Wireless Noise-Cancelling Headphones",
+      "cat": "Electronics",
+      "store": "Amazon",
+      "emoji": "🎧",
+      "now": 59, "was": 129, "currency": "USD",
+      "off": "54%",
+      "code": "OASIS54",
+      "url": "#",
+      "description": "Block out the world and enjoy your music with active noise-cancelling over-ear headphones. Up to 30 hours of battery life, plush memory-foam earcups, and Bluetooth 5.3 for a stable wireless connection. A serious upgrade at less than half price."
+    },
+    {
+      "slug": "smart-fitness-watch-gps",
+      "title": "Smart Fitness Watch (GPS, SpO2)",
+      "cat": "Electronics",
+      "store": "AliExpress",
+      "emoji": "⌚",
+      "now": 24, "was": 49, "currency": "USD",
+      "off": "51%",
+      "code": "FITOASIS",
+      "url": "#",
+      "description": "Track your steps, heart rate, blood oxygen and sleep with this lightweight fitness smartwatch. Built-in GPS, dozens of sport modes, and a bright always-on display that lasts a full week on a charge. Perfect for staying on top of your health goals."
+    },
+    {
+      "slug": "running-sneakers-breathable-mesh",
+      "title": "Running Sneakers — Breathable Mesh",
+      "cat": "Fashion",
+      "store": "Amazon",
+      "emoji": "👟",
+      "now": 32, "was": 70, "currency": "USD",
+      "off": "54%",
+      "code": "RUN30",
+      "url": "#",
+      "description": "Lightweight running shoes with a breathable knit upper and a cushioned sole that keeps your feet comfortable mile after mile. A flexible, non-slip outsole works just as well on the street as on the treadmill."
+    },
+    {
+      "slug": "vitamin-c-serum-hyaluronic-acid",
+      "title": "Vitamin C Serum + Hyaluronic Acid",
+      "cat": "Beauty",
+      "store": "Sephora",
+      "emoji": "🧴",
+      "now": 18, "was": 36, "currency": "USD",
+      "off": "50%",
+      "code": "GLOW18",
+      "url": "#",
+      "description": "Brighten and hydrate your skin with this antioxidant serum, combining stabilized vitamin C and hyaluronic acid to even tone and lock in moisture. Lightweight, fast-absorbing, and suitable for daily morning use."
+    },
+    {
+      "slug": "espresso-machine-milk-frother",
+      "title": "Espresso Machine with Milk Frother",
+      "cat": "Home",
+      "store": "Amazon",
+      "emoji": "☕",
+      "now": 89, "was": 159, "currency": "USD",
+      "off": "44%",
+      "code": "BREW70",
+      "url": "#",
+      "description": "Pull café-quality espresso at home with a 20-bar pump and a built-in steam wand for silky milk foam. Compact enough for any kitchen counter, with a removable water tank for easy refills. Your morning latte just got a lot cheaper."
+    },
+    {
+      "slug": "anti-theft-travel-backpack-usb",
+      "title": "Anti-Theft Travel Backpack (USB)",
+      "cat": "Fashion",
+      "store": "AliExpress",
+      "emoji": "🎒",
+      "now": 21, "was": 45, "currency": "USD",
+      "off": "53%",
+      "code": "PACK21",
+      "url": "#",
+      "description": "A water-resistant backpack with hidden zippers, a padded laptop compartment, and a built-in USB charging port. Ergonomic straps and a luggage strap make it ideal for commuting and travel alike."
+    },
+    {
+      "slug": "smart-rgb-led-light-strip-10m",
+      "title": "Smart RGB LED Light Strip 10m",
+      "cat": "Home",
+      "store": "Amazon",
+      "emoji": "💡",
+      "now": 14, "was": 29, "currency": "USD",
+      "off": "52%",
+      "code": "LIGHT14",
+      "url": "#",
+      "description": "Transform any room with 10 meters of app-controlled RGB LED strip lighting. Millions of colors, music sync, scheduling, and voice control with Alexa and Google Home. Easy peel-and-stick installation in minutes."
+    },
+    {
+      "slug": "wireless-ergonomic-mouse-pad",
+      "title": "Wireless Ergonomic Mouse + Pad",
+      "cat": "Electronics",
+      "store": "Best Buy",
+      "emoji": "🖱️",
+      "now": 16, "was": 34, "currency": "USD",
+      "off": "53%",
+      "code": "CLICK16",
+      "url": "#",
+      "description": "A silent, wireless ergonomic mouse shaped to reduce wrist strain during long work sessions, bundled with a comfortable gel mouse pad. Adjustable DPI and a long-lasting battery make it a desk essential."
+    },
+    {
+      "slug": "facial-cleansing-massage-brush",
+      "title": "Facial Cleansing Massage Brush",
+      "cat": "Beauty",
+      "store": "AliExpress",
+      "emoji": "🧖",
+      "now": 9, "was": 22, "currency": "USD",
+      "off": "59%",
+      "code": "FRESH9",
+      "url": "#",
+      "description": "A gentle silicone cleansing brush that deep-cleans pores and massages your skin with soft sonic vibrations. Waterproof and rechargeable, with multiple intensity levels for all skin types."
+    },
+    {
+      "slug": "non-stick-10-piece-cookware-set",
+      "title": "Non-Stick 10-Piece Cookware Set",
+      "cat": "Home",
+      "store": "Walmart",
+      "emoji": "🍳",
+      "now": 49, "was": 99, "currency": "USD",
+      "off": "50%",
+      "code": "COOK50",
+      "url": "#",
+      "description": "Everything you need to outfit a kitchen: pots, pans, and lids with a durable non-stick coating that makes cooking and cleanup effortless. Even-heating bases work on all stovetops, including induction."
+    },
+    {
+      "slug": "magsafe-power-bank-10000mah",
+      "title": "MagSafe Power Bank 10000mAh",
+      "cat": "Electronics",
+      "store": "Amazon",
+      "emoji": "📱",
+      "now": 27, "was": 55, "currency": "USD",
+      "off": "51%",
+      "code": "CHARGE27",
+      "url": "#",
+      "description": "A slim 10000mAh magnetic power bank that snaps onto the back of your phone for cable-free wireless charging on the go. Fast USB-C wired output too, so you can top up two devices at once."
+    },
+    {
+      "slug": "polarized-uv400-sunglasses",
+      "title": "Polarized UV400 Sunglasses",
+      "cat": "Fashion",
+      "store": "AliExpress",
+      "emoji": "🕶️",
+      "now": 11, "was": 28, "currency": "USD",
+      "off": "61%",
+      "code": "SHADE11",
+      "url": "#",
+      "description": "Classic polarized sunglasses that cut glare and block 100% of UVA and UVB rays. A lightweight, durable frame and scratch-resistant lenses make them a perfect everyday pair for driving and the outdoors."
+    }
+  ]
+}

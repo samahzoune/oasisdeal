@@ -105,12 +105,13 @@
     overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, border-color .2s, box-shadow .2s;
   }
   .card:hover { transform: translateY(-4px); border-color: var(--brand); box-shadow: var(--shadow); }
-  .thumb { position: relative; aspect-ratio: 16/10; display: grid; place-items: center; font-size: 54px; }
+  .thumb { position: relative; aspect-ratio: 16/10; display: grid; place-items: center; font-size: 54px; text-decoration: none; }
   .thumb .store { position: absolute; top: 12px; left: 12px; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: rgba(0,0,0,.45); color: #fff; backdrop-filter: blur(4px); }
   .thumb .off { position: absolute; top: 12px; right: 12px; font-size: 12px; font-weight: 800; padding: 5px 11px; border-radius: 999px; background: var(--accent); color: #fff; }
   .body { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
   .cat { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--brand); }
-  .title { font-size: 15px; font-weight: 700; line-height: 1.3; }
+  .title { font-size: 15px; font-weight: 700; line-height: 1.3; color: var(--text); text-decoration: none; display: block; }
+  .title:hover { color: var(--brand); }
   .price { display: flex; align-items: baseline; gap: 8px; margin-top: 2px; }
   .price .now { font-size: 20px; font-weight: 800; }
   .price .was { font-size: 14px; color: var(--muted); text-decoration: line-through; }
@@ -202,35 +203,23 @@
 </footer>
 
 <script>
-  // ---- Deal data. Replace `url` with your real affiliate links. ----
-  const DEALS = [
-    { emoji:"🎧", title:"Wireless Noise-Cancelling Headphones", cat:"Electronics", store:"Amazon", now:"$59", was:"$129", off:"54%", code:"OASIS54", url:"#" },
-    { emoji:"⌚", title:"Smart Fitness Watch (GPS, SpO2)", cat:"Electronics", store:"AliExpress", now:"$24", was:"$49", off:"51%", code:"FITOASIS", url:"#" },
-    { emoji:"👟", title:"Running Sneakers — Breathable Mesh", cat:"Fashion", store:"Amazon", now:"$32", was:"$70", off:"54%", code:"RUN30", url:"#" },
-    { emoji:"🧴", title:"Vitamin C Serum + Hyaluronic Acid", cat:"Beauty", store:"Sephora", now:"$18", was:"$36", off:"50%", code:"GLOW18", url:"#" },
-    { emoji:"☕", title:"Espresso Machine with Milk Frother", cat:"Home", store:"Amazon", now:"$89", was:"$159", off:"44%", code:"BREW70", url:"#" },
-    { emoji:"🎒", title:"Anti-Theft Travel Backpack (USB)", cat:"Fashion", store:"AliExpress", now:"$21", was:"$45", off:"53%", code:"PACK21", url:"#" },
-    { emoji:"💡", title:"Smart RGB LED Light Strip 10m", cat:"Home", store:"Amazon", now:"$14", was:"$29", off:"52%", code:"LIGHT14", url:"#" },
-    { emoji:"🖱️", title:"Wireless Ergonomic Mouse + Pad", cat:"Electronics", store:"Best Buy", now:"$16", was:"$34", off:"53%", code:"CLICK16", url:"#" },
-    { emoji:"🧖", title:"Facial Cleansing Massage Brush", cat:"Beauty", store:"AliExpress", now:"$9", was:"$22", off:"59%", code:"FRESH9", url:"#" },
-    { emoji:"🍳", title:"Non-Stick 10-Piece Cookware Set", cat:"Home", store:"Walmart", now:"$49", was:"$99", off:"50%", code:"COOK50", url:"#" },
-    { emoji:"📱", title:"MagSafe Power Bank 10000mAh", cat:"Electronics", store:"Amazon", now:"$27", was:"$55", off:"51%", code:"CHARGE27", url:"#" },
-    { emoji:"🕶️", title:"Polarized UV400 Sunglasses", cat:"Fashion", store:"AliExpress", now:"$11", was:"$28", off:"61%", code:"SHADE11", url:"#" },
-  ];
-
+  // ---- Deals come from one source of truth: data/deals.json ----
   const grid = document.getElementById('grid');
   const filtersEl = document.getElementById('filters');
   const searchEl = document.getElementById('search');
+  let DEALS = [];
   let activeCat = "All";
 
-  const cats = ["All", ...new Set(DEALS.map(d => d.cat))];
-  cats.forEach(c => {
-    const b = document.createElement('button');
-    b.className = 'chip' + (c === "All" ? ' active' : '');
-    b.textContent = c;
-    b.onclick = () => { activeCat = c; [...filtersEl.children].forEach(x=>x.classList.remove('active')); b.classList.add('active'); render(); };
-    filtersEl.appendChild(b);
-  });
+  function buildFilters() {
+    const cats = ["All", ...new Set(DEALS.map(d => d.cat))];
+    cats.forEach(c => {
+      const b = document.createElement('button');
+      b.className = 'chip' + (c === "All" ? ' active' : '');
+      b.textContent = c;
+      b.onclick = () => { activeCat = c; [...filtersEl.children].forEach(x=>x.classList.remove('active')); b.classList.add('active'); render(); };
+      filtersEl.appendChild(b);
+    });
+  }
 
   function render() {
     const q = searchEl.value.trim().toLowerCase();
@@ -240,18 +229,19 @@
     );
     grid.innerHTML = list.length ? '' : '<div class="empty">No deals match your search — try another keyword.</div>';
     list.forEach(d => {
+      const page = 'deals/' + d.slug + '.html';
       const el = document.createElement('article');
       el.className = 'card';
       el.innerHTML = `
-        <div class="thumb" style="background:linear-gradient(135deg,#1b2848,#243152)">
+        <a class="thumb" href="${page}" style="background:linear-gradient(135deg,#1b2848,#243152)">
           <span class="store">${d.store}</span>
           <span class="off">-${d.off}</span>
           <span>${d.emoji}</span>
-        </div>
+        </a>
         <div class="body">
           <div class="cat">${d.cat}</div>
-          <div class="title">${d.title}</div>
-          <div class="price"><span class="now">${d.now}</span><span class="was">${d.was}</span></div>
+          <a class="title" href="${page}">${d.title}</a>
+          <div class="price"><span class="now">$${d.now}</span><span class="was">$${d.was}</span></div>
           <div class="coupon">
             <code>${d.code}</code>
             <button class="copy" data-code="${d.code}">Copy</button>
@@ -265,6 +255,7 @@
   grid.addEventListener('click', e => {
     const btn = e.target.closest('.copy');
     if (!btn) return;
+    e.preventDefault();
     navigator.clipboard?.writeText(btn.dataset.code);
     btn.textContent = 'Copied!'; btn.classList.add('copied');
     setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
@@ -278,9 +269,17 @@
     e.target.reset();
   });
 
-  document.getElementById('count').textContent = DEALS.length;
   document.getElementById('year').textContent = new Date().getFullYear();
-  render();
+
+  fetch('data/deals.json')
+    .then(r => r.json())
+    .then(data => {
+      DEALS = data.deals;
+      document.getElementById('count').textContent = DEALS.length;
+      buildFilters();
+      render();
+    })
+    .catch(() => { grid.innerHTML = '<div class="empty">Could not load deals. Please refresh.</div>'; });
 </script>
 </body>
 </html>
