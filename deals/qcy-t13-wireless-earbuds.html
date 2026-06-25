@@ -1,68 +1,20 @@
-// OasisDeal static generator: builds individual deal pages + sitemap + robots.
-// Run:  node generate.js   (re-run whenever data/deals.json changes)
-const fs = require('fs');
-const path = require('path');
-
-const ROOT = __dirname;
-const SITE = 'https://oasisdeal.com';
-const { deals } = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'deals.json'), 'utf8'));
-
-const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-function dealPage(d) {
-  const url = `${SITE}/deals/${d.slug}`;
-  const related = deals.filter(x => x.cat === d.cat && x.slug !== d.slug).slice(0, 3);
-  const metaDesc = `${d.title} — now $${d.now} (was $${d.was}), ${d.off} off at ${d.store}. ${d.code ? 'Use code ' + d.code + '. ' : ''}Verified deal on OasisDeal.`;
-
-  const jsonld = {
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    "name": d.title,
-    "description": d.description,
-    "category": d.cat,
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": d.currency || "USD",
-      "price": d.now,
-      "availability": "https://schema.org/InStock",
-      "url": url,
-      "seller": { "@type": "Organization", "name": d.store }
-    }
-  };
-  const breadcrumb = {
-    "@context": "https://schema.org/",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/" },
-      { "@type": "ListItem", "position": 2, "name": d.cat, "item": `${SITE}/#deals` },
-      { "@type": "ListItem", "position": 3, "name": d.title, "item": url }
-    ]
-  };
-
-  const relatedHtml = related.map(r => `
-        <a class="rel-card" href="${r.slug}.html">
-          <div class="rel-thumb">${r.emoji}</div>
-          <div class="rel-info"><div class="rel-title">${esc(r.title)}</div>
-          <div class="rel-price">$${r.now} <s>$${r.was}</s></div></div>
-        </a>`).join('');
-
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>${esc(d.title)} — ${d.off} off at ${esc(d.store)} | OasisDeal</title>
-<meta name="description" content="${esc(metaDesc)}" />
-<link rel="canonical" href="${url}" />
+<title>QCY T13 Wireless Bluetooth Earbuds — 50% off at AliExpress | OasisDeal</title>
+<meta name="description" content="QCY T13 Wireless Bluetooth Earbuds — now $15 (was $30), 50% off at AliExpress. Verified deal on OasisDeal." />
+<link rel="canonical" href="https://oasisdeal.com/deals/qcy-t13-wireless-earbuds" />
 <meta property="og:type" content="product" />
-<meta property="og:title" content="${esc(d.title)} — ${d.off} off" />
-<meta property="og:description" content="${esc(metaDesc)}" />
-<meta property="og:url" content="${url}" />
+<meta property="og:title" content="QCY T13 Wireless Bluetooth Earbuds — 50% off" />
+<meta property="og:description" content="QCY T13 Wireless Bluetooth Earbuds — now $15 (was $30), 50% off at AliExpress. Verified deal on OasisDeal." />
+<meta property="og:url" content="https://oasisdeal.com/deals/qcy-t13-wireless-earbuds" />
 <meta property="og:site_name" content="OasisDeal" />
-<meta property="og:image" content="${SITE}/favicon.svg" />
+<meta property="og:image" content="https://oasisdeal.com/favicon.svg" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="${esc(d.title)} — ${d.off} off" />
-<meta name="twitter:description" content="${esc(metaDesc)}" />
+<meta name="twitter:title" content="QCY T13 Wireless Bluetooth Earbuds — 50% off" />
+<meta name="twitter:description" content="QCY T13 Wireless Bluetooth Earbuds — now $15 (was $30), 50% off at AliExpress. Verified deal on OasisDeal." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -99,8 +51,8 @@ function dealPage(d) {
   .rel-title { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.25; }
   .rel-price { font-size: 13px; color: var(--brand); margin-top: 3px; } .rel-price s { color: var(--muted); }
 </style>
-<script type="application/ld+json">${JSON.stringify(jsonld)}</script>
-<script type="application/ld+json">${JSON.stringify(breadcrumb)}</script>
+<script type="application/ld+json">{"@context":"https://schema.org/","@type":"Product","name":"QCY T13 Wireless Bluetooth Earbuds","description":"Crisp audio, stable Bluetooth 5.3, and a low-latency game mode make the QCY T13 a perennial favourite. Touch controls, IPX5 water resistance, and a long battery life make these one of the best value true-wireless earbuds you can buy.","category":"Audio","offers":{"@type":"Offer","priceCurrency":"USD","price":15,"availability":"https://schema.org/InStock","url":"https://oasisdeal.com/deals/qcy-t13-wireless-earbuds","seller":{"@type":"Organization","name":"AliExpress"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://oasisdeal.com/"},{"@type":"ListItem","position":2,"name":"Audio","item":"https://oasisdeal.com/#deals"},{"@type":"ListItem","position":3,"name":"QCY T13 Wireless Bluetooth Earbuds","item":"https://oasisdeal.com/deals/qcy-t13-wireless-earbuds"}]}</script>
 </head>
 <body>
 <header>
@@ -111,31 +63,36 @@ function dealPage(d) {
 </header>
 
 <main class="wrap page">
-  <div class="crumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="../index.html#deals">${esc(d.cat)}</a> &nbsp;/&nbsp; ${esc(d.title)}</div>
+  <div class="crumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="../index.html#deals">Audio</a> &nbsp;/&nbsp; QCY T13 Wireless Bluetooth Earbuds</div>
 
   <article class="deal">
-    <div class="deal-thumb"><span class="store">${esc(d.store)}</span><span class="off">-${d.off}</span>${d.emoji}</div>
+    <div class="deal-thumb"><span class="store">AliExpress</span><span class="off">-50%</span>🎧</div>
     <div>
-      <div class="catlabel">${esc(d.cat)}</div>
-      <h1>${esc(d.title)}</h1>
-      <div class="prices"><span class="now">$${d.now}</span><span class="was">$${d.was}</span><span class="save">Save ${d.off}</span></div>
-      ${d.code ? `<div class="coupon"><code id="code">${esc(d.code)}</code><button id="copy" data-code="${esc(d.code)}">Copy code</button></div>` : ''}
-      <a class="getdeal" href="${esc(d.url)}" target="_blank" rel="nofollow sponsored noopener">Get this deal →</a>
+      <div class="catlabel">Audio</div>
+      <h1>QCY T13 Wireless Bluetooth Earbuds</h1>
+      <div class="prices"><span class="now">$15</span><span class="was">$30</span><span class="save">Save 50%</span></div>
+      
+      <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-qcy-t13-earbuds.html" target="_blank" rel="nofollow sponsored noopener">Get this deal →</a>
     </div>
   </article>
 
   <section class="desc">
     <h2>About this deal</h2>
-    <p>${esc(d.description)}</p>
-    <h2>How to use this ${d.code ? 'code' : 'deal'}</h2>
+    <p>Crisp audio, stable Bluetooth 5.3, and a low-latency game mode make the QCY T13 a perennial favourite. Touch controls, IPX5 water resistance, and a long battery life make these one of the best value true-wireless earbuds you can buy.</p>
+    <h2>How to use this deal</h2>
     <ol class="steps">
-      <li>Click <strong>“Get this deal”</strong> to open ${esc(d.store)}.</li>
-      ${d.code ? `<li>Add the item to your cart and head to checkout.</li><li>Paste the code <strong>${esc(d.code)}</strong> in the promo/coupon field and apply it.</li><li>Confirm the ${d.off} discount shows before you pay.</li>` : `<li>The discount is applied automatically at ${esc(d.store)} — no code needed.</li>`}
+      <li>Click <strong>“Get this deal”</strong> to open AliExpress.</li>
+      <li>The discount is applied automatically at AliExpress — no code needed.</li>
     </ol>
     <p style="color:var(--muted); font-size:13px; margin-top:18px;">Prices and availability are accurate as of the time of posting and may change. OasisDeal may earn a commission on purchases made through links on this page, at no extra cost to you.</p>
   </section>
 
-  ${related.length ? `<section class="desc"><h2>More ${esc(d.cat)} deals</h2><div class="rel-grid">${relatedHtml}</div></section>` : ''}
+  <section class="desc"><h2>More Audio deals</h2><div class="rel-grid">
+        <a class="rel-card" href="soundcore-p30i-anc-earbuds.html">
+          <div class="rel-thumb">🎧</div>
+          <div class="rel-info"><div class="rel-title">Soundcore P30i Active Noise-Cancelling Earbuds</div>
+          <div class="rel-price">$34 <s>$55</s></div></div>
+        </a></div></section>
 </main>
 
 <footer>
@@ -160,31 +117,3 @@ function dealPage(d) {
 </script>
 </body>
 </html>
-`;
-}
-
-// Build deal pages (clean stale pages first so removed deals don't linger)
-const dealsDir = path.join(ROOT, 'deals');
-fs.mkdirSync(dealsDir, { recursive: true });
-fs.readdirSync(dealsDir).filter(f => f.endsWith('.html')).forEach(f => fs.unlinkSync(path.join(dealsDir, f)));
-deals.forEach(d => {
-  fs.writeFileSync(path.join(dealsDir, `${d.slug}.html`), dealPage(d));
-});
-
-// Sitemap
-const staticUrls = ['/', '/about', '/contact', '/privacy'];
-const urls = [
-  ...staticUrls.map(u => ({ loc: SITE + u, pri: u === '/' ? '1.0' : '0.5' })),
-  ...deals.map(d => ({ loc: `${SITE}/deals/${d.slug}`, pri: '0.8' }))
-];
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url><loc>${u.loc}</loc><changefreq>daily</changefreq><priority>${u.pri}</priority></url>`).join('\n')}
-</urlset>
-`;
-fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
-
-// robots.txt
-fs.writeFileSync(path.join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
-
-console.log(`Generated ${deals.length} deal pages, sitemap.xml (${urls.length} urls), robots.txt`);

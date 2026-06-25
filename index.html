@@ -115,6 +115,7 @@
   .price { display: flex; align-items: baseline; gap: 8px; margin-top: 2px; }
   .price .now { font-size: 20px; font-weight: 800; }
   .price .was { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+  .price .poff { margin-left: auto; font-size: 12px; font-weight: 800; color: var(--brand); background: rgba(45,212,191,.12); padding: 3px 9px; border-radius: 999px; }
   .coupon {
     display: flex; align-items: center; justify-content: space-between; gap: 8px;
     border: 1px dashed var(--brand); border-radius: 10px; padding: 8px 8px 8px 12px;
@@ -126,6 +127,7 @@
   .getdeal {
     display: block; text-align: center; padding: 11px; border-radius: 10px; font-weight: 700; font-size: 14px;
     background: linear-gradient(135deg, var(--brand-2), var(--brand)); color: #04121a; transition: filter .15s;
+    margin-top: auto;
   }
   .getdeal:hover { filter: brightness(1.08); }
   .empty { grid-column: 1/-1; text-align: center; color: var(--muted); padding: 50px 0; }
@@ -241,11 +243,11 @@
         <div class="body">
           <div class="cat">${d.cat}</div>
           <a class="title" href="${page}">${d.title}</a>
-          <div class="price"><span class="now">$${d.now}</span><span class="was">$${d.was}</span></div>
-          <div class="coupon">
+          <div class="price"><span class="now">$${d.now}</span><span class="was">$${d.was}</span><span class="poff">-${d.off}</span></div>
+          ${d.code ? `<div class="coupon">
             <code>${d.code}</code>
             <button class="copy" data-code="${d.code}">Copy</button>
-          </div>
+          </div>` : ''}
           <a class="getdeal" href="${d.url}" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
         </div>`;
       grid.appendChild(el);
