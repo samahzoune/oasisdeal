@@ -87,7 +87,11 @@
   .stat .l { font-size: 13px; color: var(--muted); }
 
   /* Filters */
-  .filters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 36px 0 28px; }
+  .catnav { display: flex; gap: 8px 18px; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 30px; font-size: 14px; }
+  .catnav span { color: var(--muted); font-weight: 600; }
+  .catnav a { color: var(--brand); font-weight: 600; }
+  .catnav a:hover { text-decoration: underline; }
+  .filters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 22px 0 28px; }
   .chip {
     padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg-soft);
     color: var(--muted); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .18s;
@@ -175,6 +179,13 @@
   </section>
 
   <section class="wrap" id="deals">
+    <nav class="catnav" aria-label="Shop by category">
+      <span>Browse:</span>
+      <a href="category/audio.html">Audio deals</a>
+      <a href="category/electronics.html">Electronics deals</a>
+      <a href="category/home.html">Home deals</a>
+      <a href="category/beauty.html">Beauty deals</a>
+    </nav>
     <div class="filters" id="filters"></div>
     <div class="grid" id="grid"></div>
   </section>

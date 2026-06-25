@@ -4,6 +4,10 @@
   <url><loc>https://oasisdeal.com/about</loc><changefreq>daily</changefreq><priority>0.5</priority></url>
   <url><loc>https://oasisdeal.com/contact</loc><changefreq>daily</changefreq><priority>0.5</priority></url>
   <url><loc>https://oasisdeal.com/privacy</loc><changefreq>daily</changefreq><priority>0.5</priority></url>
+  <url><loc>https://oasisdeal.com/category/audio</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oasisdeal.com/category/electronics</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oasisdeal.com/category/home</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oasisdeal.com/category/beauty</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
   <url><loc>https://oasisdeal.com/deals/soundcore-p30i-anc-earbuds</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://oasisdeal.com/deals/qcy-t13-wireless-earbuds</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://oasisdeal.com/deals/smart-watch-bluetooth-call-fitness</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
