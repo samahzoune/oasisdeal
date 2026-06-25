@@ -6,17 +6,32 @@
       "cat": "Audio",
       "store": "AliExpress",
       "emoji": "🎧",
-      "now": 34, "was": 55, "currency": "USD",
+      "now": 34,
+      "was": 55,
+      "currency": "USD",
       "off": "38%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-soundcore-p30i.html",
       "description": "One of 2026's best-selling budget earbuds: active noise cancellation, balanced sound, and up to 45 hours of total battery with the case. A big-name feature set at a fraction of premium prices — a reliable everyday pick backed by thousands of verified reviews.",
-      "features": ["Active noise cancellation with transparency mode", "Up to 45 hours total battery with charging case", "Bluetooth 5.3 with multipoint pairing", "IPX5 water resistance for workouts and rain", "App with custom EQ and find-my-earbuds"],
+      "features": [
+        "Active noise cancellation with transparency mode",
+        "Up to 45 hours total battery with charging case",
+        "Bluetooth 5.3 with multipoint pairing",
+        "IPX5 water resistance for workouts and rain",
+        "App with custom EQ and find-my-earbuds"
+      ],
       "bestFor": "Commuters and gym-goers who want real ANC without paying flagship prices.",
       "faqs": [
-        {"q": "Do the Soundcore P30i actually cancel noise well?", "a": "Yes — for the price they handle constant low-frequency noise like buses, planes and fans noticeably well. They won't fully match $250 flagships on sudden sounds, but at this price the ANC is genuinely useful for commuting and offices."},
-        {"q": "How long does the battery last?", "a": "Around 8–10 hours per charge with ANC off, and roughly 45 hours total when you count the charging case. A quick 10-minute charge gives you a couple of extra hours."}
-      ]
+        {
+          "q": "Do the Soundcore P30i actually cancel noise well?",
+          "a": "Yes — for the price they handle constant low-frequency noise like buses, planes and fans noticeably well. They won't fully match $250 flagships on sudden sounds, but at this price the ANC is genuinely useful for commuting and offices."
+        },
+        {
+          "q": "How long does the battery last?",
+          "a": "Around 8–10 hours per charge with ANC off, and roughly 45 hours total when you count the charging case. A quick 10-minute charge gives you a couple of extra hours."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3xLSoet"
     },
     {
       "slug": "qcy-t13-wireless-earbuds",
@@ -24,17 +39,32 @@
       "cat": "Audio",
       "store": "AliExpress",
       "emoji": "🎧",
-      "now": 15, "was": 30, "currency": "USD",
+      "now": 15,
+      "was": 30,
+      "currency": "USD",
       "off": "50%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-qcy-t13-earbuds.html",
       "description": "Crisp audio, stable Bluetooth 5.3, and a low-latency game mode make the QCY T13 a perennial favourite. Touch controls, IPX5 water resistance, and a long battery life make these one of the best value true-wireless earbuds you can buy.",
-      "features": ["Bluetooth 5.3 with fast, stable pairing", "Low-latency game mode for video and gaming", "IPX5 sweat and splash resistance", "Customisable touch controls via app", "Up to 40 hours total with the case"],
+      "features": [
+        "Bluetooth 5.3 with fast, stable pairing",
+        "Low-latency game mode for video and gaming",
+        "IPX5 sweat and splash resistance",
+        "Customisable touch controls via app",
+        "Up to 40 hours total with the case"
+      ],
       "bestFor": "Anyone who wants dependable everyday earbuds for the lowest possible price.",
       "faqs": [
-        {"q": "Are the QCY T13 good for the price?", "a": "They're one of the most recommended budget earbuds online. You don't get active noise cancellation at this price, but sound quality, connection stability and battery life are well above what you'd expect under $20."},
-        {"q": "Do they work for calls?", "a": "Yes, they have built-in mics with basic noise reduction. They're fine for everyday calls in quiet to moderate environments, though very windy or noisy settings will reduce clarity."}
-      ]
+        {
+          "q": "Are the QCY T13 good for the price?",
+          "a": "They're one of the most recommended budget earbuds online. You don't get active noise cancellation at this price, but sound quality, connection stability and battery life are well above what you'd expect under $20."
+        },
+        {
+          "q": "Do they work for calls?",
+          "a": "Yes, they have built-in mics with basic noise reduction. They're fine for everyday calls in quiet to moderate environments, though very windy or noisy settings will reduce clarity."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3U0qsgz"
     },
     {
       "slug": "smart-watch-bluetooth-call-fitness",
@@ -42,17 +72,32 @@
       "cat": "Electronics",
       "store": "AliExpress",
       "emoji": "⌚",
-      "now": 26, "was": 52, "currency": "USD",
+      "now": 26,
+      "was": 52,
+      "currency": "USD",
       "off": "50%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-smart-watch-bluetooth-call.html",
       "description": "A full-featured smartwatch with Bluetooth calling, heart-rate and blood-oxygen tracking, 100+ sport modes and a bright HD display. Week-long battery life and a comfortable strap make it an easy daily wearable at half the usual price.",
-      "features": ["Bluetooth calling — answer and dial from your wrist", "Heart-rate, SpO2 and sleep tracking", "100+ sport and workout modes", "Bright HD touch display, always-on option", "5–7 day battery on a single charge"],
+      "features": [
+        "Bluetooth calling — answer and dial from your wrist",
+        "Heart-rate, SpO2 and sleep tracking",
+        "100+ sport and workout modes",
+        "Bright HD touch display, always-on option",
+        "5–7 day battery on a single charge"
+      ],
       "bestFor": "First-time smartwatch buyers who want fitness tracking and calls without a big spend.",
       "faqs": [
-        {"q": "Does it work with both iPhone and Android?", "a": "Yes, these watches pair with both iOS and Android through a companion app for notifications, calls and fitness data. A few advanced features can be Android-friendlier, but core functions work on both."},
-        {"q": "Is the fitness tracking accurate?", "a": "Step counting, heart rate and sleep are reliable enough for general daily-activity tracking and trends. They're not medical-grade, so treat readings like SpO2 as a rough guide rather than a clinical measurement."}
-      ]
+        {
+          "q": "Does it work with both iPhone and Android?",
+          "a": "Yes, these watches pair with both iOS and Android through a companion app for notifications, calls and fitness data. A few advanced features can be Android-friendlier, but core functions work on both."
+        },
+        {
+          "q": "Is the fitness tracking accurate?",
+          "a": "Step counting, heart rate and sleep are reliable enough for general daily-activity tracking and trends. They're not medical-grade, so treat readings like SpO2 as a rough guide rather than a clinical measurement."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3w5IqKD"
     },
     {
       "slug": "levitating-led-world-map-lamp",
@@ -60,17 +105,32 @@
       "cat": "Home",
       "store": "AliExpress",
       "emoji": "🌍",
-      "now": 27, "was": 49, "currency": "USD",
+      "now": 27,
+      "was": 49,
+      "currency": "USD",
       "off": "45%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-levitating-moon-lamp.html",
       "description": "A floating globe that spins in mid-air above its base with a soft LED glow — a striking desk or shelf centrepiece. Rated 4.8 stars by hundreds of buyers, it makes a memorable gift and a genuine conversation starter.",
-      "features": ["Magnetic levitation — the globe floats and spins", "Soft warm-white LED glow", "Powered by a hidden base, USB or adapter", "Striking desk, office or shelf piece", "Comes gift-boxed — ideal present"],
+      "features": [
+        "Magnetic levitation — the globe floats and spins",
+        "Soft warm-white LED glow",
+        "Powered by a hidden base, USB or adapter",
+        "Striking desk, office or shelf piece",
+        "Comes gift-boxed — ideal present"
+      ],
       "bestFor": "Gift shoppers and anyone who wants a standout desk or office decoration.",
       "faqs": [
-        {"q": "Is the levitating lamp hard to set up?", "a": "There's a small knack to balancing the globe on the magnetic field the first time — most people get it within a few minutes by gently lowering it until it catches. After that it floats on its own."},
-        {"q": "Does it spin continuously?", "a": "Yes, once balanced it rotates slowly and steadily while powered. The motion is quiet, so it's fine on a desk or bedside table."}
-      ]
+        {
+          "q": "Is the levitating lamp hard to set up?",
+          "a": "There's a small knack to balancing the globe on the magnetic field the first time — most people get it within a few minutes by gently lowering it until it catches. After that it floats on its own."
+        },
+        {
+          "q": "Does it spin continuously?",
+          "a": "Yes, once balanced it rotates slowly and steadily while powered. The motion is quiet, so it's fine on a desk or bedside table."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c2JwQrkv"
     },
     {
       "slug": "mini-aroma-diffuser-180ml",
@@ -78,17 +138,32 @@
       "cat": "Home",
       "store": "AliExpress",
       "emoji": "🌫️",
-      "now": 9, "was": 19, "currency": "USD",
+      "now": 9,
+      "was": 19,
+      "currency": "USD",
       "off": "53%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-mini-aroma-diffuser.html",
       "description": "A whisper-quiet ultrasonic diffuser with colour-changing mood lighting and auto shut-off. Compact enough for a bedside table or desk, it has passed the 100K-sales mark thanks to solid build quality at an unbeatable price.",
-      "features": ["180ml tank — several hours of mist per fill", "Colour-changing LED mood light", "Auto shut-off when water runs out", "Whisper-quiet ultrasonic operation", "Compact size for desk or bedside"],
+      "features": [
+        "180ml tank — several hours of mist per fill",
+        "Colour-changing LED mood light",
+        "Auto shut-off when water runs out",
+        "Whisper-quiet ultrasonic operation",
+        "Compact size for desk or bedside"
+      ],
       "bestFor": "Small bedrooms, desks and anyone wanting easy aromatherapy on a budget.",
       "faqs": [
-        {"q": "How long does one tank last?", "a": "A full 180ml tank runs roughly 4–6 hours on continuous mode, or longer on intermittent mode. The auto shut-off kicks in when it's empty, so it's safe to leave running."},
-        {"q": "Can I use any essential oil?", "a": "Yes, add a few drops of any water-soluble essential oil to the tank. Avoid thick carrier oils, which can clog the ultrasonic plate over time."}
-      ]
+        {
+          "q": "How long does one tank last?",
+          "a": "A full 180ml tank runs roughly 4–6 hours on continuous mode, or longer on intermittent mode. The auto shut-off kicks in when it's empty, so it's safe to leave running."
+        },
+        {
+          "q": "Can I use any essential oil?",
+          "a": "Yes, add a few drops of any water-soluble essential oil to the tank. Avoid thick carrier oils, which can clog the ultrasonic plate over time."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c42Fs4b3"
     },
     {
       "slug": "matter-smart-plug-energy-monitor",
@@ -96,17 +171,32 @@
       "cat": "Home",
       "store": "AliExpress",
       "emoji": "🔌",
-      "now": 11, "was": 24, "currency": "USD",
+      "now": 11,
+      "was": 24,
+      "currency": "USD",
       "off": "54%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-matter-smart-plug.html",
       "description": "Control any appliance from your phone and track its real-time power use. Works with Apple Home, Google Home and Alexa over Matter — no hub required. One of the standout smart-home best-sellers of 2026.",
-      "features": ["Works with Matter — Apple Home, Google, Alexa", "No hub required, connects over Wi-Fi", "Real-time energy and power monitoring", "Schedules, timers and remote on/off", "Compact design that won't block the second socket"],
+      "features": [
+        "Works with Matter — Apple Home, Google, Alexa",
+        "No hub required, connects over Wi-Fi",
+        "Real-time energy and power monitoring",
+        "Schedules, timers and remote on/off",
+        "Compact design that won't block the second socket"
+      ],
       "bestFor": "Smart-home starters who want app control and to see what's costing them money.",
       "faqs": [
-        {"q": "Do I need a separate hub?", "a": "No. Because it supports Matter over Wi-Fi, it connects directly to your home network and your phone app — no bridge or hub needed for most setups."},
-        {"q": "What can the energy monitoring tell me?", "a": "It reports live wattage and accumulated energy use for whatever is plugged in, so you can spot power-hungry appliances and estimate running costs over time."}
-      ]
+        {
+          "q": "Do I need a separate hub?",
+          "a": "No. Because it supports Matter over Wi-Fi, it connects directly to your home network and your phone app — no bridge or hub needed for most setups."
+        },
+        {
+          "q": "What can the energy monitoring tell me?",
+          "a": "It reports live wattage and accumulated energy use for whatever is plugged in, so you can spot power-hungry appliances and estimate running costs over time."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3ng04Gd"
     },
     {
       "slug": "led-facial-beauty-mask-7-color",
@@ -114,17 +204,32 @@
       "cat": "Beauty",
       "store": "AliExpress",
       "emoji": "💆",
-      "now": 22, "was": 46, "currency": "USD",
+      "now": 22,
+      "was": 46,
+      "currency": "USD",
       "off": "52%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-led-facial-mask.html",
       "description": "An at-home light-therapy mask with seven color modes to target tone, blemishes and a tired-looking complexion. Lightweight and rechargeable, it brings a salon treatment to your skincare routine for a one-time price.",
-      "features": ["7 colour modes for different skin goals", "Lightweight, comfortable to wear", "Rechargeable — no trailing cables", "Simple one-button operation", "Adjustable straps for a secure fit"],
+      "features": [
+        "7 colour modes for different skin goals",
+        "Lightweight, comfortable to wear",
+        "Rechargeable — no trailing cables",
+        "Simple one-button operation",
+        "Adjustable straps for a secure fit"
+      ],
       "bestFor": "Skincare fans who want at-home light therapy instead of paying per salon session.",
       "faqs": [
-        {"q": "How often should I use an LED face mask?", "a": "Most routines use it for 10–20 minutes, 3–5 times a week. Consistency over several weeks matters more than long single sessions for visible results."},
-        {"q": "What do the different colours do?", "a": "Generally, red targets tone and a tired look, blue targets blemish-prone skin, and the other shades are used in combination. Results vary by person and are gradual rather than instant."}
-      ]
+        {
+          "q": "How often should I use an LED face mask?",
+          "a": "Most routines use it for 10–20 minutes, 3–5 times a week. Consistency over several weeks matters more than long single sessions for visible results."
+        },
+        {
+          "q": "What do the different colours do?",
+          "a": "Generally, red targets tone and a tired look, blue targets blemish-prone skin, and the other shades are used in combination. Results vary by person and are gradual rather than instant."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c4NeD2HJ"
     },
     {
       "slug": "heatless-curling-rod-set",
@@ -132,17 +237,32 @@
       "cat": "Beauty",
       "store": "AliExpress",
       "emoji": "💇",
-      "now": 6, "was": 14, "currency": "USD",
+      "now": 6,
+      "was": 14,
+      "currency": "USD",
       "off": "57%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-heatless-curling-rod.html",
       "description": "Get soft, bouncy curls overnight with zero heat damage. The silk-feel rod and matching clips are gentle on hair and travel-friendly — a viral beauty favourite that keeps selling for good reason.",
-      "features": ["Heatless — zero heat damage to hair", "Soft silk-feel rod, comfortable to sleep in", "Includes matching clips and scrunchie", "Works on most hair lengths and types", "Rolls up small for travel"],
+      "features": [
+        "Heatless — zero heat damage to hair",
+        "Soft silk-feel rod, comfortable to sleep in",
+        "Includes matching clips and scrunchie",
+        "Works on most hair lengths and types",
+        "Rolls up small for travel"
+      ],
       "bestFor": "Anyone who wants curls without hot tools or daily heat damage.",
       "faqs": [
-        {"q": "Do heatless curlers actually work?", "a": "Yes — wrapping slightly damp hair around the rod and leaving it overnight (or a few hours) sets a soft curl as it dries. The curl is looser and more natural than a hot curling iron, and lasts about a day."},
-        {"q": "Is it comfortable to sleep in?", "a": "The rod is soft and flexible, so most people find it comfortable to sleep with. Securing the ends with the included clips keeps it in place through the night."}
-      ]
+        {
+          "q": "Do heatless curlers actually work?",
+          "a": "Yes — wrapping slightly damp hair around the rod and leaving it overnight (or a few hours) sets a soft curl as it dries. The curl is looser and more natural than a hot curling iron, and lasts about a day."
+        },
+        {
+          "q": "Is it comfortable to sleep in?",
+          "a": "The rod is soft and flexible, so most people find it comfortable to sleep with. Securing the ends with the included clips keeps it in place through the night."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3K7p3YZ"
     },
     {
       "slug": "magnetic-wireless-power-bank-10000mah",
@@ -150,17 +270,32 @@
       "cat": "Electronics",
       "store": "AliExpress",
       "emoji": "🔋",
-      "now": 19, "was": 39, "currency": "USD",
+      "now": 19,
+      "was": 39,
+      "currency": "USD",
       "off": "51%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-magnetic-wireless-power-bank.html",
       "description": "A slim MagSafe-compatible power bank that snaps onto the back of your phone for cable-free charging on the move. Fast USB-C output tops up two devices at once — a compact-power-bank category that's grown steadily into 2026.",
-      "features": ["Magnetic snap-on wireless charging", "10000mAh — roughly two full phone charges", "USB-C fast wired output as well", "Charge two devices at once", "Slim, pocket-friendly profile"],
+      "features": [
+        "Magnetic snap-on wireless charging",
+        "10000mAh — roughly two full phone charges",
+        "USB-C fast wired output as well",
+        "Charge two devices at once",
+        "Slim, pocket-friendly profile"
+      ],
       "bestFor": "iPhone and Magsafe users who hate trailing cables while charging on the go.",
       "faqs": [
-        {"q": "Will it work with my phone?", "a": "Magnetic alignment is strongest on iPhone 12 and newer (or any phone with a MagSafe case). Without magnets it still works as a normal USB-C power bank for any phone."},
-        {"q": "How many charges does 10000mAh give?", "a": "Expect roughly 1.5–2 full smartphone charges, depending on your phone's battery size. Wireless charging is slightly less efficient than wired, so the cable output squeezes out a little more."}
-      ]
+        {
+          "q": "Will it work with my phone?",
+          "a": "Magnetic alignment is strongest on iPhone 12 and newer (or any phone with a MagSafe case). Without magnets it still works as a normal USB-C power bank for any phone."
+        },
+        {
+          "q": "How many charges does 10000mAh give?",
+          "a": "Expect roughly 1.5–2 full smartphone charges, depending on your phone's battery size. Wireless charging is slightly less efficient than wired, so the cable output squeezes out a little more."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3VWa2Nn"
     },
     {
       "slug": "3-in-1-wireless-charging-station",
@@ -168,17 +303,32 @@
       "cat": "Electronics",
       "store": "AliExpress",
       "emoji": "⚡",
-      "now": 17, "was": 35, "currency": "USD",
+      "now": 17,
+      "was": 35,
+      "currency": "USD",
       "off": "51%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-3-in-1-wireless-charger.html",
       "description": "Charge your phone, earbuds and smartwatch from a single foldable dock. A clean nightstand solution that clears cable clutter — multi-device charging stations are among the most consistent sellers this year.",
-      "features": ["Charges phone, earbuds and watch together", "Foldable — packs flat for travel", "One adapter, one cable, no clutter", "Non-slip pads keep devices in place", "Works with most Qi-compatible devices"],
+      "features": [
+        "Charges phone, earbuds and watch together",
+        "Foldable — packs flat for travel",
+        "One adapter, one cable, no clutter",
+        "Non-slip pads keep devices in place",
+        "Works with most Qi-compatible devices"
+      ],
       "bestFor": "Anyone with a phone, watch and earbuds who wants one tidy charging spot.",
       "faqs": [
-        {"q": "Does it charge an Apple Watch?", "a": "Versions made for Apple include a proper watch charger; some generic models only fit specific watches. Check the listing for your exact watch model before buying if that's important to you."},
-        {"q": "Is a charger plug included?", "a": "Some listings include the power adapter and some don't — many ship with just the dock and cable to keep the price down. The product page will say; a standard fast USB-C adapter works if not."}
-      ]
+        {
+          "q": "Does it charge an Apple Watch?",
+          "a": "Versions made for Apple include a proper watch charger; some generic models only fit specific watches. Check the listing for your exact watch model before buying if that's important to you."
+        },
+        {
+          "q": "Is a charger plug included?",
+          "a": "Some listings include the power adapter and some don't — many ship with just the dock and cable to keep the price down. The product page will say; a standard fast USB-C adapter works if not."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3g0hppj"
     },
     {
       "slug": "4k-wifi-mini-security-camera",
@@ -186,17 +336,32 @@
       "cat": "Electronics",
       "store": "AliExpress",
       "emoji": "📷",
-      "now": 21, "was": 45, "currency": "USD",
+      "now": 21,
+      "was": 45,
+      "currency": "USD",
       "off": "53%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-mini-wifi-security-camera.html",
       "description": "A tiny 4K camera with night vision, motion detection and phone alerts that sets up in minutes. Home-security tech is firmly on shoppers' radar in 2026, and this one delivers big features in a palm-sized body.",
-      "features": ["4K-class resolution in a tiny body", "Infrared night vision", "Motion detection with phone alerts", "Local microSD and/or cloud recording", "Simple Wi-Fi app setup"],
+      "features": [
+        "4K-class resolution in a tiny body",
+        "Infrared night vision",
+        "Motion detection with phone alerts",
+        "Local microSD and/or cloud recording",
+        "Simple Wi-Fi app setup"
+      ],
       "bestFor": "Renters and homeowners who want a discreet, cheap indoor security camera.",
       "faqs": [
-        {"q": "Does it need a subscription?", "a": "No — most of these record to a local microSD card with no monthly fee. Cloud storage is usually an optional paid extra if you want off-site backup of footage."},
-        {"q": "Can I view it when I'm away from home?", "a": "Yes. Once connected to your Wi-Fi and the app, you can watch the live feed and get motion alerts from anywhere with an internet connection."}
-      ]
+        {
+          "q": "Does it need a subscription?",
+          "a": "No — most of these record to a local microSD card with no monthly fee. Cloud storage is usually an optional paid extra if you want off-site backup of footage."
+        },
+        {
+          "q": "Can I view it when I'm away from home?",
+          "a": "Yes. Once connected to your Wi-Fi and the app, you can watch the live feed and get motion alerts from anywhere with an internet connection."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c4BoX5m9"
     },
     {
       "slug": "ultrasonic-glasses-jewelry-cleaner",
@@ -204,17 +369,32 @@
       "cat": "Home",
       "store": "AliExpress",
       "emoji": "🧼",
-      "now": 24, "was": 48, "currency": "USD",
+      "now": 24,
+      "was": 48,
+      "currency": "USD",
       "off": "50%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-ultrasonic-cleaner.html",
       "description": "Deep-clean glasses, rings, watches and small items in minutes using ultrasonic waves and plain water. No scrubbing, no chemicals — a satisfying, practical gadget that's become a steady 2026 best-seller.",
-      "features": ["Ultrasonic cleaning — no scrubbing", "Works with just water (or mild solution)", "Cleans glasses, jewellery, watches, coins", "One-touch timed cleaning cycles", "Compact countertop size"],
+      "features": [
+        "Ultrasonic cleaning — no scrubbing",
+        "Works with just water (or mild solution)",
+        "Cleans glasses, jewellery, watches, coins",
+        "One-touch timed cleaning cycles",
+        "Compact countertop size"
+      ],
       "bestFor": "Glasses wearers and jewellery owners who want a quick, thorough clean at home.",
       "faqs": [
-        {"q": "What can I safely clean in it?", "a": "Eyeglasses, most rings and chains, watches (remove leather straps), coins and small metal or plastic items clean up well. Avoid soft or porous gemstones like pearls, opals and emeralds, which can be damaged."},
-        {"q": "Do I need special cleaning fluid?", "a": "Plain water works for light cleaning; a drop of mild dish soap or a dedicated solution boosts results for greasy or heavily soiled items. You don't need expensive chemicals."}
-      ]
+        {
+          "q": "What can I safely clean in it?",
+          "a": "Eyeglasses, most rings and chains, watches (remove leather straps), coins and small metal or plastic items clean up well. Avoid soft or porous gemstones like pearls, opals and emeralds, which can be damaged."
+        },
+        {
+          "q": "Do I need special cleaning fluid?",
+          "a": "Plain water works for light cleaning; a drop of mild dish soap or a dedicated solution boosts results for greasy or heavily soiled items. You don't need expensive chemicals."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3cHf5RP"
     },
     {
       "slug": "portable-mini-thermal-printer",
@@ -222,17 +402,32 @@
       "cat": "Electronics",
       "store": "AliExpress",
       "emoji": "🖨️",
-      "now": 29, "was": 55, "currency": "USD",
+      "now": 29,
+      "was": 55,
+      "currency": "USD",
       "off": "47%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-mini-thermal-printer.html",
       "description": "A pocket-sized inkless printer that prints notes, photos, lists and study cards straight from your phone over Bluetooth. Wireless mini printers have been a sustained growth category into 2026 with students and planners.",
-      "features": ["Inkless thermal printing — no cartridges ever", "Prints from your phone over Bluetooth", "Photos, notes, to-do lists, study cards", "Rechargeable and pocket-sized", "Companion app with templates and fonts"],
+      "features": [
+        "Inkless thermal printing — no cartridges ever",
+        "Prints from your phone over Bluetooth",
+        "Photos, notes, to-do lists, study cards",
+        "Rechargeable and pocket-sized",
+        "Companion app with templates and fonts"
+      ],
       "bestFor": "Students, journalers and planners who want quick prints without an ink printer.",
       "faqs": [
-        {"q": "Does it really not use ink?", "a": "Correct — it uses thermal paper that darkens with heat, so there are no cartridges or toner to buy. You only ever replace the cheap rolls of thermal paper."},
-        {"q": "Is the print quality good enough for photos?", "a": "It prints monochrome (black-and-white) at modest resolution, which is great for notes, labels and fun retro-style photos. It's not meant to replace a colour photo printer."}
-      ]
+        {
+          "q": "Does it really not use ink?",
+          "a": "Correct — it uses thermal paper that darkens with heat, so there are no cartridges or toner to buy. You only ever replace the cheap rolls of thermal paper."
+        },
+        {
+          "q": "Is the print quality good enough for photos?",
+          "a": "It prints monochrome (black-and-white) at modest resolution, which is great for notes, labels and fun retro-style photos. It's not meant to replace a colour photo printer."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3tVVtyt"
     },
     {
       "slug": "rgb-led-strip-lights-10m",
@@ -240,17 +435,32 @@
       "cat": "Home",
       "store": "AliExpress",
       "emoji": "💡",
-      "now": 12, "was": 26, "currency": "USD",
+      "now": 12,
+      "was": 26,
+      "currency": "USD",
       "off": "54%",
       "code": "",
       "url": "https://www.aliexpress.com/w/wholesale-rgb-led-strip-lights.html",
       "description": "Ten metres of app-controlled colour LED strip with music sync, scheduling and voice control via Alexa and Google Home. Peel-and-stick installation transforms any room in minutes — a reliably popular budget upgrade.",
-      "features": ["10 metres of millions-of-colours LED", "App control plus included remote", "Music sync reacts to sound", "Works with Alexa and Google Home", "Peel-and-stick — installs in minutes"],
+      "features": [
+        "10 metres of millions-of-colours LED",
+        "App control plus included remote",
+        "Music sync reacts to sound",
+        "Works with Alexa and Google Home",
+        "Peel-and-stick — installs in minutes"
+      ],
       "bestFor": "Bedrooms, gaming setups and TV backlighting on a small budget.",
       "faqs": [
-        {"q": "Can I cut the strip to fit?", "a": "Yes, these strips have marked cut lines at intervals so you can shorten them to fit a wall, desk or TV. Cutting at the marked points won't damage the rest of the strip."},
-        {"q": "How does the music sync work?", "a": "A small built-in microphone (or the app) detects sound and pulses the colours in time with your music. You can adjust sensitivity in the app, or turn it off for steady colour."}
-      ]
+        {
+          "q": "Can I cut the strip to fit?",
+          "a": "Yes, these strips have marked cut lines at intervals so you can shorten them to fit a wall, desk or TV. Cutting at the marked points won't damage the rest of the strip."
+        },
+        {
+          "q": "How does the music sync work?",
+          "a": "A small built-in microphone (or the app) detects sound and pulses the colours in time with your music. You can adjust sensitivity in the app, or turn it off for steady colour."
+        }
+      ],
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3fLBrVT"
     }
   ]
 }

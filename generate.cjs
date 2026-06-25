@@ -148,7 +148,7 @@ ${faqJsonld ? `<script type="application/ld+json">${JSON.stringify(faqJsonld)}</
       <h1>${esc(d.title)}</h1>
       <div class="prices"><span class="now">$${d.now}</span><span class="was">$${d.was}</span><span class="save">Save ${d.off}</span></div>
       ${d.code ? `<div class="coupon"><code id="code">${esc(d.code)}</code><button id="copy" data-code="${esc(d.code)}">Copy code</button></div>` : ''}
-      <a class="getdeal" href="${esc(d.url)}" target="_blank" rel="nofollow sponsored noopener">Get this deal →</a>
+      <a class="getdeal" href="${esc(d.affiliateUrl || d.url)}" target="_blank" rel="nofollow sponsored noopener">Get this deal →</a>
     </div>
   </article>
 
@@ -313,12 +313,12 @@ function homeCard(d) {
           <a class="title" href="${page}">${esc(d.title)}</a>
           <div class="price"><span class="now">$${d.now}</span><span class="was">$${d.was}</span><span class="poff">-${d.off}</span></div>
           ${d.code ? `<div class="coupon"><code>${esc(d.code)}</code><button class="copy" data-code="${esc(d.code)}">Copy</button></div>` : ''}
-          <a class="getdeal" href="${esc(d.url)}" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+          <a class="getdeal" href="${esc(d.affiliateUrl || d.url)}" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
         </div>
       </article>`;
 }
 const cardsHtml = deals.map(homeCard).join('\n');
-const dataJson = JSON.stringify(deals.map(d => ({ slug: d.slug, title: d.title, cat: d.cat, store: d.store, emoji: d.emoji, now: d.now, was: d.was, off: d.off, code: d.code, url: d.url })));
+const dataJson = JSON.stringify(deals.map(d => ({ slug: d.slug, title: d.title, cat: d.cat, store: d.store, emoji: d.emoji, now: d.now, was: d.was, off: d.off, code: d.code, url: d.affiliateUrl || d.url })));
 const idxPath = path.join(ROOT, 'index.html');
 let idx = fs.readFileSync(idxPath, 'utf8');
 idx = idx.replace(/<!--CARDS_START-->[\s\S]*?<!--CARDS_END-->/, () => `<!--CARDS_START-->${cardsHtml}<!--CARDS_END-->`);
