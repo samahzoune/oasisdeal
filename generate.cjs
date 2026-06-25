@@ -9,6 +9,8 @@ const { deals } = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'deals.json
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const catSlug = c => c.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+// AliExpress CDN resize: turns a 4096px source into a ~9KB WebP at the requested size.
+const aimg = (u, s) => u ? `${u}_${s}x${s}.jpg` : '';
 
 const CAT_INTRO = {
   "Audio": "From active noise-cancelling earbuds to dependable budget true-wireless buds, these are the best audio deals we've found — each one hand-checked for a real discount, not an inflated list price.",
@@ -93,7 +95,8 @@ function dealPage(d) {
   .crumb a { color: var(--muted); } .crumb a:hover { color: var(--brand); }
   .deal { display: grid; grid-template-columns: 300px 1fr; gap: 30px; align-items: start; }
   @media (max-width: 680px){ .deal { grid-template-columns: 1fr; } }
-  .deal-thumb { aspect-ratio: 1; border-radius: 18px; background: linear-gradient(135deg,#1b2848,#243152); display: grid; place-items: center; font-size: 96px; position: relative; }
+  .deal-thumb { aspect-ratio: 1; border-radius: 18px; background: linear-gradient(135deg,#1b2848,#243152); display: grid; place-items: center; font-size: 96px; position: relative; overflow: hidden; }
+  .deal-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .deal-thumb .off { position: absolute; top: 14px; right: 14px; background: #fb7185; color: #fff; font-weight: 800; font-size: 14px; padding: 6px 13px; border-radius: 999px; }
   .deal-thumb .store { position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,.45); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px; }
   .deal h1 { font-size: clamp(26px,4vw,36px); line-height: 1.15; margin-bottom: 6px; }
@@ -142,7 +145,7 @@ ${faqJsonld ? `<script type="application/ld+json">${JSON.stringify(faqJsonld)}</
   <div class="crumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="../category/${catSlug(d.cat)}.html">${esc(d.cat)}</a> &nbsp;/&nbsp; ${esc(d.title)}</div>
 
   <article class="deal">
-    <div class="deal-thumb"><span class="store">${esc(d.store)}</span><span class="off">-${d.off}</span>${d.emoji}</div>
+    <div class="deal-thumb"><span class="store">${esc(d.store)}</span><span class="off">-${d.off}</span>${d.image ? `<img class="deal-img" src="${esc(aimg(d.image, 700))}" alt="${esc(d.title)}" decoding="async">` : `<span class="deal-emoji">${d.emoji}</span>`}</div>
     <div>
       <div class="catlabel">${esc(d.cat)}</div>
       <h1>${esc(d.title)}</h1>
@@ -202,7 +205,7 @@ function categoryPage(cat, items) {
   const metaDesc = `The best ${cat.toLowerCase()} deals on OasisDeal — ${items.length} hand-picked discounts on top products, verified and updated regularly.`;
   const cards = items.map(d => `
         <a class="cat-card" href="../deals/${d.slug}.html">
-          <div class="cat-thumb"><span class="cat-off">-${d.off}</span>${d.emoji}</div>
+          <div class="cat-thumb"><span class="cat-off">-${d.off}</span>${d.image ? `<img class="cat-img" src="${esc(aimg(d.image, 480))}" alt="${esc(d.title)}" loading="lazy" decoding="async">` : d.emoji}</div>
           <div class="cat-body">
             <div class="cat-title">${esc(d.title)}</div>
             <div class="cat-price"><span class="cn">$${d.now}</span> <s>$${d.was}</s></div>
@@ -237,8 +240,9 @@ function categoryPage(cat, items) {
   @media (max-width: 480px){ .cat-grid { grid-template-columns: 1fr; } }
   .cat-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
   .cat-card:hover { border-color: var(--brand); text-decoration: none; transform: translateY(-3px); transition: .15s; }
-  .cat-thumb { aspect-ratio: 16/10; background: linear-gradient(135deg,#1b2848,#243152); display: grid; place-items: center; font-size: 46px; position: relative; }
-  .cat-off { position: absolute; top: 10px; right: 10px; background: #fb7185; color: #fff; font-weight: 800; font-size: 12px; padding: 4px 10px; border-radius: 999px; }
+  .cat-thumb { aspect-ratio: 16/10; background: linear-gradient(135deg,#1b2848,#243152); display: grid; place-items: center; font-size: 46px; position: relative; overflow: hidden; }
+  .cat-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .cat-off { position: absolute; top: 10px; right: 10px; z-index: 2; background: #fb7185; color: #fff; font-weight: 800; font-size: 12px; padding: 4px 10px; border-radius: 999px; }
   .cat-body { padding: 14px; }
   .cat-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
   .cat-price { margin-top: 8px; font-size: 15px; font-weight: 800; } .cat-price .cn { color: var(--text); } .cat-price s { color: var(--muted); font-weight: 500; font-size: 13px; }
@@ -303,10 +307,10 @@ ALL_CATS.forEach(cat => {
 function homeCard(d) {
   const page = 'deals/' + d.slug + '.html';
   return `<article class="card">
-        <a class="thumb" href="${page}" style="background:linear-gradient(135deg,#1b2848,#243152)">
+        <a class="thumb" href="${page}">
+          ${d.image ? `<img class="thumb-img" src="${esc(aimg(d.image, 480))}" alt="${esc(d.title)}" loading="lazy" decoding="async">` : `<span class="thumb-emoji">${d.emoji}</span>`}
           <span class="store">${esc(d.store)}</span>
           <span class="off">-${d.off}</span>
-          <span>${d.emoji}</span>
         </a>
         <div class="body">
           <div class="cat">${esc(d.cat)}</div>
@@ -318,7 +322,7 @@ function homeCard(d) {
       </article>`;
 }
 const cardsHtml = deals.map(homeCard).join('\n');
-const dataJson = JSON.stringify(deals.map(d => ({ slug: d.slug, title: d.title, cat: d.cat, store: d.store, emoji: d.emoji, now: d.now, was: d.was, off: d.off, code: d.code, url: d.affiliateUrl || d.url })));
+const dataJson = JSON.stringify(deals.map(d => ({ slug: d.slug, title: d.title, cat: d.cat, store: d.store, emoji: d.emoji, image: aimg(d.image, 480), now: d.now, was: d.was, off: d.off, code: d.code, url: d.affiliateUrl || d.url })));
 const idxPath = path.join(ROOT, 'index.html');
 let idx = fs.readFileSync(idxPath, 'utf8');
 idx = idx.replace(/<!--CARDS_START-->[\s\S]*?<!--CARDS_END-->/, () => `<!--CARDS_START-->${cardsHtml}<!--CARDS_END-->`);

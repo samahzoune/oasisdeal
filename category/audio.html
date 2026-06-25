@@ -27,8 +27,9 @@
   @media (max-width: 480px){ .cat-grid { grid-template-columns: 1fr; } }
   .cat-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
   .cat-card:hover { border-color: var(--brand); text-decoration: none; transform: translateY(-3px); transition: .15s; }
-  .cat-thumb { aspect-ratio: 16/10; background: linear-gradient(135deg,#1b2848,#243152); display: grid; place-items: center; font-size: 46px; position: relative; }
-  .cat-off { position: absolute; top: 10px; right: 10px; background: #fb7185; color: #fff; font-weight: 800; font-size: 12px; padding: 4px 10px; border-radius: 999px; }
+  .cat-thumb { aspect-ratio: 16/10; background: linear-gradient(135deg,#1b2848,#243152); display: grid; place-items: center; font-size: 46px; position: relative; overflow: hidden; }
+  .cat-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .cat-off { position: absolute; top: 10px; right: 10px; z-index: 2; background: #fb7185; color: #fff; font-weight: 800; font-size: 12px; padding: 4px 10px; border-radius: 999px; }
   .cat-body { padding: 14px; }
   .cat-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
   .cat-price { margin-top: 8px; font-size: 15px; font-weight: 800; } .cat-price .cn { color: var(--text); } .cat-price s { color: var(--muted); font-weight: 500; font-size: 13px; }
@@ -51,17 +52,17 @@
   <p class="lead">From active noise-cancelling earbuds to dependable budget true-wireless buds, these are the best audio deals we've found — each one hand-checked for a real discount, not an inflated list price.</p>
   <div class="cat-grid">
         <a class="cat-card" href="../deals/soundcore-p30i-anc-earbuds.html">
-          <div class="cat-thumb"><span class="cat-off">-38%</span>🎧</div>
+          <div class="cat-thumb"><span class="cat-off">-59%</span><img class="cat-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S42f54ac49d0f43ad89ffae664b4b71bfM.png_480x480.jpg" alt="Soundcore P30i Active Noise-Cancelling Earbuds" loading="lazy" decoding="async"></div>
           <div class="cat-body">
             <div class="cat-title">Soundcore P30i Active Noise-Cancelling Earbuds</div>
-            <div class="cat-price"><span class="cn">$34</span> <s>$55</s></div>
+            <div class="cat-price"><span class="cn">$22</span> <s>$54</s></div>
           </div>
         </a>
         <a class="cat-card" href="../deals/qcy-t13-wireless-earbuds.html">
-          <div class="cat-thumb"><span class="cat-off">-50%</span>🎧</div>
+          <div class="cat-thumb"><span class="cat-off">-59%</span><img class="cat-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S1a7f038aeb984cdab730f43c8272a28b3.jpg_480x480.jpg" alt="Wireless Bluetooth 5.4 Earbuds" loading="lazy" decoding="async"></div>
           <div class="cat-body">
-            <div class="cat-title">QCY T13 Wireless Bluetooth Earbuds</div>
-            <div class="cat-price"><span class="cn">$15</span> <s>$30</s></div>
+            <div class="cat-title">Wireless Bluetooth 5.4 Earbuds</div>
+            <div class="cat-price"><span class="cn">$12</span> <s>$29</s></div>
           </div>
         </a></div>
   <div class="othercats"><a href="electronics.html">Electronics deals</a><a href="home.html">Home deals</a><a href="beauty.html">Beauty deals</a><a href="../index.html#deals">All deals</a></div>
