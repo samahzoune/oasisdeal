@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OasisDeal — Hand-picked deals & coupon codes</title>
+<meta name="description" content="OasisDeal curates the best discount codes and product deals from Amazon, AliExpress and top stores. Save on every purchase." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" /></noscript>
+<style>
+  :root {
+    --bg: #0b1120;
+    --bg-soft: #111a2e;
+    --card: #16203a;
+    --card-hover: #1b2848;
+    --line: #243152;
+    --text: #e8edf7;
+    --muted: #94a3c4;
+    --brand: #2dd4bf;
+    --brand-2: #38bdf8;
+    --accent: #fb7185;
+    --gold: #fbbf24;
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background: radial-gradient(1200px 600px at 80% -10%, #15324a 0%, transparent 60%),
+                radial-gradient(1000px 500px at -10% 10%, #1a2540 0%, transparent 55%),
+                var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(12px);
+    background: rgba(11,17,32,.72);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; gap: 18px; height: 68px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
+  .logo .mark {
+    width: 34px; height: 34px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    display: grid; place-items: center; color: #04121a; font-weight: 800; font-size: 18px;
+    box-shadow: 0 6px 16px rgba(45,212,191,.35);
+  }
+  .logo span { color: var(--brand); }
+  .search { margin-left: auto; flex: 1; max-width: 420px; position: relative; }
+  .search input {
+    width: 100%; height: 42px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--bg-soft); color: var(--text); padding: 0 16px 0 42px; font-size: 14px;
+    outline: none; transition: border-color .2s, box-shadow .2s;
+  }
+  .search input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(45,212,191,.15); }
+  .search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+  .nav-cta {
+    height: 42px; padding: 0 18px; border-radius: 999px; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #04121a; font-weight: 700; font-size: 14px;
+    white-space: nowrap;
+  }
+  @media (max-width: 760px){ .nav-cta { display: none; } .search { max-width: none; } }
+
+  /* Hero */
+  .hero { padding: 64px 0 40px; text-align: center; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600;
+    color: var(--brand); background: rgba(45,212,191,.1); border: 1px solid rgba(45,212,191,.25);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 22px;
+  }
+  .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px rgba(45,212,191,.2); }
+  .hero h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
+  .hero h1 .hl { background: linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { max-width: 560px; margin: 18px auto 0; color: var(--muted); font-size: 18px; }
+  .stats { display: flex; justify-content: center; gap: 36px; margin-top: 34px; flex-wrap: wrap; }
+  .stat .n { font-size: 26px; font-weight: 800; color: var(--text); }
+  .stat .l { font-size: 13px; color: var(--muted); }
+
+  /* Filters */
+  .catnav { display: flex; gap: 8px 18px; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 30px; font-size: 14px; }
+  .catnav span { color: var(--muted); font-weight: 600; }
+  .catnav a { color: var(--brand); font-weight: 600; }
+  .catnav a:hover { text-decoration: underline; }
+  .filters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 22px 0 28px; }
+  .chip {
+    padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg-soft);
+    color: var(--muted); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .18s;
+  }
+  .chip:hover { color: var(--text); border-color: var(--brand); }
+  .chip.active { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #04121a; border-color: transparent; }
+
+  /* Grid */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding-bottom: 40px; }
+  @media (max-width: 900px){ .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px){ .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--brand); box-shadow: var(--shadow); }
+  .thumb { position: relative; aspect-ratio: 16/10; display: grid; place-items: center; font-size: 54px; text-decoration: none; }
+  .thumb .store { position: absolute; top: 12px; left: 12px; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: rgba(0,0,0,.45); color: #fff; backdrop-filter: blur(4px); }
+  .thumb .off { position: absolute; top: 12px; right: 12px; font-size: 12px; font-weight: 800; padding: 5px 11px; border-radius: 999px; background: var(--accent); color: #fff; }
+  .body { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .cat { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--brand); }
+  .title { font-size: 15px; font-weight: 700; line-height: 1.3; color: var(--text); text-decoration: none; display: block; }
+  .title:hover { color: var(--brand); }
+  .price { display: flex; align-items: baseline; gap: 8px; margin-top: 2px; }
+  .price .now { font-size: 20px; font-weight: 800; }
+  .price .was { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+  .price .poff { margin-left: auto; font-size: 12px; font-weight: 800; color: var(--brand); background: rgba(45,212,191,.12); padding: 3px 9px; border-radius: 999px; }
+  .coupon {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    border: 1px dashed var(--brand); border-radius: 10px; padding: 8px 8px 8px 12px;
+    background: rgba(45,212,191,.07); margin-top: auto;
+  }
+  .coupon code { font-weight: 800; letter-spacing: .04em; font-size: 14px; color: var(--text); }
+  .copy { font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 8px; border: none; cursor: pointer; background: var(--brand); color: #04121a; transition: background .15s; }
+  .copy.copied { background: var(--gold); }
+  .getdeal {
+    display: block; text-align: center; padding: 11px; border-radius: 10px; font-weight: 700; font-size: 14px;
+    background: linear-gradient(135deg, var(--brand-2), var(--brand)); color: #04121a; transition: filter .15s;
+    margin-top: auto;
+  }
+  .getdeal:hover { filter: brightness(1.08); }
+  .empty { grid-column: 1/-1; text-align: center; color: var(--muted); padding: 50px 0; }
+
+  /* Newsletter */
+  .news { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 22px; padding: 44px 30px; text-align: center; margin: 20px 0 60px; }
+  .news h2 { font-size: 28px; font-weight: 800; letter-spacing: -.02em; }
+  .news p { color: var(--muted); margin: 10px auto 22px; max-width: 440px; }
+  .news form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
+  .news input { flex: 1; height: 48px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--text); padding: 0 16px; outline: none; }
+  .news input:focus { border-color: var(--brand); }
+  .news button { height: 48px; padding: 0 22px; border-radius: 12px; border: none; cursor: pointer; font-weight: 700; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #04121a; }
+  .news .ok { color: var(--brand); font-weight: 600; margin-top: 14px; min-height: 20px; }
+  @media (max-width: 560px){ .news form { flex-direction: column; } }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--line); padding: 34px 0; color: var(--muted); font-size: 13px; }
+  .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .foot a:hover { color: var(--brand); }
+  .disc { font-size: 12px; color: #5d6b8c; margin-top: 14px; max-width: 720px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><img class="mark" src="favicon.svg" alt="OasisDeal logo" width="34" height="34" />Oasis<span>Deal</span></a>
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="Search deals, stores, products..." aria-label="Search deals" />
+    </div>
+    <a class="nav-cta" href="#deals">Today's Deals</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="badge"><span class="dot"></span> Updated daily · <span id="count">0</span> live deals</div>
+    <h1>Stop overpaying.<br/>Grab the <span class="hl">best deals</span> first.</h1>
+    <p>Hand-picked discount codes and price drops from Amazon, AliExpress and the stores you actually buy from.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">$2.4M+</div><div class="l">Saved by shoppers</div></div>
+      <div class="stat"><div class="n">120+</div><div class="l">Partner stores</div></div>
+      <div class="stat"><div class="n">Daily</div><div class="l">Fresh updates</div></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="deals">
+    <nav class="catnav" aria-label="Shop by category">
+      <span>Browse:</span>
+      <a href="category/audio.html">Audio deals</a>
+      <a href="category/electronics.html">Electronics deals</a>
+      <a href="category/home.html">Home deals</a>
+      <a href="category/beauty.html">Beauty deals</a>
+    </nav>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"><!--CARDS_START--><article class="card">
+        <a class="thumb" href="deals/soundcore-p30i-anc-earbuds.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-38%</span>
+          <span>🎧</span>
+        </a>
+        <div class="body">
+          <div class="cat">Audio</div>
+          <a class="title" href="deals/soundcore-p30i-anc-earbuds.html">Soundcore P30i Active Noise-Cancelling Earbuds</a>
+          <div class="price"><span class="now">$34</span><span class="was">$55</span><span class="poff">-38%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-soundcore-p30i.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/qcy-t13-wireless-earbuds.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-50%</span>
+          <span>🎧</span>
+        </a>
+        <div class="body">
+          <div class="cat">Audio</div>
+          <a class="title" href="deals/qcy-t13-wireless-earbuds.html">QCY T13 Wireless Bluetooth Earbuds</a>
+          <div class="price"><span class="now">$15</span><span class="was">$30</span><span class="poff">-50%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-qcy-t13-earbuds.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/smart-watch-bluetooth-call-fitness.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-50%</span>
+          <span>⌚</span>
+        </a>
+        <div class="body">
+          <div class="cat">Electronics</div>
+          <a class="title" href="deals/smart-watch-bluetooth-call-fitness.html">Smart Watch with Bluetooth Calling &amp; Fitness Tracking</a>
+          <div class="price"><span class="now">$26</span><span class="was">$52</span><span class="poff">-50%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-smart-watch-bluetooth-call.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/levitating-led-world-map-lamp.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-45%</span>
+          <span>🌍</span>
+        </a>
+        <div class="body">
+          <div class="cat">Home</div>
+          <a class="title" href="deals/levitating-led-world-map-lamp.html">Levitating LED World Map Lamp</a>
+          <div class="price"><span class="now">$27</span><span class="was">$49</span><span class="poff">-45%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-levitating-moon-lamp.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/mini-aroma-diffuser-180ml.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-53%</span>
+          <span>🌫️</span>
+        </a>
+        <div class="body">
+          <div class="cat">Home</div>
+          <a class="title" href="deals/mini-aroma-diffuser-180ml.html">180ml Mini Aroma Essential Oil Diffuser</a>
+          <div class="price"><span class="now">$9</span><span class="was">$19</span><span class="poff">-53%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-mini-aroma-diffuser.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/matter-smart-plug-energy-monitor.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-54%</span>
+          <span>🔌</span>
+        </a>
+        <div class="body">
+          <div class="cat">Home</div>
+          <a class="title" href="deals/matter-smart-plug-energy-monitor.html">Matter Smart Plug with Energy Monitoring</a>
+          <div class="price"><span class="now">$11</span><span class="was">$24</span><span class="poff">-54%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-matter-smart-plug.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/led-facial-beauty-mask-7-color.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-52%</span>
+          <span>💆</span>
+        </a>
+        <div class="body">
+          <div class="cat">Beauty</div>
+          <a class="title" href="deals/led-facial-beauty-mask-7-color.html">7-Color LED Facial Beauty Mask</a>
+          <div class="price"><span class="now">$22</span><span class="was">$46</span><span class="poff">-52%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-led-facial-mask.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/heatless-curling-rod-set.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-57%</span>
+          <span>💇</span>
+        </a>
+        <div class="body">
+          <div class="cat">Beauty</div>
+          <a class="title" href="deals/heatless-curling-rod-set.html">Heatless Curling Rod Set</a>
+          <div class="price"><span class="now">$6</span><span class="was">$14</span><span class="poff">-57%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-heatless-curling-rod.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/magnetic-wireless-power-bank-10000mah.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-51%</span>
+          <span>🔋</span>
+        </a>
+        <div class="body">
+          <div class="cat">Electronics</div>
+          <a class="title" href="deals/magnetic-wireless-power-bank-10000mah.html">Magnetic Wireless Power Bank 10000mAh</a>
+          <div class="price"><span class="now">$19</span><span class="was">$39</span><span class="poff">-51%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-magnetic-wireless-power-bank.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/3-in-1-wireless-charging-station.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-51%</span>
+          <span>⚡</span>
+        </a>
+        <div class="body">
+          <div class="cat">Electronics</div>
+          <a class="title" href="deals/3-in-1-wireless-charging-station.html">3-in-1 Wireless Charging Station</a>
+          <div class="price"><span class="now">$17</span><span class="was">$35</span><span class="poff">-51%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-3-in-1-wireless-charger.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/4k-wifi-mini-security-camera.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-53%</span>
+          <span>📷</span>
+        </a>
+        <div class="body">
+          <div class="cat">Electronics</div>
+          <a class="title" href="deals/4k-wifi-mini-security-camera.html">4K WiFi Mini Security Camera</a>
+          <div class="price"><span class="now">$21</span><span class="was">$45</span><span class="poff">-53%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-mini-wifi-security-camera.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/ultrasonic-glasses-jewelry-cleaner.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-50%</span>
+          <span>🧼</span>
+        </a>
+        <div class="body">
+          <div class="cat">Home</div>
+          <a class="title" href="deals/ultrasonic-glasses-jewelry-cleaner.html">Ultrasonic Glasses &amp; Jewelry Cleaner</a>
+          <div class="price"><span class="now">$24</span><span class="was">$48</span><span class="poff">-50%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-ultrasonic-cleaner.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/portable-mini-thermal-printer.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-47%</span>
+          <span>🖨️</span>
+        </a>
+        <div class="body">
+          <div class="cat">Electronics</div>
+          <a class="title" href="deals/portable-mini-thermal-printer.html">Portable Mini Bluetooth Thermal Printer</a>
+          <div class="price"><span class="now">$29</span><span class="was">$55</span><span class="poff">-47%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-mini-thermal-printer.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/rgb-led-strip-lights-10m.html" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">AliExpress</span>
+          <span class="off">-54%</span>
+          <span>💡</span>
+        </a>
+        <div class="body">
+          <div class="cat">Home</div>
+          <a class="title" href="deals/rgb-led-strip-lights-10m.html">RGB LED Strip Lights 10m (App &amp; Music Sync)</a>
+          <div class="price"><span class="now">$12</span><span class="was">$26</span><span class="poff">-54%</span></div>
+          
+          <a class="getdeal" href="https://www.aliexpress.com/w/wholesale-rgb-led-strip-lights.html" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article><!--CARDS_END--></div>
+  </section>
+
+  <section class="wrap">
+    <div class="news">
+      <h2>Never miss a deal 💌</h2>
+      <p>Join the list and get the top 5 deals of the week — no spam, unsubscribe anytime.</p>
+      <form id="newsform">
+        <input type="email" id="email" placeholder="you@email.com" aria-label="Your email address" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="ok" id="newsok"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>© <span id="year"></span> OasisDeal — find your savings oasis.</div>
+      <div style="display:flex; gap:18px;">
+        <a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="#deals">Deals</a>
+      </div>
+    </div>
+    <p class="disc">Affiliate disclosure: OasisDeal may earn a commission when you buy through links on this site, at no extra cost to you. Prices and availability are accurate as of the time of posting and may change.</p>
+  </div>
+</footer>
+
+<script id="deals-data" type="application/json">[{"slug":"soundcore-p30i-anc-earbuds","title":"Soundcore P30i Active Noise-Cancelling Earbuds","cat":"Audio","store":"AliExpress","emoji":"🎧","now":34,"was":55,"off":"38%","code":"","url":"https://www.aliexpress.com/w/wholesale-soundcore-p30i.html"},{"slug":"qcy-t13-wireless-earbuds","title":"QCY T13 Wireless Bluetooth Earbuds","cat":"Audio","store":"AliExpress","emoji":"🎧","now":15,"was":30,"off":"50%","code":"","url":"https://www.aliexpress.com/w/wholesale-qcy-t13-earbuds.html"},{"slug":"smart-watch-bluetooth-call-fitness","title":"Smart Watch with Bluetooth Calling & Fitness Tracking","cat":"Electronics","store":"AliExpress","emoji":"⌚","now":26,"was":52,"off":"50%","code":"","url":"https://www.aliexpress.com/w/wholesale-smart-watch-bluetooth-call.html"},{"slug":"levitating-led-world-map-lamp","title":"Levitating LED World Map Lamp","cat":"Home","store":"AliExpress","emoji":"🌍","now":27,"was":49,"off":"45%","code":"","url":"https://www.aliexpress.com/w/wholesale-levitating-moon-lamp.html"},{"slug":"mini-aroma-diffuser-180ml","title":"180ml Mini Aroma Essential Oil Diffuser","cat":"Home","store":"AliExpress","emoji":"🌫️","now":9,"was":19,"off":"53%","code":"","url":"https://www.aliexpress.com/w/wholesale-mini-aroma-diffuser.html"},{"slug":"matter-smart-plug-energy-monitor","title":"Matter Smart Plug with Energy Monitoring","cat":"Home","store":"AliExpress","emoji":"🔌","now":11,"was":24,"off":"54%","code":"","url":"https://www.aliexpress.com/w/wholesale-matter-smart-plug.html"},{"slug":"led-facial-beauty-mask-7-color","title":"7-Color LED Facial Beauty Mask","cat":"Beauty","store":"AliExpress","emoji":"💆","now":22,"was":46,"off":"52%","code":"","url":"https://www.aliexpress.com/w/wholesale-led-facial-mask.html"},{"slug":"heatless-curling-rod-set","title":"Heatless Curling Rod Set","cat":"Beauty","store":"AliExpress","emoji":"💇","now":6,"was":14,"off":"57%","code":"","url":"https://www.aliexpress.com/w/wholesale-heatless-curling-rod.html"},{"slug":"magnetic-wireless-power-bank-10000mah","title":"Magnetic Wireless Power Bank 10000mAh","cat":"Electronics","store":"AliExpress","emoji":"🔋","now":19,"was":39,"off":"51%","code":"","url":"https://www.aliexpress.com/w/wholesale-magnetic-wireless-power-bank.html"},{"slug":"3-in-1-wireless-charging-station","title":"3-in-1 Wireless Charging Station","cat":"Electronics","store":"AliExpress","emoji":"⚡","now":17,"was":35,"off":"51%","code":"","url":"https://www.aliexpress.com/w/wholesale-3-in-1-wireless-charger.html"},{"slug":"4k-wifi-mini-security-camera","title":"4K WiFi Mini Security Camera","cat":"Electronics","store":"AliExpress","emoji":"📷","now":21,"was":45,"off":"53%","code":"","url":"https://www.aliexpress.com/w/wholesale-mini-wifi-security-camera.html"},{"slug":"ultrasonic-glasses-jewelry-cleaner","title":"Ultrasonic Glasses & Jewelry Cleaner","cat":"Home","store":"AliExpress","emoji":"🧼","now":24,"was":48,"off":"50%","code":"","url":"https://www.aliexpress.com/w/wholesale-ultrasonic-cleaner.html"},{"slug":"portable-mini-thermal-printer","title":"Portable Mini Bluetooth Thermal Printer","cat":"Electronics","store":"AliExpress","emoji":"🖨️","now":29,"was":55,"off":"47%","code":"","url":"https://www.aliexpress.com/w/wholesale-mini-thermal-printer.html"},{"slug":"rgb-led-strip-lights-10m","title":"RGB LED Strip Lights 10m (App & Music Sync)","cat":"Home","store":"AliExpress","emoji":"💡","now":12,"was":26,"off":"54%","code":"","url":"https://www.aliexpress.com/w/wholesale-rgb-led-strip-lights.html"}]</script>
+<script>
+  // Cards are pre-rendered into the HTML at build time; data is inlined above (no fetch, no layout shift).
+  const grid = document.getElementById('grid');
+  const filtersEl = document.getElementById('filters');
+  const searchEl = document.getElementById('search');
+  const DEALS = JSON.parse(document.getElementById('deals-data').textContent || '[]');
+  let activeCat = "All";
+
+  function cardHTML(d) {
+    const page = 'deals/' + d.slug + '.html';
+    return `<article class="card">
+        <a class="thumb" href="${page}" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">${d.store}</span>
+          <span class="off">-${d.off}</span>
+          <span>${d.emoji}</span>
+        </a>
+        <div class="body">
+          <div class="cat">${d.cat}</div>
+          <a class="title" href="${page}">${d.title}</a>
+          <div class="price"><span class="now">$${d.now}</span><span class="was">$${d.was}</span><span class="poff">-${d.off}</span></div>
+          ${d.code ? `<div class="coupon"><code>${d.code}</code><button class="copy" data-code="${d.code}">Copy</button></div>` : ''}
+          <a class="getdeal" href="${d.url}" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>`;
+  }
+
+  function buildFilters() {
+    const cats = ["All", ...new Set(DEALS.map(d => d.cat))];
+    cats.forEach(c => {
+      const b = document.createElement('button');
+      b.className = 'chip' + (c === "All" ? ' active' : '');
+      b.textContent = c;
+      b.onclick = () => { activeCat = c; [...filtersEl.children].forEach(x=>x.classList.remove('active')); b.classList.add('active'); render(); };
+      filtersEl.appendChild(b);
+    });
+  }
+
+  function render() {
+    const q = searchEl.value.trim().toLowerCase();
+    const list = DEALS.filter(d =>
+      (activeCat === "All" || d.cat === activeCat) &&
+      (!q || (d.title + d.store + d.cat).toLowerCase().includes(q))
+    );
+    grid.innerHTML = list.length ? list.map(cardHTML).join('') : '<div class="empty">No deals match your search — try another keyword.</div>';
+  }
+
+  grid.addEventListener('click', e => {
+    const btn = e.target.closest('.copy');
+    if (!btn) return;
+    e.preventDefault();
+    navigator.clipboard?.writeText(btn.dataset.code);
+    btn.textContent = 'Copied!'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
+  });
+
+  searchEl.addEventListener('input', render);
+
+  document.getElementById('newsform').addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('newsok').textContent = "✓ You're in! Check your inbox to confirm.";
+    e.target.reset();
+  });
+
+  document.getElementById('count').textContent = DEALS.length;
+  document.getElementById('year').textContent = new Date().getFullYear();
+  buildFilters();
+</script>
+</body>
+</html>
