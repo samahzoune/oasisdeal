@@ -71,6 +71,9 @@
     background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #04121a; font-weight: 700; font-size: 14px;
     white-space: nowrap;
   }
+  .nav-link { font-size: 14px; font-weight: 600; color: var(--text); white-space: nowrap; }
+  .nav-link:hover { color: var(--brand); }
+  @media (max-width: 760px){ .nav-link { display: none; } }
   @media (max-width: 760px){ .nav-cta { display: none; } .search { max-width: none; } }
 
   /* Hero */
@@ -167,6 +170,7 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       <input id="search" type="text" placeholder="Search deals, stores, products..." aria-label="Search deals" />
     </div>
+    <a class="nav-link" href="flights.html">✈️ Flights</a>
     <a class="nav-cta" href="#deals">Today's Deals</a>
   </div>
 </header>
