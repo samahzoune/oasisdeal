@@ -342,7 +342,7 @@ function homeCard(d) {
 }
 const cardsHtml = deals.map(homeCard).join('\n');
 const dataJson = JSON.stringify(deals.map(d => ({ slug: d.slug, title: d.title, cat: d.cat, store: d.store, emoji: d.emoji, image: aimg(d.image, 480), now: d.now, was: d.was, off: d.off, code: d.code, url: d.affiliateUrl || d.url })));
-const idxPath = path.join(ROOT, 'index.html');
+const idxPath = path.join(ROOT, 'deals.html');
 let idx = fs.readFileSync(idxPath, 'utf8');
 idx = idx.replace(/<!--CARDS_START-->[\s\S]*?<!--CARDS_END-->/, () => `<!--CARDS_START-->${cardsHtml}<!--CARDS_END-->`);
 idx = idx.replace(/(<script id="deals-data" type="application\/json">)[\s\S]*?(<\/script>)/, (m, a, b) => a + dataJson + b);

@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://oasisdeal.com/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://oasisdeal.com/about</loc><changefreq>daily</changefreq><priority>0.5</priority></url>
-  <url><loc>https://oasisdeal.com/contact</loc><changefreq>daily</changefreq><priority>0.5</priority></url>
-  <url><loc>https://oasisdeal.com/privacy</loc><changefreq>daily</changefreq><priority>0.5</priority></url>
-  <url><loc>https://oasisdeal.com/category/audio</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://oasisdeal.com/category/electronics</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://oasisdeal.com/category/home</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://oasisdeal.com/category/beauty</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://oasisdeal.com/deals/soundcore-p30i-anc-earbuds</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/qcy-t13-wireless-earbuds</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/smart-watch-bluetooth-call-fitness</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/levitating-led-world-map-lamp</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/mini-aroma-diffuser-180ml</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/matter-smart-plug-energy-monitor</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/led-facial-beauty-mask-7-color</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/heatless-curling-rod-set</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/magnetic-wireless-power-bank-10000mah</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/3-in-1-wireless-charging-station</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/4k-wifi-mini-security-camera</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/ultrasonic-glasses-jewelry-cleaner</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/portable-mini-thermal-printer</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://oasisdeal.com/deals/rgb-led-strip-lights-10m</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oasisdeal.com/about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://oasisdeal.com/contact</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://oasisdeal.com/privacy</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>

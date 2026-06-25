@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OasisDeal — Hand-picked deals & coupon codes</title>
+<meta name="description" content="OasisDeal curates the best discount codes and product deals from Amazon, AliExpress and top stores. Save on every purchase." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://ae-pic-a1.aliexpress-media.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" /></noscript>
+<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.src = 'https://tpembars.com/NTQzNDkw.js?t=543490';
+      document.head.appendChild(script);
+  })();
+</script>
+<style>
+  :root {
+    --bg: #0b1120;
+    --bg-soft: #111a2e;
+    --card: #16203a;
+    --card-hover: #1b2848;
+    --line: #243152;
+    --text: #e8edf7;
+    --muted: #94a3c4;
+    --brand: #2dd4bf;
+    --brand-2: #38bdf8;
+    --accent: #fb7185;
+    --gold: #fbbf24;
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background: radial-gradient(1200px 600px at 80% -10%, #15324a 0%, transparent 60%),
+                radial-gradient(1000px 500px at -10% 10%, #1a2540 0%, transparent 55%),
+                var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(12px);
+    background: rgba(11,17,32,.72);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; gap: 18px; height: 68px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
+  .logo .mark {
+    width: 34px; height: 34px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    display: grid; place-items: center; color: #04121a; font-weight: 800; font-size: 18px;
+    box-shadow: 0 6px 16px rgba(45,212,191,.35);
+  }
+  .logo span { color: var(--brand); }
+  .search { margin-left: auto; flex: 1; max-width: 420px; position: relative; }
+  .search input {
+    width: 100%; height: 42px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--bg-soft); color: var(--text); padding: 0 16px 0 42px; font-size: 14px;
+    outline: none; transition: border-color .2s, box-shadow .2s;
+  }
+  .search input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(45,212,191,.15); }
+  .search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+  .nav-cta {
+    height: 42px; padding: 0 18px; border-radius: 999px; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #04121a; font-weight: 700; font-size: 14px;
+    white-space: nowrap;
+  }
+  .nav-link { font-size: 14px; font-weight: 600; color: var(--text); white-space: nowrap; }
+  .nav-link:hover { color: var(--brand); }
+  @media (max-width: 760px){ .nav-link { display: none; } }
+  @media (max-width: 760px){ .nav-cta { display: none; } .search { max-width: none; } }
+
+  /* Hero */
+  .hero { padding: 64px 0 40px; text-align: center; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600;
+    color: var(--brand); background: rgba(45,212,191,.1); border: 1px solid rgba(45,212,191,.25);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 22px;
+  }
+  .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px rgba(45,212,191,.2); }
+  .hero h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
+  .hero h1 .hl { background: linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { max-width: 560px; margin: 18px auto 0; color: var(--muted); font-size: 18px; }
+  .stats { display: flex; justify-content: center; gap: 36px; margin-top: 34px; flex-wrap: wrap; }
+  .stat .n { font-size: 26px; font-weight: 800; color: var(--text); }
+  .stat .l { font-size: 13px; color: var(--muted); }
+
+  /* Filters */
+  .catnav { display: flex; gap: 8px 18px; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 30px; font-size: 14px; }
+  .catnav span { color: var(--muted); font-weight: 600; }
+  .catnav a { color: var(--brand); font-weight: 600; }
+  .catnav a:hover { text-decoration: underline; }
+  .filters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 22px 0 14px; }
+  .dealsnote { text-align: center; font-size: 12.5px; color: var(--muted); max-width: 620px; margin: 0 auto 26px; line-height: 1.5; }
+  .chip {
+    padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg-soft);
+    color: var(--muted); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .18s;
+  }
+  .chip:hover { color: var(--text); border-color: var(--brand); }
+  .chip.active { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #04121a; border-color: transparent; }
+
+  /* Grid */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding-bottom: 40px; }
+  @media (max-width: 900px){ .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px){ .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--brand); box-shadow: var(--shadow); }
+  .thumb { position: relative; aspect-ratio: 16/10; display: grid; place-items: center; font-size: 54px; text-decoration: none; background: linear-gradient(135deg,#1b2848,#243152); overflow: hidden; }
+  .thumb-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .thumb .store { position: absolute; z-index: 2; top: 12px; left: 12px; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: rgba(0,0,0,.5); color: #fff; backdrop-filter: blur(4px); }
+  .thumb .off { position: absolute; z-index: 2; top: 12px; right: 12px; font-size: 12px; font-weight: 800; padding: 5px 11px; border-radius: 999px; background: var(--accent); color: #fff; }
+  .body { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .cat { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--brand); }
+  .title { font-size: 15px; font-weight: 700; line-height: 1.3; color: var(--text); text-decoration: none; display: block; }
+  .title:hover { color: var(--brand); }
+  .price { display: flex; align-items: baseline; gap: 8px; margin-top: 2px; }
+  .price .fromlbl { font-size: 11px; color: var(--muted); font-weight: 600; }
+  .price .now { font-size: 20px; font-weight: 800; }
+  .price .was { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+  .price .poff { margin-left: auto; font-size: 12px; font-weight: 800; color: var(--brand); background: rgba(45,212,191,.12); padding: 3px 9px; border-radius: 999px; }
+  .coupon {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    border: 1px dashed var(--brand); border-radius: 10px; padding: 8px 8px 8px 12px;
+    background: rgba(45,212,191,.07); margin-top: auto;
+  }
+  .coupon code { font-weight: 800; letter-spacing: .04em; font-size: 14px; color: var(--text); }
+  .copy { font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 8px; border: none; cursor: pointer; background: var(--brand); color: #04121a; transition: background .15s; }
+  .copy.copied { background: var(--gold); }
+  .getdeal {
+    display: block; text-align: center; padding: 11px; border-radius: 10px; font-weight: 700; font-size: 14px;
+    background: linear-gradient(135deg, var(--brand-2), var(--brand)); color: #04121a; transition: filter .15s;
+    margin-top: auto;
+  }
+  .getdeal:hover { filter: brightness(1.08); }
+  .empty { grid-column: 1/-1; text-align: center; color: var(--muted); padding: 50px 0; }
+
+  /* Newsletter */
+  .news { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 22px; padding: 44px 30px; text-align: center; margin: 20px 0 60px; }
+  .news h2 { font-size: 28px; font-weight: 800; letter-spacing: -.02em; }
+  .news p { color: var(--muted); margin: 10px auto 22px; max-width: 440px; }
+  .news form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
+  .news input { flex: 1; height: 48px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--text); padding: 0 16px; outline: none; }
+  .news input:focus { border-color: var(--brand); }
+  .news button { height: 48px; padding: 0 22px; border-radius: 12px; border: none; cursor: pointer; font-weight: 700; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #04121a; }
+  .news .ok { color: var(--brand); font-weight: 600; margin-top: 14px; min-height: 20px; }
+  @media (max-width: 560px){ .news form { flex-direction: column; } }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--line); padding: 34px 0; color: var(--muted); font-size: 13px; }
+  .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .foot a:hover { color: var(--brand); }
+  .disc { font-size: 12px; color: #5d6b8c; margin-top: 14px; max-width: 720px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><img class="mark" src="favicon.svg" alt="OasisDeal logo" width="34" height="34" />Oasis<span>Deal</span></a>
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="Search deals, stores, products..." aria-label="Search deals" />
+    </div>
+    <a class="nav-link" href="flights.html">✈️ Flights</a>
+    <a class="nav-cta" href="#deals">Today's Deals</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="badge"><span class="dot"></span> Updated daily · <span id="count">0</span> live deals</div>
+    <h1>Stop overpaying.<br/>Grab the <span class="hl">best deals</span> first.</h1>
+    <p>Hand-picked discount codes and price drops from Amazon, AliExpress and the stores you actually buy from.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">$2.4M+</div><div class="l">Saved by shoppers</div></div>
+      <div class="stat"><div class="n">120+</div><div class="l">Partner stores</div></div>
+      <div class="stat"><div class="n">Daily</div><div class="l">Fresh updates</div></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="deals">
+    <nav class="catnav" aria-label="Shop by category">
+      <span>Browse:</span>
+      <a href="category/audio.html">Audio deals</a>
+      <a href="category/electronics.html">Electronics deals</a>
+      <a href="category/home.html">Home deals</a>
+      <a href="category/beauty.html">Beauty deals</a>
+    </nav>
+    <div class="filters" id="filters"></div>
+    <p class="dealsnote">Prices are approximate and shown in USD — the live price on AliExpress varies by option, region and time. Tap a deal to see the current price.</p>
+    <div class="grid" id="grid"><!--CARDS_START--><article class="card">
+        <a class="thumb" href="deals/soundcore-p30i-anc-earbuds.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S42f54ac49d0f43ad89ffae664b4b71bfM.png_480x480.jpg" alt="Soundcore P30i Active Noise-Cancelling Earbuds" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-59%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Audio</div>
+          <a class="title" href="deals/soundcore-p30i-anc-earbuds.html">Soundcore P30i Active Noise-Cancelling Earbuds</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$22</span><span class="was">$54</span><span class="poff">-59%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE8foHSjHN3cmw0seEiPhMgwzE8vVPGgK9vm0AlCLW3LRBvKylq4t9mo1heIT0Qk8WZuHqxTWLke2igBjd69tZHS7MVJ0PYkqoWA9f6Qlu7hANdbit07qZpJydVjQCuXWyautGcfO8FlkQQ0Ia4BD3AuWXVXY2U8g5g6BoknIgOIYjgmo8hNei3GQjxTuvBKUHicBz2qL0JgL08DtMBPKOnpbIw3wa7XBi9GkxYtSKKohJquTDjEPjM0ghsTyckouPldeS3W2K39Y57MVkm1SLEJFLHRIwkh8Z854jv1hu0L17JsSKO1sI0wCOw4hs7UTVxCEY5oJflJVuNK3B8By1TfK36mQXJ8SFYLA0usj4mIuIf1GM44g44OFptTPhPENgPmmA9vrCXDEiL3EymLQmyJYw0q1ktKdATw0mEXKfe01wMBoJsUjiXYgLNmjEFQxPQGB7T94Yq4Lbav2dcH6HI77jeBXImyUhD8v73BJT64FcFariHGbTr3R4hCRpPf1vtmTVTzzFwJY5CFFaXIJOJhUYa9vFsfY4MKs5CZYiEtPl78XQoxKvdDJM1Nv9EdLKUVFGksMaF35QjigizCHVSG9ejb3yZNZdEkqEbjux916ONkwSIupt0QG9sRsqVWOUTaQmJ4gbQCZqtUvmtlcpi9TWfxwaQtg4Fy3ir6fBYVfXI9wM19k8CP0q8UrCRDt8hUoFsQljq2McV" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/qcy-t13-wireless-earbuds.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S1a7f038aeb984cdab730f43c8272a28b3.jpg_480x480.jpg" alt="Wireless Bluetooth 5.4 Earbuds" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-59%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Audio</div>
+          <a class="title" href="deals/qcy-t13-wireless-earbuds.html">Wireless Bluetooth 5.4 Earbuds</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$12</span><span class="was">$29</span><span class="poff">-59%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEgePINT9OReS6jngjTlxRkYmhXuZiSTnLiyTGu1bIajMZZlM1lgScfrTfOFml8e6Y71rhqSYcEmHi1VkRowyRPQDfS5sA0LOuYNrGr6IZn3eymF1B9p7nzRbcNqytZc3izlE87BxIKE0gqmvNhDRciDUdffFzChlalx4Rut1i3XOzR9TsqyBf2ErglbssSRm6h7NsYiI8U18nYJUgrCa7PalDyAWsF3at11HnznearkzbxcsdoQhUrqgD5KyxfWHudZ5NPuK08lnLYbuS4AL8e13jcdZ5upst0AyBJT3LqaMDyx91C0rQ1HoKffYWZVqx5WIFAt7aviBVTQl7NIRD3A74zqKC6OQ745YTzhTjvoUGGOYk4hwoKEWII8fnsahRsvgeUpLfh6AVDS1WWncuKS1Ta7A3asRIyDuUffUG4ww7dvVCOjPECyBujm4G4oZLgJ459b1t5vcA2hs1Jb8qg94P1pPNIEjlobkdvQ5Cvp6LJUlIaQ2kGtDK92brxRSAjSuXbMYq8dbrtB0GhlqZL1cy1Rx5YDcPP52lCKz2gFtV5rGvVfqqOAXPwmDxzqv0F64iHdX4utVQFsKJEOQ0sTkl2TVIuEOPVFFzvbhi0vMueZz5cbpvTDXF2bJA4pocLDyB2ZL5YaYtDMqVpqFIOWP83fOVtd6r0MWg8fsd5dFKExlbokioC9M6hSlQFpI8m0i9ogzKNWmCv" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/smart-watch-bluetooth-call-fitness.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/Sd4e0157490864f719b4648240dff06a6u.jpg_480x480.jpg" alt="Smart Watch with Bluetooth Calling &amp; Fitness Tracking" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-56%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Electronics</div>
+          <a class="title" href="deals/smart-watch-bluetooth-call-fitness.html">Smart Watch with Bluetooth Calling &amp; Fitness Tracking</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$7</span><span class="was">$16</span><span class="poff">-56%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE6v3KAlsutzYbI7mgRnc0HkP2EKOVF9KE4ENYOwV2X0Ev9O3ITsDJ3exflGM0g1k39DnsK2DFrSC8ipzKbzCJa3j2hxRa8i8HbkH622KVw7krJb3SVB1keRpEWBfcFOU7SCUtFqTaT4GkfWPM3VANYcjVW48Xlf3u9uFaQvEfbipSmukaiUjnO6Uh2mO2HCYxwD72EDvbvCjDot0wenGssKhFEWH2yQqqMeG78TlwEC03qjrSClpvaXOPUSxLL8RM3ap9lRVBxBb8hucqTMk7uxW6rPKawuBKVbUkmzZif9RWX1OtXEaGDJ6V86eNzZzkqz0lRBATUB01uNUBXsnMb1XUaWkGFsuMsNtLPSWC96cSZaNJRD2HL4FoAhzubQIslAYuPRLFj5JuuI3MhOACyolIIwatdRfyYiosBnkF1QEmEeQEubt3J7glc2UG5LVOQLEYeFeE075gKsEFMO9JU83VNT5nP6xhmZjKsjyC4UPvSWMD3oIoTq1f0hbf8CnWyFT8mCVFSw85qWxw6t6p65wrvUVwq3ABMtncUmb7hfAuax1QQ4DFcHqTVo2wBBrLGUEgfygLWGkqWoqiVVJ84boJlw9UI89G1f7j8NqgLYeIKPRzb1uHOCJPqqeXIAuNyHJuobzb0BfMeIy4OvbkpNYvOG9AQXt9TVeRaaserIioCdj7kVB4tZezsDQfytpvmKXMLub1Om821" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/levitating-led-world-map-lamp.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/Sd4dbdac8a6d449f3b497cac42443eaa9w.jpg_480x480.jpg" alt="Levitating Moon Lamp" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-65%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Home</div>
+          <a class="title" href="deals/levitating-led-world-map-lamp.html">Levitating Moon Lamp</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$72</span><span class="was">$207</span><span class="poff">-65%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEALHXBvlk1fKUZTiu7uUmzYGBlQ7IC7Jer3r5ahlpa2BWEzehFiPmoJOeWVTorE1rXOtxA4mVCfV8bx2nkgVLSBoNZBWuqIreAJVUPsfIIz8pCoWITmoppCBYq5z6sYbOFFm6BPPJbimZUa6hZAEMFgV5FrxzvW7l8XIhqPgUOPPJVHBqB2nuFV8Sg30TN0krZOyrKW0F9ZkXljYMuI6GQIjvTDKRP7kmUciFR8cnPH82mPaBxpYEvqgibVUdaM2mxeHGqL7IGu9f7izHpO7HJ1EJf7uDouGKt8xcBoObnidNYzr0M1MhLpki0UhgarOulzyX51dhSJZqErHXsXTrMli4jSQPvQCBsA39wgtv5mUa7XrfJwsawaylESS6FmfUZdIhNcn5P9rsVVt9h2ZCBcgT7VYVUjkdl7Hb3kMTkgA0JruMWv89Xhb5E3mDffHR4CXfyhr253hEjrygm1gYdM7Ss59pwUUZEhzHVJ3lguHXSI22X71tEQpmuzmnXj1Md1RCMRjBUvuifpXAAfnznDlmJPozvIrHFSnbETyop6w8Pz9rMAe1kRcBMzmOqvOC0e3A1BwKQ2BYHCz544yNPLeUVi7pg1J405UJTPGM1HmTPsU5jazKvRwQbUl0p8W7vYYe3DXvzdR45Qj9TgaECgjIpjHl0bvrg0j5mf8kEjbQNnxcbqbN7t9Ntb1NRaJFnSk01JHbtcdq4" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/mini-aroma-diffuser-180ml.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S110db4df6d3a4cd6892ede566abdbcbd0.jpg_480x480.jpg" alt="180ml Mini Aroma Essential Oil Diffuser" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-64%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Home</div>
+          <a class="title" href="deals/mini-aroma-diffuser-180ml.html">180ml Mini Aroma Essential Oil Diffuser</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$5</span><span class="was">$14</span><span class="poff">-64%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE7aiSsG2AKzjPuXl4k5QIJpChzetw0FrYbd7qwiGQLj9jUYU16OAqDmgzlTQlrCMCyciRNCvtBN6ZfyZEBr3nJBz0RsjkxwHg4qFGTeVt8Xfxlrj8Fz26R6kMexWKqAFtxMDpli9sc6IOipFWPKRmhp1WlShllTUxGhG1lQseEZeDmX9Zr24n12fHSxwmPMGBUrEqR9azqSBFCqi9Bg8iP1ns9tFWDKUb57pgCVoIYWRMFx21LmogDR1FJjHevpRlBp8bznZOKnW6uUrPkDjl5ZwzVmipg4Ucr2z9buUqgxHPhWn0x0fLjDWmR4NzAGOCGcCsY45zCw5ShKvvWE26Ff79eN9nRBH7f6zgbVzvgooPAqBMmIVKzK7jQjPh1AdZWgNM2Y5VDnHar2TGYqqaKFjBQl1AnvveJ1fhrFO8R48pTjcBAMug8Lsh1Bmw559ygIqyTXc1M1YZj13c4d533HRPVTBRlTznTqjTcGKtYrhh8lqsl0iE2Sfj9N34JcVuKJP4Vc25bm1EJLoESFp5LARqzqvFWykLSgGXMBHgzVt7GiVAnppfrtgSOMmp6bLS7AUrudhZedRZHFdIY2tjFnbhEE1XscInpt6g4JbSqzbGqq8WgvvLVL1g8jgSqNiM4OLzKYmRVXk12dnLvSvQd8GsRpwja5531cS9S3DWxuKN5QALkKQMIt8fVV4HFWpvna1G36c638W4Y" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/matter-smart-plug-energy-monitor.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S2f6ad3bc3de84435840121e657f4d3cdb.png_480x480.jpg" alt="Matter Smart Plug with Energy Monitoring" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-54%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Home</div>
+          <a class="title" href="deals/matter-smart-plug-energy-monitor.html">Matter Smart Plug with Energy Monitoring</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$6</span><span class="was">$13</span><span class="poff">-54%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEA0LySDrCyHtUqqbKxiYVEHoseTFC7PKraVUpdziSGPzsNS98tl5yrCS7QKYnZlI9EJeHnY4J00KOQBOu226HgOBpTPAqz4FYvDEf8U3wm1eO8IMIGovqmEL6hWW832x1aj0inm6ixHFXhKzJueI99fFUGjnevwb7qS9Qjrwq6zk9ZwdKHm8KkzibAtIv2Gleqd3hJRzLM5ltk3K92pFEado05Led2UbCOm24scsYmZvjH0sopWmdvBWfTO8e0jVk6x3PgM66XQmIomKmfpHCv3vxPtMwi131JLYaM8vVZpaK8HH7qNTAQu06e2zZ5PLel1eWowNh6u7FuR8dchxUGS9edYrirEXPhD7bndciYtMq44IjR0XMPus5m2VGFmHfj5hAf66pUtngbx1DXDUNBuoK8KpnUYGtjEnFsPHQOiw9GB1nYCseq7XSGwXhBLLjrVqyLjXIwqfmwWMMXEzbu7iFIbENhk06gX2M5jYTP2jKaK7JSzkDDx9yQ4nQibVx0oMJepCUaCph7X8JhEV4LqQxqgP7GEuG3EGtVt16hI6sBdEBLRs3a42Q69ALvxd1LWf6wxDQiWKTJeFOBo50URvQ0scuOwiRLV9wqiuj3t7zKGp3fB7dMuUnzkUGMDaulK2gXqmtGBum9yFt3aDgN2uKkxnTAGCHpeb55HCS76JbxBugw4aYieI3O5yeEhC4fsRrQoeSecqWM" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/led-facial-beauty-mask-7-color.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/Sf641fcf35bdd48278a1389332ac21c4ed.jpg_480x480.jpg" alt="7-Color LED Facial Beauty Mask" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-60%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Beauty</div>
+          <a class="title" href="deals/led-facial-beauty-mask-7-color.html">7-Color LED Facial Beauty Mask</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$89</span><span class="was">$222</span><span class="poff">-60%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEgeLkPm3L8mF9f7suc6mMxzQNPLzUgIJQPdBZA8dGC2vNLD0oHXRoXoDGGOOipop7hHW8D8R36YdbCJjq7kiQJVa0Nz5NrekWKJrZx17uPjxhwi9UT8NpVVXxeqbKINz2RO5iDZEEn74chhp2K9ca7DUFAGAEpPXu1QqgaNd6g6jT71Jw0MrSiynut40DGkizdikEBzck4sEwCcZINKbtSuI2zSxPqvvccSab2sludE36v86bA1ORak00elECCbavmaUp5tnTvSSGP7qNlmyneSazHq9FOtBVy2WgXCEHGAPR4W3XVLgEw6sfLA1CeWQrLzH7WjX7FoBJrAajUBPis2fNPglzw25ia9veTBfQGwH8EbQw9PlVxsOTIlmsWnMPlCkBxSBOBp5HuzRIr3MJgmaswBM3PNVDZ9R5pOdRlHQ9pNHiHHXLaN5R9wOD7W7IsVM4K6ANSgpeb5e0GWmmv7RES5ibakdhCj4eIcYvI6l7DkXs3z2qg9R5q98RWU4aX89OQfUO4LTFSr5QGYHcLScG255xBf8ZoDk26kvfJXLS5jWmU4X2MAwjz4tuHX38EfG3wJAckMoikqhUm6Q6xTHd5a7FvhbFpC5xA8ZumT7QbeZuvrjtNh32CsdSmlr7F4EY4ooVpjgxNy7ebGSLQU1a24bkNPAIDziITZOJwWoTsm3T8TRroa2YeXrq46YZE1c40IVgksDeZ" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/heatless-curling-rod-set.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S8db0768f7a614f4eaa6c13db8b75474ai.jpg_480x480.jpg" alt="Heatless Curling Rod Set" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-56%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Beauty</div>
+          <a class="title" href="deals/heatless-curling-rod-set.html">Heatless Curling Rod Set</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$4</span><span class="was">$9</span><span class="poff">-56%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEAOhfBAPYGr2IA8PCMi1V6NkPCRNQO2QD1Phz2JHtlzVEfOLUEQFWLE4XdAkjCfDUwLP3w3UFDxy61IJa5Ritqqfug8EDtijrNw9Uu6jFE7NLaisaz7a1boOSye1eHzOFVHMqDILTSD07hCjRg0rysJ6FC9wOBclhDoZR2VVllssAGsYE9tJiVtWOlaoUwZgAIgRSmFJX1UfJ4fb6dkuzXPGiSrREggYvHBZytU15fDBfbPnPMer4gIDKI2ItbVLpxyoNtDm6V2J1lPC1MwPcSdQnhlFI5xQMn3yIOIIdOjMvOWOTlV2G6Skk9FrcvFkXqRiWo7YYfZbB7SVTvnsi6TkfQh7b2g9kZIwujIVojsgLJu1AXSfQdAK3lEg4YUA9sfloDCKhpFZmCoOcfZZWDoWIM6YJJLsjQU27E1qdS6mkz5pmBUMGdIuLlUCikRtrpX3BDnDR3SIQgEqsrVwAWcbhu0lLiCwP5Xn077aZ3mCbZRLyKHDcREFWiiTpcFk1xHD6G9eEI49gCaHt59KJlFRYbqqlp7wPXZ5exnW7HUoM0RyK2VBYOUKnChq3pwbjA4BV9bkWCl4ns77fsSrhjHCWKW7A2TNOc0RHDkiUnLWOqYwIGRL7y4JAmN8QjhcFDzcneXNrY6PblGug9BrgnF98rGulVVMpH1zbnMwMQhb04bK55HJqVDU6MwaXJLWGJ90GUZhJHQUEk" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/magnetic-wireless-power-bank-10000mah.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S954b5e9b687d4457a365a2075cde2a573.jpg_480x480.jpg" alt="Magnetic Wireless Power Bank 10000mAh" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-59%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Electronics</div>
+          <a class="title" href="deals/magnetic-wireless-power-bank-10000mah.html">Magnetic Wireless Power Bank 10000mAh</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$48</span><span class="was">$117</span><span class="poff">-59%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEAAKF74getVM3kYwEyYjPWDditVjVbWdXNY7e6W2USsM35JZ3sphD7ltmofNrqtdqhuS9PUTnI8slJLx853CKhxJKwMTpOsZbIEXqASNHMepgJhZHeUAHduggmcdODsQlWpQvzNdREvTvxMPwoGQSCiGKTx7JwRwkvOgS8CTzPwaz3A0q1zUUdC9cghd6voKEHHhQne6fCDYm8coTeS9cRZ1JUDFuNxNbAx3qdwa2d9S87JIG1Smd74wVxpODWaeOlObl37plD1ohGKuRz29zfPlu0I2FigE2XVL4hc3DRKF1DP2bON9DodYuYgvDdqMOBYoGHOYRlEFCFzYdtkF6PUnIYf7fE09oR7qOz3hVcx01Py6ewl1Ib20Ol6mXtZxnAx83l4gklJYTrPRC0cpKTh5fe5jrijIlZ0Y8qRpXRfpng3opFKvv7nf0S9w8GvVfSQJcyANre6To0yyZ5z6RiokO4ULLt7yrvX9NAxKwyh3G2j8k8DwdZTLaGyqBsosjR08jwHIydF4OkAJQQO0H4K73FoK0bhoFdSyJZdZobt8EMqgcagoVP4AhK3vRg2BNEaHxFtAK1nlBu3BmpUz4GfomMXYgMlLlVUCYvQGuPhVgheuLYU2Zemqm5UIyzuo8OyRWBLXibqOjHdsQNQsWRxiod4qQeFsaWhAHbfpw57o7ImQsb447WZtGhOlryhXhetWhBoUX3FhDr" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/3-in-1-wireless-charging-station.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S13d0c6d9376e4f19ac19fe43422ab533A.jpg_480x480.jpg" alt="3-in-1 Wireless Charging Station" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-52%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Electronics</div>
+          <a class="title" href="deals/3-in-1-wireless-charging-station.html">3-in-1 Wireless Charging Station</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$14</span><span class="was">$29</span><span class="poff">-52%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE72ayNk6Zv9FAVGgRARHn3ikfcyfq6GfJzc5Dj3xGnAxRaaOp7YtHQvYedFh3KXebmJdktIHUUZrvqfjiJXLDYMGgvvnqzz3pC79LiTtpCSmC7qMtEnXVrTT36PLKcUFnIHrci17wTf6JAgGVBj6BFbP7tpIEmkYZZfnMR9TL0gc9BIKSW5TaISCM2qbnpGD4QiqAooHCgvSea42EZ2CPsZlK2JI5xDbyPmIs1o1te9RmmUeMAb12QSvnECmcSTlRyrISNvUEa5RG6jhcH7XtrMx05NQJabuNovDqdBO1CSoerEXV92uXOvSBrMPbQShUARmdkagBnHr1wmQ2CieuBKqVaYoteeNxDawcSuU949rzsHAW7uYuVp0eYe6nVOUY16SzHMQqF1wxAliTiTWmYteTsaJChhh9I7On6KnGr6m3gvMd4T2DKhEfHFstACAUvm5waqLud5egfZoUmJUNXaKmrKlWhJXwf5UZWbsFGHYYYrBEclUYKz0nyHXZPpZEjjgY3V2vz7YQGVsfVSCda5mu2TC5iVMox1C6ZlkIhZlLrAPDHPUIOz13Ceg9kJmYFSedOl0GTsrEUAcfIng2XJp0yGQ4sz49EKPqaKbhTSPZT8ZU0nOH4kUCoSc7LW9TI10VcmYDa409SmDHxMiaZDnbPgK7FpxgGQOGTkUCE1y9Dd15EZu9dpAkPeTk5inmXzZhbUcvDsrM9" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/4k-wifi-mini-security-camera.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S3f8b8f6b197d440fa424bee803395a83K.jpg_480x480.jpg" alt="Mini WiFi Security Camera (1080p HD)" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-50%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Electronics</div>
+          <a class="title" href="deals/4k-wifi-mini-security-camera.html">Mini WiFi Security Camera (1080p HD)</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$5</span><span class="was">$10</span><span class="poff">-50%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE8gKjuQqK8CI6yavTVwIveST23ZD6CjVQO4cPKjsIonpeEpKzB3id28xmxoOLbeSI6DpgtRyv0AB6kSUUnFJtjJ1B1jobRG0cYyVdogDaNxuqHylskNRiRci1Opfe8XdDFupqHQKt2J2Fo4OvEiuh3wVAHk3VNxRfkNb2doh1KhK7evtujEYY74WSJPwNi7jv8tfe6gmWbIxOM4RSNTXucb066p5afw5Mp39c8PYJ9DSsMqHZJZIeEpwqRq3UXCSM4vp6P1PEM0zUgZeu2N3mfqApskLcudXSb6o0D2wPa4YFB88Gi81Otwq3lYpR8Ux8SmMkqnMiP0o4fCGWi9RVcgzZOyOYiOnb9VULKtU0HnG6fYmTXErT0v3SfWHH0zVaWsIgdn5kNTHqZTrlQKHpKgRkaQt8FWUA66mybKHUgzUtCR7CQajZR3aYaTrLuj3ruZAhnUgSOzuO9QWB2U3NXohpC4aSRUzRzJJLT4LhAXtwdt0E6mQ22WZGbmUi57A797MlwoYYDh0vDrRm1qYJ3nfEBYflwb3o7LxVACjvA8apswPVELFy5wYZoLmZ4nFqxQmisjMI10V3TphXzwUnUf4oj1zVQNGTBeCaFALW3MshxkWgWVGGVMOEWhwxbIkSVCCEUzz9K4q2yLtdMuzsi4tCBTZ7vMFRArqubgcktTg07i5XXoUQRjPmtbb4n3yyrPPlWfjU1W7Ck" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/ultrasonic-glasses-jewelry-cleaner.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S5b711cd31f6545668382f53c82f678827.jpg_480x480.jpg" alt="Ultrasonic Cleaner — Glasses, Jewelry &amp; Lenses" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-53%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Home</div>
+          <a class="title" href="deals/ultrasonic-glasses-jewelry-cleaner.html">Ultrasonic Cleaner — Glasses, Jewelry &amp; Lenses</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$9</span><span class="was">$19</span><span class="poff">-53%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEA0PjVl4HM0YBlXEPsFBnaOmB6nMHo4jCOeLE6ykpU6B9AaqPKaealv38vMGAuEoLjY2kqbNJTDRySCahBUMaAjIN52RUQ09YdJnEUiPkWWNwrXVywQ5VYOQEPmRSg8FI1YNPd0mwFp9DyzGgLrXfbGT0KzpHId6t6WVRccYR8eqj0Uzvhqamy8sLnzBkNHL6zrxQPQdg8v5Rq6I5pRskgE5EY4P4UntEz4MFY3SiCKGYuRj1OPN23F0p22ec6pbBoDZVBFIU4cLqQaCIGTzYMs9vz0ftA6ftYt77PK5fWX0Zzu18thqBUAuDzIIBr4LvknwPMpACkp8mhTLM5BHWCmksZ8p6r9lWYsBE2qPEx4zhTpCkQknjtGE5LjaEz2RbJzGUh1LEzjdcjmIbz1HSothQZNvknRQsIoLsZSdQqbr6MEh4NOc4fRL5oAESvDCHkjCBBF5OnuOebLTKWbyaBxTHkOh6JyuvSb6pQMFgtH8ZsWX8Lpf6OXLaMPnMLkzHPbnqgMSG502c7i6hSWiBVKKfisYNS0FMoXp5NwBZkg8Vuu7zuiwusvKm6vhOdcjgc74DKCpxZQSn3qUY4AzFwARgjeU0NEABRkuHWnqoTeArLWMrxobUsBEEqqrdHjlxGGW9pihG4vqsbiFFmBys5jIONvq7TBt0qxGGQ9nwRLCjEJV8ukE8WtFmlqc5pFfSBf4nK15K0AvSl" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/portable-mini-thermal-printer.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S8b735e52361448ba9a1b1da1e87ded4cD.jpg_480x480.jpg" alt="Portable Mini Bluetooth Thermal Printer" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-50%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Electronics</div>
+          <a class="title" href="deals/portable-mini-thermal-printer.html">Portable Mini Bluetooth Thermal Printer</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$25</span><span class="was">$50</span><span class="poff">-50%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE6JDw0lVCQhvjKMKuicwzSVm8zYne6b0mDfY0oK0dKWhTCMRSNAEFcxqT7f6apAQFzAogTkmR42mplwOKpfDxfWTydgWGEvXpCtsfrHItinoZSJ4sX6txGvIWq7GJiwudSTgjGzRAdXijw1g2BCblLA77kcLTvf0rHjwf082GhRlpXTXkv9zaQoU6W6n8GimpsSNfHmghq8lDhHCLnWqajMw4noaOMHm0tnxMBPbKvxbfudoxflsERW9Weh8HJhXPFtvKloga1PVCgvyEkk9to3C0dbJWR9dKXVCpTk3CWo0sImtUfZH2rA8zv62i7CVQr3OiH08wVvyT3tn4ELQrU94pgrMJuqD2UkKlKDJbpL2xw85grSA8smmDrAjQ6csfcZL5pQdXDDRuSSi8geVAfHVtXYyv8jcI5eztyFO7zSvv8ttc38UH8U2NXrB7WxB8r9jRSVhCS2EwZzFos2uzDyEomcAhM963K5CO1xFs7lY1oFVAl0jrgtWVtlbT4siKii5G72efmyBE7ZviP1FEkLxNgPT2zax9nnfVETXSBpGnJ89O6pIcEniJsDWjIZWwbuf9r8SirWpv5deQjAPPMDHs4j6KG6uJpMH2syFuoFRrtBSGyatIT3uOi8Koo3n0d9DLxFwGwUlCwCjLVaLLkkw8e4BFrO36EfKZfE4DIFWF5qf7U1Au571ES60OsRo6flwPfJmOUSDex" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>
+<article class="card">
+        <a class="thumb" href="deals/rgb-led-strip-lights-10m.html">
+          <img class="thumb-img" src="https://ae-pic-a1.aliexpress-media.com/kf/S6c2ee5148a2c47fca08fd79299464693g.jpg_480x480.jpg" alt="RGB LED Strip Lights 10m (App &amp; Music Sync)" loading="lazy" decoding="async">
+          <span class="store">AliExpress</span>
+          <span class="off">-52%</span>
+        </a>
+        <div class="body">
+          <div class="cat">Home</div>
+          <a class="title" href="deals/rgb-led-strip-lights-10m.html">RGB LED Strip Lights 10m (App &amp; Music Sync)</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$14</span><span class="was">$29</span><span class="poff">-52%</span></div>
+          
+          <a class="getdeal" href="https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE7mUMZmsYZ3zY1DzUM4DxOcrYwhXt2RGwTh85GxMELqtAPSMsqrGJlkOiJbzah2sjW9OQAHUSMkUNUSTuvsZIPRi3pONlJnXATBXse0Fa29FdD3peZzv7R69eNyG5nKPt8i6tkQa3lheNfgmoNnRH7U8FmRcZzdnd1YfH7MS2IlCUb0OasHoIuOzOD0MmevGDSvbEF0ClZlHorn4L2IeeHdihRXWaeEWmumiJYq25zx8ER69HfKdW2xL4tBwRskpsw1cMDjWStENh24qcodkQIo2pI2viLa8Vn38CrAtEwtWoAcSiqophchAJkuhVgIttSndrN8qsKiFxF9DPDF7ULht64FIaIAqPO09VXkaQlHpGdf4AZ73KzqxkAEbf1kMIyRnWcrsZhm8cv7tAYBaXJgrJuUO4HW6l4w7A64s69KozuBwOjxVmD2dc299QnncxLhPz9eTqzyk3uwHsp5AqYZ6a1a0q4BSP2NNyzgpTPbV6wDZyyAUrUaHbEhYYm4T70joyXuhx4cthlgaqiUaF7NpuSeQnCOBrEAdONzJSGz17fpCWFeQknPlcJz9mXQLnlvO8PNUHcwGV9QLWGpVxUwrXBkDMQYf5C8OgTBo1wTS9R185FgSF4V15gwFJkcB13YCFoIoFQheDCodnwx9gdpgAPmIw8nG8FYicYXjJGNQct71Eo7rkbO2HRIteGpZssyVAx0OZL9UnX" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article><!--CARDS_END--></div>
+  </section>
+
+  <section class="wrap">
+    <div class="news">
+      <h2>Never miss a deal 💌</h2>
+      <p>Join the list and get the top 5 deals of the week — no spam, unsubscribe anytime.</p>
+      <form id="newsform">
+        <input type="email" id="email" placeholder="you@email.com" aria-label="Your email address" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="ok" id="newsok"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>© <span id="year"></span> OasisDeal — find your savings oasis.</div>
+      <div style="display:flex; gap:18px;">
+        <a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="#deals">Deals</a>
+      </div>
+    </div>
+    <p class="disc">Affiliate disclosure: OasisDeal may earn a commission when you buy through links on this site, at no extra cost to you. Prices and availability are accurate as of the time of posting and may change.</p>
+  </div>
+</footer>
+
+<script id="deals-data" type="application/json">[{"slug":"soundcore-p30i-anc-earbuds","title":"Soundcore P30i Active Noise-Cancelling Earbuds","cat":"Audio","store":"AliExpress","emoji":"🎧","image":"https://ae-pic-a1.aliexpress-media.com/kf/S42f54ac49d0f43ad89ffae664b4b71bfM.png_480x480.jpg","now":22,"was":54,"off":"59%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE8foHSjHN3cmw0seEiPhMgwzE8vVPGgK9vm0AlCLW3LRBvKylq4t9mo1heIT0Qk8WZuHqxTWLke2igBjd69tZHS7MVJ0PYkqoWA9f6Qlu7hANdbit07qZpJydVjQCuXWyautGcfO8FlkQQ0Ia4BD3AuWXVXY2U8g5g6BoknIgOIYjgmo8hNei3GQjxTuvBKUHicBz2qL0JgL08DtMBPKOnpbIw3wa7XBi9GkxYtSKKohJquTDjEPjM0ghsTyckouPldeS3W2K39Y57MVkm1SLEJFLHRIwkh8Z854jv1hu0L17JsSKO1sI0wCOw4hs7UTVxCEY5oJflJVuNK3B8By1TfK36mQXJ8SFYLA0usj4mIuIf1GM44g44OFptTPhPENgPmmA9vrCXDEiL3EymLQmyJYw0q1ktKdATw0mEXKfe01wMBoJsUjiXYgLNmjEFQxPQGB7T94Yq4Lbav2dcH6HI77jeBXImyUhD8v73BJT64FcFariHGbTr3R4hCRpPf1vtmTVTzzFwJY5CFFaXIJOJhUYa9vFsfY4MKs5CZYiEtPl78XQoxKvdDJM1Nv9EdLKUVFGksMaF35QjigizCHVSG9ejb3yZNZdEkqEbjux916ONkwSIupt0QG9sRsqVWOUTaQmJ4gbQCZqtUvmtlcpi9TWfxwaQtg4Fy3ir6fBYVfXI9wM19k8CP0q8UrCRDt8hUoFsQljq2McV"},{"slug":"qcy-t13-wireless-earbuds","title":"Wireless Bluetooth 5.4 Earbuds","cat":"Audio","store":"AliExpress","emoji":"🎧","image":"https://ae-pic-a1.aliexpress-media.com/kf/S1a7f038aeb984cdab730f43c8272a28b3.jpg_480x480.jpg","now":12,"was":29,"off":"59%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEgePINT9OReS6jngjTlxRkYmhXuZiSTnLiyTGu1bIajMZZlM1lgScfrTfOFml8e6Y71rhqSYcEmHi1VkRowyRPQDfS5sA0LOuYNrGr6IZn3eymF1B9p7nzRbcNqytZc3izlE87BxIKE0gqmvNhDRciDUdffFzChlalx4Rut1i3XOzR9TsqyBf2ErglbssSRm6h7NsYiI8U18nYJUgrCa7PalDyAWsF3at11HnznearkzbxcsdoQhUrqgD5KyxfWHudZ5NPuK08lnLYbuS4AL8e13jcdZ5upst0AyBJT3LqaMDyx91C0rQ1HoKffYWZVqx5WIFAt7aviBVTQl7NIRD3A74zqKC6OQ745YTzhTjvoUGGOYk4hwoKEWII8fnsahRsvgeUpLfh6AVDS1WWncuKS1Ta7A3asRIyDuUffUG4ww7dvVCOjPECyBujm4G4oZLgJ459b1t5vcA2hs1Jb8qg94P1pPNIEjlobkdvQ5Cvp6LJUlIaQ2kGtDK92brxRSAjSuXbMYq8dbrtB0GhlqZL1cy1Rx5YDcPP52lCKz2gFtV5rGvVfqqOAXPwmDxzqv0F64iHdX4utVQFsKJEOQ0sTkl2TVIuEOPVFFzvbhi0vMueZz5cbpvTDXF2bJA4pocLDyB2ZL5YaYtDMqVpqFIOWP83fOVtd6r0MWg8fsd5dFKExlbokioC9M6hSlQFpI8m0i9ogzKNWmCv"},{"slug":"smart-watch-bluetooth-call-fitness","title":"Smart Watch with Bluetooth Calling & Fitness Tracking","cat":"Electronics","store":"AliExpress","emoji":"⌚","image":"https://ae-pic-a1.aliexpress-media.com/kf/Sd4e0157490864f719b4648240dff06a6u.jpg_480x480.jpg","now":7,"was":16,"off":"56%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE6v3KAlsutzYbI7mgRnc0HkP2EKOVF9KE4ENYOwV2X0Ev9O3ITsDJ3exflGM0g1k39DnsK2DFrSC8ipzKbzCJa3j2hxRa8i8HbkH622KVw7krJb3SVB1keRpEWBfcFOU7SCUtFqTaT4GkfWPM3VANYcjVW48Xlf3u9uFaQvEfbipSmukaiUjnO6Uh2mO2HCYxwD72EDvbvCjDot0wenGssKhFEWH2yQqqMeG78TlwEC03qjrSClpvaXOPUSxLL8RM3ap9lRVBxBb8hucqTMk7uxW6rPKawuBKVbUkmzZif9RWX1OtXEaGDJ6V86eNzZzkqz0lRBATUB01uNUBXsnMb1XUaWkGFsuMsNtLPSWC96cSZaNJRD2HL4FoAhzubQIslAYuPRLFj5JuuI3MhOACyolIIwatdRfyYiosBnkF1QEmEeQEubt3J7glc2UG5LVOQLEYeFeE075gKsEFMO9JU83VNT5nP6xhmZjKsjyC4UPvSWMD3oIoTq1f0hbf8CnWyFT8mCVFSw85qWxw6t6p65wrvUVwq3ABMtncUmb7hfAuax1QQ4DFcHqTVo2wBBrLGUEgfygLWGkqWoqiVVJ84boJlw9UI89G1f7j8NqgLYeIKPRzb1uHOCJPqqeXIAuNyHJuobzb0BfMeIy4OvbkpNYvOG9AQXt9TVeRaaserIioCdj7kVB4tZezsDQfytpvmKXMLub1Om821"},{"slug":"levitating-led-world-map-lamp","title":"Levitating Moon Lamp","cat":"Home","store":"AliExpress","emoji":"🌙","image":"https://ae-pic-a1.aliexpress-media.com/kf/Sd4dbdac8a6d449f3b497cac42443eaa9w.jpg_480x480.jpg","now":72,"was":207,"off":"65%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEALHXBvlk1fKUZTiu7uUmzYGBlQ7IC7Jer3r5ahlpa2BWEzehFiPmoJOeWVTorE1rXOtxA4mVCfV8bx2nkgVLSBoNZBWuqIreAJVUPsfIIz8pCoWITmoppCBYq5z6sYbOFFm6BPPJbimZUa6hZAEMFgV5FrxzvW7l8XIhqPgUOPPJVHBqB2nuFV8Sg30TN0krZOyrKW0F9ZkXljYMuI6GQIjvTDKRP7kmUciFR8cnPH82mPaBxpYEvqgibVUdaM2mxeHGqL7IGu9f7izHpO7HJ1EJf7uDouGKt8xcBoObnidNYzr0M1MhLpki0UhgarOulzyX51dhSJZqErHXsXTrMli4jSQPvQCBsA39wgtv5mUa7XrfJwsawaylESS6FmfUZdIhNcn5P9rsVVt9h2ZCBcgT7VYVUjkdl7Hb3kMTkgA0JruMWv89Xhb5E3mDffHR4CXfyhr253hEjrygm1gYdM7Ss59pwUUZEhzHVJ3lguHXSI22X71tEQpmuzmnXj1Md1RCMRjBUvuifpXAAfnznDlmJPozvIrHFSnbETyop6w8Pz9rMAe1kRcBMzmOqvOC0e3A1BwKQ2BYHCz544yNPLeUVi7pg1J405UJTPGM1HmTPsU5jazKvRwQbUl0p8W7vYYe3DXvzdR45Qj9TgaECgjIpjHl0bvrg0j5mf8kEjbQNnxcbqbN7t9Ntb1NRaJFnSk01JHbtcdq4"},{"slug":"mini-aroma-diffuser-180ml","title":"180ml Mini Aroma Essential Oil Diffuser","cat":"Home","store":"AliExpress","emoji":"🌫️","image":"https://ae-pic-a1.aliexpress-media.com/kf/S110db4df6d3a4cd6892ede566abdbcbd0.jpg_480x480.jpg","now":5,"was":14,"off":"64%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE7aiSsG2AKzjPuXl4k5QIJpChzetw0FrYbd7qwiGQLj9jUYU16OAqDmgzlTQlrCMCyciRNCvtBN6ZfyZEBr3nJBz0RsjkxwHg4qFGTeVt8Xfxlrj8Fz26R6kMexWKqAFtxMDpli9sc6IOipFWPKRmhp1WlShllTUxGhG1lQseEZeDmX9Zr24n12fHSxwmPMGBUrEqR9azqSBFCqi9Bg8iP1ns9tFWDKUb57pgCVoIYWRMFx21LmogDR1FJjHevpRlBp8bznZOKnW6uUrPkDjl5ZwzVmipg4Ucr2z9buUqgxHPhWn0x0fLjDWmR4NzAGOCGcCsY45zCw5ShKvvWE26Ff79eN9nRBH7f6zgbVzvgooPAqBMmIVKzK7jQjPh1AdZWgNM2Y5VDnHar2TGYqqaKFjBQl1AnvveJ1fhrFO8R48pTjcBAMug8Lsh1Bmw559ygIqyTXc1M1YZj13c4d533HRPVTBRlTznTqjTcGKtYrhh8lqsl0iE2Sfj9N34JcVuKJP4Vc25bm1EJLoESFp5LARqzqvFWykLSgGXMBHgzVt7GiVAnppfrtgSOMmp6bLS7AUrudhZedRZHFdIY2tjFnbhEE1XscInpt6g4JbSqzbGqq8WgvvLVL1g8jgSqNiM4OLzKYmRVXk12dnLvSvQd8GsRpwja5531cS9S3DWxuKN5QALkKQMIt8fVV4HFWpvna1G36c638W4Y"},{"slug":"matter-smart-plug-energy-monitor","title":"Matter Smart Plug with Energy Monitoring","cat":"Home","store":"AliExpress","emoji":"🔌","image":"https://ae-pic-a1.aliexpress-media.com/kf/S2f6ad3bc3de84435840121e657f4d3cdb.png_480x480.jpg","now":6,"was":13,"off":"54%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEA0LySDrCyHtUqqbKxiYVEHoseTFC7PKraVUpdziSGPzsNS98tl5yrCS7QKYnZlI9EJeHnY4J00KOQBOu226HgOBpTPAqz4FYvDEf8U3wm1eO8IMIGovqmEL6hWW832x1aj0inm6ixHFXhKzJueI99fFUGjnevwb7qS9Qjrwq6zk9ZwdKHm8KkzibAtIv2Gleqd3hJRzLM5ltk3K92pFEado05Led2UbCOm24scsYmZvjH0sopWmdvBWfTO8e0jVk6x3PgM66XQmIomKmfpHCv3vxPtMwi131JLYaM8vVZpaK8HH7qNTAQu06e2zZ5PLel1eWowNh6u7FuR8dchxUGS9edYrirEXPhD7bndciYtMq44IjR0XMPus5m2VGFmHfj5hAf66pUtngbx1DXDUNBuoK8KpnUYGtjEnFsPHQOiw9GB1nYCseq7XSGwXhBLLjrVqyLjXIwqfmwWMMXEzbu7iFIbENhk06gX2M5jYTP2jKaK7JSzkDDx9yQ4nQibVx0oMJepCUaCph7X8JhEV4LqQxqgP7GEuG3EGtVt16hI6sBdEBLRs3a42Q69ALvxd1LWf6wxDQiWKTJeFOBo50URvQ0scuOwiRLV9wqiuj3t7zKGp3fB7dMuUnzkUGMDaulK2gXqmtGBum9yFt3aDgN2uKkxnTAGCHpeb55HCS76JbxBugw4aYieI3O5yeEhC4fsRrQoeSecqWM"},{"slug":"led-facial-beauty-mask-7-color","title":"7-Color LED Facial Beauty Mask","cat":"Beauty","store":"AliExpress","emoji":"💆","image":"https://ae-pic-a1.aliexpress-media.com/kf/Sf641fcf35bdd48278a1389332ac21c4ed.jpg_480x480.jpg","now":89,"was":222,"off":"60%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEgeLkPm3L8mF9f7suc6mMxzQNPLzUgIJQPdBZA8dGC2vNLD0oHXRoXoDGGOOipop7hHW8D8R36YdbCJjq7kiQJVa0Nz5NrekWKJrZx17uPjxhwi9UT8NpVVXxeqbKINz2RO5iDZEEn74chhp2K9ca7DUFAGAEpPXu1QqgaNd6g6jT71Jw0MrSiynut40DGkizdikEBzck4sEwCcZINKbtSuI2zSxPqvvccSab2sludE36v86bA1ORak00elECCbavmaUp5tnTvSSGP7qNlmyneSazHq9FOtBVy2WgXCEHGAPR4W3XVLgEw6sfLA1CeWQrLzH7WjX7FoBJrAajUBPis2fNPglzw25ia9veTBfQGwH8EbQw9PlVxsOTIlmsWnMPlCkBxSBOBp5HuzRIr3MJgmaswBM3PNVDZ9R5pOdRlHQ9pNHiHHXLaN5R9wOD7W7IsVM4K6ANSgpeb5e0GWmmv7RES5ibakdhCj4eIcYvI6l7DkXs3z2qg9R5q98RWU4aX89OQfUO4LTFSr5QGYHcLScG255xBf8ZoDk26kvfJXLS5jWmU4X2MAwjz4tuHX38EfG3wJAckMoikqhUm6Q6xTHd5a7FvhbFpC5xA8ZumT7QbeZuvrjtNh32CsdSmlr7F4EY4ooVpjgxNy7ebGSLQU1a24bkNPAIDziITZOJwWoTsm3T8TRroa2YeXrq46YZE1c40IVgksDeZ"},{"slug":"heatless-curling-rod-set","title":"Heatless Curling Rod Set","cat":"Beauty","store":"AliExpress","emoji":"💇","image":"https://ae-pic-a1.aliexpress-media.com/kf/S8db0768f7a614f4eaa6c13db8b75474ai.jpg_480x480.jpg","now":4,"was":9,"off":"56%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEAOhfBAPYGr2IA8PCMi1V6NkPCRNQO2QD1Phz2JHtlzVEfOLUEQFWLE4XdAkjCfDUwLP3w3UFDxy61IJa5Ritqqfug8EDtijrNw9Uu6jFE7NLaisaz7a1boOSye1eHzOFVHMqDILTSD07hCjRg0rysJ6FC9wOBclhDoZR2VVllssAGsYE9tJiVtWOlaoUwZgAIgRSmFJX1UfJ4fb6dkuzXPGiSrREggYvHBZytU15fDBfbPnPMer4gIDKI2ItbVLpxyoNtDm6V2J1lPC1MwPcSdQnhlFI5xQMn3yIOIIdOjMvOWOTlV2G6Skk9FrcvFkXqRiWo7YYfZbB7SVTvnsi6TkfQh7b2g9kZIwujIVojsgLJu1AXSfQdAK3lEg4YUA9sfloDCKhpFZmCoOcfZZWDoWIM6YJJLsjQU27E1qdS6mkz5pmBUMGdIuLlUCikRtrpX3BDnDR3SIQgEqsrVwAWcbhu0lLiCwP5Xn077aZ3mCbZRLyKHDcREFWiiTpcFk1xHD6G9eEI49gCaHt59KJlFRYbqqlp7wPXZ5exnW7HUoM0RyK2VBYOUKnChq3pwbjA4BV9bkWCl4ns77fsSrhjHCWKW7A2TNOc0RHDkiUnLWOqYwIGRL7y4JAmN8QjhcFDzcneXNrY6PblGug9BrgnF98rGulVVMpH1zbnMwMQhb04bK55HJqVDU6MwaXJLWGJ90GUZhJHQUEk"},{"slug":"magnetic-wireless-power-bank-10000mah","title":"Magnetic Wireless Power Bank 10000mAh","cat":"Electronics","store":"AliExpress","emoji":"🔋","image":"https://ae-pic-a1.aliexpress-media.com/kf/S954b5e9b687d4457a365a2075cde2a573.jpg_480x480.jpg","now":48,"was":117,"off":"59%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEAAKF74getVM3kYwEyYjPWDditVjVbWdXNY7e6W2USsM35JZ3sphD7ltmofNrqtdqhuS9PUTnI8slJLx853CKhxJKwMTpOsZbIEXqASNHMepgJhZHeUAHduggmcdODsQlWpQvzNdREvTvxMPwoGQSCiGKTx7JwRwkvOgS8CTzPwaz3A0q1zUUdC9cghd6voKEHHhQne6fCDYm8coTeS9cRZ1JUDFuNxNbAx3qdwa2d9S87JIG1Smd74wVxpODWaeOlObl37plD1ohGKuRz29zfPlu0I2FigE2XVL4hc3DRKF1DP2bON9DodYuYgvDdqMOBYoGHOYRlEFCFzYdtkF6PUnIYf7fE09oR7qOz3hVcx01Py6ewl1Ib20Ol6mXtZxnAx83l4gklJYTrPRC0cpKTh5fe5jrijIlZ0Y8qRpXRfpng3opFKvv7nf0S9w8GvVfSQJcyANre6To0yyZ5z6RiokO4ULLt7yrvX9NAxKwyh3G2j8k8DwdZTLaGyqBsosjR08jwHIydF4OkAJQQO0H4K73FoK0bhoFdSyJZdZobt8EMqgcagoVP4AhK3vRg2BNEaHxFtAK1nlBu3BmpUz4GfomMXYgMlLlVUCYvQGuPhVgheuLYU2Zemqm5UIyzuo8OyRWBLXibqOjHdsQNQsWRxiod4qQeFsaWhAHbfpw57o7ImQsb447WZtGhOlryhXhetWhBoUX3FhDr"},{"slug":"3-in-1-wireless-charging-station","title":"3-in-1 Wireless Charging Station","cat":"Electronics","store":"AliExpress","emoji":"⚡","image":"https://ae-pic-a1.aliexpress-media.com/kf/S13d0c6d9376e4f19ac19fe43422ab533A.jpg_480x480.jpg","now":14,"was":29,"off":"52%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE72ayNk6Zv9FAVGgRARHn3ikfcyfq6GfJzc5Dj3xGnAxRaaOp7YtHQvYedFh3KXebmJdktIHUUZrvqfjiJXLDYMGgvvnqzz3pC79LiTtpCSmC7qMtEnXVrTT36PLKcUFnIHrci17wTf6JAgGVBj6BFbP7tpIEmkYZZfnMR9TL0gc9BIKSW5TaISCM2qbnpGD4QiqAooHCgvSea42EZ2CPsZlK2JI5xDbyPmIs1o1te9RmmUeMAb12QSvnECmcSTlRyrISNvUEa5RG6jhcH7XtrMx05NQJabuNovDqdBO1CSoerEXV92uXOvSBrMPbQShUARmdkagBnHr1wmQ2CieuBKqVaYoteeNxDawcSuU949rzsHAW7uYuVp0eYe6nVOUY16SzHMQqF1wxAliTiTWmYteTsaJChhh9I7On6KnGr6m3gvMd4T2DKhEfHFstACAUvm5waqLud5egfZoUmJUNXaKmrKlWhJXwf5UZWbsFGHYYYrBEclUYKz0nyHXZPpZEjjgY3V2vz7YQGVsfVSCda5mu2TC5iVMox1C6ZlkIhZlLrAPDHPUIOz13Ceg9kJmYFSedOl0GTsrEUAcfIng2XJp0yGQ4sz49EKPqaKbhTSPZT8ZU0nOH4kUCoSc7LW9TI10VcmYDa409SmDHxMiaZDnbPgK7FpxgGQOGTkUCE1y9Dd15EZu9dpAkPeTk5inmXzZhbUcvDsrM9"},{"slug":"4k-wifi-mini-security-camera","title":"Mini WiFi Security Camera (1080p HD)","cat":"Electronics","store":"AliExpress","emoji":"📷","image":"https://ae-pic-a1.aliexpress-media.com/kf/S3f8b8f6b197d440fa424bee803395a83K.jpg_480x480.jpg","now":5,"was":10,"off":"50%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE8gKjuQqK8CI6yavTVwIveST23ZD6CjVQO4cPKjsIonpeEpKzB3id28xmxoOLbeSI6DpgtRyv0AB6kSUUnFJtjJ1B1jobRG0cYyVdogDaNxuqHylskNRiRci1Opfe8XdDFupqHQKt2J2Fo4OvEiuh3wVAHk3VNxRfkNb2doh1KhK7evtujEYY74WSJPwNi7jv8tfe6gmWbIxOM4RSNTXucb066p5afw5Mp39c8PYJ9DSsMqHZJZIeEpwqRq3UXCSM4vp6P1PEM0zUgZeu2N3mfqApskLcudXSb6o0D2wPa4YFB88Gi81Otwq3lYpR8Ux8SmMkqnMiP0o4fCGWi9RVcgzZOyOYiOnb9VULKtU0HnG6fYmTXErT0v3SfWHH0zVaWsIgdn5kNTHqZTrlQKHpKgRkaQt8FWUA66mybKHUgzUtCR7CQajZR3aYaTrLuj3ruZAhnUgSOzuO9QWB2U3NXohpC4aSRUzRzJJLT4LhAXtwdt0E6mQ22WZGbmUi57A797MlwoYYDh0vDrRm1qYJ3nfEBYflwb3o7LxVACjvA8apswPVELFy5wYZoLmZ4nFqxQmisjMI10V3TphXzwUnUf4oj1zVQNGTBeCaFALW3MshxkWgWVGGVMOEWhwxbIkSVCCEUzz9K4q2yLtdMuzsi4tCBTZ7vMFRArqubgcktTg07i5XXoUQRjPmtbb4n3yyrPPlWfjU1W7Ck"},{"slug":"ultrasonic-glasses-jewelry-cleaner","title":"Ultrasonic Cleaner — Glasses, Jewelry & Lenses","cat":"Home","store":"AliExpress","emoji":"🧼","image":"https://ae-pic-a1.aliexpress-media.com/kf/S5b711cd31f6545668382f53c82f678827.jpg_480x480.jpg","now":9,"was":19,"off":"53%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdEA0PjVl4HM0YBlXEPsFBnaOmB6nMHo4jCOeLE6ykpU6B9AaqPKaealv38vMGAuEoLjY2kqbNJTDRySCahBUMaAjIN52RUQ09YdJnEUiPkWWNwrXVywQ5VYOQEPmRSg8FI1YNPd0mwFp9DyzGgLrXfbGT0KzpHId6t6WVRccYR8eqj0Uzvhqamy8sLnzBkNHL6zrxQPQdg8v5Rq6I5pRskgE5EY4P4UntEz4MFY3SiCKGYuRj1OPN23F0p22ec6pbBoDZVBFIU4cLqQaCIGTzYMs9vz0ftA6ftYt77PK5fWX0Zzu18thqBUAuDzIIBr4LvknwPMpACkp8mhTLM5BHWCmksZ8p6r9lWYsBE2qPEx4zhTpCkQknjtGE5LjaEz2RbJzGUh1LEzjdcjmIbz1HSothQZNvknRQsIoLsZSdQqbr6MEh4NOc4fRL5oAESvDCHkjCBBF5OnuOebLTKWbyaBxTHkOh6JyuvSb6pQMFgtH8ZsWX8Lpf6OXLaMPnMLkzHPbnqgMSG502c7i6hSWiBVKKfisYNS0FMoXp5NwBZkg8Vuu7zuiwusvKm6vhOdcjgc74DKCpxZQSn3qUY4AzFwARgjeU0NEABRkuHWnqoTeArLWMrxobUsBEEqqrdHjlxGGW9pihG4vqsbiFFmBys5jIONvq7TBt0qxGGQ9nwRLCjEJV8ukE8WtFmlqc5pFfSBf4nK15K0AvSl"},{"slug":"portable-mini-thermal-printer","title":"Portable Mini Bluetooth Thermal Printer","cat":"Electronics","store":"AliExpress","emoji":"🖨️","image":"https://ae-pic-a1.aliexpress-media.com/kf/S8b735e52361448ba9a1b1da1e87ded4cD.jpg_480x480.jpg","now":25,"was":50,"off":"50%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE6JDw0lVCQhvjKMKuicwzSVm8zYne6b0mDfY0oK0dKWhTCMRSNAEFcxqT7f6apAQFzAogTkmR42mplwOKpfDxfWTydgWGEvXpCtsfrHItinoZSJ4sX6txGvIWq7GJiwudSTgjGzRAdXijw1g2BCblLA77kcLTvf0rHjwf082GhRlpXTXkv9zaQoU6W6n8GimpsSNfHmghq8lDhHCLnWqajMw4noaOMHm0tnxMBPbKvxbfudoxflsERW9Weh8HJhXPFtvKloga1PVCgvyEkk9to3C0dbJWR9dKXVCpTk3CWo0sImtUfZH2rA8zv62i7CVQr3OiH08wVvyT3tn4ELQrU94pgrMJuqD2UkKlKDJbpL2xw85grSA8smmDrAjQ6csfcZL5pQdXDDRuSSi8geVAfHVtXYyv8jcI5eztyFO7zSvv8ttc38UH8U2NXrB7WxB8r9jRSVhCS2EwZzFos2uzDyEomcAhM963K5CO1xFs7lY1oFVAl0jrgtWVtlbT4siKii5G72efmyBE7ZviP1FEkLxNgPT2zax9nnfVETXSBpGnJ89O6pIcEniJsDWjIZWwbuf9r8SirWpv5deQjAPPMDHs4j6KG6uJpMH2syFuoFRrtBSGyatIT3uOi8Koo3n0d9DLxFwGwUlCwCjLVaLLkkw8e4BFrO36EfKZfE4DIFWF5qf7U1Au571ES60OsRo6flwPfJmOUSDex"},{"slug":"rgb-led-strip-lights-10m","title":"RGB LED Strip Lights 10m (App & Music Sync)","cat":"Home","store":"AliExpress","emoji":"💡","image":"https://ae-pic-a1.aliexpress-media.com/kf/S6c2ee5148a2c47fca08fd79299464693g.jpg_480x480.jpg","now":14,"was":29,"off":"52%","code":"","url":"https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVGHSYHdB0nbq638qKWQHXD5nbwEdE7mUMZmsYZ3zY1DzUM4DxOcrYwhXt2RGwTh85GxMELqtAPSMsqrGJlkOiJbzah2sjW9OQAHUSMkUNUSTuvsZIPRi3pONlJnXATBXse0Fa29FdD3peZzv7R69eNyG5nKPt8i6tkQa3lheNfgmoNnRH7U8FmRcZzdnd1YfH7MS2IlCUb0OasHoIuOzOD0MmevGDSvbEF0ClZlHorn4L2IeeHdihRXWaeEWmumiJYq25zx8ER69HfKdW2xL4tBwRskpsw1cMDjWStENh24qcodkQIo2pI2viLa8Vn38CrAtEwtWoAcSiqophchAJkuhVgIttSndrN8qsKiFxF9DPDF7ULht64FIaIAqPO09VXkaQlHpGdf4AZ73KzqxkAEbf1kMIyRnWcrsZhm8cv7tAYBaXJgrJuUO4HW6l4w7A64s69KozuBwOjxVmD2dc299QnncxLhPz9eTqzyk3uwHsp5AqYZ6a1a0q4BSP2NNyzgpTPbV6wDZyyAUrUaHbEhYYm4T70joyXuhx4cthlgaqiUaF7NpuSeQnCOBrEAdONzJSGz17fpCWFeQknPlcJz9mXQLnlvO8PNUHcwGV9QLWGpVxUwrXBkDMQYf5C8OgTBo1wTS9R185FgSF4V15gwFJkcB13YCFoIoFQheDCodnwx9gdpgAPmIw8nG8FYicYXjJGNQct71Eo7rkbO2HRIteGpZssyVAx0OZL9UnX"}]</script>
+<script>
+  // Cards are pre-rendered into the HTML at build time; data is inlined above (no fetch, no layout shift).
+  const grid = document.getElementById('grid');
+  const filtersEl = document.getElementById('filters');
+  const searchEl = document.getElementById('search');
+  const DEALS = JSON.parse(document.getElementById('deals-data').textContent || '[]');
+  let activeCat = "All";
+
+  function cardHTML(d) {
+    const page = 'deals/' + d.slug + '.html';
+    return `<article class="card">
+        <a class="thumb" href="${page}">
+          ${d.image ? `<img class="thumb-img" src="${d.image}" alt="${d.title}" loading="lazy" decoding="async">` : `<span class="thumb-emoji">${d.emoji}</span>`}
+          <span class="store">${d.store}</span>
+          <span class="off">-${d.off}</span>
+        </a>
+        <div class="body">
+          <div class="cat">${d.cat}</div>
+          <a class="title" href="${page}">${d.title}</a>
+          <div class="price"><span class="fromlbl">from</span><span class="now">$${d.now}</span><span class="was">$${d.was}</span><span class="poff">-${d.off}</span></div>
+          ${d.code ? `<div class="coupon"><code>${d.code}</code><button class="copy" data-code="${d.code}">Copy</button></div>` : ''}
+          <a class="getdeal" href="${d.url}" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>`;
+  }
+
+  function buildFilters() {
+    const cats = ["All", ...new Set(DEALS.map(d => d.cat))];
+    cats.forEach(c => {
+      const b = document.createElement('button');
+      b.className = 'chip' + (c === "All" ? ' active' : '');
+      b.textContent = c;
+      b.onclick = () => { activeCat = c; [...filtersEl.children].forEach(x=>x.classList.remove('active')); b.classList.add('active'); render(); };
+      filtersEl.appendChild(b);
+    });
+  }
+
+  function render() {
+    const q = searchEl.value.trim().toLowerCase();
+    const list = DEALS.filter(d =>
+      (activeCat === "All" || d.cat === activeCat) &&
+      (!q || (d.title + d.store + d.cat).toLowerCase().includes(q))
+    );
+    grid.innerHTML = list.length ? list.map(cardHTML).join('') : '<div class="empty">No deals match your search — try another keyword.</div>';
+  }
+
+  grid.addEventListener('click', e => {
+    const btn = e.target.closest('.copy');
+    if (!btn) return;
+    e.preventDefault();
+    navigator.clipboard?.writeText(btn.dataset.code);
+    btn.textContent = 'Copied!'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
+  });
+
+  searchEl.addEventListener('input', render);
+
+  document.getElementById('newsform').addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('newsok').textContent = "✓ You're in! Check your inbox to confirm.";
+    e.target.reset();
+  });
+
+  document.getElementById('count').textContent = DEALS.length;
+  document.getElementById('year').textContent = new Date().getFullYear();
+  buildFilters();
+</script>
+</body>
+</html>
