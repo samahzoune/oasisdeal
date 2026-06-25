@@ -83,7 +83,8 @@ function dealPage(d) {
 <meta name="twitter:description" content="${esc(metaDesc)}" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" /></noscript>
 <link rel="stylesheet" href="../assets/page.css" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 <link rel="apple-touch-icon" href="../favicon.svg" />
@@ -223,7 +224,8 @@ function categoryPage(cat, items) {
 <meta property="og:image" content="${SITE}/favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" /></noscript>
 <link rel="stylesheet" href="../assets/page.css" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 <link rel="apple-touch-icon" href="../favicon.svg" />
@@ -296,6 +298,32 @@ ALL_CATS.forEach(cat => {
   const items = deals.filter(d => d.cat === cat);
   fs.writeFileSync(path.join(catDir, `${catSlug(cat)}.html`), categoryPage(cat, items));
 });
+
+// Inject pre-rendered deal cards + inline data into the homepage (perf: no client fetch, no layout shift)
+function homeCard(d) {
+  const page = 'deals/' + d.slug + '.html';
+  return `<article class="card">
+        <a class="thumb" href="${page}" style="background:linear-gradient(135deg,#1b2848,#243152)">
+          <span class="store">${esc(d.store)}</span>
+          <span class="off">-${d.off}</span>
+          <span>${d.emoji}</span>
+        </a>
+        <div class="body">
+          <div class="cat">${esc(d.cat)}</div>
+          <a class="title" href="${page}">${esc(d.title)}</a>
+          <div class="price"><span class="now">$${d.now}</span><span class="was">$${d.was}</span><span class="poff">-${d.off}</span></div>
+          ${d.code ? `<div class="coupon"><code>${esc(d.code)}</code><button class="copy" data-code="${esc(d.code)}">Copy</button></div>` : ''}
+          <a class="getdeal" href="${esc(d.url)}" target="_blank" rel="nofollow sponsored noopener">Get Deal →</a>
+        </div>
+      </article>`;
+}
+const cardsHtml = deals.map(homeCard).join('\n');
+const dataJson = JSON.stringify(deals.map(d => ({ slug: d.slug, title: d.title, cat: d.cat, store: d.store, emoji: d.emoji, now: d.now, was: d.was, off: d.off, code: d.code, url: d.url })));
+const idxPath = path.join(ROOT, 'index.html');
+let idx = fs.readFileSync(idxPath, 'utf8');
+idx = idx.replace(/<!--CARDS_START-->[\s\S]*?<!--CARDS_END-->/, () => `<!--CARDS_START-->${cardsHtml}<!--CARDS_END-->`);
+idx = idx.replace(/(<script id="deals-data" type="application\/json">)[\s\S]*?(<\/script>)/, (m, a, b) => a + dataJson + b);
+fs.writeFileSync(idxPath, idx);
 
 // Sitemap
 const staticUrls = ['/', '/about', '/contact', '/privacy'];
