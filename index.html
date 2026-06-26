@@ -630,6 +630,13 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // ---- Popular route cards: clickable, open the live flight search ----
+  document.querySelectorAll('.route-card').forEach(function(card){
+    card.style.cursor = 'pointer';
+    card.setAttribute('role', 'link');
+    card.addEventListener('click', function(){ window.location.href = 'https://fly.oasisdeal.com'; });
+  });
+
   // ---- Search form: hand off to the live search subdomain ----
   document.getElementById('searchTicket').addEventListener('submit', function(e){
     e.preventDefault();

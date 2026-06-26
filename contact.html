@@ -4,14 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Contact — OasisDeal</title>
-<meta name="description" content="Get in touch with OasisDeal — ask a question about flight search, suggest a route, or partner with us." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" /></noscript>
-<link rel="stylesheet" href="assets/page.css" />
+<meta name="description" content="Get in touch with OasisDeal — questions, route suggestions, partnerships. We read every message and usually reply within 24 hours." />
+<link rel="canonical" href="https://oasisdeal.com/contact" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="apple-touch-icon" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css" />
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
   (function () {
       var script = document.createElement("script");
@@ -22,50 +22,81 @@
 </script>
 </head>
 <body>
-<header>
-  <nav class="nav">
-    <a class="logo" href="index.html"><img class="mark" src="favicon.svg" alt="OasisDeal logo" width="34" height="34" />Oasis<span>Deal</span></a>
-    <a class="back" href="index.html">← Home</a>
-  </nav>
-</header>
 
-<main class="wrap page">
-  <h1>Contact us</h1>
-  <p class="lead">Have a question about the flight search, a route suggestion, or a partnership idea? We'd love to hear from you.</p>
+<nav class="nav">
+  <div class="container nav-row">
+    <a class="logo" href="index.html">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="15" fill="#E8A33D"/>
+        <path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"/>
+        <path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#4B3FCB"/>
+        <rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"/>
+      </svg>
+      <span class="logo-word">Oasis<span class="pipe">|</span>Deal</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Flights</a>
+      <a class="nav-link" href="hotels.html">Hotels</a>
+      <a class="nav-link" href="compensation.html">Compensation</a>
+      <a class="btn btn-primary" href="https://fly.oasisdeal.com">Search flights →</a>
+    </div>
+  </div>
+</nav>
 
-  <form id="contactForm">
+<main class="container page">
+  <h1>Get in touch</h1>
+  <p class="lead">Questions, route suggestions, or a partnership idea? Send us a message — we read every one and usually reply within 24 hours.</p>
+
+  <form class="form" id="contactForm">
     <label for="name">Your name</label>
-    <input type="text" id="name" placeholder="Your name" required />
-
+    <input id="name" name="name" placeholder="Your name" required />
     <label for="email">Your email</label>
-    <input type="email" id="email" placeholder="you@email.com" required />
-
-    <label for="subject">Subject</label>
-    <input type="text" id="subject" placeholder="What's this about?" required />
-
+    <input id="email" name="email" type="email" placeholder="you@example.com" required />
     <label for="message">Message</label>
-    <textarea id="message" placeholder="Tell us what's on your mind..." required></textarea>
-
-    <button type="submit">Send message</button>
-    <p id="formNote" style="color:var(--brand); font-weight:600; min-height:20px; margin:0;"></p>
+    <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+    <button class="btn btn-primary" type="submit">Send message →</button>
   </form>
 
   <div class="contact-methods">
-    <div class="method"><b>📧 Email</b><span>hello@oasisdeal.com</span></div>
+    <div class="method"><b>✉️ Email</b><span>hello@oasisdeal.com</span></div>
     <div class="method"><b>⏱️ Response time</b><span>Usually within 24 hours</span></div>
     <div class="method"><b>🤝 Partnerships</b><span>Airlines &amp; travel sites welcome</span></div>
   </div>
 </main>
 
-<footer>
-  <div class="foot">
-    <div>© <span id="year"></span> OasisDeal — find your savings oasis.</div>
-    <div class="links">
-      <a href="index.html">Flights</a>
-      <a href="hotels.html">Hotels</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy</a>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <a class="logo" href="index.html">
+          <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="15" fill="#E8A33D"/>
+            <path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"/>
+            <path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#4B3FCB"/>
+            <rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"/>
+          </svg>
+          <span class="logo-word">Oasis<span class="pipe">|</span>Deal</span>
+        </a>
+        <p class="footer-tag">Find your savings oasis — flights, hotels, and compensation, compared honestly.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Flights</a>
+          <a href="hotels.html">Hotels</a>
+          <a href="compensation.html">Compensation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> OasisDeal — find your savings oasis.</span>
+      <span>Casablanca, Morocco</span>
     </div>
   </div>
 </footer>
@@ -75,10 +106,10 @@
   document.getElementById('contactForm').addEventListener('submit', function(e){
     e.preventDefault();
     var name = encodeURIComponent(document.getElementById('name').value);
-    var subject = encodeURIComponent(document.getElementById('subject').value);
-    var msg = encodeURIComponent(document.getElementById('message').value + '\n\n— ' + document.getElementById('name').value + ' (' + document.getElementById('email').value + ')');
-    window.location.href = 'mailto:hello@oasisdeal.com?subject=' + subject + '&body=' + msg;
-    document.getElementById('formNote').textContent = '✓ Opening your email app to send...';
+    var email = encodeURIComponent(document.getElementById('email').value);
+    var msg = encodeURIComponent(document.getElementById('message').value);
+    var body = 'From: ' + name + ' (' + email + ')%0D%0A%0D%0A' + msg;
+    window.location.href = 'mailto:hello@oasisdeal.com?subject=OasisDeal%20message&body=' + body;
   });
 </script>
 </body>
