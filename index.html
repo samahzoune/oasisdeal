@@ -30,8 +30,10 @@
   .nav-link { font-size: 14px; font-weight: 600; color: var(--muted); }
   .nav-link:hover { color: var(--brand); text-decoration: none; }
   .widget-cta { text-align: center; margin: 34px 0 8px; }
-  .widget-cta a { display: inline-block; padding: 16px 38px; border-radius: 14px; background: linear-gradient(135deg, var(--brand-2), var(--brand)); color: #04121a; font-weight: 800; font-size: 17px; box-shadow: 0 10px 30px rgba(45,212,191,.25); }
+  .widget-cta a { display: inline-block; margin: 0 6px 10px; padding: 16px 38px; border-radius: 14px; background: linear-gradient(135deg, var(--brand-2), var(--brand)); color: #04121a; font-weight: 800; font-size: 17px; box-shadow: 0 10px 30px rgba(45,212,191,.25); }
   .widget-cta a:hover { filter: brightness(1.08); }
+  .widget-cta a.alt { background: transparent; color: var(--brand); border: 1px solid rgba(45,212,191,.5); box-shadow: none; }
+  .widget-cta a.alt:hover { filter: none; background: rgba(45,212,191,.12); }
   .widget-cta p { color: var(--muted); font-size: 13.5px; margin: 12px 0 0; }
   .widget-placeholder { text-align: center; color: var(--muted); padding: 26px 16px; border: 1px dashed var(--line); border-radius: 12px; font-size: 14px; }
   .steps3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin: 46px 0; }
@@ -75,7 +77,8 @@
 
   <div class="widget-cta">
     <a href="https://fly.oasisdeal.com">Search flights now →</a>
-    <p>Search hundreds of airlines and see every fare, cheapest first.</p>
+    <a class="alt" href="hotels.html">Compare hotels →</a>
+    <p>Compare flights and hotels — hundreds of sites, best price first.</p>
   </div>
 
   <section>
