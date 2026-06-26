@@ -3,25 +3,7 @@
 <linearGradient id="g" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#33c8ad"/><stop offset="1" stop-color="#0b8a80"/></linearGradient>
 </defs>
 <rect width="64" height="64" rx="15" fill="url(#g)"/>
-<g fill="none" stroke="#f5f1e3" stroke-linecap="round" stroke-width="1.7">
-<line x1="50" y1="8.5" x2="50" y2="5.2"/>
-<line x1="50" y1="21.5" x2="50" y2="24.8"/>
-<line x1="43.3" y1="15" x2="40" y2="15"/>
-<line x1="56.7" y1="15" x2="60" y2="15"/>
-<line x1="45.3" y1="10.3" x2="43" y2="8"/>
-<line x1="54.7" y1="10.3" x2="57" y2="8"/>
-<line x1="45.3" y1="19.7" x2="43" y2="22"/>
-<line x1="54.7" y1="19.7" x2="57" y2="22"/>
-</g>
-<circle cx="50" cy="15" r="4.3" fill="#f5f1e3"/>
-<path d="M27,32 Q26,45 25,59" fill="none" stroke="#f5f1e3" stroke-width="5.5" stroke-linecap="round"/>
-<g fill="none" stroke="#f5f1e3" stroke-linecap="round" stroke-width="5">
-<path d="M27,32 Q13,27 6,38"/>
-<path d="M27,32 Q15,19 10,11"/>
-<path d="M27,32 Q27,15 30,8"/>
-<path d="M27,32 Q38,16 45,12"/>
-<path d="M27,32 Q42,23 52,29"/>
-<path d="M27,32 Q41,31 48,41"/>
-</g>
-<circle cx="27" cy="32" r="3.2" fill="#f5f1e3"/>
+<path d="M8,53 Q17,43 26,34" fill="none" stroke="#f5f1e3" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0.1 6.5" opacity="0.8"/>
+<polygon points="52,10 9,25 28,33" fill="#f5f1e3"/>
+<polygon points="52,10 28,33 36,51" fill="#cdc4a9"/>
 </svg>
