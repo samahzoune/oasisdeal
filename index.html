@@ -109,7 +109,7 @@
   .board-row:last-child{border-bottom:none;}
   .flap-cell{display:flex;gap:2px;}
   .flap{display:inline-flex;align-items:center;justify-content:center;background:#1B1750;color:#F4ECDD;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:0.92rem;width:1.05em;height:1.5em;border-radius:3px;transform-style:preserve-3d;}
-  .board-go{font-family:'IBM Plex Mono',monospace;font-size:0.66rem;letter-spacing:0.08em;color:#4ADE80;justify-self:start;}
+  .board-fare{font-family:'IBM Plex Mono',monospace;font-size:0.82rem;font-weight:600;color:var(--saffron);justify-self:start;}
   .board-foot{padding:12px 6px 2px;font-size:0.7rem;color:rgba(255,255,255,0.38);}
   @media (prefers-reduced-motion: reduce){ .flap{transition:none;} }
   @media (max-width:480px){ .board-cols, .board-row{grid-template-columns:1.3fr 1.3fr 1fr;} .flap{font-size:0.8rem;} }
@@ -248,10 +248,10 @@
           <span class="board-title">CMN T1</span>
         </div>
         <div class="board-cols">
-          <span>From</span><span>To</span><span>Search</span>
+          <span>From</span><span>To</span><span>Fare</span>
         </div>
         <div id="boardRows"></div>
-        <p class="board-foot">Tap any route to see live fares on the search.</p>
+        <p class="board-foot">Lowest fares found — tap a route to search.</p>
       </div>
     </div>
   </div>
@@ -484,11 +484,11 @@
 
   // ---- split-flap departures board (real routes, clickable) ----
   var ROUTES = [
-    {from:'CMN', to:'CDG'},
-    {from:'CMN', to:'DXB'},
-    {from:'RAK', to:'LHR'},
-    {from:'CMN', to:'IST'},
-    {from:'RBA', to:'MAD'}
+    {from:'CMN', to:'CDG', co:'CMN', cd:'PAR'},
+    {from:'CMN', to:'DXB', co:'CMN', cd:'DXB'},
+    {from:'RAK', to:'LHR', co:'RAK', cd:'LON'},
+    {from:'CMN', to:'IST', co:'CMN', cd:'IST'},
+    {from:'RBA', to:'MAD', co:'RBA', cd:'MAD'}
   ];
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var boardRows = document.getElementById('boardRows');
@@ -527,14 +527,21 @@
       var row = document.createElement('div');
       row.className = 'board-row';
       row.setAttribute('role', 'link');
-      row.addEventListener('click', function(){ window.location.href = flyLink(route.from, route.to, '', 1); });
+      row.addEventListener('click', function(){ window.location.href = flyLink(route.co, route.cd, '', 1); });
 
       var fromCell = document.createElement('div'); fromCell.className = 'flap-cell'; fromCell.appendChild(buildFlapGroup(route.from));
       var toCell = document.createElement('div'); toCell.className = 'flap-cell'; toCell.appendChild(buildFlapGroup(route.to));
-      var go = document.createElement('span'); go.className = 'board-go'; go.textContent = 'SEARCH →';
+      var fare = document.createElement('span'); fare.className = 'board-fare'; fare.textContent = '···';
 
-      row.appendChild(fromCell); row.appendChild(toCell); row.appendChild(go);
+      row.appendChild(fromCell); row.appendChild(toCell); row.appendChild(fare);
       boardRows.appendChild(row);
+
+      (function(el, o, d){
+        fetch('/api/fares?origin=' + o + '&destination=' + d + '&currency=mad')
+          .then(function(r){ return r.json(); })
+          .then(function(j){ el.textContent = (j && j.price) ? (Math.round(j.price).toLocaleString() + ' DH') : '—'; })
+          .catch(function(){ el.textContent = '—'; });
+      })(fare, route.co, route.cd);
 
       var rowBase = rowIndex * 240;
       [fromCell, toCell].forEach(function(cell){
