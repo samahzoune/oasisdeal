@@ -79,13 +79,13 @@
     <div class="hero-inner">
       <div class="hero-eyebrow eyebrow">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 16l8-2 4-9 2 1-3 8 7-1 2 2-8 3-3 7-2-1 2-7-9 1z" fill="currentColor"/></svg>
-        EU law EC 261 · up to €600
+        <span data-i18n="cmp.eyebrow">EU law EC 261 · up to €600</span>
       </div>
-      <h1>Delayed or cancelled flight? <em>Claim up to €600.</em></h1>
-      <p class="hero-sub">If your flight was delayed 3+ hours, cancelled, or overbooked, the airline may owe you compensation. Checking is free and takes a couple of minutes — you only pay if your claim wins.</p>
+      <h1 data-i18n="cmp.h1">Delayed or cancelled flight? <em>Claim up to €600.</em></h1>
+      <p class="hero-sub" data-i18n="cmp.sub">If your flight was delayed 3+ hours, cancelled, or overbooked, the airline may owe you compensation. Checking is free and takes a couple of minutes — you only pay if your claim wins.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#check">Check if I'm owed →</a>
-        <a class="btn btn-ghost" href="#how">How it works</a>
+        <a class="btn btn-primary" href="#check" data-i18n="cmp.cta1">Check if I'm owed →</a>
+        <a class="btn btn-ghost" href="#how" data-i18n="cmp.cta2">How it works</a>
       </div>
     </div>
   </div>
@@ -95,30 +95,30 @@
   <div class="container">
     <div class="checker">
       <div class="checker-head">
-        <div class="eyebrow">Free check · 30 seconds</div>
-        <h2>Were you owed compensation?</h2>
+        <div class="eyebrow" data-i18n="cmp.chk_eyebrow">Free check · 30 seconds</div>
+        <h2 data-i18n="cmp.chk_title">Were you owed compensation?</h2>
       </div>
       <div class="check-grid">
-        <label class="check-field"><span>What happened?</span>
+        <label class="check-field"><span data-i18n="cmp.q_issue">What happened?</span>
           <select id="q-issue">
-            <option value="">Choose…</option>
-            <option value="delay3">Delayed 3 hours or more</option>
-            <option value="cancel">Flight cancelled</option>
-            <option value="denied">Denied boarding (overbooked)</option>
-            <option value="delay1">Delayed under 3 hours</option>
-            <option value="ontime">It was on time</option>
+            <option value="" data-i18n="cmp.choose">Choose…</option>
+            <option value="delay3" data-i18n="cmp.o_delay3">Delayed 3 hours or more</option>
+            <option value="cancel" data-i18n="cmp.o_cancel">Flight cancelled</option>
+            <option value="denied" data-i18n="cmp.o_denied">Denied boarding (overbooked)</option>
+            <option value="delay1" data-i18n="cmp.o_delay1">Delayed under 3 hours</option>
+            <option value="ontime" data-i18n="cmp.o_ontime">It was on time</option>
           </select>
         </label>
-        <label class="check-field"><span>Was it a Europe flight?</span>
+        <label class="check-field"><span data-i18n="cmp.q_eu">Was it a Europe flight?</span>
           <select id="q-eu">
-            <option value="">Choose…</option>
-            <option value="dep">Departed an EU / UK airport</option>
-            <option value="arr">Arrived in EU / UK on a European airline</option>
-            <option value="no">No / not sure</option>
+            <option value="" data-i18n="cmp.choose">Choose…</option>
+            <option value="dep" data-i18n="cmp.o_dep">Departed an EU / UK airport</option>
+            <option value="arr" data-i18n="cmp.o_arr">Arrived in EU / UK on a European airline</option>
+            <option value="no" data-i18n="cmp.o_no">No / not sure</option>
           </select>
         </label>
       </div>
-      <button class="btn btn-primary" id="check-btn" type="button">See if I'm owed →</button>
+      <button class="btn btn-primary" id="check-btn" type="button" data-i18n="cmp.chk_btn">See if I'm owed →</button>
       <div class="check-result" id="check-result" hidden></div>
     </div>
   </div>
@@ -127,14 +127,14 @@
 <section class="section">
   <div class="container">
     <div class="section-head center">
-      <div class="eyebrow">What you could be owed</div>
-      <h2>Amounts under EU law.</h2>
-      <p>Based on the flight distance, when the airline is at fault.</p>
+      <div class="eyebrow" data-i18n="cmp.amts_eyebrow">What you could be owed</div>
+      <h2 data-i18n="cmp.amts_title">Amounts under EU law.</h2>
+      <p data-i18n="cmp.amts_sub">Based on the flight distance, when the airline is at fault.</p>
     </div>
     <div class="amounts">
-      <div class="amount"><div class="big">€250</div><p>Short flights up to 1,500 km</p></div>
-      <div class="amount"><div class="big">€400</div><p>Medium flights, 1,500–3,500 km</p></div>
-      <div class="amount"><div class="big">€600</div><p>Long flights over 3,500 km</p></div>
+      <div class="amount"><div class="big">€250</div><p data-i18n="cmp.amt1">Short flights up to 1,500 km</p></div>
+      <div class="amount"><div class="big">€400</div><p data-i18n="cmp.amt2">Medium flights, 1,500–3,500 km</p></div>
+      <div class="amount"><div class="big">€600</div><p data-i18n="cmp.amt3">Long flights over 3,500 km</p></div>
     </div>
   </div>
 </section>
@@ -142,24 +142,24 @@
 <section class="section section--paper" id="how">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow">How it works</div>
-      <h2>Three steps to your claim.</h2>
+      <div class="eyebrow" data-i18n="how.eyebrow">How it works</div>
+      <h2 data-i18n="cmp.how_title">Three steps to your claim.</h2>
     </div>
     <div class="stubs">
       <div class="stub">
-        <div class="stub-top"><div class="stub-index">01 / CHECK</div><h3>Enter your flight</h3><p>Tell us the flight number and date, and what went wrong — a delay, cancellation, or denied boarding.</p></div>
+        <div class="stub-top"><div class="stub-index">01 / CHECK</div><h3 data-i18n="cmp.cs1t">Enter your flight</h3><p data-i18n="cmp.cs1p">Tell us the flight number and date, and what went wrong — a delay, cancellation, or denied boarding.</p></div>
         <div class="stub-perf"></div>
-        <div class="stub-bottom"><span>Step</span><span>Free</span></div>
+        <div class="stub-bottom"><span data-i18n="htl.step">Step</span><span data-i18n="cmp.free">Free</span></div>
       </div>
       <div class="stub">
-        <div class="stub-top"><div class="stub-index">02 / CONFIRM</div><h3>We check eligibility</h3><p>Our partner instantly checks your flight against EU rules to see if the airline owes you money.</p></div>
+        <div class="stub-top"><div class="stub-index">02 / CONFIRM</div><h3 data-i18n="cmp.cs2t">We check eligibility</h3><p data-i18n="cmp.cs2p">Our partner instantly checks your flight against EU rules to see if the airline owes you money.</p></div>
         <div class="stub-perf"></div>
-        <div class="stub-bottom"><span>Step</span><span>Instant</span></div>
+        <div class="stub-bottom"><span data-i18n="htl.step">Step</span><span data-i18n="cmp.instant">Instant</span></div>
       </div>
       <div class="stub">
-        <div class="stub-top"><div class="stub-index">03 / CLAIM</div><h3>They claim, you get paid</h3><p>The legal team handles the airline and the paperwork. If the claim wins, the money goes to you, minus a success fee.</p></div>
+        <div class="stub-top"><div class="stub-index">03 / CLAIM</div><h3 data-i18n="cmp.cs3t">They claim, you get paid</h3><p data-i18n="cmp.cs3p">The legal team handles the airline and the paperwork. If the claim wins, the money goes to you, minus a success fee.</p></div>
         <div class="stub-perf"></div>
-        <div class="stub-bottom"><span>Step</span><span>No win, no fee</span></div>
+        <div class="stub-bottom"><span data-i18n="htl.step">Step</span><span data-i18n="cmp.nowin">No win, no fee</span></div>
       </div>
     </div>
   </div>
@@ -168,25 +168,25 @@
 <section class="section" id="faq">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow">Good to know</div>
-      <h2>Compensation FAQs</h2>
+      <div class="eyebrow" data-i18n="faq.eyebrow">Good to know</div>
+      <h2 data-i18n="cmp.faqtitle">Compensation FAQs</h2>
     </div>
     <div class="faq">
       <details class="faq-item" open>
-        <summary>Which flights are covered?<span class="plus">+</span></summary>
-        <p>Flights departing from an EU airport on any airline, and flights arriving in the EU on an EU airline, are generally covered — that includes many routes to and from Morocco. Your eligibility check confirms it instantly.</p>
+        <summary><span data-i18n="cmp.q1">Which flights are covered?</span><span class="plus">+</span></summary>
+        <p data-i18n="cmp.a1">Flights departing from an EU airport on any airline, and flights arriving in the EU on an EU airline, are generally covered — that includes many routes to and from Morocco. Your eligibility check confirms it instantly.</p>
       </details>
       <details class="faq-item">
-        <summary>What counts as a valid claim?<span class="plus">+</span></summary>
-        <p>Arriving 3 or more hours late, a cancellation with short notice, or being denied boarding due to overbooking — as long as the airline was at fault (not extraordinary events like severe weather).</p>
+        <summary><span data-i18n="cmp.q2">What counts as a valid claim?</span><span class="plus">+</span></summary>
+        <p data-i18n="cmp.a2">Arriving 3 or more hours late, a cancellation with short notice, or being denied boarding due to overbooking — as long as the airline was at fault (not extraordinary events like severe weather).</p>
       </details>
       <details class="faq-item">
-        <summary>How much does it cost me?<span class="plus">+</span></summary>
-        <p>Nothing to check, and claims are no-win, no-fee. If the claim succeeds, a success commission is taken from the compensation and the rest is yours. If it doesn't win, you pay nothing.</p>
+        <summary><span data-i18n="cmp.q3">How much does it cost me?</span><span class="plus">+</span></summary>
+        <p data-i18n="cmp.a3">Nothing to check, and claims are no-win, no-fee. If the claim succeeds, a success commission is taken from the compensation and the rest is yours. If it doesn't win, you pay nothing.</p>
       </details>
       <details class="faq-item">
-        <summary>How far back can I claim?<span class="plus">+</span></summary>
-        <p>Usually flights from the last 1–3 years, and longer in some countries. If you've had a bad flight recently, it's worth checking.</p>
+        <summary><span data-i18n="cmp.q4">How far back can I claim?</span><span class="plus">+</span></summary>
+        <p data-i18n="cmp.a4">Usually flights from the last 1–3 years, and longer in some countries. If you've had a bad flight recently, it's worth checking.</p>
       </details>
     </div>
   </div>
@@ -237,22 +237,22 @@
     var eu = document.getElementById('q-eu').value;
     var box = document.getElementById('check-result');
     box.hidden = false;
-    if(!issue || !eu){ box.className = 'check-result maybe'; box.innerHTML = '<p>Pick both options above to see your result.</p>'; return; }
+    if(!issue || !eu){ box.className = 'check-result maybe'; box.innerHTML = '<p>' + odT('cmp.r_pick','Pick both options above to see your result.') + '</p>'; return; }
     var eligibleIssue = (issue === 'delay3' || issue === 'cancel' || issue === 'denied');
     var euOk = (eu === 'dep' || eu === 'arr');
     if(eligibleIssue && euOk){
       box.className = 'check-result ok';
-      box.innerHTML = '<h3>Good news — you may be owed up to <span class="amt">€600</span>.</h3>'
-        + '<p>Your flight looks eligible under EU rule EC 261. The exact amount depends on the distance, and claims are no-win, no-fee. Confirm and file your claim free with our partner AirHelp.</p>'
-        + '<a class="btn btn-primary" href="' + AIRHELP + '" target="_blank" rel="noopener">Start my free claim →</a>';
+      box.innerHTML = '<h3>' + odT('cmp.r_ok_h','Good news — you may be owed up to <span class="amt">€600</span>.') + '</h3>'
+        + '<p>' + odT('cmp.r_ok_p','Your flight looks eligible under EU rule EC 261. The exact amount depends on the distance, and claims are no-win, no-fee. Confirm and file your claim free with our partner AirHelp.') + '</p>'
+        + '<a class="btn btn-primary" href="' + AIRHELP + '" target="_blank" rel="noopener">' + odT('cmp.r_ok_btn','Start my free claim →') + '</a>';
     } else {
       box.className = 'check-result maybe';
       var why = !eligibleIssue
-        ? 'Compensation usually needs a delay of 3+ hours, a cancellation, or denied boarding.'
-        : 'EU rules mainly cover flights that depart from, or arrive in, Europe.';
-      box.innerHTML = '<h3>It might not qualify — but it\'s worth a free check.</h3>'
-        + '<p>' + why + ' The rules have exceptions, so a quick free check with AirHelp will tell you for sure.</p>'
-        + '<a class="btn btn-primary" href="' + AIRHELP + '" target="_blank" rel="noopener">Check my flight free →</a>';
+        ? odT('cmp.r_why_issue','Compensation usually needs a delay of 3+ hours, a cancellation, or denied boarding.')
+        : odT('cmp.r_why_eu','EU rules mainly cover flights that depart from, or arrive in, Europe.');
+      box.innerHTML = '<h3>' + odT('cmp.r_no_h',"It might not qualify — but it's worth a free check.") + '</h3>'
+        + '<p>' + why + ' ' + odT('cmp.r_no_p','The rules have exceptions, so a quick free check with AirHelp will tell you for sure.') + '</p>'
+        + '<a class="btn btn-primary" href="' + AIRHELP + '" target="_blank" rel="noopener">' + odT('cmp.r_no_btn','Check my flight free →') + '</a>';
     }
     box.scrollIntoView({behavior:'smooth', block:'nearest'});
   });
