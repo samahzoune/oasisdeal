@@ -537,7 +537,7 @@
       boardRows.appendChild(row);
 
       (function(el, o, d){
-        fetch('/api/fares?origin=' + o + '&destination=' + d + '&currency=mad')
+        fetch('https://oasisdeal-fares.pages.dev/api/fares?origin=' + o + '&destination=' + d + '&currency=mad')
           .then(function(r){ return r.json(); })
           .then(function(j){ el.textContent = (j && j.price) ? (Math.round(j.price).toLocaleString() + ' DH') : '—'; })
           .catch(function(){ el.textContent = '—'; });
