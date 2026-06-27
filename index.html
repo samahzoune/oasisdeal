@@ -179,7 +179,16 @@
   .footer-col a:hover{color:#fff;}
   .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:22px;font-size:0.82rem;color:rgba(255,255,255,0.45);}
   @media (max-width:600px){ .stubs,.routes{gap:18px;} }
+  .lang-switch{display:inline-flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;}
+  .lang-btn{border:none;background:transparent;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;color:var(--ink-soft);padding:5px 9px;border-radius:999px;cursor:pointer;}
+  .lang-btn:hover{color:var(--ink);}
+  .lang-btn.active{background:var(--majorelle);color:#fff;}
+  .footer-trust{padding-top:18px;font-size:0.82rem;color:rgba(255,255,255,0.5);}
+  [dir=rtl] .arrow{display:inline-block;transform:scaleX(-1);}
+  [dir=rtl] .hero-sub{margin-left:auto;}
+  [dir=rtl] .nav-row,[dir=rtl] .foot,[dir=rtl] .footer-top{direction:rtl;}
 </style>
+<script src="assets/i18n.js"></script>
 </head>
 <body>
 
@@ -195,11 +204,16 @@
       <span class="logo-word">Oasis<span class="pipe">|</span>Deal</span>
     </a>
     <div class="nav-links">
-      <a class="nav-link active" href="index.html">Flights</a>
-      <a class="nav-link" href="hotels.html">Hotels</a>
-      <a class="nav-link" href="compensation.html">Compensation</a>
-      <a class="nav-link" href="#faq">FAQ</a>
-      <a class="btn btn-primary" href="https://fly.oasisdeal.com">Search flights →</a>
+      <a class="nav-link active" href="index.html" data-i18n="nav.flights">Flights</a>
+      <a class="nav-link" href="hotels.html" data-i18n="nav.hotels">Hotels</a>
+      <a class="nav-link" href="compensation.html" data-i18n="nav.compensation">Compensation</a>
+      <a class="nav-link" href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a class="btn btn-primary" href="https://fly.oasisdeal.com" data-i18n="nav.search">Search flights →</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" data-lang="ar" onclick="setLang('ar')">AR</button>
+      </div>
     </div>
   </div>
 </nav>
@@ -209,36 +223,36 @@
     <div>
       <div class="hero-eyebrow eyebrow">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 16l8-2 4-9 2 1-3 8 7-1 2 2-8 3-3 7-2-1 2-7-9 1z" fill="currentColor"/></svg>
-        300+ airlines &amp; agencies, one search
+        <span data-i18n="hero.eyebrow">300+ airlines &amp; agencies, one search</span>
       </div>
-      <h1>Find your<br>savings <em>oasis.</em></h1>
-      <p class="hero-sub">Search every airline and travel agency at once, watch the fares line up cheapest-first, and book straight through to the airline — no detour, no markup.</p>
+      <h1 data-i18n="hero.h1">Find your<br>savings <em>oasis.</em></h1>
+      <p class="hero-sub" data-i18n="hero.sub">Search every airline and travel agency at once, watch the fares line up cheapest-first, and book straight through to the airline — no detour, no markup.</p>
 
       <form class="ticket" id="searchTicket" autocomplete="off">
         <div class="ticket-form">
           <div class="field">
-            <label for="from">From</label>
-            <input id="from" name="from" placeholder="City or airport" required>
+            <label for="from" data-i18n="form.from">From</label>
+            <input id="from" name="from" placeholder="City or airport" data-i18n-ph="form.ph" required>
             <input type="hidden" id="fromIata">
           </div>
           <div class="field">
-            <label for="to">To</label>
-            <input id="to" name="to" placeholder="City or airport" required>
+            <label for="to" data-i18n="form.to">To</label>
+            <input id="to" name="to" placeholder="City or airport" data-i18n-ph="form.ph" required>
             <input type="hidden" id="toIata">
           </div>
           <div class="field">
-            <label for="depart">Depart</label>
+            <label for="depart" data-i18n="form.depart">Depart</label>
             <input id="depart" name="depart" type="date" required>
           </div>
           <div class="field">
-            <label for="travellers">Travellers</label>
+            <label for="travellers" data-i18n="form.travellers">Travellers</label>
             <input id="travellers" name="travellers" type="number" min="1" value="1" required>
           </div>
         </div>
         <div class="ticket-stub"></div>
         <div class="ticket-bottom">
-          <p class="ticket-note">No fees — <strong>pay the same price</strong> as booking direct.</p>
-          <button class="btn btn-primary" type="submit">Search flights →</button>
+          <p class="ticket-note" data-i18n="form.note">No fees — pay the same price as booking direct.</p>
+          <button class="btn btn-primary" type="submit" data-i18n="nav.search">Search flights →</button>
         </div>
       </form>
     </div>
@@ -246,14 +260,14 @@
     <div>
       <div class="board" id="board">
         <div class="board-head">
-          <span class="board-title"><span class="board-dot"></span>Departures · popular routes</span>
+          <span class="board-title"><span class="board-dot"></span><span data-i18n="board.title">Departures · popular routes</span></span>
           <span class="board-title" id="boardOrigin">CMN</span>
         </div>
         <div class="board-cols">
-          <span>From</span><span>To</span><span>Fare</span>
+          <span data-i18n="board.from">From</span><span data-i18n="board.to">To</span><span data-i18n="board.fare">Fare</span>
         </div>
         <div id="boardRows"></div>
-        <p class="board-foot">Lowest fare &amp; date found — tap a route to search.</p>
+        <p class="board-foot" data-i18n="board.foot">Lowest fare &amp; date found — tap a route to search.</p>
       </div>
     </div>
   </div>
@@ -261,38 +275,38 @@
 
 <div class="trust">
   <div class="container trust-row">
-    <span>No booking fees</span>
+    <span data-i18n="trust.nofees">No booking fees</span>
     <span class="sep">·</span>
-    <span>300+ airlines &amp; agencies</span>
+    <span data-i18n="trust.airlines">300+ airlines &amp; agencies</span>
     <span class="sep">·</span>
-    <span>You book direct, same price</span>
+    <span data-i18n="trust.bookdirect">You book direct, same price</span>
     <span class="sep">·</span>
-    <span>Hotels too</span>
+    <span data-i18n="trust.hotels">Hotels too</span>
   </div>
 </div>
 
 <section class="section" id="how">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow">How it works</div>
-      <h2>Three stops to takeoff.</h2>
-      <p>No accounts, no waiting on hold, no surprise fees at checkout.</p>
+      <div class="eyebrow" data-i18n="how.eyebrow">How it works</div>
+      <h2 data-i18n="how.title">Three stops to takeoff.</h2>
+      <p data-i18n="how.sub">No accounts, no waiting on hold, no surprise fees at checkout.</p>
     </div>
     <div class="stubs">
       <div class="stub">
-        <div class="stub-top"><div class="stub-index">01 / SEARCH</div><h3>Tell us where you're headed</h3><p>Route, dates, and how many are travelling — that's all we need to start looking.</p></div>
+        <div class="stub-top"><div class="stub-index">01 / SEARCH</div><h3 data-i18n="how.s1t">Tell us where you're headed</h3><p data-i18n="how.s1p">Route, dates, and how many are travelling — that's all we need to start looking.</p></div>
         <div class="stub-perf"></div>
-        <div class="stub-bottom"><span>Gate</span><span>Open</span></div>
+        <div class="stub-bottom"><span data-i18n="how.gate">Gate</span><span data-i18n="how.open">Open</span></div>
       </div>
       <div class="stub">
-        <div class="stub-top"><div class="stub-index">02 / COMPARE</div><h3>We line up every fare</h3><p>Hundreds of airlines and agencies, sorted cheapest-first, in seconds.</p></div>
+        <div class="stub-top"><div class="stub-index">02 / COMPARE</div><h3 data-i18n="how.s2t">We line up every fare</h3><p data-i18n="how.s2p">Hundreds of airlines and agencies, sorted cheapest-first, in seconds.</p></div>
         <div class="stub-perf"></div>
-        <div class="stub-bottom"><span>Gate</span><span>Boarding</span></div>
+        <div class="stub-bottom"><span data-i18n="how.gate">Gate</span><span data-i18n="how.boarding">Boarding</span></div>
       </div>
       <div class="stub">
-        <div class="stub-top"><div class="stub-index">03 / BOARD</div><h3>Book direct, same price</h3><p>Pick your fare and finish on the airline's own site — we just pointed the way.</p></div>
+        <div class="stub-top"><div class="stub-index">03 / BOARD</div><h3 data-i18n="how.s3t">Book direct, same price</h3><p data-i18n="how.s3p">Pick your fare and finish on the airline's own site — we just pointed the way.</p></div>
         <div class="stub-perf"></div>
-        <div class="stub-bottom"><span>Gate</span><span>Final call</span></div>
+        <div class="stub-bottom"><span data-i18n="how.gate">Gate</span><span data-i18n="how.final">Final call</span></div>
       </div>
     </div>
   </div>
@@ -301,9 +315,9 @@
 <section class="section" id="routes" style="background:var(--paper);">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow">Popular this month</div>
-      <h2 id="routesTitle">Popular trips</h2>
-      <p>Tap a route to see the latest fares — cheapest first.</p>
+      <div class="eyebrow" data-i18n="routes.eyebrow">Popular this month</div>
+      <h2 id="routesTitle" data-i18n="routes.title">Popular trips</h2>
+      <p data-i18n="routes.sub">Tap a route to see the latest fares — cheapest first.</p>
     </div>
     <div class="routes" id="routesGrid"></div>
   </div>
@@ -312,25 +326,25 @@
 <section class="section" id="faq">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow">Good to know</div>
-      <h2>Flight FAQs</h2>
+      <div class="eyebrow" data-i18n="faq.eyebrow">Good to know</div>
+      <h2 data-i18n="faq.title">Flight FAQs</h2>
     </div>
     <div class="faq">
       <details class="faq-item" open>
-        <summary>Does OasisDeal charge a booking fee?<span class="plus">+</span></summary>
-        <p>No. We compare fares and route you to the airline or agency — you pay the exact price they offer. We may earn a small commission behind the scenes, never added to your fare.</p>
+        <summary><span data-i18n="faq.q1">Does OasisDeal charge a booking fee?</span><span class="plus">+</span></summary>
+        <p data-i18n="faq.a1">No. We compare fares and route you to the airline or agency — you pay the exact price they offer. We may earn a small commission behind the scenes, never added to your fare.</p>
       </details>
       <details class="faq-item">
-        <summary>How do you find the cheapest fares?<span class="plus">+</span></summary>
-        <p>Every search scans hundreds of airlines and online travel agencies at once and sorts the results from cheapest to priciest, so the best fare for your route floats straight to the top.</p>
+        <summary><span data-i18n="faq.q2">How do you find the cheapest fares?</span><span class="plus">+</span></summary>
+        <p data-i18n="faq.a2">Every search scans hundreds of airlines and online travel agencies at once and sorts the results from cheapest to priciest, so the best fare for your route floats straight to the top.</p>
       </details>
       <details class="faq-item">
-        <summary>When's the best time to book?<span class="plus">+</span></summary>
-        <p>For most routes, a few weeks to two months ahead gives the lowest fares. Staying flexible on dates helps too — try a few nearby days to spot the cheapest one to fly.</p>
+        <summary><span data-i18n="faq.q3">When's the best time to book?</span><span class="plus">+</span></summary>
+        <p data-i18n="faq.a3">For most routes, a few weeks to two months ahead gives the lowest fares. Staying flexible on dates helps too — try a few nearby days to spot the cheapest one to fly.</p>
       </details>
       <details class="faq-item">
-        <summary>Can I book hotels and claim compensation too?<span class="plus">+</span></summary>
-        <p>Yes — the Hotels tab compares stays the same way we compare flights, and the Compensation tab helps you claim up to €600 for a delayed or cancelled flight.</p>
+        <summary><span data-i18n="faq.q4">Can I book hotels and claim compensation too?</span><span class="plus">+</span></summary>
+        <p data-i18n="faq.a4">Yes — the Hotels tab compares stays the same way we compare flights, and the Compensation tab helps you claim up to €600 for a delayed or cancelled flight.</p>
       </details>
     </div>
   </div>
@@ -349,24 +363,25 @@
           </svg>
           <span class="logo-word">Oasis<span class="pipe">|</span>Deal</span>
         </a>
-        <p class="footer-tag">Find your savings oasis — flights, hotels, and compensation, compared honestly.</p>
+        <p class="footer-tag" data-i18n="footer.tag">Find your savings oasis — flights, hotels, and compensation, compared honestly.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>Explore</h4>
-          <a href="index.html">Flights</a>
-          <a href="hotels.html">Hotels</a>
-          <a href="compensation.html">Compensation</a>
-          <a href="#faq">FAQ</a>
+          <h4 data-i18n="footer.explore">Explore</h4>
+          <a href="index.html" data-i18n="nav.flights">Flights</a>
+          <a href="hotels.html" data-i18n="nav.hotels">Hotels</a>
+          <a href="compensation.html" data-i18n="nav.compensation">Compensation</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
         </div>
         <div class="footer-col">
-          <h4>Company</h4>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a href="privacy.html">Privacy</a>
+          <h4 data-i18n="footer.company">Company</h4>
+          <a href="about.html" data-i18n="footer.about">About</a>
+          <a href="contact.html" data-i18n="footer.contact">Contact</a>
+          <a href="privacy.html" data-i18n="footer.privacy">Privacy</a>
         </div>
       </div>
     </div>
+    <div class="footer-trust" data-i18n="footer.trust">🔒 Secure &amp; free to use · No booking fees · Powered by Travelpayouts, Stay22 &amp; AirHelp</div>
     <div class="footer-bottom">
       <span>© <span id="year"></span> OasisDeal — find your savings oasis.</span>
       <span>Casablanca, Morocco</span>
@@ -541,7 +556,7 @@
         '<div class="route-main"><div class="route-cities">' + origin.city + ' → ' + d.city + '</div>'
         + '<div class="route-codes">' + origin.code + '<span class="arrow">→</span>' + d.code + '</div></div>'
         + '<div class="route-perf"></div>'
-        + '<div class="route-foot"><span class="route-from">One way</span><span class="route-go">Search →</span></div>';
+        + '<div class="route-foot"><span class="route-from">' + (window.odT ? odT('routes.oneway','One way') : 'One way') + '</span><span class="route-go">' + (window.odT ? odT('routes.search','Search →') : 'Search →') + '</span></div>';
       grid.appendChild(a);
     });
   }
@@ -551,7 +566,7 @@
   function applyOrigin(origin){
     if(rendered) return; rendered = true;
     var oEl = document.getElementById('boardOrigin'); if(oEl) oEl.textContent = origin.code;
-    var tEl = document.getElementById('routesTitle'); if(tEl) tEl.textContent = 'Popular trips from ' + origin.city;
+    var tEl = document.getElementById('routesTitle'); if(tEl) tEl.textContent = (window.odT ? odT('routes.fromPrefix','Popular trips from ') : 'Popular trips from ') + origin.city;
     var dests = DESTS.filter(function(d){ return d.code !== origin.code; });
     renderBoard(origin, dests.slice(0, 7));
     renderCards(origin, dests.slice(0, 6));

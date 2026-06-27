@@ -133,3 +133,17 @@ p{margin:0;} button{font-family:inherit;cursor:pointer;}
 .footer-col a{display:block;font-size:0.92rem;margin-bottom:10px;text-decoration:none;color:rgba(255,255,255,0.82);}
 .footer-col a:hover{color:#fff;}
 .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:22px;font-size:0.82rem;color:rgba(255,255,255,0.45);}
+.footer-trust{padding-top:18px;font-size:0.82rem;color:rgba(255,255,255,0.5);}
+
+/* Language switcher */
+.lang-switch{display:inline-flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;}
+.lang-btn{border:none;background:transparent;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;letter-spacing:.04em;color:var(--ink-soft);padding:5px 9px;border-radius:999px;cursor:pointer;}
+.lang-btn:hover{color:var(--ink);}
+.lang-btn.active{background:var(--majorelle);color:#fff;}
+.nav-right{display:flex;align-items:center;gap:14px;}
+
+/* RTL (Arabic) */
+[dir=rtl] .arrow,[dir=rtl] .route-codes .arrow{display:inline-block;transform:scaleX(-1);}
+[dir=rtl] .hero-sub{margin-left:auto;margin-right:auto;}
+[dir=rtl] .stub-bottom,[dir=rtl] .route-foot,[dir=rtl] .foot,[dir=rtl] .footer-top,[dir=rtl] .nav-row{direction:rtl;}
+[dir=rtl] .btn,[dir=rtl] .nav-link,[dir=rtl] .lang-btn{letter-spacing:normal;}
