@@ -18,6 +18,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css" />
+<style>
+  .checker{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px;max-width:760px;margin:0 auto;box-shadow:0 16px 40px rgba(24,26,46,.06);}
+  .checker-head{text-align:center;margin-bottom:22px;}
+  .checker-head .eyebrow{color:var(--clay-deep);margin-bottom:8px;}
+  .checker-head h2{font-size:1.6rem;font-weight:600;}
+  .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+  @media(max-width:600px){.check-grid{grid-template-columns:1fr;}}
+  .check-field{display:flex;flex-direction:column;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+  .check-field select{font-family:'Inter',sans-serif;font-size:1rem;text-transform:none;letter-spacing:normal;color:var(--ink);padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;}
+  #check-btn{width:100%;justify-content:center;}
+  .check-result{margin-top:22px;padding:22px;border-radius:14px;line-height:1.55;}
+  .check-result.ok{background:rgba(75,63,203,.07);border:1px solid rgba(75,63,203,.28);}
+  .check-result.maybe{background:var(--sand);border:1px solid var(--line);}
+  .check-result h3{font-size:1.2rem;margin-bottom:8px;}
+  .check-result p{color:var(--ink-soft);margin-bottom:14px;}
+  .check-result .amt{color:var(--majorelle-deep);font-weight:700;}
+</style>
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
   (function () {
       var script = document.createElement("script");
@@ -61,12 +78,45 @@
       <h1>Delayed or cancelled flight? <em>Claim up to €600.</em></h1>
       <p class="hero-sub">If your flight was delayed 3+ hours, cancelled, or overbooked, the airline may owe you compensation. Checking is free and takes a couple of minutes — you only pay if your claim wins.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="https://www.airhelp.com/" target="_blank" rel="noopener" id="claim-cta">Check your flight free →</a>
+        <a class="btn btn-primary" href="#check">Check if I'm owed →</a>
         <a class="btn btn-ghost" href="#how">How it works</a>
       </div>
     </div>
   </div>
 </header>
+
+<section class="section" id="check">
+  <div class="container">
+    <div class="checker">
+      <div class="checker-head">
+        <div class="eyebrow">Free check · 30 seconds</div>
+        <h2>Were you owed compensation?</h2>
+      </div>
+      <div class="check-grid">
+        <label class="check-field"><span>What happened?</span>
+          <select id="q-issue">
+            <option value="">Choose…</option>
+            <option value="delay3">Delayed 3 hours or more</option>
+            <option value="cancel">Flight cancelled</option>
+            <option value="denied">Denied boarding (overbooked)</option>
+            <option value="delay1">Delayed under 3 hours</option>
+            <option value="ontime">It was on time</option>
+          </select>
+        </label>
+        <label class="check-field"><span>Was it a Europe flight?</span>
+          <select id="q-eu">
+            <option value="">Choose…</option>
+            <option value="dep">Departed an EU / UK airport</option>
+            <option value="arr">Arrived in EU / UK on a European airline</option>
+            <option value="no">No / not sure</option>
+          </select>
+        </label>
+      </div>
+      <button class="btn btn-primary" id="check-btn" type="button">See if I'm owed →</button>
+      <div class="check-result" id="check-result" hidden></div>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container">
@@ -172,6 +222,33 @@
     </div>
   </div>
 </footer>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var AIRHELP = 'https://airhelp.tpx.lu/EkCWcqrW';
+  document.getElementById('check-btn').addEventListener('click', function(){
+    var issue = document.getElementById('q-issue').value;
+    var eu = document.getElementById('q-eu').value;
+    var box = document.getElementById('check-result');
+    box.hidden = false;
+    if(!issue || !eu){ box.className = 'check-result maybe'; box.innerHTML = '<p>Pick both options above to see your result.</p>'; return; }
+    var eligibleIssue = (issue === 'delay3' || issue === 'cancel' || issue === 'denied');
+    var euOk = (eu === 'dep' || eu === 'arr');
+    if(eligibleIssue && euOk){
+      box.className = 'check-result ok';
+      box.innerHTML = '<h3>Good news — you may be owed up to <span class="amt">€600</span>.</h3>'
+        + '<p>Your flight looks eligible under EU rule EC 261. The exact amount depends on the distance, and claims are no-win, no-fee. Confirm and file your claim free with our partner AirHelp.</p>'
+        + '<a class="btn btn-primary" href="' + AIRHELP + '" target="_blank" rel="noopener">Start my free claim →</a>';
+    } else {
+      box.className = 'check-result maybe';
+      var why = !eligibleIssue
+        ? 'Compensation usually needs a delay of 3+ hours, a cancellation, or denied boarding.'
+        : 'EU rules mainly cover flights that depart from, or arrive in, Europe.';
+      box.innerHTML = '<h3>It might not qualify — but it\'s worth a free check.</h3>'
+        + '<p>' + why + ' The rules have exceptions, so a quick free check with AirHelp will tell you for sure.</p>'
+        + '<a class="btn btn-primary" href="' + AIRHELP + '" target="_blank" rel="noopener">Check my flight free →</a>';
+    }
+    box.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+</script>
 </body>
 </html>
