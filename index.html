@@ -247,7 +247,7 @@
       <div class="board" id="board">
         <div class="board-head">
           <span class="board-title"><span class="board-dot"></span>Departures · popular routes</span>
-          <span class="board-title">CMN T1</span>
+          <span class="board-title" id="boardOrigin">CMN</span>
         </div>
         <div class="board-cols">
           <span>From</span><span>To</span><span>Fare</span>
@@ -302,41 +302,10 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Popular this month</div>
-      <h2>Where Morocco is flying.</h2>
-      <p>Tap a route to see the latest fares — sorted cheapest first.</p>
+      <h2 id="routesTitle">Popular trips</h2>
+      <p>Tap a route to see the latest fares — cheapest first.</p>
     </div>
-    <div class="routes">
-      <div class="route-card" data-from="CMN" data-to="PAR">
-        <div class="route-main"><div class="route-cities">Casablanca → Paris</div><div class="route-codes">CMN<span class="arrow">→</span>CDG</div></div>
-        <div class="route-perf"></div>
-        <div class="route-foot"><span class="route-from">Round trip</span><span class="route-go">Search →</span></div>
-      </div>
-      <div class="route-card" data-from="CMN" data-to="DXB">
-        <div class="route-main"><div class="route-cities">Casablanca → Dubai</div><div class="route-codes">CMN<span class="arrow">→</span>DXB</div></div>
-        <div class="route-perf"></div>
-        <div class="route-foot"><span class="route-from">Round trip</span><span class="route-go">Search →</span></div>
-      </div>
-      <div class="route-card" data-from="RAK" data-to="LON">
-        <div class="route-main"><div class="route-cities">Marrakech → London</div><div class="route-codes">RAK<span class="arrow">→</span>LHR</div></div>
-        <div class="route-perf"></div>
-        <div class="route-foot"><span class="route-from">Round trip</span><span class="route-go">Search →</span></div>
-      </div>
-      <div class="route-card" data-from="CMN" data-to="IST">
-        <div class="route-main"><div class="route-cities">Casablanca → Istanbul</div><div class="route-codes">CMN<span class="arrow">→</span>IST</div></div>
-        <div class="route-perf"></div>
-        <div class="route-foot"><span class="route-from">Round trip</span><span class="route-go">Search →</span></div>
-      </div>
-      <div class="route-card" data-from="RBA" data-to="MAD">
-        <div class="route-main"><div class="route-cities">Rabat → Madrid</div><div class="route-codes">RBA<span class="arrow">→</span>MAD</div></div>
-        <div class="route-perf"></div>
-        <div class="route-foot"><span class="route-from">Round trip</span><span class="route-go">Search →</span></div>
-      </div>
-      <div class="route-card" data-from="CMN" data-to="YUL">
-        <div class="route-main"><div class="route-cities">Casablanca → Montréal</div><div class="route-codes">CMN<span class="arrow">→</span>YUL</div></div>
-        <div class="route-perf"></div>
-        <div class="route-foot"><span class="route-from">Round trip</span><span class="route-go">Search →</span></div>
-      </div>
-    </div>
+    <div class="routes" id="routesGrid"></div>
   </div>
 </section>
 
@@ -480,22 +449,12 @@
       });
   });
 
-  // ---- popular route cards: clickable → live results ----
-  document.querySelectorAll('.route-card').forEach(function(card){
-    card.addEventListener('click', function(){
-      window.location.href = flyLink(card.dataset.from, card.dataset.to, '', 1);
-    });
-  });
-
-  // ---- split-flap departures board (real routes, clickable) ----
-  var ROUTES = [
-    {from:'CMN', to:'CDG', co:'CMN', cd:'PAR'},
-    {from:'CMN', to:'DXB', co:'CMN', cd:'DXB'},
-    {from:'RAK', to:'LHR', co:'RAK', cd:'LON'},
-    {from:'CMN', to:'IST', co:'CMN', cd:'IST'},
-    {from:'RBA', to:'MAD', co:'RBA', cd:'MAD'},
-    {from:'CMN', to:'BCN', co:'CMN', cd:'BCN'},
-    {from:'CMN', to:'YUL', co:'CMN', cd:'YUL'}
+  // ---- destinations shown (popular global hubs) ----
+  var DESTS = [
+    {code:'PAR', city:'Paris'}, {code:'LON', city:'London'}, {code:'DXB', city:'Dubai'},
+    {code:'IST', city:'Istanbul'}, {code:'BCN', city:'Barcelona'}, {code:'MAD', city:'Madrid'},
+    {code:'CMN', city:'Casablanca'}, {code:'ROM', city:'Rome'}, {code:'AMS', city:'Amsterdam'},
+    {code:'NYC', city:'New York'}
   ];
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var boardRows = document.getElementById('boardRows');
@@ -528,20 +487,30 @@
       }, 80);
     }, delay);
   }
-  function renderBoard(){
+
+  // ---- board: origin -> destinations, with live lowest fare + date ----
+  function renderBoard(origin, dests){
     boardRows.innerHTML = '';
-    ROUTES.forEach(function(route, rowIndex){
+    dests.forEach(function(d, rowIndex){
+      var route = { co: origin.code, cd: d.code };
       var row = document.createElement('div');
       row.className = 'board-row';
       row.setAttribute('role', 'link');
       row.addEventListener('click', function(){ window.location.href = flyLink(route.co, route.cd, route._date || '', 1); });
 
-      var fromCell = document.createElement('div'); fromCell.className = 'flap-cell'; fromCell.appendChild(buildFlapGroup(route.from));
-      var toCell = document.createElement('div'); toCell.className = 'flap-cell'; toCell.appendChild(buildFlapGroup(route.to));
+      var fromCell = document.createElement('div'); fromCell.className = 'flap-cell'; fromCell.appendChild(buildFlapGroup(origin.code));
+      var toCell = document.createElement('div'); toCell.className = 'flap-cell'; toCell.appendChild(buildFlapGroup(d.code));
       var fare = document.createElement('span'); fare.className = 'board-fare'; fare.textContent = '···';
 
       row.appendChild(fromCell); row.appendChild(toCell); row.appendChild(fare);
       boardRows.appendChild(row);
+
+      var rowBase = rowIndex * 200;
+      [fromCell, toCell].forEach(function(cell){
+        Array.prototype.slice.call(cell.querySelectorAll('.flap[data-target]')).forEach(function(flap, idx){
+          flipFlap(flap, flap.dataset.target, rowBase + idx * 55);
+        });
+      });
 
       (function(el, r){
         fetch('https://oasisdeal-fares.pages.dev/api/fares?origin=' + r.co + '&destination=' + r.cd + '&currency=mad&v=2')
@@ -557,26 +526,42 @@
           })
           .catch(function(){ el.textContent = '—'; });
       })(fare, route);
-
-      var rowBase = rowIndex * 240;
-      [fromCell, toCell].forEach(function(cell){
-        Array.prototype.slice.call(cell.querySelectorAll('.flap[data-target]')).forEach(function(flap, idx){
-          flipFlap(flap, flap.dataset.target, rowBase + idx * 55);
-        });
-      });
     });
   }
-  var board = document.getElementById('board');
-  var played = false;
-  function playBoard(){ if(!played){ played = true; renderBoard(); } }
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){ if(entry.isIntersecting){ playBoard(); } });
-    }, {threshold:0.2});
-    io.observe(board);
+
+  // ---- popular route cards: origin -> destinations, clickable ----
+  function renderCards(origin, dests){
+    var grid = document.getElementById('routesGrid');
+    grid.innerHTML = '';
+    dests.forEach(function(d){
+      var a = document.createElement('a');
+      a.className = 'route-card';
+      a.href = flyLink(origin.code, d.code, '', 1);
+      a.innerHTML =
+        '<div class="route-main"><div class="route-cities">' + origin.city + ' → ' + d.city + '</div>'
+        + '<div class="route-codes">' + origin.code + '<span class="arrow">→</span>' + d.code + '</div></div>'
+        + '<div class="route-perf"></div>'
+        + '<div class="route-foot"><span class="route-from">One way</span><span class="route-go">Search →</span></div>';
+      grid.appendChild(a);
+    });
   }
-  // safety fallback: render even if the observer never fires
-  setTimeout(playBoard, 1400);
+
+  // ---- detect visitor's nearest city, then render board + cards from there ----
+  var rendered = false;
+  function applyOrigin(origin){
+    if(rendered) return; rendered = true;
+    var oEl = document.getElementById('boardOrigin'); if(oEl) oEl.textContent = origin.code;
+    var tEl = document.getElementById('routesTitle'); if(tEl) tEl.textContent = 'Popular trips from ' + origin.city;
+    var dests = DESTS.filter(function(d){ return d.code !== origin.code; });
+    renderBoard(origin, dests.slice(0, 7));
+    renderCards(origin, dests.slice(0, 6));
+  }
+  fetch('https://oasisdeal-fares.pages.dev/api/whereami')
+    .then(function(r){ return r.json(); })
+    .then(function(g){ applyOrigin({ code: (g && g.origin) || 'CMN', city: (g && g.city) || 'Casablanca' }); })
+    .catch(function(){ applyOrigin({ code: 'CMN', city: 'Casablanca' }); });
+  // safety fallback if geo is slow / unavailable
+  setTimeout(function(){ applyOrigin({ code: 'CMN', city: 'Casablanca' }); }, 3500);
 </script>
 
 </body>
