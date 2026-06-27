@@ -66,7 +66,7 @@
   .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:80px;background:linear-gradient(180deg, rgba(75,63,203,0) 0%, var(--sand) 100%);pointer-events:none;}
   .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:stretch;position:relative;z-index:1;padding-bottom:64px;}
   .hero-eyebrow{color:var(--saffron);display:flex;align-items:center;gap:8px;margin-bottom:18px;}
-  .hero h1{font-size:clamp(2.4rem,4.6vw,3.7rem);line-height:1.04;font-weight:600;letter-spacing:-0.01em;}
+  .hero h1{font-size:clamp(2.4rem,4.6vw,3.7rem);line-height:1.04;font-weight:600;letter-spacing:-0.01em;color:#fff;}
   .hero h1 em{font-style:italic;font-weight:400;color:var(--saffron);}
   .hero-sub{margin-top:20px;max-width:460px;font-size:1.05rem;line-height:1.6;color:rgba(255,255,255,0.82);}
 
@@ -488,7 +488,9 @@
     {from:'CMN', to:'DXB', co:'CMN', cd:'DXB'},
     {from:'RAK', to:'LHR', co:'RAK', cd:'LON'},
     {from:'CMN', to:'IST', co:'CMN', cd:'IST'},
-    {from:'RBA', to:'MAD', co:'RBA', cd:'MAD'}
+    {from:'RBA', to:'MAD', co:'RBA', cd:'MAD'},
+    {from:'CMN', to:'BCN', co:'CMN', cd:'BCN'},
+    {from:'CMN', to:'YUL', co:'CMN', cd:'YUL'}
   ];
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var boardRows = document.getElementById('boardRows');
