@@ -62,6 +62,7 @@
   .plan .price{margin-top:14px;font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;color:var(--majorelle);line-height:1;}
   .plan .price small{font-size:.95rem;color:var(--ink-soft);font-family:'Inter',sans-serif;font-weight:400;}
   .live-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#2e9e5b;padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
+  .est-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(24,26,46,.07);padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .plan .get{margin-top:auto;padding-top:16px;}
   .plan .get .btn{width:100%;justify-content:center;}
   .res-note{margin-top:18px;font-size:.85rem;color:var(--ink-soft);text-align:center;}
@@ -470,14 +471,14 @@
     var base = iso ? yesimCache[iso] : null;
     var live = false;
     var rows = dst.o.map(function(r){
-      var name=r[0], price;
+      var name=r[0], price, rowLive=false;
       if(name==='Yesim'){
         var lp = yesimUsd(base, sel.size.k, sel.days.d, sel.days.m);
-        if(lp){ price=lp; live=true; } else { price=planPrice(r[1]); }
+        if(lp){ price=lp; rowLive=true; live=true; } else { price=planPrice(r[1]); }
       } else {
         price = planPrice(r[1]);
       }
-      return {name:name, price:price, aff:r[2]};
+      return {name:name, price:price, aff:r[2], live:rowLive};
     }).sort(function(a,b){ return a.price-b.price; });
     var cheapest = rows[0].price;
     var label = planLabel();
@@ -488,7 +489,9 @@
     rows.forEach(function(row){
       var isCheap = row.price === cheapest;
       var perk = odT(PROV[row.name].perk, PROV[row.name].perkEn);
-      var liveTag = (live && row.name==='Yesim') ? '<span class="live-tag">'+odT('esim.live','Live')+'</span>' : '';
+      var priceHtml = row.live
+        ? '$'+row.price+'<span class="live-tag">'+odT('esim.live','Live')+'</span>'
+        : '≈ $'+row.price+'<span class="est-tag">'+odT('esim.est','est.')+'</span>';
       var code = PROMO[row.name];
       var promoHtml = code
         ? '<div class="card-promo"><span class="cp-label">'+odT('esim.promo_word','Promo')+'</span><span class="cp-code">'+code+'</span><button type="button" class="cp-copy" data-code="'+code+'">'+odT('esim.copy','Copy')+'</button></div>'
@@ -497,7 +500,7 @@
         + (isCheap?'<span class="tag">'+odT('esim.cheapest','Cheapest')+'</span>':'')
         + '<div class="prov-name">'+row.name+'</div>'
         + '<div class="prov-perk">'+perk+'</div>'
-        + '<div class="price">$'+row.price+liveTag+'</div>'
+        + '<div class="price">'+priceHtml+'</div>'
         + '<div class="days">'+label+'</div>'
         + promoHtml
         + '<div class="get"><a class="btn '+(isCheap?'btn-primary':'btn-ghost')+'" href="'+row.aff+'" target="_blank" rel="noopener sponsored">'+odT('esim.get','See plans →')+'</a></div>'
