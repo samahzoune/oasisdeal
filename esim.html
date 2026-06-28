@@ -453,10 +453,9 @@
       var promoHtml = code
         ? '<div class="card-promo"><span class="cp-label">'+odT('esim.promo_word','Promo')+'</span><span class="cp-code">'+code+'</span><button type="button" class="cp-copy" data-code="'+code+'">'+odT('esim.copy','Copy')+'</button></div>'
         : '<div class="card-promo cp-empty">🎟 '+odT('esim.soon','Promo code coming soon')+'</div>';
-      var unlLine;
-      if(row.unl!=null) unlLine = '<div class="price-unl"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.unl)+' <span class="plan-tag">'+odT('esim.unlimited','Unlimited')+'</span></div>';
-      else if(priced) unlLine = '<div class="price-unl muted">'+odT('esim.unl_site','Unlimited — on their site')+'</div>';
-      else unlLine = '';
+      var unlLine = (row.unl!=null)
+        ? '<div class="price-unl"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.unl)+' <span class="plan-tag">'+odT('esim.unlimited','Unlimited')+'</span></div>'
+        : '';
       var priceBlock = priced
         ? '<div class="price"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.from)+' <span class="plan-tag">'+odT('esim.standard','standard')+'</span>'+(row.live?'<span class="live-tag">'+odT('esim.live','Live')+'</span>':'')+'</div>'+unlLine
         : '<div class="price-na">'+odT('esim.seeprice','See live price')+'</div>';
