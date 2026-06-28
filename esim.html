@@ -63,6 +63,7 @@
   .plan .price small{font-size:.95rem;color:var(--ink-soft);font-family:'Inter',sans-serif;font-weight:400;}
   .plan .price-na{margin-top:14px;font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--ink-soft);}
   .plan .from-pre{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);vertical-align:middle;margin-right:2px;}
+  .plan .price-sub{font-size:.8rem;color:var(--ink-soft);margin-top:2px;}
   .live-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#2e9e5b;padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .est-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(24,26,46,.07);padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .plan .get{margin-top:auto;padding-top:16px;}
@@ -385,15 +386,15 @@
     if(key==='gl') return /Global/i.test(cn);
     return t===key || cc===key;
   }
-  // Live Yesim "from" price (USD): cheapest plan that's >=1 GB or unlimited (skips sub-1GB
-  // teasers so it's comparable to Airalo/Saily). Cached; null if no data / fetch fails.
+  // Live Yesim "from" price (USD): cheapest STANDARD (prepaid) plan >=1 GB — excludes
+  // unlimited and sub-1GB teasers, so it matches Airalo/Saily's standard "from".
   function getYesimFrom(key){
     if(yesimCache[key] !== undefined) return Promise.resolve(yesimCache[key]);
     return fetch(yesimUrl(key))
       .then(function(r){ return r.json(); })
       .then(function(data){
         var eur = data.filter(function(p){ return yesimLocal(key, p); })
-          .filter(function(p){ var mb=+p.capacity; return mb===-1 || mb>=1024; })
+          .filter(function(p){ var mb=+p.capacity; return mb>=1024; })
           .map(function(p){ return +p.price; })
           .filter(function(x){ return x>0; });
         var v = eur.length ? Math.round(Math.min.apply(null, eur) * EURUSD * 100)/100 : null;
@@ -447,7 +448,7 @@
         ? '<div class="card-promo"><span class="cp-label">'+odT('esim.promo_word','Promo')+'</span><span class="cp-code">'+code+'</span><button type="button" class="cp-copy" data-code="'+code+'">'+odT('esim.copy','Copy')+'</button></div>'
         : '<div class="card-promo cp-empty">🎟 '+odT('esim.soon','Promo code coming soon')+'</div>';
       var priceBlock = priced
-        ? '<div class="price"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.from)+(row.live?'<span class="live-tag">'+odT('esim.live','Live')+'</span>':'')+'</div>'
+        ? '<div class="price"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.from)+(row.live?'<span class="live-tag">'+odT('esim.live','Live')+'</span>':'')+'</div><div class="price-sub">'+odT('esim.standard','standard plan')+'</div>'
         : '<div class="price-na">'+odT('esim.seeprice','See live price')+'</div>';
       var btnLabel = priced ? odT('esim.get','See plans →') : odT('esim.checkprice','Check price →');
       html += '<div class="plan'+(isCheap?' best':'')+'">'
@@ -459,7 +460,7 @@
         + '<div class="get"><a class="btn '+(isCheap?'btn-primary':'btn-ghost')+'" href="'+row.aff+'" target="_blank" rel="noopener sponsored">'+btnLabel+'</a></div>'
         + '</div>';
     });
-    html += '</div><p class="res-note">'+ odT('esim.note','“From” = each provider’s cheapest plan for this country. Yesim is live; Airalo & Saily show their published starting prices. Pick your exact plan on the provider’s site.') +'</p>';
+    html += '</div><p class="res-note">'+ odT('esim.note','“From” = each provider’s cheapest standard (prepaid) plan. On the provider, pick the Prepaid/Standard plans — the page often opens on Unlimited, which costs more.') +'</p>';
     results.innerHTML = html;
     attachCopy(results);
     resSection.hidden = false;
