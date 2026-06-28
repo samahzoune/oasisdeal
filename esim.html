@@ -65,19 +65,13 @@
   .res-note{margin-top:18px;font-size:.85rem;color:var(--ink-soft);text-align:center;}
   .res-empty{text-align:center;padding:30px;color:var(--ink-soft);}
 
-  /* promo codes */
-  .promo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  @media(max-width:780px){.promo-grid{grid-template-columns:1fr;}}
-  .promo{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 22px;display:flex;flex-direction:column;gap:12px;text-align:center;box-shadow:0 8px 24px rgba(24,26,46,.05);}
-  .promo h3{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;}
-  .promo .off{color:var(--clay-deep);font-weight:600;font-size:.98rem;}
-  .promo .code{display:flex;align-items:center;justify-content:center;gap:10px;border:1.5px dashed var(--majorelle);border-radius:10px;padding:10px 12px;background:var(--sand);}
-  .promo .code span{font-family:'IBM Plex Mono',monospace;font-size:1.15rem;font-weight:600;letter-spacing:.06em;color:var(--majorelle-deep);}
-  .promo .code button{border:none;background:var(--majorelle);color:#fff;border-radius:7px;padding:6px 12px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;}
-  .promo .code button:hover{filter:brightness(1.07);}
-  .promo .soon{border:1.5px dashed var(--line);border-radius:10px;padding:11px 12px;color:var(--ink-soft);font-style:italic;font-size:.95rem;}
-  .promo .go{margin-top:auto;padding-top:6px;}
-  .promo .go .btn{width:100%;justify-content:center;}
+  /* in-card promo code */
+  .card-promo{display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;border:1.5px dashed var(--majorelle);background:var(--sand);border-radius:9px;padding:7px 10px;font-size:.88rem;}
+  .card-promo.cp-empty{border-color:var(--line);color:var(--ink-soft);font-style:italic;}
+  .cp-label{font-size:.78rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;font-family:'IBM Plex Mono',monospace;}
+  .cp-code{font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.05em;color:var(--majorelle-deep);}
+  .cp-copy{border:none;background:var(--majorelle);color:#fff;border-radius:6px;padding:4px 11px;font-size:.76rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
+  .cp-copy:hover{filter:brightness(1.07);}
 </style>
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
   (function () {
@@ -148,17 +142,6 @@
     </div>
   </div>
 </header>
-
-<section class="section section--paper" id="promos">
-  <div class="container">
-    <div class="section-head center">
-      <div class="eyebrow" data-i18n="esim.promo_eyebrow">Save even more</div>
-      <h2 data-i18n="esim.promo_title">Exclusive eSIM promo codes</h2>
-      <p data-i18n="esim.promo_sub">Copy a code, then paste it at checkout for an extra discount.</p>
-    </div>
-    <div class="promo-grid" id="promo-grid"></div>
-  </div>
-</section>
 
 <section class="section" id="esim-results-section" hidden>
   <div class="container">
@@ -360,38 +343,21 @@
   }
   buildPlanChips();
 
-  // --- PROMO CODES ---
-  // When you get a code from a provider, paste it into `code` below and it appears
-  // with a copy button. Leave code:'' to show a "Coming soon" pill instead.
-  var PROMOS = [
-    {prov:'Airalo', off:'esim.promo_airalo', offEn:'Discount on your first eSIM', code:'', aff:'https://airalo.tpx.lu/rAtBPjLI'},
-    {prov:'Yesim',  off:'esim.promo_yesim',  offEn:'Discount on your first plan',  code:'', aff:'https://yesim.tpx.lu/ylsEszk4'},
-    {prov:'Saily',  off:'esim.promo_saily',  offEn:'Extra savings at checkout',     code:'', aff:'https://saily.tpx.lu/7UUKzW0D'}
-  ];
-  var promoGrid = document.getElementById('promo-grid');
-  function renderPromos(){
-    promoGrid.innerHTML = '';
-    PROMOS.forEach(function(p){
-      var card = document.createElement('div');
-      card.className = 'promo';
-      var codeHtml = p.code
-        ? '<div class="code"><span>'+p.code+'</span><button type="button" data-code="'+p.code+'">'+odT('esim.copy','Copy')+'</button></div>'
-        : '<div class="soon">'+odT('esim.soon','Code coming soon')+'</div>';
-      card.innerHTML = '<h3>'+p.prov+'</h3>'
-        + '<div class="off">'+ odT(p.off, p.offEn) +'</div>'
-        + codeHtml;
-      promoGrid.appendChild(card);
-    });
-    promoGrid.querySelectorAll('button[data-code]').forEach(function(btn){
+  // --- PROMO CODES (shown inside each provider's comparison card) ---
+  // Paste a real code per provider; leave '' to show "Promo code coming soon".
+  var PROMO = { Yesim:'', Airalo:'', Saily:'' };
+  // Wire copy buttons inside a freshly-rendered scope.
+  function attachCopy(scope){
+    scope.querySelectorAll('.cp-copy').forEach(function(btn){
       btn.addEventListener('click', function(){
         var code = btn.getAttribute('data-code');
-        var done = function(){ var t=btn.textContent; btn.textContent = odT('esim.copied','Copied!'); setTimeout(function(){ btn.textContent = t; }, 1600); };
+        var orig = btn.textContent;
+        var done = function(){ btn.textContent = odT('esim.copied','Copied!'); setTimeout(function(){ btn.textContent = orig; }, 1600); };
         if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(code).then(done, done); }
         else { done(); }
       });
     });
   }
-  renderPromos();
 
   function render(list){
     acList.innerHTML = '';
@@ -454,17 +420,23 @@
     rows.forEach(function(row){
       var isCheap = row.price === cheapest;
       var perk = odT(PROV[row.name].perk, PROV[row.name].perkEn);
+      var code = PROMO[row.name];
+      var promoHtml = code
+        ? '<div class="card-promo"><span class="cp-label" data-i18n-skip>'+odT('esim.promo_word','Promo')+'</span><span class="cp-code">'+code+'</span><button type="button" class="cp-copy" data-code="'+code+'">'+odT('esim.copy','Copy')+'</button></div>'
+        : '<div class="card-promo cp-empty">🎟 '+odT('esim.soon','Promo code coming soon')+'</div>';
       html += '<div class="plan'+(isCheap?' best':'')+'">'
         + (isCheap?'<span class="tag">'+odT('esim.cheapest','Cheapest')+'</span>':'')
         + '<div class="prov-name">'+row.name+'</div>'
         + '<div class="prov-perk">'+perk+'</div>'
         + '<div class="price">$'+row.price+'</div>'
         + '<div class="days">'+label+'</div>'
+        + promoHtml
         + '<div class="get"><a class="btn '+(isCheap?'btn-primary':'btn-ghost')+'" href="'+row.aff+'" target="_blank" rel="noopener sponsored">'+odT('esim.get','See plans →')+'</a></div>'
         + '</div>';
     });
-    html += '</div><p class="res-note">'+ odT('esim.note','Indicative prices in USD — tap a provider to see its live plans and final price.') +'</p>';
+    html += '</div><p class="res-note">'+ odT('esim.note','Indicative prices in USD — tap a provider to see its live plans and final price. Copy the promo code and paste it at checkout.') +'</p>';
     results.innerHTML = html;
+    attachCopy(results);
     resSection.hidden = false;
     resSection.scrollIntoView({behavior:'smooth', block:'start'});
   }
