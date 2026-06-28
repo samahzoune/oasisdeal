@@ -28,9 +28,10 @@
   #esim-country:focus{outline:none;border-color:var(--majorelle);box-shadow:0 0 0 3px rgba(75,63,203,.15);}
   .ac-list{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 16px 40px rgba(24,26,46,.14);z-index:30;max-height:300px;overflow:auto;display:none;}
   .ac-list.open{display:block;}
-  .ac-item{display:flex;align-items:center;gap:12px;padding:11px 16px;cursor:pointer;font-size:1rem;}
+  .ac-item{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;font-size:1rem;line-height:1.2;color:var(--ink);white-space:nowrap;border-bottom:1px solid var(--line);}
+  .ac-item:last-child{border-bottom:none;}
   .ac-item:hover,.ac-item.active{background:var(--sand);}
-  .ac-item .flag{font-size:1.3rem;}
+  .ac-item .flag{font-size:1.3rem;line-height:1;}
   .esim-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px;}
   .esim-chip{background:#fff;border:1px solid var(--line);border-radius:100px;padding:8px 16px;font-size:.92rem;cursor:pointer;display:flex;align-items:center;gap:7px;transition:.15s;}
   .esim-chip:hover{border-color:var(--majorelle);background:var(--sand);}
@@ -237,23 +238,23 @@
   // d = data, day = validity (days), p = price USD. best flag marks the value pick.
   // aff = tracked Yesim partner link for that destination.
   var DEST = [
-    {c:'Turkey',     f:'🇹🇷', slug:'turkey',  aff:'https://yesim.tpx.lu/QreXgwpE', plans:[{d:'1 GB',day:7,p:4},{d:'3 GB',day:30,p:9,best:1},{d:'10 GB',day:30,p:21}]},
-    {c:'France',     f:'🇫🇷', slug:'france',  aff:'https://yesim.tpx.lu/aQ2RCS58', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:21}]},
-    {c:'Spain',      f:'🇪🇸', slug:'spain',   aff:'https://yesim.tpx.lu/BZ4Vt9Gr', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:20}]},
-    {c:'Italy',      f:'🇮🇹', slug:'italy',   aff:'https://yesim.tpx.lu/yXIaA5HT', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:21}]},
-    {c:'United Kingdom', f:'🇬🇧', slug:'united-kingdom', aff:'https://yesim.tpx.lu/dPeAj1jC', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:14,best:1},{d:'10 GB',day:30,p:22}]},
-    {c:'United States',  f:'🇺🇸', slug:'usa', aff:'https://yesim.tpx.lu/BT0RptQz', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:16,best:1},{d:'10 GB',day:30,p:26}]},
-    {c:'United Arab Emirates', f:'🇦🇪', slug:'uae', aff:'https://yesim.tpx.lu/Io4XXHdE', plans:[{d:'1 GB',day:7,p:6},{d:'5 GB',day:30,p:21,best:1},{d:'10 GB',day:30,p:36}]},
-    {c:'Saudi Arabia', f:'🇸🇦', slug:'saudi-arabia', aff:'https://yesim.tpx.lu/GGeenbfL', plans:[{d:'1 GB',day:7,p:6},{d:'5 GB',day:30,p:20,best:1},{d:'10 GB',day:30,p:34}]},
-    {c:'Egypt',      f:'🇪🇬', slug:'egypt',   aff:'https://yesim.tpx.lu/BoWGg9NC', plans:[{d:'1 GB',day:7,p:6},{d:'3 GB',day:30,p:17,best:1},{d:'10 GB',day:30,p:40}]},
-    {c:'Morocco',    f:'🇲🇦', slug:'morocco', aff:'https://yesim.tpx.lu/Fvz4iePg', plans:[{d:'1 GB',day:7,p:6},{d:'3 GB',day:30,p:15,best:1},{d:'10 GB',day:30,p:38}]},
-    {c:'Germany',    f:'🇩🇪', slug:'germany', aff:'https://yesim.tpx.lu/uUuOE6Dp', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:21}]},
-    {c:'Netherlands',f:'🇳🇱', slug:'netherlands', aff:'https://yesim.tpx.lu/xtGvhUgO', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:21}]},
-    {c:'Thailand',   f:'🇹🇭', slug:'thailand', aff:'https://yesim.tpx.lu/ZiOOCjtG', plans:[{d:'1 GB',day:8,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:22}]},
-    {c:'Japan',      f:'🇯🇵', slug:'japan',   aff:'https://yesim.tpx.lu/Wi2a4kyl', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:14,best:1},{d:'10 GB',day:30,p:23}]},
-    {c:'Canada',     f:'🇨🇦', slug:'canada',  aff:'https://yesim.tpx.lu/x1NSCs1m', plans:[{d:'1 GB',day:7,p:6},{d:'5 GB',day:30,p:17,best:1},{d:'10 GB',day:30,p:28}]},
-    {c:'Europe (30+ countries)', f:'🇪🇺', slug:'europe', aff:'https://yesim.tpx.lu/VKkkhVl9', plans:[{d:'3 GB',day:30,p:11},{d:'10 GB',day:30,p:23,best:1},{d:'20 GB',day:30,p:38}]},
-    {c:'Global (130+ countries)', f:'🌍', slug:'global', aff:'https://yesim.tpx.lu/W7WEZ1AH', plans:[{d:'1 GB',day:7,p:9},{d:'5 GB',day:30,p:35,best:1},{d:'10 GB',day:30,p:60}]}
+    {c:'Turkey',     f:'🇹🇷', slug:'turkey',  aff:'https://yesim.tpx.lu/hDmBiUY3', plans:[{d:'1 GB',day:7,p:4},{d:'3 GB',day:30,p:9,best:1},{d:'10 GB',day:30,p:21}]},
+    {c:'France',     f:'🇫🇷', slug:'france',  aff:'https://yesim.tpx.lu/BEhCKOl6', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:21}]},
+    {c:'Spain',      f:'🇪🇸', slug:'spain',   aff:'https://yesim.tpx.lu/E6EcHLsM', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:20}]},
+    {c:'Italy',      f:'🇮🇹', slug:'italy',   aff:'https://yesim.tpx.lu/Vv7Wpv9h', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:21}]},
+    {c:'United Kingdom', f:'🇬🇧', slug:'united-kingdom', aff:'https://yesim.tpx.lu/TpX7mArW', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:14,best:1},{d:'10 GB',day:30,p:22}]},
+    {c:'United States',  f:'🇺🇸', slug:'usa', aff:'https://yesim.tpx.lu/ap862SxK', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:16,best:1},{d:'10 GB',day:30,p:26}]},
+    {c:'United Arab Emirates', f:'🇦🇪', slug:'uae', aff:'https://yesim.tpx.lu/27IHYZD9', plans:[{d:'1 GB',day:7,p:6},{d:'5 GB',day:30,p:21,best:1},{d:'10 GB',day:30,p:36}]},
+    {c:'Saudi Arabia', f:'🇸🇦', slug:'saudi-arabia', aff:'https://yesim.tpx.lu/yOHQxb9q', plans:[{d:'1 GB',day:7,p:6},{d:'5 GB',day:30,p:20,best:1},{d:'10 GB',day:30,p:34}]},
+    {c:'Egypt',      f:'🇪🇬', slug:'egypt',   aff:'https://yesim.tpx.lu/iJOoxIUN', plans:[{d:'1 GB',day:7,p:6},{d:'3 GB',day:30,p:17,best:1},{d:'10 GB',day:30,p:40}]},
+    {c:'Morocco',    f:'🇲🇦', slug:'morocco', aff:'https://yesim.tpx.lu/kGaV4Lsp', plans:[{d:'1 GB',day:7,p:6},{d:'3 GB',day:30,p:15,best:1},{d:'10 GB',day:30,p:38}]},
+    {c:'Germany',    f:'🇩🇪', slug:'germany', aff:'https://yesim.tpx.lu/Vry0jkk2', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:21}]},
+    {c:'Netherlands',f:'🇳🇱', slug:'netherlands', aff:'https://yesim.tpx.lu/lhOnPBYk', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:21}]},
+    {c:'Thailand',   f:'🇹🇭', slug:'thailand', aff:'https://yesim.tpx.lu/6srNEWFM', plans:[{d:'1 GB',day:8,p:5},{d:'5 GB',day:30,p:13,best:1},{d:'10 GB',day:30,p:22}]},
+    {c:'Japan',      f:'🇯🇵', slug:'japan',   aff:'https://yesim.tpx.lu/qNNzknJM', plans:[{d:'1 GB',day:7,p:5},{d:'5 GB',day:30,p:14,best:1},{d:'10 GB',day:30,p:23}]},
+    {c:'Canada',     f:'🇨🇦', slug:'canada',  aff:'https://yesim.tpx.lu/YIdNbQqJ', plans:[{d:'1 GB',day:7,p:6},{d:'5 GB',day:30,p:17,best:1},{d:'10 GB',day:30,p:28}]},
+    {c:'Europe (30+ countries)', f:'🇪🇺', slug:'europe', aff:'https://yesim.tpx.lu/l3kmy4fs', plans:[{d:'3 GB',day:30,p:11},{d:'10 GB',day:30,p:23,best:1},{d:'20 GB',day:30,p:38}]},
+    {c:'Global (130+ countries)', f:'🌍', slug:'global', aff:'https://yesim.tpx.lu/ylsEszk4', plans:[{d:'1 GB',day:7,p:9},{d:'5 GB',day:30,p:35,best:1},{d:'10 GB',day:30,p:60}]}
   ];
   var POPULAR = ['turkey','france','spain','uae','usa','europe','global'];
 
