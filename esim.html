@@ -64,8 +64,11 @@
   .plan .price-na{margin-top:14px;font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--ink-soft);}
   .plan .from-pre{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);vertical-align:middle;margin-right:2px;}
   .plan .price-sub{font-size:.8rem;color:var(--ink-soft);margin-top:2px;}
+  .plan .plan-tag{font-family:'Inter',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(24,26,46,.07);padding:3px 7px;border-radius:100px;vertical-align:middle;position:relative;top:-3px;}
   .plan .price-unl{margin-top:8px;font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;color:var(--clay-deep);}
   .plan .price-unl .from-pre{color:var(--clay-deep);opacity:.8;}
+  .plan .price-unl .plan-tag{color:#fff;background:var(--clay-deep);top:-2px;}
+  .plan .price-unl.muted{color:var(--ink-soft);font-size:.95rem;font-weight:500;}
   .live-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#2e9e5b;padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .est-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(24,26,46,.07);padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .plan .get{margin-top:auto;padding-top:16px;}
@@ -450,11 +453,12 @@
       var promoHtml = code
         ? '<div class="card-promo"><span class="cp-label">'+odT('esim.promo_word','Promo')+'</span><span class="cp-code">'+code+'</span><button type="button" class="cp-copy" data-code="'+code+'">'+odT('esim.copy','Copy')+'</button></div>'
         : '<div class="card-promo cp-empty">🎟 '+odT('esim.soon','Promo code coming soon')+'</div>';
-      var unlLine = (row.unl!=null)
-        ? '<div class="price-unl"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.unl)+' · '+odT('esim.unlimited','Unlimited')+'</div>'
-        : '';
+      var unlLine;
+      if(row.unl!=null) unlLine = '<div class="price-unl"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.unl)+' <span class="plan-tag">'+odT('esim.unlimited','Unlimited')+'</span></div>';
+      else if(priced) unlLine = '<div class="price-unl muted">'+odT('esim.unl_site','Unlimited — on their site')+'</div>';
+      else unlLine = '';
       var priceBlock = priced
-        ? '<div class="price"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.from)+(row.live?'<span class="live-tag">'+odT('esim.live','Live')+'</span>':'')+'</div><div class="price-sub">'+odT('esim.standard','standard plan')+'</div>'+unlLine
+        ? '<div class="price"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.from)+' <span class="plan-tag">'+odT('esim.standard','standard')+'</span>'+(row.live?'<span class="live-tag">'+odT('esim.live','Live')+'</span>':'')+'</div>'+unlLine
         : '<div class="price-na">'+odT('esim.seeprice','See live price')+'</div>';
       var btnLabel = priced ? odT('esim.get','See plans →') : odT('esim.checkprice','Check price →');
       html += '<div class="plan'+(isCheap?' best':'')+'">'
