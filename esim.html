@@ -69,6 +69,9 @@
   .plan .price-unl .from-pre{color:var(--clay-deep);opacity:.8;}
   .plan .price-unl .plan-tag{color:#fff;background:var(--clay-deep);top:-2px;}
   .plan .price-unl.muted{color:var(--ink-soft);font-size:.95rem;font-weight:500;}
+  .plan .price-unl.approx{color:var(--ink-soft);}
+  .plan .price-unl.approx .from-pre{color:var(--ink-soft);}
+  .plan .price-unl.approx .plan-tag{color:var(--ink-soft);background:rgba(24,26,46,.07);}
   .live-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#2e9e5b;padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .est-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(24,26,46,.07);padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .plan .get{margin-top:auto;padding-top:16px;}
@@ -429,9 +432,10 @@
   function paintResults(dst){
     var key = yesimKey(dst.c);
     var rows = dst.o.map(function(r){
-      var name=r[0], from=r[1], unl=null, live=false;
+      var name=r[0], from=r[1], unl=null, live=false, approx=false;
       if(name==='Yesim'){ var v = key ? yesimCache[key] : null; if(v && v.std!=null){ from=v.std; unl=v.unl; live=true; } else { from=null; } }
-      return {name:name, from:from, unl:unl, aff:r[2], live:live};
+      else if(from!=null){ unl = Math.round(from*3); approx=true; }   // est. unlimited until their feed is live
+      return {name:name, from:from, unl:unl, aff:r[2], live:live, approx:approx};
     });
     rows.sort(function(a,b){
       if(a.from==null && b.from==null) return 0;
@@ -454,7 +458,7 @@
         ? '<div class="card-promo"><span class="cp-label">'+odT('esim.promo_word','Promo')+'</span><span class="cp-code">'+code+'</span><button type="button" class="cp-copy" data-code="'+code+'">'+odT('esim.copy','Copy')+'</button></div>'
         : '<div class="card-promo cp-empty">🎟 '+odT('esim.soon','Promo code coming soon')+'</div>';
       var unlLine = (row.unl!=null)
-        ? '<div class="price-unl"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.unl)+' <span class="plan-tag">'+odT('esim.unlimited','Unlimited')+'</span></div>'
+        ? '<div class="price-unl'+(row.approx?' approx':'')+'"><span class="from-pre">'+odT('esim.from_only','from')+'</span> '+(row.approx?'~':'')+'$'+fmtUsd(row.unl)+' <span class="plan-tag">'+odT('esim.unlimited','Unlimited')+'</span></div>'
         : '';
       var priceBlock = priced
         ? '<div class="price"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.from)+' <span class="plan-tag">'+odT('esim.standard','standard')+'</span>'+(row.live?'<span class="live-tag">'+odT('esim.live','Live')+'</span>':'')+'</div>'+unlLine
@@ -469,7 +473,7 @@
         + '<div class="get"><a class="btn '+(isCheap?'btn-primary':'btn-ghost')+'" href="'+row.aff+'" target="_blank" rel="noopener sponsored">'+btnLabel+'</a></div>'
         + '</div>';
     });
-    html += '</div><p class="res-note">'+ odT('esim.note','“From” = each provider’s cheapest standard plan (used to rank). Yesim also shows its Unlimited starting price (the tab its page opens on). Pick your exact plan on the provider’s site.') +'</p>';
+    html += '</div><p class="res-note">'+ odT('esim.note','“From” = cheapest standard plan (used to rank). Unlimited prices: Yesim is live; Airalo & Saily are approximate (~) until their feeds are live. Pick your exact plan on the provider’s site.') +'</p>';
     results.innerHTML = html;
     attachCopy(results);
     resSection.hidden = false;
