@@ -32,6 +32,13 @@
   .ac-item:last-child{border-bottom:none;}
   .ac-item:hover,.ac-item.active{background:var(--sand);}
   .ac-item .flag{font-size:1.3rem;line-height:1;}
+  .plan-controls{margin-top:18px;display:flex;flex-direction:column;gap:12px;}
+  .pc-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .pc-label{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);min-width:74px;}
+  .pc-chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .pc-chip{background:#fff;border:1px solid var(--line);border-radius:100px;padding:7px 15px;font-size:.92rem;cursor:pointer;transition:.15s;color:var(--ink);}
+  .pc-chip:hover{border-color:var(--majorelle);}
+  .pc-chip.active{background:var(--majorelle);border-color:var(--majorelle);color:#fff;font-weight:600;}
   .esim-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px;}
   .esim-chip{background:#fff;border:1px solid var(--line);border-radius:100px;padding:8px 16px;font-size:.92rem;cursor:pointer;display:flex;align-items:center;gap:7px;transition:.15s;}
   .esim-chip:hover{border-color:var(--majorelle);background:var(--sand);}
@@ -111,6 +118,16 @@
         <div class="ac-wrap">
           <input id="esim-country" type="text" autocomplete="off" placeholder="Search a country…" data-i18n-ph="esim.ph" />
           <div class="ac-list" id="esim-ac"></div>
+        </div>
+        <div class="plan-controls">
+          <div class="pc-row">
+            <span class="pc-label" data-i18n="esim.data_label">Data</span>
+            <div class="pc-chips" id="size-chips"></div>
+          </div>
+          <div class="pc-row">
+            <span class="pc-label" data-i18n="esim.days_label">Validity</span>
+            <div class="pc-chips" id="days-chips"></div>
+          </div>
         </div>
         <div class="esim-chips" id="esim-chips"></div>
       </div>
@@ -243,7 +260,20 @@
     Airalo: {perk:'esim.perk_airalo', perkEn:'Most trusted · 200+ countries'},
     Saily:  {perk:'esim.perk_saily',  perkEn:'Built-in ad-blocker by NordVPN'}
   };
-  var PLAN = {data:'5 GB', days:30};
+  // Plan sizes/durations. Prices derive from each provider's curated 5 GB / 30-day
+  // base (`o`) via these multipliers, so any size/duration combo stays consistent.
+  var SIZES = [
+    {k:'1',  label:'1 GB',  m:0.45},
+    {k:'3',  label:'3 GB',  m:0.75},
+    {k:'5',  label:'5 GB',  m:1},
+    {k:'10', label:'10 GB', m:1.6},
+    {k:'20', label:'20 GB', m:2.6},
+    {k:'U',  label:odT('esim.unlimited','Unlimited'), m:3.2}
+  ];
+  var DAYSOPT = [{d:7,m:0.72},{d:15,m:0.86},{d:30,m:1}];
+  var sel = {size:SIZES[2], days:DAYSOPT[2], dst:null};
+  function planPrice(base){ return Math.max(3, Math.round(base * sel.size.m * sel.days.m)); }
+  function planLabel(){ return sel.size.label + ' · ' + sel.days.d + ' ' + odT('esim.days_word','days'); }
   var DEST = [
     {c:'Turkey', f:'🇹🇷', o:[['Yesim',12,'https://yesim.tpx.lu/hDmBiUY3'],['Airalo',14,'https://airalo.tpx.lu/h9w9HwWP'],['Saily',15,'https://saily.tpx.lu/NeT4XSTS']]},
     {c:'France', f:'🇫🇷', o:[['Yesim',13,'https://yesim.tpx.lu/BEhCKOl6'],['Airalo',11,'https://airalo.tpx.lu/teRm5Zw9'],['Saily',14,'https://saily.tpx.lu/KRm2s2Fr']]},
@@ -282,6 +312,28 @@
     chip.addEventListener('click', function(){ select(dst); });
     chips.appendChild(chip);
   });
+
+  // data-size + validity chips; changing them re-prices the comparison live
+  var sizeWrap = document.getElementById('size-chips');
+  var daysWrap = document.getElementById('days-chips');
+  function buildPlanChips(){
+    sizeWrap.innerHTML = ''; daysWrap.innerHTML = '';
+    SIZES.forEach(function(s){
+      var b = document.createElement('button');
+      b.className = 'pc-chip' + (s===sel.size?' active':'');
+      b.textContent = s.label;
+      b.addEventListener('click', function(){ sel.size = s; buildPlanChips(); if(sel.dst) renderResults(sel.dst); });
+      sizeWrap.appendChild(b);
+    });
+    DAYSOPT.forEach(function(o){
+      var b = document.createElement('button');
+      b.className = 'pc-chip' + (o===sel.days?' active':'');
+      b.textContent = o.d + ' ' + odT('esim.days_word','days');
+      b.addEventListener('click', function(){ sel.days = o; buildPlanChips(); if(sel.dst) renderResults(sel.dst); });
+      daysWrap.appendChild(b);
+    });
+  }
+  buildPlanChips();
 
   function render(list){
     acList.innerHTML = '';
@@ -332,27 +384,28 @@
   }
 
   function renderResults(dst){
-    var sorted = dst.o.slice().sort(function(a,b){ return a[1]-b[1]; });
-    var cheapest = sorted[0][1];
-    var planLabel = PLAN.data + ' · ' + odT('esim.days30','30 days');
+    sel.dst = dst;
+    var rows = dst.o.map(function(r){ return {name:r[0], price:planPrice(r[1]), aff:r[2]}; })
+                    .sort(function(a,b){ return a.price-b.price; });
+    var cheapest = rows[0].price;
+    var label = planLabel();
     var html = '<div class="res-head"><span class="flag">'+dst.f+'</span><div>'
       + '<h2>'+ odT('esim.res_title','Best eSIM for {c}').replace('{c}',dst.c) +'</h2>'
-      + '<p>'+ odT('esim.cmp_sub','{n} providers compared on a {plan} plan · cheapest first').replace('{n}',dst.o.length).replace('{plan}',planLabel) +'</p>'
+      + '<p>'+ odT('esim.cmp_sub','{n} providers compared on a {plan} plan · cheapest first').replace('{n}',dst.o.length).replace('{plan}',label) +'</p>'
       + '</div></div><div class="plan-grid">';
-    sorted.forEach(function(row){
-      var name = row[0], price = row[1], aff = row[2];
-      var isCheap = price === cheapest;
-      var perk = odT(PROV[name].perk, PROV[name].perkEn);
+    rows.forEach(function(row){
+      var isCheap = row.price === cheapest;
+      var perk = odT(PROV[row.name].perk, PROV[row.name].perkEn);
       html += '<div class="plan'+(isCheap?' best':'')+'">'
         + (isCheap?'<span class="tag">'+odT('esim.cheapest','Cheapest')+'</span>':'')
-        + '<div class="prov-name">'+name+'</div>'
+        + '<div class="prov-name">'+row.name+'</div>'
         + '<div class="prov-perk">'+perk+'</div>'
-        + '<div class="price">$'+price+'</div>'
-        + '<div class="days">'+planLabel+'</div>'
-        + '<div class="get"><a class="btn '+(isCheap?'btn-primary':'btn-ghost')+'" href="'+aff+'" target="_blank" rel="noopener sponsored">'+odT('esim.get','See plans →')+'</a></div>'
+        + '<div class="price">$'+row.price+'</div>'
+        + '<div class="days">'+label+'</div>'
+        + '<div class="get"><a class="btn '+(isCheap?'btn-primary':'btn-ghost')+'" href="'+row.aff+'" target="_blank" rel="noopener sponsored">'+odT('esim.get','See plans →')+'</a></div>'
         + '</div>';
     });
-    html += '</div><p class="res-note">'+ odT('esim.note','Indicative prices in USD for a 5 GB / 30-day plan — tap a provider to see its live plans and final price.') +'</p>';
+    html += '</div><p class="res-note">'+ odT('esim.note','Indicative prices in USD — tap a provider to see its live plans and final price.') +'</p>';
     results.innerHTML = html;
     resSection.hidden = false;
     resSection.scrollIntoView({behavior:'smooth', block:'start'});
