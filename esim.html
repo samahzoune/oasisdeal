@@ -61,6 +61,7 @@
   .plan .days{color:var(--ink-soft);font-size:.95rem;}
   .plan .price{margin-top:14px;font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;color:var(--majorelle);line-height:1;}
   .plan .price small{font-size:.95rem;color:var(--ink-soft);font-family:'Inter',sans-serif;font-weight:400;}
+  .plan .price-na{margin-top:14px;font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--ink-soft);}
   .live-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#2e9e5b;padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .est-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(24,26,46,.07);padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .plan .get{margin-top:auto;padding-top:16px;}
@@ -412,33 +413,37 @@
   }
 
   // --- LIVE YESIM PRICES (api.yesim.app, CORS-open) ---
-  // ISO-2 per country for the API (Europe/Global have no single code → stay estimated).
+  // Country → ISO-2 for the API; Europe/Global use a regional filter on a EU response.
   var ISO = {Turkey:'tr',France:'fr',Spain:'es',Italy:'it','United Kingdom':'gb','United States':'us','United Arab Emirates':'ae','Saudi Arabia':'sa',Egypt:'eg',Morocco:'ma',Germany:'de',Netherlands:'nl',Thailand:'th',Japan:'jp',Canada:'ca'};
-  var EURUSD = 1.08;                 // indicative EUR→USD; live FX not worth the call here
-  var yesimCache = {};               // iso -> {sized:{sizeKey:eur}, unltd:{days:eur}} (or {} on failure)
+  var EURUSD = 1.08;                 // indicative EUR→USD
+  var yesimCache = {};               // key -> {sized:{sizeKey:eur}, unltd:{days:eur}} (or {} on failure)
   var SIZE_MB = {'1':1024,'3':3072,'5':5120,'10':10240,'20':20480};
 
-  function getYesimBase(iso){
-    if(yesimCache[iso]) return Promise.resolve(yesimCache[iso]);
-    return fetch('https://api.yesim.app/api_v0.1/api/prices?coverages='+iso)
+  function yesimKey(c){ if(ISO[c]) return ISO[c]; if(c==='Europe') return 'eu'; if(c==='Global') return 'gl'; return null; }
+  function yesimUrl(key){ return 'https://api.yesim.app/api_v0.1/api/prices?coverages=' + (key==='eu'||key==='gl' ? 'fr' : key); }
+  function yesimLocal(key, p){
+    var t=(p.targets||'').toLowerCase(), cc=(p.country_code||'').toLowerCase(), cn=(p.country||'');
+    if(key==='eu') return cn==='Europe & UK';
+    if(key==='gl') return /Global/i.test(cn);
+    return t===key || cc===key;
+  }
+  function getYesimBase(key){
+    if(yesimCache[key]) return Promise.resolve(yesimCache[key]);
+    return fetch(yesimUrl(key))
       .then(function(r){ return r.json(); })
       .then(function(data){
-        var local = data.filter(function(p){
-          var t=(p.targets||'').toLowerCase(), cc=(p.country_code||'').toLowerCase();
-          return t===iso || cc===iso;
-        });
         var base = {sized:{}, unltd:{}};
-        local.forEach(function(p){
+        data.filter(function(p){ return yesimLocal(key, p); }).forEach(function(p){
           var days=+p.period, mb=+p.capacity, eur=+p.price;
           if(mb===-1){ if(base.unltd[days]===undefined || eur<base.unltd[days]) base.unltd[days]=eur; }
           else if(days===30){ for(var k in SIZE_MB){ if(SIZE_MB[k]===mb && (base.sized[k]===undefined || eur<base.sized[k])) base.sized[k]=eur; } }
         });
-        yesimCache[iso] = base;
+        yesimCache[key] = base;
         return base;
       })
-      .catch(function(){ yesimCache[iso] = {}; return yesimCache[iso]; });
+      .catch(function(){ yesimCache[key] = {}; return yesimCache[key]; });
   }
-  // Real Yesim price in USD for the selected size/duration, or null to fall back to estimate.
+  // Real Yesim price in USD for the selected size/duration, or null if no match.
   function yesimUsd(base, sizeKey, days, durM){
     if(!base || !base.sized) return null;
     var eur;
@@ -455,61 +460,54 @@
 
   function renderResults(dst){
     sel.dst = dst;
-    var iso = ISO[dst.c];
-    if(iso && !yesimCache[iso]){
+    var key = yesimKey(dst.c);
+    if(key && !yesimCache[key]){
       results.innerHTML = '<p class="res-note">'+ odT('esim.loading','Fetching live prices…') +'</p>';
       resSection.hidden = false;
       resSection.scrollIntoView({behavior:'smooth', block:'start'});
-      getYesimBase(iso).then(function(){ if(sel.dst===dst) paintResults(dst); });
+      getYesimBase(key).then(function(){ if(sel.dst===dst) paintResults(dst); });
     } else {
       paintResults(dst);
     }
   }
 
+  // Real numbers only: Yesim shows its live price; Airalo & Saily show a "Check price"
+  // link (no fabricated number), since their live prices aren't publicly accessible.
   function paintResults(dst){
-    var iso = ISO[dst.c];
-    var base = iso ? yesimCache[iso] : null;
-    var live = false;
-    var rows = dst.o.map(function(r){
-      var name=r[0], price, rowLive=false;
-      if(name==='Yesim'){
-        var lp = yesimUsd(base, sel.size.k, sel.days.d, sel.days.m);
-        if(lp){ price=lp; rowLive=true; live=true; } else { price=planPrice(r[1]); }
-      } else {
-        price = planPrice(r[1]);
-      }
-      return {name:name, price:price, aff:r[2], live:rowLive};
-    }).sort(function(a,b){ return a.price-b.price; });
-    var cheapest = rows[0].price;
+    var key = yesimKey(dst.c);
+    var base = key ? yesimCache[key] : null;
     var label = planLabel();
+    var rows = dst.o.map(function(r){
+      var name=r[0];
+      var price = (name==='Yesim') ? yesimUsd(base, sel.size.k, sel.days.d, sel.days.m) : null;
+      return {name:name, price:price, aff:r[2]};
+    });
     var html = '<div class="res-head"><span class="flag">'+dst.f+'</span><div>'
       + '<h2>'+ odT('esim.res_title','Best eSIM for {c}').replace('{c}',dst.c) +'</h2>'
-      + '<p>'+ odT('esim.cmp_sub','{n} providers compared on a {plan} plan · cheapest first').replace('{n}',dst.o.length).replace('{plan}',label) +'</p>'
+      + '<p>'+ odT('esim.cmp_sub','{n} top eSIM providers · {plan}').replace('{n}',dst.o.length).replace('{plan}',label) +'</p>'
       + '</div></div><div class="plan-grid">';
     rows.forEach(function(row){
-      var isCheap = row.price === cheapest;
+      var priced = row.price != null;
       var perk = odT(PROV[row.name].perk, PROV[row.name].perkEn);
-      var priceHtml = row.live
-        ? '$'+row.price+'<span class="live-tag">'+odT('esim.live','Live')+'</span>'
-        : '≈ $'+row.price+'<span class="est-tag">'+odT('esim.est','est.')+'</span>';
       var code = PROMO[row.name];
       var promoHtml = code
         ? '<div class="card-promo"><span class="cp-label">'+odT('esim.promo_word','Promo')+'</span><span class="cp-code">'+code+'</span><button type="button" class="cp-copy" data-code="'+code+'">'+odT('esim.copy','Copy')+'</button></div>'
         : '<div class="card-promo cp-empty">🎟 '+odT('esim.soon','Promo code coming soon')+'</div>';
-      html += '<div class="plan'+(isCheap?' best':'')+'">'
-        + (isCheap?'<span class="tag">'+odT('esim.cheapest','Cheapest')+'</span>':'')
+      var priceBlock = priced
+        ? '<div class="price">$'+row.price+'<span class="live-tag">'+odT('esim.live','Live')+'</span></div>'
+        : '<div class="price-na">'+odT('esim.seeprice','See live price')+'</div>';
+      var btnLabel = priced ? odT('esim.get','See plans →') : odT('esim.checkprice','Check price →');
+      html += '<div class="plan'+(priced?' best':'')+'">'
+        + (priced?'<span class="tag">'+odT('esim.liveprice','Live price')+'</span>':'')
         + '<div class="prov-name">'+row.name+'</div>'
         + '<div class="prov-perk">'+perk+'</div>'
-        + '<div class="price">'+priceHtml+'</div>'
+        + priceBlock
         + '<div class="days">'+label+'</div>'
         + promoHtml
-        + '<div class="get"><a class="btn '+(isCheap?'btn-primary':'btn-ghost')+'" href="'+row.aff+'" target="_blank" rel="noopener sponsored">'+odT('esim.get','See plans →')+'</a></div>'
+        + '<div class="get"><a class="btn '+(priced?'btn-primary':'btn-ghost')+'" href="'+row.aff+'" target="_blank" rel="noopener sponsored">'+btnLabel+'</a></div>'
         + '</div>';
     });
-    var note = (live
-      ? odT('esim.note_live','Yesim price is live; Airalo & Saily are estimates. Each provider page opens on its default — choose the {plan} plan there.')
-      : odT('esim.note','Indicative prices in USD. Each provider page opens on its default — choose the {plan} plan there.')
-    ).replace('{plan}', label);
+    var note = odT('esim.note','Yesim price is live. Airalo & Saily prices are shown on their own site — each page opens on its default, so choose the {plan} plan there.').replace('{plan}', label);
     html += '</div><p class="res-note">'+ note +'</p>';
     results.innerHTML = html;
     attachCopy(results);
