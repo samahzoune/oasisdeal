@@ -62,6 +62,7 @@
   .plan .price{margin-top:14px;font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;color:var(--majorelle);line-height:1;}
   .plan .price small{font-size:.95rem;color:var(--ink-soft);font-family:'Inter',sans-serif;font-weight:400;}
   .plan .price-na{margin-top:14px;font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--ink-soft);}
+  .plan .from-pre{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);vertical-align:middle;margin-right:2px;}
   .live-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#2e9e5b;padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .est-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(24,26,46,.07);padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .plan .get{margin-top:auto;padding-top:16px;}
@@ -130,16 +131,6 @@
         <div class="ac-wrap">
           <input id="esim-country" type="text" autocomplete="off" placeholder="Search a country…" data-i18n-ph="esim.ph" />
           <div class="ac-list" id="esim-ac"></div>
-        </div>
-        <div class="plan-controls">
-          <div class="pc-row">
-            <span class="pc-label" data-i18n="esim.data_label">Data</span>
-            <div class="pc-chips" id="size-chips"></div>
-          </div>
-          <div class="pc-row">
-            <span class="pc-label" data-i18n="esim.days_label">Validity</span>
-            <div class="pc-chips" id="days-chips"></div>
-          </div>
         </div>
         <div class="esim-chips" id="esim-chips"></div>
       </div>
@@ -273,38 +264,28 @@
     Airalo: {perk:'esim.perk_airalo', perkEn:'Most trusted · 200+ countries'},
     Saily:  {perk:'esim.perk_saily',  perkEn:'Built-in ad-blocker by NordVPN'}
   };
-  // Plan sizes/durations. Prices derive from each provider's curated 5 GB / 30-day
-  // base (`o`) via these multipliers, so any size/duration combo stays consistent.
-  var SIZES = [
-    {k:'1',  label:'1 GB',  m:0.45},
-    {k:'3',  label:'3 GB',  m:0.75},
-    {k:'5',  label:'5 GB',  m:1},
-    {k:'10', label:'10 GB', m:1.6},
-    {k:'20', label:'20 GB', m:2.6},
-    {k:'U',  label:odT('esim.unlimited','Unlimited'), m:3.2}
-  ];
-  var DAYSOPT = [{d:7,m:0.72},{d:15,m:0.86},{d:30,m:1}];
-  var sel = {size:SIZES[2], days:DAYSOPT[2], dst:null};
-  function planPrice(base){ return Math.max(3, Math.round(base * sel.size.m * sel.days.m)); }
-  function planLabel(){ return sel.size.label + ' · ' + sel.days.d + ' ' + odT('esim.days_word','days'); }
+  // Real "from" (starting) price per provider, per country (USD). Yesim = null → fetched
+  // LIVE from its API; Airalo (read from its own pages) and Saily (their published
+  // listings) are real starting prices. o = [name, fromUSD|null, tracked link].
+  var sel = {dst:null};
   var DEST = [
-    {c:'Turkey', f:'🇹🇷', o:[['Yesim',12,'https://yesim.tpx.lu/hDmBiUY3'],['Airalo',14,'https://airalo.tpx.lu/h9w9HwWP'],['Saily',15,'https://saily.tpx.lu/NeT4XSTS']]},
-    {c:'France', f:'🇫🇷', o:[['Yesim',13,'https://yesim.tpx.lu/BEhCKOl6'],['Airalo',11,'https://airalo.tpx.lu/teRm5Zw9'],['Saily',14,'https://saily.tpx.lu/KRm2s2Fr']]},
-    {c:'Spain', f:'🇪🇸', o:[['Yesim',13,'https://yesim.tpx.lu/E6EcHLsM'],['Airalo',12,'https://airalo.tpx.lu/eaVfdLwE'],['Saily',14,'https://saily.tpx.lu/m8t1lhqq']]},
-    {c:'Italy', f:'🇮🇹', o:[['Yesim',13,'https://yesim.tpx.lu/Vv7Wpv9h'],['Airalo',12,'https://airalo.tpx.lu/vfHxDcDi'],['Saily',15,'https://saily.tpx.lu/vqT0eZeT']]},
-    {c:'United Kingdom', f:'🇬🇧', o:[['Yesim',14,'https://yesim.tpx.lu/TpX7mArW'],['Airalo',11,'https://airalo.tpx.lu/vrTfWqrT'],['Saily',13,'https://saily.tpx.lu/5WSWMOnZ']]},
-    {c:'United States', f:'🇺🇸', o:[['Yesim',16,'https://yesim.tpx.lu/ap862SxK'],['Airalo',17,'https://airalo.tpx.lu/afu6lsg2'],['Saily',19,'https://saily.tpx.lu/I29BBlbo']]},
-    {c:'United Arab Emirates', f:'🇦🇪', o:[['Yesim',21,'https://yesim.tpx.lu/27IHYZD9'],['Airalo',17,'https://airalo.tpx.lu/itapLJGB'],['Saily',22,'https://saily.tpx.lu/a2hF9Sbv']]},
-    {c:'Saudi Arabia', f:'🇸🇦', o:[['Yesim',20,'https://yesim.tpx.lu/yOHQxb9q'],['Airalo',19,'https://airalo.tpx.lu/0xfcRE2M'],['Saily',23,'https://saily.tpx.lu/aTq5KKvH']]},
-    {c:'Egypt', f:'🇪🇬', o:[['Yesim',17,'https://yesim.tpx.lu/iJOoxIUN'],['Airalo',24,'https://airalo.tpx.lu/ciVUrmKO'],['Saily',22,'https://saily.tpx.lu/PILP1cbg']]},
-    {c:'Morocco', f:'🇲🇦', o:[['Yesim',15,'https://yesim.tpx.lu/kGaV4Lsp'],['Airalo',20,'https://airalo.tpx.lu/UEAm2DPl'],['Saily',28,'https://saily.tpx.lu/Qg7eyjV1']]},
-    {c:'Germany', f:'🇩🇪', o:[['Yesim',13,'https://yesim.tpx.lu/Vry0jkk2'],['Airalo',12,'https://airalo.tpx.lu/JffN9Bp9'],['Saily',14,'https://saily.tpx.lu/TRcKGSQS']]},
-    {c:'Netherlands', f:'🇳🇱', o:[['Yesim',13,'https://yesim.tpx.lu/lhOnPBYk'],['Airalo',12,'https://airalo.tpx.lu/qII8HyTe'],['Saily',14,'https://saily.tpx.lu/UkBw76Ge']]},
-    {c:'Thailand', f:'🇹🇭', o:[['Yesim',12,'https://yesim.tpx.lu/6srNEWFM'],['Airalo',13,'https://airalo.tpx.lu/Zk83ST9A'],['Saily',15,'https://saily.tpx.lu/gj9RFWGq']]},
-    {c:'Japan', f:'🇯🇵', o:[['Yesim',14,'https://yesim.tpx.lu/qNNzknJM'],['Airalo',15,'https://airalo.tpx.lu/jWLxKnBE'],['Saily',17,'https://saily.tpx.lu/taDurnbB']]},
-    {c:'Canada', f:'🇨🇦', o:[['Yesim',17,'https://yesim.tpx.lu/YIdNbQqJ'],['Airalo',18,'https://airalo.tpx.lu/vJHHSG3Y'],['Saily',20,'https://saily.tpx.lu/iXFVlBeC']]},
-    {c:'Europe', f:'🇪🇺', o:[['Yesim',23,'https://yesim.tpx.lu/l3kmy4fs'],['Airalo',20,'https://airalo.tpx.lu/HSrq9hO9'],['Saily',19,'https://saily.tpx.lu/C0cKexnS']]},
-    {c:'Global', f:'🌍', o:[['Yesim',35,'https://yesim.tpx.lu/ylsEszk4'],['Airalo',37,'https://airalo.tpx.lu/rAtBPjLI'],['Saily',33,'https://saily.tpx.lu/7UUKzW0D']]}
+    {c:'Turkey', f:'🇹🇷', o:[['Yesim',null,'https://yesim.tpx.lu/hDmBiUY3'],['Airalo',4.00,'https://airalo.tpx.lu/h9w9HwWP'],['Saily',3.99,'https://saily.tpx.lu/NeT4XSTS']]},
+    {c:'France', f:'🇫🇷', o:[['Yesim',null,'https://yesim.tpx.lu/BEhCKOl6'],['Airalo',4.00,'https://airalo.tpx.lu/teRm5Zw9'],['Saily',3.99,'https://saily.tpx.lu/KRm2s2Fr']]},
+    {c:'Spain', f:'🇪🇸', o:[['Yesim',null,'https://yesim.tpx.lu/E6EcHLsM'],['Airalo',4.00,'https://airalo.tpx.lu/eaVfdLwE'],['Saily',3.99,'https://saily.tpx.lu/m8t1lhqq']]},
+    {c:'Italy', f:'🇮🇹', o:[['Yesim',null,'https://yesim.tpx.lu/Vv7Wpv9h'],['Airalo',4.00,'https://airalo.tpx.lu/vfHxDcDi'],['Saily',3.99,'https://saily.tpx.lu/vqT0eZeT']]},
+    {c:'United Kingdom', f:'🇬🇧', o:[['Yesim',null,'https://yesim.tpx.lu/TpX7mArW'],['Airalo',4.00,'https://airalo.tpx.lu/vrTfWqrT'],['Saily',4.49,'https://saily.tpx.lu/5WSWMOnZ']]},
+    {c:'United States', f:'🇺🇸', o:[['Yesim',null,'https://yesim.tpx.lu/ap862SxK'],['Airalo',4.00,'https://airalo.tpx.lu/afu6lsg2'],['Saily',3.99,'https://saily.tpx.lu/I29BBlbo']]},
+    {c:'United Arab Emirates', f:'🇦🇪', o:[['Yesim',null,'https://yesim.tpx.lu/27IHYZD9'],['Airalo',4.00,'https://airalo.tpx.lu/itapLJGB'],['Saily',8.99,'https://saily.tpx.lu/a2hF9Sbv']]},
+    {c:'Saudi Arabia', f:'🇸🇦', o:[['Yesim',null,'https://yesim.tpx.lu/yOHQxb9q'],['Airalo',4.50,'https://airalo.tpx.lu/0xfcRE2M'],['Saily',6.99,'https://saily.tpx.lu/aTq5KKvH']]},
+    {c:'Egypt', f:'🇪🇬', o:[['Yesim',null,'https://yesim.tpx.lu/iJOoxIUN'],['Airalo',5.50,'https://airalo.tpx.lu/ciVUrmKO'],['Saily',6.99,'https://saily.tpx.lu/PILP1cbg']]},
+    {c:'Morocco', f:'🇲🇦', o:[['Yesim',null,'https://yesim.tpx.lu/kGaV4Lsp'],['Airalo',6.50,'https://airalo.tpx.lu/UEAm2DPl'],['Saily',6.99,'https://saily.tpx.lu/Qg7eyjV1']]},
+    {c:'Germany', f:'🇩🇪', o:[['Yesim',null,'https://yesim.tpx.lu/Vry0jkk2'],['Airalo',4.00,'https://airalo.tpx.lu/JffN9Bp9'],['Saily',4.49,'https://saily.tpx.lu/TRcKGSQS']]},
+    {c:'Netherlands', f:'🇳🇱', o:[['Yesim',null,'https://yesim.tpx.lu/lhOnPBYk'],['Airalo',4.00,'https://airalo.tpx.lu/qII8HyTe'],['Saily',3.99,'https://saily.tpx.lu/UkBw76Ge']]},
+    {c:'Thailand', f:'🇹🇭', o:[['Yesim',null,'https://yesim.tpx.lu/6srNEWFM'],['Airalo',4.00,'https://airalo.tpx.lu/Zk83ST9A'],['Saily',3.99,'https://saily.tpx.lu/gj9RFWGq']]},
+    {c:'Japan', f:'🇯🇵', o:[['Yesim',null,'https://yesim.tpx.lu/qNNzknJM'],['Airalo',4.00,'https://airalo.tpx.lu/jWLxKnBE'],['Saily',3.99,'https://saily.tpx.lu/taDurnbB']]},
+    {c:'Canada', f:'🇨🇦', o:[['Yesim',null,'https://yesim.tpx.lu/YIdNbQqJ'],['Airalo',7.00,'https://airalo.tpx.lu/vJHHSG3Y'],['Saily',5.29,'https://saily.tpx.lu/iXFVlBeC']]},
+    {c:'Europe', f:'🇪🇺', o:[['Yesim',null,'https://yesim.tpx.lu/l3kmy4fs'],['Airalo',5.00,'https://airalo.tpx.lu/HSrq9hO9'],['Saily',4.99,'https://saily.tpx.lu/C0cKexnS']]},
+    {c:'Global', f:'🌍', o:[['Yesim',null,'https://yesim.tpx.lu/ylsEszk4'],['Airalo',9.00,'https://airalo.tpx.lu/rAtBPjLI'],['Saily',8.99,'https://saily.tpx.lu/7UUKzW0D']]}
   ];
   var POPULAR = ['Turkey','Spain','United Kingdom','United States','United Arab Emirates','Europe','Global'];
 
@@ -325,28 +306,6 @@
     chip.addEventListener('click', function(){ select(dst); });
     chips.appendChild(chip);
   });
-
-  // data-size + validity chips; changing them re-prices the comparison live
-  var sizeWrap = document.getElementById('size-chips');
-  var daysWrap = document.getElementById('days-chips');
-  function buildPlanChips(){
-    sizeWrap.innerHTML = ''; daysWrap.innerHTML = '';
-    SIZES.forEach(function(s){
-      var b = document.createElement('button');
-      b.className = 'pc-chip' + (s===sel.size?' active':'');
-      b.textContent = s.label;
-      b.addEventListener('click', function(){ sel.size = s; buildPlanChips(); if(sel.dst) renderResults(sel.dst); });
-      sizeWrap.appendChild(b);
-    });
-    DAYSOPT.forEach(function(o){
-      var b = document.createElement('button');
-      b.className = 'pc-chip' + (o===sel.days?' active':'');
-      b.textContent = o.d + ' ' + odT('esim.days_word','days');
-      b.addEventListener('click', function(){ sel.days = o; buildPlanChips(); if(sel.dst) renderResults(sel.dst); });
-      daysWrap.appendChild(b);
-    });
-  }
-  buildPlanChips();
 
   // --- PROMO CODES (shown inside each provider's comparison card) ---
   // Paste a real code per provider; leave '' to show "Promo code coming soon".
@@ -416,8 +375,7 @@
   // Country → ISO-2 for the API; Europe/Global use a regional filter on a EU response.
   var ISO = {Turkey:'tr',France:'fr',Spain:'es',Italy:'it','United Kingdom':'gb','United States':'us','United Arab Emirates':'ae','Saudi Arabia':'sa',Egypt:'eg',Morocco:'ma',Germany:'de',Netherlands:'nl',Thailand:'th',Japan:'jp',Canada:'ca'};
   var EURUSD = 1.08;                 // indicative EUR→USD
-  var yesimCache = {};               // key -> {sized:{sizeKey:eur}, unltd:{days:eur}} (or {} on failure)
-  var SIZE_MB = {'1':1024,'3':3072,'5':5120,'10':10240,'20':20480};
+  var yesimCache = {};               // key -> from-price USD (number) or null (no data)
 
   function yesimKey(c){ if(ISO[c]) return ISO[c]; if(c==='Europe') return 'eu'; if(c==='Global') return 'gl'; return null; }
   function yesimUrl(key){ return 'https://api.yesim.app/api_v0.1/api/prices?coverages=' + (key==='eu'||key==='gl' ? 'fr' : key); }
@@ -427,88 +385,81 @@
     if(key==='gl') return /Global/i.test(cn);
     return t===key || cc===key;
   }
-  function getYesimBase(key){
-    if(yesimCache[key]) return Promise.resolve(yesimCache[key]);
+  // Live Yesim "from" price (USD): cheapest plan that's >=1 GB or unlimited (skips sub-1GB
+  // teasers so it's comparable to Airalo/Saily). Cached; null if no data / fetch fails.
+  function getYesimFrom(key){
+    if(yesimCache[key] !== undefined) return Promise.resolve(yesimCache[key]);
     return fetch(yesimUrl(key))
       .then(function(r){ return r.json(); })
       .then(function(data){
-        var base = {sized:{}, unltd:{}};
-        data.filter(function(p){ return yesimLocal(key, p); }).forEach(function(p){
-          var days=+p.period, mb=+p.capacity, eur=+p.price;
-          if(mb===-1){ if(base.unltd[days]===undefined || eur<base.unltd[days]) base.unltd[days]=eur; }
-          else if(days===30){ for(var k in SIZE_MB){ if(SIZE_MB[k]===mb && (base.sized[k]===undefined || eur<base.sized[k])) base.sized[k]=eur; } }
-        });
-        yesimCache[key] = base;
-        return base;
+        var eur = data.filter(function(p){ return yesimLocal(key, p); })
+          .filter(function(p){ var mb=+p.capacity; return mb===-1 || mb>=1024; })
+          .map(function(p){ return +p.price; })
+          .filter(function(x){ return x>0; });
+        var v = eur.length ? Math.round(Math.min.apply(null, eur) * EURUSD * 100)/100 : null;
+        yesimCache[key] = v;
+        return v;
       })
-      .catch(function(){ yesimCache[key] = {}; return yesimCache[key]; });
+      .catch(function(){ yesimCache[key] = null; return null; });
   }
-  // Real Yesim price in USD for the selected size/duration, or null if no match.
-  function yesimUsd(base, sizeKey, days, durM){
-    if(!base || !base.sized) return null;
-    var eur;
-    if(sizeKey==='U'){
-      eur = base.unltd[days];
-      if(eur===undefined && base.unltd[30]!==undefined) eur = base.unltd[30] * durM; // scale if exact period missing
-    } else {
-      eur = base.sized[sizeKey];
-      if(eur!==undefined) eur = eur * durM;                                          // 30-day base × duration mult
-    }
-    if(eur===undefined || eur===null || isNaN(eur)) return null;
-    return Math.max(3, Math.round(eur * EURUSD));
-  }
+  function fmtUsd(n){ return (n % 1 === 0) ? n : n.toFixed(2); }
 
   function renderResults(dst){
     sel.dst = dst;
     var key = yesimKey(dst.c);
-    if(key && !yesimCache[key]){
+    if(key && yesimCache[key] === undefined){
       results.innerHTML = '<p class="res-note">'+ odT('esim.loading','Fetching live prices…') +'</p>';
       resSection.hidden = false;
       resSection.scrollIntoView({behavior:'smooth', block:'start'});
-      getYesimBase(key).then(function(){ if(sel.dst===dst) paintResults(dst); });
+      getYesimFrom(key).then(function(){ if(sel.dst===dst) paintResults(dst); });
     } else {
       paintResults(dst);
     }
   }
 
-  // Real numbers only: Yesim shows its live price; Airalo & Saily show a "Check price"
-  // link (no fabricated number), since their live prices aren't publicly accessible.
+  // Country-only search → each provider's real "from" (starting) price, cheapest first.
+  // Yesim is live; Airalo & Saily are their real published starting prices.
   function paintResults(dst){
     var key = yesimKey(dst.c);
-    var base = key ? yesimCache[key] : null;
-    var label = planLabel();
     var rows = dst.o.map(function(r){
-      var name=r[0];
-      var price = (name==='Yesim') ? yesimUsd(base, sel.size.k, sel.days.d, sel.days.m) : null;
-      return {name:name, price:price, aff:r[2]};
+      var name=r[0], from=r[1], live=false;
+      if(name==='Yesim'){ var v = key ? yesimCache[key] : null; if(v!=null){ from=v; live=true; } else { from=null; } }
+      return {name:name, from:from, aff:r[2], live:live};
     });
+    rows.sort(function(a,b){
+      if(a.from==null && b.from==null) return 0;
+      if(a.from==null) return 1;
+      if(b.from==null) return -1;
+      return a.from - b.from;
+    });
+    var firstPriced = rows.filter(function(r){ return r.from!=null; })[0];
+    var cheapest = firstPriced ? firstPriced.from : null;
     var html = '<div class="res-head"><span class="flag">'+dst.f+'</span><div>'
       + '<h2>'+ odT('esim.res_title','Best eSIM for {c}').replace('{c}',dst.c) +'</h2>'
-      + '<p>'+ odT('esim.cmp_sub','{n} top eSIM providers · {plan}').replace('{n}',dst.o.length).replace('{plan}',label) +'</p>'
+      + '<p>'+ odT('esim.cmp_sub','Starting prices · {n} top eSIM providers').replace('{n}',dst.o.length) +'</p>'
       + '</div></div><div class="plan-grid">';
     rows.forEach(function(row){
-      var priced = row.price != null;
+      var priced = row.from != null;
+      var isCheap = priced && row.from === cheapest;
       var perk = odT(PROV[row.name].perk, PROV[row.name].perkEn);
       var code = PROMO[row.name];
       var promoHtml = code
         ? '<div class="card-promo"><span class="cp-label">'+odT('esim.promo_word','Promo')+'</span><span class="cp-code">'+code+'</span><button type="button" class="cp-copy" data-code="'+code+'">'+odT('esim.copy','Copy')+'</button></div>'
         : '<div class="card-promo cp-empty">🎟 '+odT('esim.soon','Promo code coming soon')+'</div>';
       var priceBlock = priced
-        ? '<div class="price">$'+row.price+'<span class="live-tag">'+odT('esim.live','Live')+'</span></div>'
+        ? '<div class="price"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.from)+(row.live?'<span class="live-tag">'+odT('esim.live','Live')+'</span>':'')+'</div>'
         : '<div class="price-na">'+odT('esim.seeprice','See live price')+'</div>';
       var btnLabel = priced ? odT('esim.get','See plans →') : odT('esim.checkprice','Check price →');
-      html += '<div class="plan'+(priced?' best':'')+'">'
-        + (priced?'<span class="tag">'+odT('esim.liveprice','Live price')+'</span>':'')
+      html += '<div class="plan'+(isCheap?' best':'')+'">'
+        + (isCheap?'<span class="tag">'+odT('esim.cheapest','Cheapest')+'</span>':'')
         + '<div class="prov-name">'+row.name+'</div>'
         + '<div class="prov-perk">'+perk+'</div>'
         + priceBlock
-        + '<div class="days">'+label+'</div>'
         + promoHtml
-        + '<div class="get"><a class="btn '+(priced?'btn-primary':'btn-ghost')+'" href="'+row.aff+'" target="_blank" rel="noopener sponsored">'+btnLabel+'</a></div>'
+        + '<div class="get"><a class="btn '+(isCheap?'btn-primary':'btn-ghost')+'" href="'+row.aff+'" target="_blank" rel="noopener sponsored">'+btnLabel+'</a></div>'
         + '</div>';
     });
-    var note = odT('esim.note','Yesim price is live. Airalo & Saily prices are shown on their own site — each page opens on its default, so choose the {plan} plan there.').replace('{plan}', label);
-    html += '</div><p class="res-note">'+ note +'</p>';
+    html += '</div><p class="res-note">'+ odT('esim.note','“From” = each provider’s cheapest plan for this country. Yesim is live; Airalo & Saily show their published starting prices. Pick your exact plan on the provider’s site.') +'</p>';
     results.innerHTML = html;
     attachCopy(results);
     resSection.hidden = false;
