@@ -503,9 +503,10 @@
         + '<div class="get"><a class="btn '+(isCheap?'btn-primary':'btn-ghost')+'" href="'+row.aff+'" target="_blank" rel="noopener sponsored">'+odT('esim.get','See plans →')+'</a></div>'
         + '</div>';
     });
-    var note = live
-      ? odT('esim.note_live','Yesim price is live; Airalo & Saily are estimates — tap a provider for its final price.')
-      : odT('esim.note','Indicative prices in USD — tap a provider to see its live plans and final price.');
+    var note = (live
+      ? odT('esim.note_live','Yesim price is live; Airalo & Saily are estimates. Each provider page opens on its default — choose the {plan} plan there.')
+      : odT('esim.note','Indicative prices in USD. Each provider page opens on its default — choose the {plan} plan there.')
+    ).replace('{plan}', label);
     html += '</div><p class="res-note">'+ note +'</p>';
     results.innerHTML = html;
     attachCopy(results);
