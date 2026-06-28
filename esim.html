@@ -149,20 +149,20 @@
   </div>
 </header>
 
-<section class="section" id="esim-results-section" hidden>
-  <div class="container">
-    <div id="esim-results"></div>
-  </div>
-</section>
-
 <section class="section section--paper" id="promos">
   <div class="container">
     <div class="section-head center">
       <div class="eyebrow" data-i18n="esim.promo_eyebrow">Save even more</div>
       <h2 data-i18n="esim.promo_title">Exclusive eSIM promo codes</h2>
-      <p data-i18n="esim.promo_sub">Apply these at checkout, on top of the prices above.</p>
+      <p data-i18n="esim.promo_sub">Copy a code, then paste it at checkout for an extra discount.</p>
     </div>
     <div class="promo-grid" id="promo-grid"></div>
+  </div>
+</section>
+
+<section class="section" id="esim-results-section" hidden>
+  <div class="container">
+    <div id="esim-results"></div>
   </div>
 </section>
 
@@ -379,9 +379,7 @@
         : '<div class="soon">'+odT('esim.soon','Code coming soon')+'</div>';
       card.innerHTML = '<h3>'+p.prov+'</h3>'
         + '<div class="off">'+ odT(p.off, p.offEn) +'</div>'
-        + codeHtml
-        + '<div class="go"><a class="btn btn-ghost" href="'+p.aff+'" target="_blank" rel="noopener sponsored">'
-          + odT('esim.promo_use','Shop {prov} →').replace('{prov}', p.prov) +'</a></div>';
+        + codeHtml;
       promoGrid.appendChild(card);
     });
     promoGrid.querySelectorAll('button[data-code]').forEach(function(btn){
