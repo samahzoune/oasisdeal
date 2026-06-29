@@ -218,6 +218,13 @@ function routePage(d, lang){
     + footer(lang) + liveScript(d) + '\n</body>\n</html>\n';
 }
 
+// localized guide links (rights + airport comparisons) for the hub's internal linking
+var GUIDESH = {en:'Travel guides & tips', fr:'Guides & conseils voyage', ar:'أدلة ونصائح السفر'};
+var GUIDES = {
+  en:[['/flight-rights','Flight delay compensation — know your rights'],['/airports/casablanca-vs-tangier-flights-europe','Casablanca vs Tangier — cheapest airport to Europe'],['/airports/casablanca-vs-marrakech-flights-europe','Casablanca vs Marrakesh — cheapest to Europe'],['/airports/tangier-vs-nador-flights-spain','Tangier vs Nador — flights to Spain'],['/airports/casablanca-vs-rabat-flights-europe','Casablanca vs Rabat — flights to Europe'],['/airports/cheapest-airport-umrah-morocco','Cheapest airport for Umrah from Morocco']],
+  fr:[['/flight-rights','Indemnisation de vol — connaître vos droits'],['/airports/casablanca-vs-tangier-flights-europe','Casablanca ou Tanger — aéroport le moins cher vers l’Europe'],['/airports/casablanca-vs-marrakech-flights-europe','Casablanca ou Marrakech — le moins cher vers l’Europe'],['/airports/tangier-vs-nador-flights-spain','Tanger ou Nador — vols vers l’Espagne'],['/airports/casablanca-vs-rabat-flights-europe','Casablanca ou Rabat — vols vers l’Europe'],['/airports/cheapest-airport-umrah-morocco','Aéroport le moins cher pour la Omra']],
+  ar:[['/flight-rights','تعويض تأخر الرحلة — عرف حقوقك'],['/airports/casablanca-vs-tangier-flights-europe','الدار البيضاء ولا طنجة — أرخص مطار لأوروبا'],['/airports/casablanca-vs-marrakech-flights-europe','الدار البيضاء ولا مراكش — الأرخص لأوروبا'],['/airports/tangier-vs-nador-flights-spain','طنجة ولا الناظور — رحلات لإسبانيا'],['/airports/casablanca-vs-rabat-flights-europe','الدار البيضاء ولا الرباط — رحلات لأوروبا'],['/airports/cheapest-airport-umrah-morocco','أرخص مطار للعمرة من المغرب']],
+};
 // ---- hub page per language ----
 function hubPage(lang){
   var x=L[lang], o=originName(lang);
@@ -247,7 +254,10 @@ function hubPage(lang){
     + '<style>.rp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:30px 0}@media(max-width:760px){.rp-grid{grid-template-columns:1fr}}.rp-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px;display:block}.rp-card:hover{border-color:var(--majorelle)}</style>\n</head>\n<body>\n'
     + nav(lang, ORIGIN.slug+'-'+DESTS[0].slug).replace(/\/flights\/[a-z-]+/g, (lang==='en'?'':'/'+lang)+'/flights/') // langs row points to hub siblings
     + '<header class="rp-hero" style="background:linear-gradient(160deg,var(--majorelle) 0%,var(--majorelle-deep) 100%);color:#fff;padding:54px 0"><div class="container"><h1 style="color:#fff">'+hubH+'</h1><p style="opacity:.9;max-width:640px;margin-top:10px">'+intro+'</p></div></header>'
-    + '<main class="container" style="padding:30px 0"><div class="rp-grid">'+cards+'</div></main>'
+    + '<main class="container" style="padding:30px 0"><div class="rp-grid">'+cards+'</div>'
+    + '<section style="margin-top:36px"><h2 style="font-size:1.4rem;margin-bottom:14px">'+GUIDESH[lang]+'</h2><ul style="list-style:none;padding:0;line-height:2.1">'
+    + GUIDES[lang].map(function(g){ var href=(lang==='en'?'':'/'+lang)+g[0]; return '<li><a style="color:var(--majorelle);font-weight:600;text-decoration:none" href="'+href+'">'+g[1]+' →</a></li>'; }).join('')
+    + '</ul></section></main>'
     + footer(lang)+'\n</body>\n</html>\n';
 }
 
@@ -270,6 +280,10 @@ var urls = ['/','/hotels','/esim','/compensation','/flight-rights','/fr/flight-r
 ['','/fr','/ar'].forEach(function(pre){
   urls.push('https://oasisdeal.com'+pre+'/flights/');
   DESTS.forEach(function(d){ urls.push('https://oasisdeal.com'+pre+'/flights/'+ORIGIN.slug+'-'+d.slug); });
+});
+// airport-comparison pages (kept in sync with build-airports.cjs)
+['casablanca-vs-tangier-flights-europe','casablanca-vs-marrakech-flights-europe','tangier-vs-nador-flights-spain','casablanca-vs-rabat-flights-europe','cheapest-airport-umrah-morocco'].forEach(function(slug){
+  ['','/fr','/ar'].forEach(function(pre){ urls.push('https://oasisdeal.com'+pre+'/airports/'+slug); });
 });
 var sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
   + urls.map(function(u){return '  <url><loc>'+u+'</loc></url>';}).join('\n') + '\n</urlset>\n';
