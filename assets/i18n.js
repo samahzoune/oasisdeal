@@ -4,7 +4,7 @@
 (function () {
   var T = {
     fr: {
-      "nav.flights": "Vols", "nav.hotels": "Hôtels", "nav.esim": "eSIM", "nav.compensation": "Indemnisation",
+      "nav.flights": "Vols", "nav.hotels": "Hôtels", "nav.esim": "eSIM", "nav.destinations": "Destinations", "nav.compensation": "Indemnisation",
       "nav.faq": "FAQ", "nav.search": "Rechercher des vols →",
       "hero.eyebrow": "300+ compagnies et agences, une seule recherche",
       "hero.h1": "Trouvez votre oasis d’économies.",
@@ -171,7 +171,7 @@
       "pv.p5": "Des questions sur cette politique ? Contactez-nous sur <a href='contact.html'>notre page contact</a> ou par e-mail à <strong>hello@oasisdeal.com</strong>."
     },
     ar: {
-      "nav.flights": "رحلات", "nav.hotels": "فنادق", "nav.esim": "eSIM", "nav.compensation": "تعويضات",
+      "nav.flights": "رحلات", "nav.hotels": "فنادق", "nav.esim": "eSIM", "nav.destinations": "الوجهات", "nav.compensation": "تعويضات",
       "nav.faq": "أسئلة شائعة", "nav.search": "ابحث عن رحلات →",
       "hero.eyebrow": "أكثر من 300 شركة ووكالة في بحث واحد",
       "hero.h1": "اعثر على واحة التوفير.",
