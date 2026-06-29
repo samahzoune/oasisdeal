@@ -202,8 +202,10 @@ function hubPage(lang){
     var head2=(lang==='en'?'From ':lang==='fr'?'Depuis ':'من ')+nm(o,lang);
     var cards=rs.map(function(r){var c=nm(r[1],lang),href=(lang==='en'?'':'/'+lang)+'/flights/'+slugOf(r[0],r[1]);var label=lang==='ar'?nm(o,lang)+' ← '+c:nm(o,lang)+' → '+c;
       return '<a class="rp-card" style="text-decoration:none;color:inherit" href="'+href+'"><h2 style="font-size:1.05rem">'+label+'</h2><span style="color:var(--clay-deep);font-weight:600;font-size:.9rem">'+seePrices+'</span></a>';}).join('');
-    return '<h2 style="margin:30px 0 14px;font-size:1.4rem">'+head2+'</h2><div class="rp-grid">'+cards+'</div>';
+    return '<section class="origin-group" data-origin="'+o+'"><h2 class="origin-h" style="margin:30px 0 14px;font-size:1.4rem">'+head2+'</h2><div class="rp-grid">'+cards+'</div></section>';
   }).join('');
+  var nearLbl=lang==='ar'?'📍 قريب منك':lang==='fr'?'📍 Près de chez vous':'📍 Near you';
+  var reorderJs='<script>(function(){fetch("https://oasisdeal-fares.pages.dev/api/whereami").then(function(r){return r.json();}).then(function(g){var c=g&&g.origin;if(!c)return;var list=document.querySelectorAll(".origin-group");for(var i=0;i<list.length;i++){if(list[i].getAttribute("data-origin")===c){var s=list[i];s.parentNode.insertBefore(s,s.parentNode.firstChild);var h=s.querySelector(".origin-h");if(h&&!h.querySelector(".near-badge")){var b=document.createElement("span");b.className="near-badge";b.textContent="'+nearLbl+'";b.style.cssText="font-family:monospace;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);background:var(--sand);border:1px solid var(--line);border-radius:999px;padding:4px 9px;margin-inline-start:10px;vertical-align:middle";h.appendChild(b);}break;}}}).catch(function(){});})();</script>';
   var guides=GUIDES[lang].map(function(g){var href=(lang==='en'?'':'/'+lang)+g[0];return '<li><a style="color:var(--majorelle);font-weight:600;text-decoration:none" href="'+href+'">'+g[1]+' →</a></li>';}).join('');
   return '<!DOCTYPE html>\n<html lang="'+L[lang].lang+'" dir="'+L[lang].dir+'">\n<head>\n<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />\n'
     +'<title>'+ttl+'</title>\n<meta name="description" content="'+desc+'" />\n<link rel="canonical" href="'+self+'" />\n'+alts+'\n<link rel="alternate" hreflang="x-default" href="https://oasisdeal.com/flights/" />\n'
@@ -214,7 +216,7 @@ function hubPage(lang){
     +'<header class="rp-hero" style="background:linear-gradient(160deg,var(--majorelle) 0%,var(--majorelle-deep) 100%);color:#fff;padding:54px 0"><div class="container"><h1 style="color:#fff">'+hubH+'</h1><p style="opacity:.9;max-width:640px;margin-top:10px">'+intro+'</p></div></header>'
     +'<main class="container" style="padding:20px 0 36px">'+groups
     +'<section style="margin-top:40px"><h2 style="font-size:1.4rem;margin-bottom:14px">'+GUIDESH[lang]+'</h2><ul style="list-style:none;padding:0;line-height:2.1">'+guides+'</ul></section></main>'
-    +footer(lang)+'\n</body>\n</html>\n';
+    +footer(lang)+reorderJs+'\n</body>\n</html>\n';
 }
 
 function ensure(p){fs.mkdirSync(p,{recursive:true});}
