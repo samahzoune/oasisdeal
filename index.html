@@ -189,6 +189,7 @@
   [dir=rtl] .nav-row,[dir=rtl] .foot,[dir=rtl] .footer-top{direction:rtl;}
 </style>
 <script src="assets/i18n.js"></script>
+<script src="assets/routes.js"></script>
 </head>
 <body>
 
@@ -424,6 +425,14 @@
   function flyLink(from, to, dateStr, pax){
     return FLY + from.toUpperCase() + ddmm(dateStr) + to.toUpperCase() + (parseInt(pax,10) || 1);
   }
+  // ---- deep-link to an on-site route page when one exists, else null ----
+  function routeHref(from, to){
+    var R = window.OD_ROUTES;
+    if(!R || !R.pairs[from + '-' + to]) return null;
+    var lang = window.OD_LANG || 'en';
+    var prefix = lang === 'en' ? '' : '/' + lang;
+    return prefix + '/flights/' + R.slug[from] + '-' + R.slug[to];
+  }
   function resolveIata(term){
     return fetch(AC + encodeURIComponent(term)).then(function(r){return r.json();})
       .then(function(list){ return (list && list[0] && list[0].code) || ''; })
@@ -482,10 +491,10 @@
 
   // ---- destinations shown (popular global hubs) ----
   var DESTS = [
-    {code:'PAR', city:'Paris'}, {code:'LON', city:'London'}, {code:'DXB', city:'Dubai'},
-    {code:'IST', city:'Istanbul'}, {code:'BCN', city:'Barcelona'}, {code:'MAD', city:'Madrid'},
-    {code:'CMN', city:'Casablanca'}, {code:'ROM', city:'Rome'}, {code:'AMS', city:'Amsterdam'},
-    {code:'NYC', city:'New York'}
+    {code:'PAR', city:'Paris'}, {code:'MAD', city:'Madrid'}, {code:'DXB', city:'Dubai'},
+    {code:'IST', city:'Istanbul'}, {code:'BRU', city:'Brussels'}, {code:'AMS', city:'Amsterdam'},
+    {code:'MRS', city:'Marseille'}, {code:'LON', city:'London'}, {code:'BCN', city:'Barcelona'},
+    {code:'CMN', city:'Casablanca'}
   ];
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var boardRows = document.getElementById('boardRows');
@@ -527,7 +536,7 @@
       var row = document.createElement('div');
       row.className = 'board-row';
       row.setAttribute('role', 'link');
-      row.addEventListener('click', function(){ window.location.href = flyLink(route.co, route.cd, route._date || '', 1); });
+      row.addEventListener('click', function(){ window.location.href = routeHref(route.co, route.cd) || flyLink(route.co, route.cd, route._date || '', 1); });
 
       var fromCell = document.createElement('div'); fromCell.className = 'flap-cell'; fromCell.appendChild(buildFlapGroup(origin.code));
       var toCell = document.createElement('div'); toCell.className = 'flap-cell'; toCell.appendChild(buildFlapGroup(d.code));
@@ -567,7 +576,7 @@
     dests.forEach(function(d){
       var a = document.createElement('a');
       a.className = 'route-card';
-      a.href = flyLink(origin.code, d.code, '', 1);
+      a.href = routeHref(origin.code, d.code) || flyLink(origin.code, d.code, '', 1);
       a.innerHTML =
         '<div class="route-main"><div class="route-cities">' + origin.city + ' → ' + d.city + '</div>'
         + '<div class="route-codes">' + origin.code + '<span class="arrow">→</span>' + d.code + '</div></div>'

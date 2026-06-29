@@ -35,26 +35,29 @@ const CITY = {
   AGP:{slug:'malaga',    en:'Malaga',    fr:'Malaga',    ar:'مالقة',     country:'es'},
   MRS:{slug:'marseille', en:'Marseille', fr:'Marseille', ar:'مرسيليا',   country:'fr'},
   BCN:{slug:'barcelona', en:'Barcelona', fr:'Barcelone', ar:'برشلونة',   country:'es'},
+  DUS:{slug:'dusseldorf',en:'Düsseldorf',fr:'Düsseldorf', ar:'دوسلدورف',  country:'de'},
+  FRA:{slug:'frankfurt', en:'Frankfurt', fr:'Francfort',  ar:'فرانكفورت', country:'de'},
 };
-const EUROPE = {fr:1,uk:1,es:1,be:1,it:1,nl:1}; // EU/UK -> EC261 applies (esp. on EU carriers)
+const EUROPE = {fr:1,uk:1,es:1,be:1,it:1,nl:1,de:1}; // EU/UK -> EC261 applies (esp. on EU carriers)
 const AIR = {
   fr:['Royal Air Maroc','Transavia','Air France'], uk:['Royal Air Maroc','British Airways','easyJet'],
   es:['Royal Air Maroc','Ryanair','Air Arabia Maroc'], be:['Royal Air Maroc','Brussels Airlines','Air Arabia Maroc'],
   it:['Royal Air Maroc','Air Arabia Maroc','ITA Airways'], nl:['Royal Air Maroc','Transavia','KLM'],
+  de:['Royal Air Maroc','Lufthansa','Eurowings'],
   tr:['Royal Air Maroc','Turkish Airlines','Pegasus'], ae:['Royal Air Maroc','Emirates','flydubai'],
   sa:['Royal Air Maroc','Saudia','flynas'], tn:['Royal Air Maroc','Tunisair','Nouvelair'],
   dom:['Royal Air Maroc','Air Arabia Maroc'],
 };
 // optional curated durations (from-to). Others skip the flight-time card.
-const DUR = {'CMN-PAR':'3h 15m','CMN-LON':'3h 30m','CMN-MAD':'1h 35m','CMN-BRU':'3h 20m','CMN-MIL':'2h 55m','CMN-LYS':'2h 40m','CMN-AMS':'3h 40m','CMN-IST':'4h 45m','CMN-DXB':'7h 00m','CMN-JED':'6h 15m','RBA-PAR':'3h 20m','TNG-PAR':'3h 05m','TNG-MAD':'1h 20m','TNG-BCN':'1h 50m','FEZ-PAR':'3h 00m','CMN-AGA':'1h 05m','RBA-AGA':'1h 15m'};
+const DUR = {'CMN-PAR':'3h 15m','CMN-LON':'3h 30m','CMN-MAD':'1h 35m','CMN-BRU':'3h 20m','CMN-MIL':'2h 55m','CMN-LYS':'2h 40m','CMN-AMS':'3h 40m','CMN-IST':'4h 45m','CMN-DXB':'7h 00m','CMN-JED':'6h 15m','RBA-PAR':'3h 20m','TNG-PAR':'3h 05m','TNG-MAD':'1h 20m','TNG-BCN':'1h 50m','TNG-BRU':'2h 55m','TNG-MRS':'2h 00m','TNG-AMS':'3h 20m','FEZ-PAR':'3h 00m','CMN-AGA':'1h 05m','RBA-AGA':'1h 15m','CMN-DUS':'3h 45m','CMN-FRA':'3h 50m','AGA-BRU':'3h 30m','AGA-MRS':'2h 55m','AGA-PAR':'3h 35m','AGA-LON':'3h 50m'};
 
 const ORIGINS = ['CMN','RBA','TNG','AGA','FEZ'];
 const ROUTES = [
-  ['CMN','PAR'],['CMN','LON'],['CMN','MAD'],['CMN','BRU'],['CMN','MIL'],['CMN','LYS'],['CMN','AMS'],['CMN','IST'],['CMN','DXB'],['CMN','JED'],['CMN','AGA'],['CMN','OUD'],['CMN','VIL'],['CMN','TUN'],
-  ['RBA','AGA'],['RBA','PAR'],['RBA','OUD'],['RBA','NDR'],['RBA','ERH'],['RBA','VIL'],['RBA','AGP'],['RBA','TUN'],['RBA','MAD'],['RBA','RAK'],
-  ['TNG','AGA'],['TNG','RAK'],['TNG','PAR'],['TNG','AGP'],['TNG','OUD'],['TNG','BCN'],['TNG','NDR'],['TNG','MAD'],['TNG','IST'],
-  ['AGA','RBA'],['AGA','CMN'],['AGA','TNG'],['AGA','FEZ'],['AGA','PAR'],['AGA','VIL'],['AGA','EUN'],['AGA','OUD'],
-  ['FEZ','AGA'],['FEZ','RAK'],['FEZ','PAR'],['FEZ','AGP'],['FEZ','MRS'],['FEZ','VIL'],['FEZ','MAD'],['FEZ','TNG'],['FEZ','BCN'],['FEZ','OUD'],
+  ['CMN','PAR'],['CMN','LON'],['CMN','MAD'],['CMN','BRU'],['CMN','MIL'],['CMN','LYS'],['CMN','AMS'],['CMN','IST'],['CMN','DXB'],['CMN','JED'],['CMN','AGA'],['CMN','OUD'],['CMN','VIL'],['CMN','TUN'],['CMN','DUS'],['CMN','FRA'],
+  ['RBA','AGA'],['RBA','PAR'],['RBA','OUD'],['RBA','NDR'],['RBA','ERH'],['RBA','VIL'],['RBA','AGP'],['RBA','TUN'],['RBA','MAD'],['RBA','RAK'],['RBA','BRU'],['RBA','MRS'],
+  ['TNG','AGA'],['TNG','RAK'],['TNG','PAR'],['TNG','AGP'],['TNG','OUD'],['TNG','BCN'],['TNG','NDR'],['TNG','MAD'],['TNG','IST'],['TNG','BRU'],['TNG','MRS'],['TNG','AMS'],['TNG','DUS'],['TNG','LYS'],
+  ['AGA','RBA'],['AGA','CMN'],['AGA','TNG'],['AGA','FEZ'],['AGA','PAR'],['AGA','VIL'],['AGA','EUN'],['AGA','OUD'],['AGA','BRU'],['AGA','MRS'],['AGA','AMS'],['AGA','DUS'],['AGA','LON'],['AGA','LYS'],['AGA','MAD'],
+  ['FEZ','AGA'],['FEZ','RAK'],['FEZ','PAR'],['FEZ','AGP'],['FEZ','MRS'],['FEZ','VIL'],['FEZ','MAD'],['FEZ','TNG'],['FEZ','BCN'],['FEZ','OUD'],['FEZ','BRU'],['FEZ','AMS'],['FEZ','DUS'],
 ];
 
 function isDom(f,t){ return CITY[f].ma && CITY[t].ma; }
@@ -235,3 +238,9 @@ var urls=['/','/hotels','/esim','/compensation','/flight-rights','/fr/flight-rig
 });
 fs.writeFileSync(path.join(ROOT,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(function(u){return '  <url><loc>'+u+'</loc></url>';}).join('\n')+'\n</urlset>\n');
 console.log('wrote sitemap.xml with',urls.length,'urls');
+
+// ---- routes index for the homepage board/cards (deep-link to route pages) ----
+var slugMap={}, cityMap={}; Object.keys(CITY).forEach(function(c){ slugMap[c]=CITY[c].slug; cityMap[c]=CITY[c].en; });
+var pairs={}; ROUTES.forEach(function(r){ pairs[r[0]+'-'+r[1]]=1; });
+write('assets/routes.js','window.OD_ROUTES='+JSON.stringify({slug:slugMap,city:cityMap,pairs:pairs})+';\n');
+console.log('wrote assets/routes.js with',Object.keys(pairs).length,'route pairs');
