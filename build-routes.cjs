@@ -266,7 +266,7 @@ var count=0;
   write(path.join(base, 'index.html'), hubPage(lang));
 });
 // ---- regenerate sitemap.xml (existing pages + all route pages/hubs) ----
-var urls = ['/','/hotels','/esim','/compensation','/about','/contact','/privacy'].map(function(p){return 'https://oasisdeal.com'+p;});
+var urls = ['/','/hotels','/esim','/compensation','/flight-rights','/fr/flight-rights','/ar/flight-rights','/about','/contact','/privacy'].map(function(p){return 'https://oasisdeal.com'+p;});
 ['','/fr','/ar'].forEach(function(pre){
   urls.push('https://oasisdeal.com'+pre+'/flights/');
   DESTS.forEach(function(d){ urls.push('https://oasisdeal.com'+pre+'/flights/'+ORIGIN.slug+'-'+d.slug); });
