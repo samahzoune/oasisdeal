@@ -193,8 +193,9 @@ var EXTRA = '<style>'
   +'.rp-faq details{border-bottom:1px solid var(--line);padding:14px 0}.rp-faq summary{cursor:pointer;font-weight:600;font-size:1.05rem}.rp-faq p{color:var(--ink-soft);margin-top:8px}.rp-note{font-size:.82rem;color:var(--ink-soft);margin-top:22px}'
   +'.nav .rp-langs a{margin-inline-start:8px;color:var(--ink-soft);text-decoration:none;font-size:.85rem}.nav .rp-langs a.on{color:var(--ink);font-weight:700;text-decoration:underline}'
   // blog
+  +'.dg-col{max-width:820px;margin:0 auto}'
   +'.dg-figure{margin:-28px 0 0}.dg-photo{display:block;width:100%;height:auto;max-height:460px;object-fit:cover;border-radius:18px;border:1px solid var(--line);box-shadow:0 20px 44px rgba(24,26,46,.12)}.dg-svg{aspect-ratio:1280/460}'
-  +'.dg-article{max-width:760px;margin:0 auto}.dg-article h2{font-size:1.5rem;margin:34px 0 12px}.dg-lead{font-size:1.12rem;line-height:1.7;color:var(--ink);margin-top:26px}.dg-article p{line-height:1.7;color:var(--ink-soft)}'
+  +'.dg-article h2{font-size:1.5rem;margin:34px 0 12px}.dg-lead{font-size:1.12rem;line-height:1.7;color:var(--ink);margin-top:26px}.dg-article p{line-height:1.7;color:var(--ink-soft)}'
   +'.dg-todo{list-style:none;padding:0;margin:6px 0;display:grid;gap:10px}.dg-todo li{position:relative;padding:12px 16px 12px 42px;background:var(--paper);border:1px solid var(--line);border-radius:12px;color:var(--ink)}.dg-todo li::before{content:"✦";position:absolute;inset-inline-start:16px;color:var(--clay-deep);font-weight:700}'
   +'[dir=rtl] .dg-todo li{padding:12px 42px 12px 16px}'
   +'.dg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}'
@@ -252,13 +253,13 @@ function guidePage(d, lang){
   return head(lang, x.mt(n), x.md(n), 'https://oasisdeal.com'+pre(lang)+p, altsFor(p))
     + nav(lang, langSwitch(lang,p))
     + '<script type="application/ld+json">'+JSON.stringify(faqLd)+'</script>'
-    + '<header class="rp-hero"><div class="container">'
+    + '<header class="rp-hero"><div class="container"><div class="dg-col">'
     + '<div class="eyebrow" style="margin-bottom:8px">'+d.flag+' '+x.regions[d.region]+' · '+x.guideTag+'</div>'
     + '<h1>'+n+'</h1>'
-    + '<p style="opacity:.92;max-width:640px;margin-top:10px;font-size:1.05rem">'+hi(d,lang)+'</p>'
+    + '<p style="opacity:.92;margin-top:10px;font-size:1.05rem">'+hi(d,lang)+'</p>'
     + '<div class="rp-price"><span class="pre">'+x.fromCasa+'</span><span data-price="'+d.code+'">—</span><small>'+x.perGuide+'</small></div>'
-    + '</div></header>'
-    + '<main class="container" style="padding:0 0 40px">'
+    + '</div></div></header>'
+    + '<main class="container" style="padding:0 0 40px"><div class="dg-col">'
     + '<figure class="dg-figure">'+featureImg(d,lang)+'</figure>'
     + '<article class="dg-article">'
     + '<p class="dg-lead">'+lead(d,lang)+'</p>'
@@ -277,7 +278,7 @@ function guidePage(d, lang){
     + '<p class="rp-note">'+x.note+'</p>'
     + '<p style="margin-top:18px"><a href="'+x.dest+'" style="color:var(--majorelle);font-weight:600;text-decoration:none">'+x.back+'</a></p>'
     + '</article>'
-    + '</main>'
+    + '</div></main>'
     + footer(lang) + liveScript() + '\n</body>\n</html>\n';
 }
 
