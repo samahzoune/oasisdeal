@@ -89,7 +89,7 @@ const DEST = [
 
 const L = {
   en:{dir:'ltr',lang:'en',home:'/',dest:'/destinations/',hotels:'/hotels',esim:'/esim',comp:'/compensation',
-      nav:{flights:'Flights',hotels:'Hotels',esim:'eSIM',dest:'Destinations',comp:'Compensation'},
+      nav:{flights:'Flights',hotels:'Hotels',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Compensation'},
       hubTitle:'Destinations — World Travel Guide for Morocco | OasisDeal',
       hubDesc:'Travel guides for explorers from Morocco — trending destinations, the best time to visit, highlights, and the cheapest flights from Casablanca.',
       hubH:'Explore the world', hubIntro:'Travel guides for explorers from Morocco — when to go, what to see, and the cheapest way to get there.',
@@ -105,7 +105,7 @@ const L = {
       mt:function(n){return n+' Travel Guide — Best Time, Things to Do & Cheap Flights | OasisDeal';},
       md:function(n){return 'Travel guide to '+n+' from Morocco: the best time to visit, top things to do, currency and language, and the cheapest flights from Casablanca.';}},
   fr:{dir:'ltr',lang:'fr',home:'/fr/',dest:'/fr/destinations/',hotels:'/hotels',esim:'/esim',comp:'/compensation',
-      nav:{flights:'Vols',hotels:'Hôtels',esim:'eSIM',dest:'Destinations',comp:'Indemnisation'},
+      nav:{flights:'Vols',hotels:'Hôtels',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Indemnisation'},
       hubTitle:'Destinations — Guide de voyage mondial depuis le Maroc | OasisDeal',
       hubDesc:'Guides de voyage pour les explorateurs du Maroc — destinations tendance, meilleure période, incontournables et vols les moins chers depuis Casablanca.',
       hubH:'Explorez le monde', hubIntro:'Guides de voyage pour les explorateurs du Maroc — quand partir, quoi voir et comment y aller au meilleur prix.',
@@ -121,7 +121,7 @@ const L = {
       mt:function(n){return 'Guide de voyage à '+n+' — Meilleure période, à faire & vols pas chers | OasisDeal';},
       md:function(n){return 'Guide de voyage à '+n+' depuis le Maroc : meilleure période, incontournables, devise et langue, et les vols les moins chers depuis Casablanca.';}},
   ar:{dir:'rtl',lang:'ar',home:'/ar/',dest:'/ar/destinations/',hotels:'/hotels',esim:'/esim',comp:'/compensation',
-      nav:{flights:'رحلات',hotels:'فنادق',esim:'eSIM',dest:'الوجهات',comp:'تعويضات'},
+      nav:{flights:'رحلات',hotels:'فنادق',esim:'eSIM',dest:'الوجهات',blog:'المدوّنة',comp:'تعويضات'},
       hubTitle:'الوجهات — دليل السفر حول العالم من المغرب | OasisDeal',
       hubDesc:'أدلة سفر للمسافرين من المغرب — الوجهات الرائجة، أفضل وقت للزيارة، أبرز المعالم، وأرخص الرحلات من الدار البيضاء.',
       hubH:'اكتشف العالم', hubIntro:'أدلة سفر للمسافرين من المغرب — متى تسافر، وماذا تشاهد، وكيف تصل بأرخص سعر.',
@@ -180,7 +180,7 @@ var NAVJS='<script>(function(){var C=\'.nav-toggle{display:none;flex-direction:c
 
 function nav(lang, langsHtml){ var x=L[lang];
   return '<nav class="nav"><div class="container nav-row"><a class="logo" href="'+x.home+'">'+LOGO+'<span class="logo-word">Oasis<span class="pipe">|</span>Deal</span></a><div class="nav-links">'
-    +'<a class="nav-link" href="'+x.home+'">'+x.nav.flights+'</a><a class="nav-link" href="'+x.hotels+'">'+x.nav.hotels+'</a><a class="nav-link" href="'+x.esim+'">'+x.nav.esim+'</a><a class="nav-link active" href="'+x.dest+'">'+x.nav.dest+'</a><a class="nav-link" href="'+x.comp+'">'+x.nav.comp+'</a>'
+    +'<a class="nav-link" href="'+x.home+'">'+x.nav.flights+'</a><a class="nav-link" href="'+x.hotels+'">'+x.nav.hotels+'</a><a class="nav-link" href="'+x.esim+'">'+x.nav.esim+'</a><a class="nav-link active" href="'+x.dest+'">'+x.nav.dest+'</a><a class="nav-link" href="'+(lang==='en'?'':'/'+lang)+'/blog/">'+x.nav.blog+'</a><a class="nav-link" href="'+x.comp+'">'+x.nav.comp+'</a>'
     +(langsHtml?'<span class="rp-langs">'+langsHtml+'</span>':'')+'</div></div></nav>'; }
 function footer(lang){ var x=L[lang]; return '<footer class="footer"><div class="container"><div class="footer-trust">🔒 '+x.secure+' · Travelpayouts · Stay22 · AirHelp</div><div class="footer-bottom"><span>© <span id="y"></span> OasisDeal</span></div></div></footer><script>document.getElementById("y").textContent=new Date().getFullYear();</script>'+NAVJS; }
 

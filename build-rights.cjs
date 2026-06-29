@@ -13,7 +13,7 @@ const LOGO = '<svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http
 const P = {
   en: {
     dir:'ltr', lang:'en', home:'/', hotels:'/hotels', esim:'/esim', comp:'/compensation',
-    nav:{flights:'Flights',hotels:'Hotels',esim:'eSIM',dest:'Destinations',comp:'Compensation'},
+    nav:{flights:'Flights',hotels:'Hotels',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Compensation'},
     title:'Flight Delay Compensation Rights — Claim up to €600 | OasisDeal',
     desc:'Know your air passenger rights. If your flight was delayed 3+ hours, cancelled or overbooked, you can claim up to €600 under EU law — including many Morocco–Europe flights. Here’s how.',
     h1:'Know your flight rights', lead:'Most travellers never claim the money airlines owe them. If your flight was delayed, cancelled or overbooked, EU law (EC 261) can entitle you to up to €600 — even for flights from the last few years.',
@@ -37,7 +37,7 @@ const P = {
   },
   fr: {
     dir:'ltr', lang:'fr', home:'/fr/', hotels:'/hotels', esim:'/esim', comp:'/compensation',
-    nav:{flights:'Vols',hotels:'Hôtels',esim:'eSIM',dest:'Destinations',comp:'Indemnisation'},
+    nav:{flights:'Vols',hotels:'Hôtels',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Indemnisation'},
     title:'Droits des passagers aériens — Réclamez jusqu’à 600 € | OasisDeal',
     desc:'Connaissez vos droits. Vol retardé de 3 h+, annulé ou surréservé ? Vous pouvez réclamer jusqu’à 600 € selon la loi européenne (CE 261) — y compris sur de nombreux vols Maroc–Europe.',
     h1:'Connaissez vos droits passager', lead:'La plupart des voyageurs ne réclament jamais l’argent que les compagnies leur doivent. Vol retardé, annulé ou surréservé ? La loi européenne (CE 261) peut vous donner droit à 600 € — même pour des vols des dernières années.',
@@ -61,7 +61,7 @@ const P = {
   },
   ar: {
     dir:'rtl', lang:'ar', home:'/ar/', hotels:'/hotels', esim:'/esim', comp:'/compensation',
-    nav:{flights:'رحلات',hotels:'فنادق',esim:'eSIM',dest:'الوجهات',comp:'تعويضات'},
+    nav:{flights:'رحلات',hotels:'فنادق',esim:'eSIM',dest:'الوجهات',blog:'المدوّنة',comp:'تعويضات'},
     title:'حقوق المسافر الجوي — طالب بما يصل إلى 600 يورو | OasisDeal',
     desc:'اعرف حقوقك. إذا تأخرت رحلتك 3 ساعات أو أُلغيت أو تعرّضت لتجاوز الحجز، يمكنك المطالبة بما يصل إلى 600 يورو بموجب قانون الاتحاد الأوروبي (EC 261) — بما في ذلك كثير من رحلات المغرب–أوروبا.',
     h1:'اعرف حقوقك الجوية', lead:'معظم المسافرين لا يطالبون أبدًا بالأموال التي تدين بها لهم شركات الطيران. إذا تأخرت رحلتك أو أُلغيت أو تعرّضت لتجاوز الحجز، فقد يمنحك قانون الاتحاد الأوروبي (EC 261) الحق في ما يصل إلى 600 يورو — حتى على رحلات من سنوات ماضية.',
@@ -95,7 +95,7 @@ function nav(lang){
     + '<a class="nav-link" href="'+x.hotels+'">'+x.nav.hotels+'</a>'
     + '<a class="nav-link" href="'+x.esim+'">'+x.nav.esim+'</a>'
     + '<a class="nav-link" href="'+(lang==='en'?'':'/'+lang)+'/destinations/">'+x.nav.dest+'</a>'
-    + '<a class="nav-link" href="'+x.comp+'">'+x.nav.comp+'</a>'
+    + '<a class="nav-link" href="'+(lang==='en'?'':'/'+lang)+'/blog/">'+x.nav.blog+'</a><a class="nav-link" href="'+x.comp+'">'+x.nav.comp+'</a>'
     + '<span class="rp-langs">'+langs+'</span>'
     + '</div></div></nav>';
 }
