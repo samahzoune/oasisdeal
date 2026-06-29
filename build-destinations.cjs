@@ -23,7 +23,7 @@ const DEST = [
     lang_en:'Spanish', lang_fr:'Espagnol', lang_ar:'الإسبانية', ar_name:'برشلونة', fr_name:'Barcelone',
     bt_en:'May–Jun & Sep', bt_fr:'mai–juin & sep.', bt_ar:'مايو–يونيو وسبتمبر',
     en:'Gaudí’s architecture, Mediterranean beaches and lively tapas nights.', fr:'L’architecture de Gaudí, les plages méditerranéennes et les soirées tapas animées.', ar:'عمارة غاودي، شواطئ البحر المتوسط، وأمسيات التاباس النابضة.',
-    lead_en:'Barcelona pairs Gaudí’s dreamlike architecture with Mediterranean beaches and one of Europe’s best food cultures. Compact, walkable and sunny most of the year, it’s an easy short-haul escape from Morocco.', lead_fr:'Barcelone associe l’architecture onirique de Gaudí aux plages méditerranéennes et à l’une des meilleures cultures gastronomiques d’Europe. Compacte, agréable à pied et ensoleillée presque toute l’année, c’est une escapade facile depuis le Maroc.', lead_ar:'تجمع برشلونة بين عمارة غاودي الحالمة وشواطئ البحر المتوسط وواحدة من أفضل ثقافات الطعام في أوروبا. مدينة مدمجة، يسهل التجول فيها سيرًا، ومشمسة معظم العام — وجهة قريبة وسهلة من المغرب.',
+    lead_en:'Barcelona pairs Gaudí’s dreamlike architecture with Mediterranean beaches and one of Europe’s best food cultures. Compact, walkable and sunny most of the year, it’s an easy weekend escape.', lead_fr:'Barcelone associe l’architecture onirique de Gaudí aux plages méditerranéennes et à l’une des meilleures cultures gastronomiques d’Europe. Compacte, agréable à pied et ensoleillée presque toute l’année, c’est une escapade de week-end idéale.', lead_ar:'تجمع برشلونة بين عمارة غاودي الحالمة وشواطئ البحر المتوسط وواحدة من أفضل ثقافات الطعام في أوروبا. مدينة مدمجة، يسهل التجول فيها سيرًا، ومشمسة معظم العام — وجهة مثالية لعطلة نهاية أسبوع.',
     todo_en:['Marvel at the Sagrada Família','Wander Park Güell & the Gothic Quarter','Relax on Barceloneta beach','Graze on tapas in El Born'], todo_fr:['Admirer la Sagrada Família','Flâner au parc Güell et dans le Gothique','Se détendre à la plage de Barceloneta','Déguster des tapas à El Born'], todo_ar:['التعجّب من ساغرادا فاميليا','التجوّل في بارك غويل والحي القوطي','الاسترخاء على شاطئ برشلونيتا','تذوّق التاباس في حي البورن']},
   {code:'PAR', slug:'paris', region:'eu', trend:0, flag:'🇫🇷', cur:'EUR', rslug:'casablanca-paris',
     lang_en:'French', lang_fr:'Français', lang_ar:'الفرنسية', ar_name:'باريس', fr_name:'Paris',
@@ -85,57 +85,81 @@ const DEST = [
     en:'The Pyramids of Giza, the Nile and thousands of years of history.', fr:'Les pyramides de Gizeh, le Nil et des milliers d’années d’histoire.', ar:'أهرامات الجيزة، نهر النيل، وآلاف السنين من التاريخ.',
     lead_en:'Cairo is the gateway to ancient Egypt — the Pyramids of Giza and the Sphinx sit on the city’s edge, while the Nile and thousands of years of history run through its heart. The cooler months (Oct–Apr) are best.', lead_fr:'Le Caire est la porte de l’Égypte antique — les pyramides de Gizeh et le Sphinx bordent la ville, tandis que le Nil et des millénaires d’histoire en traversent le cœur. Les mois plus frais (oct.–avr.) sont idéaux.', lead_ar:'القاهرة بوابة مصر القديمة — أهرامات الجيزة وأبو الهول على أطراف المدينة، بينما يجري النيل وآلاف السنين من التاريخ في قلبها. والأشهر الأبرد (أكتوبر–أبريل) هي الأفضل.',
     todo_en:['Stand before the Giza Pyramids','Explore the Egyptian Museum','Felucca ride on the Nile','Wander Khan el-Khalili bazaar'], todo_fr:['Se tenir devant les pyramides de Gizeh','Explorer le Musée égyptien','Balade en felouque sur le Nil','Flâner au bazar de Khan el-Khalili'], todo_ar:['الوقوف أمام أهرامات الجيزة','استكشاف المتحف المصري','جولة بالفلوكة على النيل','التجوّل في خان الخليلي']},
+  {code:'TYO', slug:'tokyo', region:'as', trend:1, flag:'🇯🇵', cur:'JPY', rslug:'',
+    lang_en:'Japanese', lang_fr:'Japonais', lang_ar:'اليابانية', ar_name:'طوكيو', fr_name:'Tokyo',
+    bt_en:'Mar–May & Oct–Nov', bt_fr:'mars–mai & oct.–nov.', bt_ar:'مارس–مايو وأكتوبر–نوفمبر',
+    en:'Neon-lit streets, ancient temples and the world’s best food scene.', fr:'Rues illuminées de néons, temples anciens et la meilleure scène culinaire du monde.', ar:'شوارع تضيئها النيون، معابد عريقة، وأفضل مشهد طعام في العالم.',
+    lead_en:'Tokyo is a city of contrasts — centuries-old shrines beside neon skyscrapers, hushed gardens and the buzz of Shibuya. It’s endlessly explorable and famously safe, clean and punctual.', lead_fr:'Tokyo est une ville de contrastes — des sanctuaires séculaires côtoient des gratte-ciels de néon, des jardins paisibles et l’effervescence de Shibuya. Inépuisable à explorer, et réputée sûre, propre et ponctuelle.', lead_ar:'طوكيو مدينة التناقضات — معابد عمرها قرون إلى جانب ناطحات سحاب من النيون، حدائق هادئة وصخب شيبويا. لا ينتهي استكشافها، وتشتهر بالأمان والنظافة والانضباط.',
+    todo_en:['Cross the Shibuya Scramble','Visit Senso-ji temple in Asakusa','Eat sushi at Toyosu market','Day-trip to Mount Fuji'], todo_fr:['Traverser le carrefour de Shibuya','Visiter le temple Senso-ji à Asakusa','Manger des sushis au marché de Toyosu','Excursion au mont Fuji'], todo_ar:['عبور تقاطع شيبويا الشهير','زيارة معبد سينسو-جي في أساكوسا','تناول السوشي في سوق تويوسو','رحلة يومية إلى جبل فوجي']},
+  {code:'NYC', slug:'new-york', region:'am', trend:1, flag:'🇺🇸', cur:'USD', rslug:'',
+    lang_en:'English', lang_fr:'Anglais', lang_ar:'الإنجليزية', ar_name:'نيويورك', fr_name:'New York',
+    bt_en:'Apr–Jun & Sep–Nov', bt_fr:'avr.–juin & sep.–nov.', bt_ar:'أبريل–يونيو وسبتمبر–نوفمبر',
+    en:'The city that never sleeps — skyscrapers, Broadway and world-class museums.', fr:'La ville qui ne dort jamais — gratte-ciels, Broadway et musées de renommée mondiale.', ar:'المدينة التي لا تنام — ناطحات سحاب، برودواي، ومتاحف عالمية.',
+    lead_en:'New York packs more into a few square miles than almost anywhere: Central Park, Times Square, Broadway and food from every corner of the globe. Spring and autumn bring the kindest weather.', lead_fr:'New York concentre plus de choses au kilomètre carré que presque partout : Central Park, Times Square, Broadway et une cuisine venue du monde entier. Le printemps et l’automne offrent le climat le plus agréable.', lead_ar:'تجمع نيويورك في أميال قليلة أكثر من أي مكان تقريبًا: سنترال بارك، وتايمز سكوير، وبرودواي، وأطعمة من كل أنحاء العالم. والربيع والخريف يمنحان ألطف طقس.',
+    todo_en:['See Central Park & the skyline','Catch a Broadway show','Visit the MoMA & the Met','Walk the Brooklyn Bridge'], todo_fr:['Voir Central Park et la skyline','Assister à un spectacle de Broadway','Visiter le MoMA et le Met','Traverser le pont de Brooklyn'], todo_ar:['زيارة سنترال بارك وأفق المدينة','حضور عرض في برودواي','زيارة متحفي موما والمتروبوليتان','عبور جسر بروكلين']},
+  {code:'DPS', slug:'bali', region:'as', trend:1, flag:'🇮🇩', cur:'IDR', rslug:'',
+    lang_en:'Indonesian', lang_fr:'Indonésien', lang_ar:'الإندونيسية', ar_name:'بالي', fr_name:'Bali',
+    bt_en:'Apr–Oct (dry season)', bt_fr:'avr.–oct. (saison sèche)', bt_ar:'أبريل–أكتوبر (الموسم الجاف)',
+    en:'Rice terraces, surf beaches and temples wrapped in tropical calm.', fr:'Rizières, plages de surf et temples baignés d’un calme tropical.', ar:'مدرّجات أرز، شواطئ للأمواج، ومعابد يغمرها هدوء استوائي.',
+    lead_en:'Bali blends emerald rice terraces, surf-ready beaches, clifftop temples and a famously warm welcome — all at prices that stretch your budget. It’s a favourite for relaxation and adventure alike.', lead_fr:'Bali mêle rizières émeraude, plages propices au surf, temples perchés et un accueil chaleureux — le tout à des prix qui ménagent votre budget. Une destination de choix pour la détente comme l’aventure.', lead_ar:'تمزج بالي بين مدرّجات الأرز الزمردية، وشواطئ ركوب الأمواج، والمعابد على حافة الجِرف، وكرم الضيافة — كلّها بأسعار تكفي ميزانيتك. وهي وجهة مفضّلة للاسترخاء والمغامرة معًا.',
+    todo_en:['Watch sunset at Uluwatu temple','Explore Ubud’s rice terraces','Surf or relax in Canggu','Chase inland waterfalls'], todo_fr:['Admirer le coucher de soleil au temple d’Uluwatu','Explorer les rizières d’Ubud','Surfer ou se détendre à Canggu','Découvrir les cascades de l’intérieur'], todo_ar:['مشاهدة الغروب عند معبد أولواتو','استكشاف مدرّجات أرز أوبود','ركوب الأمواج أو الاسترخاء في تشانغو','ملاحقة الشلالات الداخلية']},
+  {code:'GIG', slug:'rio-de-janeiro', region:'am', trend:0, flag:'🇧🇷', cur:'BRL', rslug:'',
+    lang_en:'Portuguese', lang_fr:'Portugais', lang_ar:'البرتغالية', ar_name:'ريو دي جانيرو', fr_name:'Rio de Janeiro',
+    bt_en:'May–Oct (cooler, drier)', bt_fr:'mai–oct. (plus frais, plus sec)', bt_ar:'مايو–أكتوبر (أبرد وأجفّ)',
+    en:'Iconic beaches, Christ the Redeemer and infectious carnival energy.', fr:'Plages mythiques, le Christ Rédempteur et l’énergie contagieuse du carnaval.', ar:'شواطئ أيقونية، تمثال المسيح الفادي، وطاقة الكرنفال المعدية.',
+    lead_en:'Rio is mountains meeting the sea — Copacabana and Ipanema beaches, Christ the Redeemer above the clouds, and a rhythm of samba and sunshine. Spring and autumn dodge the peak-season crowds.', lead_fr:'Rio, c’est la montagne qui rencontre la mer — les plages de Copacabana et d’Ipanema, le Christ Rédempteur au-dessus des nuages, et un rythme de samba et de soleil. Le printemps et l’automne évitent la haute saison.', lead_ar:'ريو حيث تلتقي الجبال بالبحر — شاطئا كوباكابانا وإيبانيما، وتمثال المسيح الفادي فوق الغيوم، وإيقاع من السامبا والشمس. والربيع والخريف يتفاديان زحام الموسم.',
+    todo_en:['Ride up to Christ the Redeemer','Relax on Copacabana & Ipanema','Cable car up Sugarloaf Mountain','Feel the rhythm in Lapa'], todo_fr:['Monter au Christ Rédempteur','Se détendre à Copacabana et Ipanema','Téléphérique du Pain de Sucre','Vivre le rythme de Lapa'], todo_ar:['الصعود إلى تمثال المسيح الفادي','الاسترخاء في كوباكابانا وإيبانيما','التلفريك إلى جبل شوغرلوف','الإحساس بالإيقاع في حي لابا']},
 ];
 
 const L = {
   en:{dir:'ltr',lang:'en',home:'/',dest:'/destinations/',hotels:'/hotels',esim:'/esim',comp:'/compensation',
       nav:{flights:'Flights',hotels:'Hotels',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Compensation'},
       hubTitle:'Destinations — World Travel Guide for Morocco | OasisDeal',
-      hubDesc:'Travel guides for explorers from Morocco — trending destinations, the best time to visit, highlights, and the cheapest flights from Casablanca.',
-      hubH:'Explore the world', hubIntro:'Travel guides for explorers from Morocco — when to go, what to see, and the cheapest way to get there.',
-      trending:'Trending now', regions:{eu:'Europe',me:'Middle East',as:'Asia',af:'Africa'},
-      from:'from', fromCasa:'Cheapest from Casablanca', perGuide:'live lowest fare now',
+      hubDesc:'Travel guides for explorers worldwide — trending destinations, the best time to visit, highlights, and live flight prices from your city.',
+      hubH:'Explore the world', hubIntro:'Travel guides for curious travellers — when to go, what to see, and the cheapest way to get there.',
+      trending:'Trending now', regions:{eu:'Europe',me:'Middle East',as:'Asia',af:'Africa',am:'Americas'},
+      from:'from', fromCasa:'Cheapest fare', fromBase:'Cheapest from', perGuide:'live lowest fare now',
       bestTime:'Best time to visit', why:'Why go', currency:'Currency', language:'Language', region:'Region',
-      todoH:'Top things to do', gettingH:'Getting there from Morocco',
-      gettingP:'The cheapest flights from Morocco are usually from Casablanca — the live starting price is shown above and changes daily. Compare every airline in one search and book directly, with no booking fees from us.',
+      todoH:'Top things to do', gettingH:'Getting there',
+      gettingP:'The cheapest fares from your city are shown live above and change daily. Compare hundreds of airlines in one search and book directly, with no booking fees from us.',
       planH:'Plan your trip',
       flights:'Find flights →', hotels:'Compare hotels →', esim:'Get a travel eSIM →', rights:'Know your rights →',
       faqH:'Frequently asked questions', back:'← All destinations', guideTag:'Destination guide', imgcredit:'Illustration',
       note:'Live starting fare from our partners; the final price is set by the airline. Visa and entry rules change — always confirm with official sources before booking.', secure:'Secure & free to use · No booking fees',
       mt:function(n){return n+' Travel Guide — Best Time, Things to Do & Cheap Flights | OasisDeal';},
-      md:function(n){return 'Travel guide to '+n+' from Morocco: the best time to visit, top things to do, currency and language, and the cheapest flights from Casablanca.';}},
+      md:function(n){return 'Travel guide to '+n+': the best time to visit, top things to do, currency and language, and live flight prices from your city.';}},
   fr:{dir:'ltr',lang:'fr',home:'/fr/',dest:'/fr/destinations/',hotels:'/hotels',esim:'/esim',comp:'/compensation',
       nav:{flights:'Vols',hotels:'Hôtels',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Indemnisation'},
-      hubTitle:'Destinations — Guide de voyage mondial depuis le Maroc | OasisDeal',
-      hubDesc:'Guides de voyage pour les explorateurs du Maroc — destinations tendance, meilleure période, incontournables et vols les moins chers depuis Casablanca.',
-      hubH:'Explorez le monde', hubIntro:'Guides de voyage pour les explorateurs du Maroc — quand partir, quoi voir et comment y aller au meilleur prix.',
-      trending:'Tendances du moment', regions:{eu:'Europe',me:'Moyen-Orient',as:'Asie',af:'Afrique'},
-      from:'à partir de', fromCasa:'Le moins cher depuis Casablanca', perGuide:'tarif le plus bas en direct',
+      hubTitle:'Destinations — Guide de voyage mondial | OasisDeal',
+      hubDesc:'Guides de voyage pour les voyageurs curieux — destinations tendance, meilleure période, incontournables et prix de vols en direct depuis votre ville.',
+      hubH:'Explorez le monde', hubIntro:'Guides de voyage pour les voyageurs curieux — quand partir, quoi voir et comment y aller au meilleur prix.',
+      trending:'Tendances du moment', regions:{eu:'Europe',me:'Moyen-Orient',as:'Asie',af:'Afrique',am:'Amériques'},
+      from:'à partir de', fromCasa:'Tarif le moins cher', fromBase:'Le moins cher depuis', perGuide:'tarif le plus bas en direct',
       bestTime:'Meilleure période', why:'Pourquoi y aller', currency:'Devise', language:'Langue', region:'Région',
-      todoH:'À faire absolument', gettingH:'Y aller depuis le Maroc',
-      gettingP:'Les vols les moins chers depuis le Maroc partent généralement de Casablanca — le tarif de départ en direct est affiché ci-dessus et change chaque jour. Comparez toutes les compagnies en une recherche et réservez directement, sans frais de réservation de notre part.',
+      todoH:'À faire absolument', gettingH:'Comment y aller',
+      gettingP:'Les tarifs les moins chers depuis votre ville sont affichés en direct ci-dessus et changent chaque jour. Comparez des centaines de compagnies en une recherche et réservez directement, sans frais de réservation de notre part.',
       planH:'Planifiez votre voyage',
       flights:'Trouver des vols →', hotels:'Comparer les hôtels →', esim:'Obtenir une eSIM voyage →', rights:'Connaître vos droits →',
       faqH:'Questions fréquentes', back:'← Toutes les destinations', guideTag:'Guide de destination', imgcredit:'Illustration',
       note:'Tarif de départ en direct via nos partenaires ; le prix final est fixé par la compagnie. Les règles de visa et d’entrée changent — vérifiez toujours auprès des sources officielles avant de réserver.', secure:'Sécurisé et gratuit · Sans frais',
       mt:function(n){return 'Guide de voyage à '+n+' — Meilleure période, à faire & vols pas chers | OasisDeal';},
-      md:function(n){return 'Guide de voyage à '+n+' depuis le Maroc : meilleure période, incontournables, devise et langue, et les vols les moins chers depuis Casablanca.';}},
+      md:function(n){return 'Guide de voyage à '+n+' : meilleure période, incontournables, devise et langue, et prix de vols en direct depuis votre ville.';}},
   ar:{dir:'rtl',lang:'ar',home:'/ar/',dest:'/ar/destinations/',hotels:'/hotels',esim:'/esim',comp:'/compensation',
       nav:{flights:'رحلات',hotels:'فنادق',esim:'eSIM',dest:'الوجهات',blog:'المدوّنة',comp:'تعويضات'},
-      hubTitle:'الوجهات — دليل السفر حول العالم من المغرب | OasisDeal',
-      hubDesc:'أدلة سفر للمسافرين من المغرب — الوجهات الرائجة، أفضل وقت للزيارة، أبرز المعالم، وأرخص الرحلات من الدار البيضاء.',
-      hubH:'اكتشف العالم', hubIntro:'أدلة سفر للمسافرين من المغرب — متى تسافر، وماذا تشاهد، وكيف تصل بأرخص سعر.',
-      trending:'الرائج الآن', regions:{eu:'أوروبا',me:'الشرق الأوسط',as:'آسيا',af:'أفريقيا'},
-      from:'ابتداءً من', fromCasa:'الأرخص من الدار البيضاء', perGuide:'أرخص سعر مباشر الآن',
+      hubTitle:'الوجهات — دليل السفر حول العالم | OasisDeal',
+      hubDesc:'أدلة سفر للمسافرين حول العالم — الوجهات الرائجة، أفضل وقت للزيارة، أبرز المعالم، وأسعار رحلات مباشرة من مدينتك.',
+      hubH:'اكتشف العالم', hubIntro:'أدلة سفر للمسافرين الفضوليين — متى تسافر، وماذا تشاهد، وكيف تصل بأرخص سعر.',
+      trending:'الرائج الآن', regions:{eu:'أوروبا',me:'الشرق الأوسط',as:'آسيا',af:'أفريقيا',am:'الأمريكتان'},
+      from:'ابتداءً من', fromCasa:'أرخص سعر', fromBase:'الأرخص من', perGuide:'أرخص سعر مباشر الآن',
       bestTime:'أفضل وقت للزيارة', why:'لماذا تزورها', currency:'العملة', language:'اللغة', region:'المنطقة',
-      todoH:'أبرز ما تفعله', gettingH:'الوصول من المغرب',
-      gettingP:'أرخص الرحلات من المغرب تكون عادةً من الدار البيضاء — سعر البداية المباشر مبيّن أعلاه ويتغيّر يوميًا. قارن جميع شركات الطيران في بحث واحد واحجز مباشرةً، دون أي رسوم حجز من جهتنا.',
+      todoH:'أبرز ما تفعله', gettingH:'كيف تصل',
+      gettingP:'أرخص الأسعار من مدينتك مبيّنة مباشرة أعلاه وتتغيّر يوميًا. قارن مئات شركات الطيران في بحث واحد واحجز مباشرةً، دون أي رسوم حجز من جهتنا.',
       planH:'خطّط لرحلتك',
       flights:'ابحث عن رحلات →', hotels:'قارن الفنادق →', esim:'احصل على eSIM للسفر →', rights:'اعرف حقوقك →',
       faqH:'أسئلة شائعة', back:'→ كل الوجهات', guideTag:'دليل وجهة', imgcredit:'رسم توضيحي',
       note:'سعر البداية مباشر من شركائنا؛ السعر النهائي تحدّده شركة الطيران. قواعد التأشيرة والدخول تتغيّر — تأكّد دائمًا من المصادر الرسمية قبل الحجز.', secure:'آمن ومجاني · دون رسوم حجز',
       mt:function(n){return 'دليل السفر إلى '+n+' — أفضل وقت، أبرز الأنشطة، ورحلات رخيصة | OasisDeal';},
-      md:function(n){return 'دليل السفر إلى '+n+' من المغرب: أفضل وقت للزيارة، أبرز الأنشطة، العملة واللغة، وأرخص الرحلات من الدار البيضاء.';}},
+      md:function(n){return 'دليل السفر إلى '+n+': أفضل وقت للزيارة، أبرز الأنشطة، العملة واللغة، وأسعار رحلات مباشرة من مدينتك.';}},
 };
 
 function nameEN(d){ return d.slug.split('-').map(function(w){return w.charAt(0).toUpperCase()+w.slice(1);}).join(' '); }
@@ -209,10 +233,14 @@ var EXTRA = '<style>'
   +'.dg-sec h2{font-size:1.4rem;margin:34px 0 14px}</style>';
 
 function liveScript(){
-  return '<script>(function(){var FLY="https://fly.oasisdeal.com/?flightSearch=";function ddmm(){var x=new Date(Date.now()+21*864e5);return ("0"+x.getDate()).slice(-2)+("0"+(x.getMonth()+1)).slice(-2);}'
-    +'Array.prototype.forEach.call(document.querySelectorAll("[data-fly]"),function(a){a.href=FLY+"CMN"+ddmm()+a.getAttribute("data-fly")+"1";});'
-    +'function load(code,el){fetch("https://oasisdeal-fares.pages.dev/api/fares?origin=CMN&destination="+code+"&currency=usd").then(function(r){return r.json();}).then(function(d){el.textContent=(d&&d.price)?("$"+Math.round(d.price)):"";}).catch(function(){el.textContent="";});}'
-    +'Array.prototype.forEach.call(document.querySelectorAll("[data-price]"),function(el){load(el.getAttribute("data-price"),el);});})();</script>';
+  // Universal: detect the visitor's nearest airport, then show fares + label from THEIR city.
+  return '<script>(function(){var FLY="https://fly.oasisdeal.com/?flightSearch=",ORIG="CMN",CITY="";function ddmm(){var x=new Date(Date.now()+21*864e5);return ("0"+x.getDate()).slice(-2)+("0"+(x.getMonth()+1)).slice(-2);}'
+    +'function wire(){'
+    +'Array.prototype.forEach.call(document.querySelectorAll("[data-fly]"),function(a){a.href=FLY+ORIG+ddmm()+a.getAttribute("data-fly")+"1";});'
+    +'if(CITY){var fl=document.getElementById("dfrom");if(fl)fl.textContent=fl.getAttribute("data-base")+" "+CITY;}'
+    +'Array.prototype.forEach.call(document.querySelectorAll("[data-price]"),function(el){fetch("https://oasisdeal-fares.pages.dev/api/fares?origin="+ORIG+"&destination="+el.getAttribute("data-price")+"&currency=usd").then(function(r){return r.json();}).then(function(d){el.textContent=(d&&d.price)?("$"+Math.round(d.price)):"";}).catch(function(){el.textContent="";});});}'
+    +'fetch("https://oasisdeal-fares.pages.dev/api/whereami").then(function(r){return r.json();}).then(function(g){if(g&&g.origin)ORIG=g.origin;if(g&&g.city)CITY=g.city;wire();}).catch(function(){wire();});'
+    +'})();</script>';
 }
 
 function head(lang, title, desc, canon, alts){
@@ -235,15 +263,16 @@ function guidePage(d, lang){
   var faqs=[
     [ (lang==='en'?'When is the best time to visit '+n+'?': lang==='fr'?'Quelle est la meilleure période pour visiter '+n+' ?':'ما أفضل وقت لزيارة '+n+'؟'),
       (lang==='en'?'The best months are usually '+bt(d,lang)+' for pleasant weather. Fares are often lower mid-week and outside school holidays.': lang==='fr'?'Les meilleurs mois sont généralement '+bt(d,lang)+' pour un temps agréable. Les tarifs sont souvent plus bas en milieu de semaine et hors vacances scolaires.':'أفضل الأشهر عادةً '+bt(d,lang)+' لطقس لطيف. وغالبًا تكون الأسعار أقل في منتصف الأسبوع وخارج العطل المدرسية.') ],
-    [ (lang==='en'?'How much is a flight to '+n+' from Morocco?': lang==='fr'?'Combien coûte un vol pour '+n+' depuis le Maroc ?':'كم تكلّف رحلة إلى '+n+' من المغرب؟'),
-      (lang==='en'?'Fares change daily — see the live starting price above. Compare every airline in one search to grab the lowest fare for your dates.': lang==='fr'?'Les tarifs changent chaque jour — voyez le prix de départ en direct ci-dessus. Comparez toutes les compagnies en une recherche pour le tarif le plus bas.':'تتغيّر الأسعار يوميًا — انظر سعر البداية المباشر أعلاه. قارن جميع الشركات في بحث واحد للحصول على أرخص سعر لتواريخك.') ],
-    [ (lang==='en'?'Do Moroccan travellers need a visa for '+n+'?': lang==='fr'?'Les voyageurs marocains ont-ils besoin d’un visa pour '+n+' ?':'هل يحتاج المسافرون المغاربة تأشيرة لـ '+n+'؟'),
-      (lang==='en'?'Entry rules change often. Always confirm the current requirements for your passport with the official embassy or consulate before booking — we compare flights, not visas.': lang==='fr'?'Les règles d’entrée changent souvent. Vérifiez toujours les conditions actuelles pour votre passeport auprès de l’ambassade ou du consulat officiel avant de réserver — nous comparons les vols, pas les visas.':'تتغيّر قواعد الدخول كثيرًا. تأكّد دائمًا من المتطلبات الحالية لجواز سفرك لدى السفارة أو القنصلية الرسمية قبل الحجز — نحن نقارن الرحلات لا التأشيرات.') ],
+    [ (lang==='en'?'How much is a flight to '+n+'?': lang==='fr'?'Combien coûte un vol pour '+n+' ?':'كم تكلّف رحلة إلى '+n+'؟'),
+      (lang==='en'?'Fares change daily and depend on where you fly from — see the live starting price above for your city. Compare hundreds of airlines in one search to grab the lowest fare for your dates.': lang==='fr'?'Les tarifs changent chaque jour et dépendent de votre ville de départ — voyez le prix de départ en direct ci-dessus. Comparez des centaines de compagnies en une recherche pour le tarif le plus bas.':'تتغيّر الأسعار يوميًا وتعتمد على مدينة انطلاقك — انظر سعر البداية المباشر أعلاه لمدينتك. قارن مئات الشركات في بحث واحد للحصول على أرخص سعر لتواريخك.') ],
+    [ (lang==='en'?'Do I need a visa for '+n+'?': lang==='fr'?'Ai-je besoin d’un visa pour '+n+' ?':'هل أحتاج تأشيرة لـ '+n+'؟'),
+      (lang==='en'?'It depends on your nationality, and entry rules change often. Always confirm the current requirements for your passport with the official embassy or consulate before booking — we compare flights, not visas.': lang==='fr'?'Cela dépend de votre nationalité, et les règles d’entrée changent souvent. Vérifiez toujours les conditions actuelles pour votre passeport auprès de l’ambassade ou du consulat officiel avant de réserver — nous comparons les vols, pas les visas.':'يعتمد ذلك على جنسيتك، وقواعد الدخول تتغيّر كثيرًا. تأكّد دائمًا من المتطلبات الحالية لجواز سفرك لدى السفارة أو القنصلية الرسمية قبل الحجز — نحن نقارن الرحلات لا التأشيرات.') ],
   ];
   var faqLd={'@context':'https://schema.org','@type':'FAQPage','mainEntity':faqs.map(function(q){return {'@type':'Question','name':q[0],'acceptedAnswer':{'@type':'Answer','text':q[1]}};})};
-  var flightsAttr = (d.rslug && CMN_ROUTE[d.code]) ? ('href="'+pre(lang)+'/flights/'+d.rslug+'"') : ('href="#" data-fly="'+d.code+'"');
+  var flightsAttr = 'href="#" data-fly="'+d.code+'"';
+  var flightsSub = lang==='en'?'Cheapest fares to '+n : lang==='fr'?'Tarifs les moins chers vers '+n : 'أرخص الأسعار إلى '+n;
   var crossHtml = '<div class="rp-cross">'
-    + card(lang==='en'?'Flights':lang==='fr'?'Vols':'الرحلات', x.fromCasa, 'btn-primary', flightsAttr, x.flights)
+    + card(lang==='en'?'Flights':lang==='fr'?'Vols':'الرحلات', flightsSub, 'btn-primary', flightsAttr, x.flights)
     + card(lang==='en'?'Hotels':lang==='fr'?'Hôtels':'الفنادق', (lang==='en'?'Compare stays in '+n:lang==='fr'?'Comparez les hôtels à '+n:'قارن الإقامة في '+n), 'btn-ghost', 'href="'+x.hotels+'"', x.hotels)
     + card('eSIM', (lang==='en'?'Stay online in '+n:lang==='fr'?'Restez connecté à '+n:'ابقَ متصلًا في '+n), 'btn-ghost', 'href="'+x.esim+'"', x.esim)
     + (isEuro(d)? card(lang==='en'?'Your rights':lang==='fr'?'Vos droits':'حقوقك', (lang==='en'?'Delayed or cancelled flight?':lang==='fr'?'Vol retardé ou annulé ?':'رحلة متأخرة أو ملغاة؟'), 'btn-ghost', 'href="'+pre(lang)+'/flight-rights"', x.rights) : '')
@@ -257,7 +286,7 @@ function guidePage(d, lang){
     + '<div class="eyebrow" style="margin-bottom:8px">'+d.flag+' '+x.regions[d.region]+' · '+x.guideTag+'</div>'
     + '<h1>'+n+'</h1>'
     + '<p style="opacity:.92;margin-top:10px;font-size:1.05rem">'+hi(d,lang)+'</p>'
-    + '<div class="rp-price"><span class="pre">'+x.fromCasa+'</span><span data-price="'+d.code+'">—</span><small>'+x.perGuide+'</small></div>'
+    + '<div class="rp-price"><span class="pre" id="dfrom" data-base="'+x.fromBase+'">'+x.fromCasa+'</span><span data-price="'+d.code+'">—</span><small>'+x.perGuide+'</small></div>'
     + '</div></div></header>'
     + '<main class="container" style="padding:0 0 40px"><div class="dg-col">'
     + '<figure class="dg-figure">'+featureImg(d,lang)+'</figure>'
@@ -298,7 +327,7 @@ function hubPage(lang){
   var x=L[lang], p='/destinations/';
   var trend = DEST.filter(function(d){return d.trend;});
   var trendHtml = '<section class="dg-sec"><h2>🔥 '+x.trending+'</h2><div class="dg-grid">'+trend.map(function(d){return destCard(d,lang);}).join('')+'</div></section>';
-  var order=['eu','me','as','af'];
+  var order=['eu','me','as','af','am'];
   var regionsHtml = order.map(function(rk){
     var list=DEST.filter(function(d){return d.region===rk;});
     if(!list.length) return '';
