@@ -383,12 +383,12 @@
 /* Mobile hamburger menu — self-contained, injects its own CSS + toggle button.
    Loaded on every page (static via this file, generated pages via footer script). */
 (function () {
-  var CSS = '.nav-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:42px;height:42px;padding:0;border:1px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer;}'
+  var CSS = '.nav-div{display:inline-block;width:1px;height:18px;background:var(--line);margin:0 6px;vertical-align:middle;}.nav-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:42px;height:42px;padding:0;border:1px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer;}'
     + '.nav-toggle span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s,opacity .2s;}'
     + '.nav-row.menu-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}'
     + '.nav-row.menu-open .nav-toggle span:nth-child(2){opacity:0;}'
     + '.nav-row.menu-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}'
-    + '@media(max-width:720px){'
+    + '@media(max-width:720px){.nav-div{display:none!important;}'
     + '.nav-row{flex-wrap:nowrap !important;height:60px;position:relative;}'
     + '.nav-toggle{display:flex;}'
     + '.nav-links{position:absolute;top:100%;inset-inline-start:0;width:100%;flex-direction:column;align-items:stretch;gap:0 !important;background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:8px;box-shadow:0 14px 30px rgba(24,26,46,.14);display:none !important;z-index:60;}'
