@@ -103,7 +103,7 @@ function footer(lang){
   var x=P[lang];
   return '<footer class="footer"><div class="container">'
     + '<div class="footer-trust">🔒 '+x.secure+' · Powered by AirHelp</div>'
-    + '<div class="footer-bottom"><span>© <span id="y"></span> OasisDeal</span><span>Casablanca, Morocco</span></div>'
+    + '<div class="footer-bottom"><span>© <span id="y"></span> OasisDeal</span></div>'
     + '</div></footer><script>document.getElementById("y").textContent=new Date().getFullYear();</script>'+NAVJS;
 }
 
