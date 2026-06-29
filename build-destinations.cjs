@@ -112,7 +112,15 @@ function nav(lang, langsHtml){ var x=L[lang];
     +(langsHtml?'<span class="rp-langs">'+langsHtml+'</span>':'')+'</div></div></nav>'; }
 function footer(lang){ var x=L[lang]; return '<footer class="footer"><div class="container"><div class="footer-trust">🔒 '+x.secure+' · Travelpayouts · Stay22 · AirHelp</div><div class="footer-bottom"><span>© <span id="y"></span> OasisDeal</span></div></div></footer><script>document.getElementById("y").textContent=new Date().getFullYear();</script>'+NAVJS; }
 
-var EXTRA = '<style>.dg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}'
+var EXTRA = '<style>'
+  +'.rp-hero{background:linear-gradient(160deg,var(--majorelle) 0%,var(--majorelle-deep) 100%);color:#fff;padding:54px 0 48px}.rp-hero h1{color:#fff;font-size:clamp(2rem,5vw,3.1rem)}.rp-hero .eyebrow{color:rgba(255,255,255,.85)}'
+  +'.rp-price{font-family:"Fraunces",serif;font-size:2.4rem;font-weight:600;margin-top:16px;color:#fff}.rp-price .pre{display:block;font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85;font-weight:400;margin-bottom:4px}.rp-price small{display:block;font-family:"Inter",sans-serif;font-size:.85rem;font-weight:400;opacity:.85;margin-top:4px}'
+  +'.rp-facts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}@media(max-width:640px){.rp-facts{grid-template-columns:1fr}}'
+  +'.rp-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px}.rp-card h2{font-size:1.15rem;margin-bottom:8px}'
+  +'.rp-cross{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:26px 0}.rp-cross .rp-card{display:flex;flex-direction:column;gap:10px}.rp-cross .btn{margin-top:auto}'
+  +'.rp-faq details{border-bottom:1px solid var(--line);padding:14px 0}.rp-faq summary{cursor:pointer;font-weight:600;font-size:1.05rem}.rp-faq p{color:var(--ink-soft);margin-top:8px}.rp-note{font-size:.82rem;color:var(--ink-soft);margin-top:22px}'
+  +'.nav .rp-langs a{margin-inline-start:8px;color:var(--ink-soft);text-decoration:none;font-size:.85rem}.nav .rp-langs a.on{color:var(--ink);font-weight:700;text-decoration:underline}'
+  +'.dg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}'
   +'.dg-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px;display:block;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}'
   +'.dg-card:hover{border-color:var(--majorelle);transform:translateY(-2px)}'
   +'.dg-flag{font-size:1.8rem;line-height:1}.dg-name{font-family:"Fraunces",serif;font-size:1.2rem;margin:8px 0 2px}'
