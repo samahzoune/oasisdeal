@@ -111,12 +111,12 @@
       <h2 data-i18n="htl.poptitle">Where travellers are staying.</h2>
     </div>
     <div class="chips">
-      <a class="chip" href="https://stay22.com/embed/6a3e952c51cc0bc7a8f8f298">Dubai</a>
-      <a class="chip" href="https://stay22.com/embed/6a3e952c51cc0bc7a8f8f298">Istanbul</a>
-      <a class="chip" href="https://stay22.com/embed/6a3e952c51cc0bc7a8f8f298">Paris</a>
-      <a class="chip" href="https://stay22.com/embed/6a3e952c51cc0bc7a8f8f298">London</a>
-      <a class="chip" href="https://stay22.com/embed/6a3e952c51cc0bc7a8f8f298">Marrakech</a>
-      <a class="chip" href="https://stay22.com/embed/6a3e952c51cc0bc7a8f8f298">Barcelona</a>
+      <a class="chip" href="#stay22-widget" data-city="Dubai, United Arab Emirates">Dubai</a>
+      <a class="chip" href="#stay22-widget" data-city="Istanbul, Turkey">Istanbul</a>
+      <a class="chip" href="#stay22-widget" data-city="Paris, France">Paris</a>
+      <a class="chip" href="#stay22-widget" data-city="London, United Kingdom">London</a>
+      <a class="chip" href="#stay22-widget" data-city="Marrakech, Morocco">Marrakech</a>
+      <a class="chip" href="#stay22-widget" data-city="Barcelona, Spain">Barcelona</a>
     </div>
   </div>
 </section>
@@ -183,5 +183,21 @@
   </div>
 </footer>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+(function(){
+  var BASE = "https://stay22.com/embed/6a3e952c51cc0bc7a8f8f298";
+  var frame = document.getElementById("stay22-widget");
+  function setMap(addr){ if(frame && addr) frame.src = BASE + "?address=" + encodeURIComponent(addr); }
+  // Default: center on the visitor's location (IP-based, no permission prompt).
+  fetch("https://oasisdeal-fares.pages.dev/api/whereami")
+    .then(function(r){ return r.json(); })
+    .then(function(d){ if(d && d.city) setMap(d.city); })
+    .catch(function(){});
+  // Popular chips move the map in place instead of navigating away.
+  document.querySelectorAll(".chip[data-city]").forEach(function(c){
+    c.addEventListener("click", function(e){ e.preventDefault(); setMap(c.getAttribute("data-city")); var f=document.getElementById("stay22-widget"); if(f) f.scrollIntoView({behavior:"smooth", block:"center"}); });
+  });
+})();
+</script>
 </body>
 </html>
