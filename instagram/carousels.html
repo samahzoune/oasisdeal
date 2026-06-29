@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OasisDeal — Instagram carousels (ready to post)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root{--ink:#181A2E;--majorelle:#4B3FCB;--deep:#241F5E;--clay:#D97D4C;--saffron:#E8A33D;--sand:#F4ECDD;--paper:#FFFBF5;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:#16131f;color:#eceaf3;font-family:'Inter',sans-serif;padding:30px 20px 80px;}
+  .hint{max-width:1080px;margin:0 auto 30px;background:#221d33;border:1px solid #34304a;border-radius:14px;padding:18px 22px;font-size:14px;line-height:1.6;color:#cfc9e6;}
+  .hint b{color:#fff;}
+  .carousel-h{max-width:1080px;margin:46px auto 6px;font-family:'Fraunces',serif;font-size:26px;color:#fff;}
+  .carousel-s{max-width:1080px;margin:0 auto 14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9b94ab;}
+  .wrap{max-width:1080px;margin:0 auto;}
+  .dl{background:var(--saffron);color:#181A2E;border:none;font-family:'Inter';font-weight:700;font-size:15px;padding:11px 22px;border-radius:100px;cursor:pointer;margin:12px 0 6px;box-shadow:0 4px 14px rgba(0,0,0,.3);}
+  .dl:hover{filter:brightness(1.06);} .dl:active{transform:translateY(1px);}
+  .stage{width:1080px;height:1350px;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45);margin-bottom:8px;}
+  .slide{width:1080px;height:1350px;position:relative;overflow:hidden;}
+  .pad{position:absolute;inset:0;padding:96px;display:flex;flex-direction:column;}
+  .serif{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-.01em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wm{display:flex;align-items:center;gap:14px;font-family:'Fraunces',serif;font-weight:600;font-size:36px;}
+  .wm svg{width:48px;height:48px;}
+  .kick{font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:30px;}
+  .foot{display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:.04em;}
+  .num{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono';font-weight:600;font-size:28px;}
+  .swipe{font-family:'IBM Plex Mono',monospace;font-size:30px;letter-spacing:.1em;display:flex;align-items:center;gap:12px;}
+  .pill{display:inline-block;background:var(--saffron);color:#241F5E;font-weight:700;font-size:40px;padding:20px 40px;border-radius:100px;}
+  .ovl{position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,31,94,.15) 0%,rgba(20,16,46,.2) 45%,rgba(20,16,46,.92) 100%);}
+  img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+</style>
+</head>
+<body>
+<div class="hint">
+  <b>How to use:</b> each carousel below = one Instagram post. Click <b>⬇ Download PNG</b> above every slide to save it at full resolution (1080×1350). Then on Instagram: <b>+ → Post → select all 5 slides in order → paste the caption → publish.</b> Captions &amp; hashtags are at the bottom of each carousel.
+  <br><br><b>Tip:</b> if a cover photo exports blank when you open this file locally, open it on your live site instead (<b>oasisdeal.com/instagram/carousels.html</b>) and download there.
+</div>
+<div id="root"></div>
+
+<script>
+var LOGO='<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#E8A33D"/><path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"/><path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#4B3FCB"/><rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"/></svg>';
+var LOGOW='<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#E8A33D"/><path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"/><path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#fff"/><rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"/></svg>';
+var HANDLE='@oasisdealtravel · oasisdeal.com';
+
+var C=[
+ {name:'Carousel 1 — Tokyo (inspiration)', file:'tokyo',
+  caption:"Planning Tokyo? Save this 🗼 Best time to go, what to do, and live flight prices from your city — all free. Full guide in bio. Which city should we cover next? 👇\\n\\n#tokyo #japantravel #traveltips #traveltheworld #wanderlust #traveldestinations #bucketlist #traveldeals #cheapflights #travelgram",
+  slides:[
+   {type:'cover',img:'../images/destinations/tokyo.jpg',eyebrow:'Destination guide',title:'TOKYO',sub:'in 5 slides 🗼'},
+   {type:'text',bg:'sand',kick:'When to go',title:'Spring (cherry blossom) or October–November'},
+   {type:'text',bg:'purple',kick:'What to do',title:'Shibuya crossing · Senso-ji temple · sushi at Toyosu market'},
+   {type:'text',bg:'sand',kick:'Pro tip',title:'Grab a Suica card & stay near a JR line'},
+   {type:'cta',title:'Full guide + live flight prices from your city',sub:'Link in bio ✈️'}
+  ]},
+ {name:'Carousel 2 — Cheap flights (hack)', file:'flights',
+  caption:"The same seat can cost half as much — it's all timing 💸 Save these 3 rules and check the live prices from your city (link in bio). Tag someone who books flights too late 😅\\n\\n#flightdeals #cheapflights #traveltips #budgettravel #travelhacks #traveldeals #wanderlust #traveltheworld #flighthacks #travelgram",
+  slides:[
+   {type:'cover',img:'../images/destinations/paris.jpg',eyebrow:'Travel hack',title:'Never overpay for a flight again',sub:'💸'},
+   {type:'text',bg:'purple',kick:'Tip 1',title:'Book 4–8 weeks ahead — not last-minute, not 6 months'},
+   {type:'text',bg:'sand',kick:'Tip 2',title:'Fly Tuesday or Wednesday. Avoid Fri, Sun & peak summer'},
+   {type:'text',bg:'purple',kick:'Tip 3',title:'Compare ALL airlines in one search — cheapest first'},
+   {type:'cta',title:'Compare flights from your city, free',sub:'Link in bio ✈️'}
+  ]},
+ {name:'Carousel 3 — Travel eSIM (money hack)', file:'esim',
+  caption:"Your phone bill abroad shouldn't cost more than your hotel 📱 Here's the fix: a travel eSIM. Compare them by country in bio — your normal number keeps working. Save for your next trip ✈️\\n\\n#travelesim #esim #traveltips #travelhacks #budgettravel #digitalnomad #traveltech #wanderlust #traveldeals #travelgram",
+  slides:[
+   {type:'cover',img:'../images/destinations/bangkok.jpg',eyebrow:'Travel hack',title:'Don’t come home to a huge roaming bill',sub:'📱'},
+   {type:'text',bg:'sand',kick:'What',title:'A travel eSIM = a local data plan, installed in minutes'},
+   {type:'text',bg:'purple',kick:'Why',title:'Often a few $ for a week or more — vs roaming markups'},
+   {type:'text',bg:'sand',kick:'How',title:'Set it up at home on Wi-Fi — it activates on landing'},
+   {type:'cta',title:'Compare eSIMs for your destination',sub:'Link in bio 📲'}
+  ]}
+];
+
+function slideHTML(s, idx, total){
+  if(s.type==='cover'){
+    return '<div class="slide">'
+      +'<img class="bg" crossorigin="anonymous" src="'+s.img+'">'
+      +'<div class="ovl"></div>'
+      +'<div class="pad" style="color:#fff;justify-content:space-between">'
+        +'<div class="wm" style="color:#fff">'+LOGOW+' Oasis<span style="color:var(--clay)">|</span>Deal</div>'
+        +'<div>'
+          +'<div class="kick" style="color:var(--saffron)">'+s.eyebrow+'</div>'
+          +'<h1 class="serif" style="font-size:'+(s.title.length<10?150:90)+'px;line-height:1.02;margin:0">'+s.title+'</h1>'
+          +(s.sub?'<div class="serif" style="font-size:64px;color:#fff;opacity:.95;margin-top:10px">'+s.sub+'</div>':'')
+          +'<div class="swipe" style="color:#fff;opacity:.85;margin-top:54px">SWIPE <span style="font-size:38px">→</span></div>'
+        +'</div>'
+      +'</div></div>';
+  }
+  if(s.type==='cta'){
+    return '<div class="slide" style="background:linear-gradient(160deg,#4B3FCB 0%,#241F5E 100%)">'
+      +'<div class="pad" style="color:#fff;justify-content:space-between">'
+        +'<div class="wm" style="color:#fff">'+LOGOW+' Oasis<span style="color:var(--clay)">|</span>Deal</div>'
+        +'<div style="display:flex;flex-direction:column;justify-content:center;flex:1">'
+          +'<h1 class="serif" style="font-size:88px;line-height:1.06;margin:0 0 44px">'+s.title+'</h1>'
+          +'<div><span class="pill">'+s.sub+'</span></div>'
+        +'</div>'
+        +'<div class="foot" style="color:#cfc9f0">'+HANDLE+'</div>'
+      +'</div></div>';
+  }
+  // text slide
+  var purple = s.bg==='purple';
+  var bg = purple ? 'linear-gradient(160deg,#4B3FCB 0%,#241F5E 100%)' : 'var(--sand)';
+  var col = purple ? '#fff' : 'var(--ink)';
+  var kc = purple ? 'var(--saffron)' : 'var(--clay)';
+  var numbg = purple ? 'background:rgba(255,255,255,.14);color:#fff' : 'background:var(--majorelle);color:#fff';
+  return '<div class="slide" style="background:'+bg+'">'
+    +'<div class="pad" style="color:'+col+';justify-content:space-between">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center">'
+        +'<div class="wm" style="color:'+col+';font-size:30px"><span style="width:40px;display:inline-flex">'+(purple?LOGOW:LOGO)+'</span> Oasis<span style="color:var(--clay)">|</span>Deal</div>'
+        +'<div class="num" style="'+numbg+'">'+idx+'</div>'
+      +'</div>'
+      +'<div style="display:flex;flex-direction:column;justify-content:center;flex:1">'
+        +'<div class="kick" style="color:'+kc+'">'+s.kick+'</div>'
+        +'<h1 class="serif" style="font-size:80px;line-height:1.12;margin:0">'+s.title+'</h1>'
+      +'</div>'
+      +'<div class="foot" style="color:'+(purple?'#cfc9f0':'rgba(24,26,46,.5)')+'">'+HANDLE+'</div>'
+    +'</div></div>';
+}
+
+var root=document.getElementById('root');
+var stages=[];
+C.forEach(function(car){
+  var h=document.createElement('div'); h.className='carousel-h'; h.textContent=car.name; root.appendChild(h);
+  car.slides.forEach(function(s,i){
+    var lab=document.createElement('div'); lab.className='carousel-s'; lab.textContent='Slide '+(i+1)+' of '+car.slides.length; root.appendChild(lab);
+    var wrap=document.createElement('div'); wrap.className='wrap';
+    var stage=document.createElement('div'); stage.className='stage';
+    stage.innerHTML=slideHTML(s,i+1,car.slides.length);
+    wrap.appendChild(stage); root.appendChild(wrap);
+    stages.push({stage:stage,file:'oasisdeal-'+car.file+'-'+(i+1)});
+  });
+  var cap=document.createElement('div'); cap.className='hint'; cap.style.marginTop='16px';
+  cap.innerHTML='<b>Caption for this carousel (copy &amp; paste):</b><br><br>'+car.caption.replace(/\\n/g,'<br>');
+  root.appendChild(cap);
+});
+
+// fit + download
+function fit(){var avail=Math.min(document.body.clientWidth-40,1080);stages.forEach(function(o){o.stage.style.zoom=Math.min(1,avail/1080);});}
+window.addEventListener('resize',fit);fit();
+stages.forEach(function(o){
+  var btn=document.createElement('button');btn.className='dl';btn.textContent='⬇ Download PNG';
+  o.stage.parentNode.insertBefore(btn,o.stage);
+  btn.addEventListener('click',async function(){
+    btn.textContent='Rendering…';btn.disabled=true;var pz=o.stage.style.zoom;o.stage.style.zoom=1;
+    try{await document.fonts.ready;}catch(e){}
+    try{
+      var node=o.stage.querySelector('.slide');
+      var canvas=await html2canvas(node,{width:1080,height:1350,scale:1,backgroundColor:null,useCORS:true,logging:false});
+      var a=document.createElement('a');a.download=o.file+'.png';a.href=canvas.toDataURL('image/png');a.click();
+    }catch(err){alert('Export failed: '+err.message);}
+    o.stage.style.zoom=pz;btn.textContent='⬇ Download PNG';btn.disabled=false;
+  });
+});
+</script>
+</body>
+</html>
