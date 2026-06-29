@@ -202,7 +202,7 @@ function articlePage(a, lang){
   var x=L[lang], p='/blog/'+a.slug, url='https://oasisdeal.com'+pre(lang)+p;
   var ld={'@context':'https://schema.org','@type':'BlogPosting','headline':a.title[lang],'description':a.desc[lang],'datePublished':a.date,'dateModified':a.date,'inLanguage':lang,'author':{'@type':'Organization','name':'OasisDeal'},'publisher':{'@type':'Organization','name':'OasisDeal','logo':{'@type':'ImageObject','url':'https://oasisdeal.com/favicon.svg'}},'mainEntityOfPage':url};
   // related: up to 3 other articles
-  var rel=ART.filter(function(o){return o.slug!==a.slug;}).slice(0,3);
+  var rel=ART.filter(function(o){return o.slug!==a.slug;}).sort(function(x,z){return (x.img?0:1)-(z.img?0:1);}).slice(0,3);
   var related='<div class="blog-grid">'+rel.map(function(o){return blogCard(o,lang);}).join('')+'</div>';
   return head(lang, x.mt(a.title[lang]), a.desc[lang], url, altsFor(p), ld)
     + nav(lang, langSwitch(lang,p))
@@ -232,7 +232,7 @@ function featureImgCard(a, lang){
 
 function hubPage(lang){
   var x=L[lang], p='/blog/';
-  var cards=ART.map(function(a){return blogCard(a,lang);}).join('');
+  var cards=ART.slice().sort(function(a,b){return (a.img?0:1)-(b.img?0:1);}).map(function(a){return blogCard(a,lang);}).join('');
   return head(lang, x.hubTitle, x.hubDesc, 'https://oasisdeal.com'+pre(lang)+p, altsFor(p), null)
     + nav(lang, langSwitch(lang,p))
     + '<header class="rp-hero"><div class="container"><h1>'+x.hubH+'</h1><p style="opacity:.92;max-width:640px;margin-top:10px;font-size:1.05rem">'+x.hubIntro+'</p></div></header>'
