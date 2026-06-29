@@ -36,8 +36,8 @@ const L = {
       from:'à partir de',to:'vers',cheapest:'Le moins cher',search:'Chercher ce vol →',verdictH:'Quel aéroport choisir ?',faqH:'FAQ',
       note:'Tarifs de départ en direct via nos partenaires ; les prix changent chaque jour et le prix final est fixé par la compagnie. Nous pouvons percevoir une commission sans surcoût pour vous.',secure:'Sécurisé et gratuit · Sans frais'},
   ar:{dir:'rtl',lang:'ar',home:'/ar/',hotels:'/hotels',esim:'/esim',comp:'/compensation',nav:{flights:'رحلات',hotels:'فنادق',esim:'eSIM',comp:'تعويضات'},
-      from:'ابتداءً من',to:'إلى',cheapest:'الأرخص',search:'قلّب على هاد الرحلة →',verdictH:'شنو المطار اللي خاصك تختار؟',faqH:'أسئلة',
-      note:'أثمنة البداية مباشرة من شركائنا؛ كتبدل كل نهار والثمن النهائي كتحددو شركة الطيران. يمكن ناخدو عمولة بلا أي زيادة عليك.',secure:'آمن ومجاني · بلا رسوم'},
+      from:'ابتداءً من',to:'إلى',cheapest:'الأرخص',search:'ابحث عن هذه الرحلة →',verdictH:'أيّ مطار ينبغي أن تختار؟',faqH:'أسئلة شائعة',
+      note:'أسعار البداية مباشرة من شركائنا؛ تتغيّر يوميًا والسعر النهائي تحدّده شركة الطيران. قد نتقاضى عمولة دون أي زيادة عليك.',secure:'آمن ومجاني · دون رسوم'},
 };
 
 function apN(code,lang){ return AP[code][lang]; }
@@ -49,11 +49,11 @@ function pageTitle(cmp,lang){
     var a=apN(cmp.aps[0],lang), b=apN(cmp.aps[1],lang);
     if(lang==='en') return a+' vs '+b+': cheapest airport to fly to '+d+'? | OasisDeal';
     if(lang==='fr') return a+' ou '+b+' : quel aéroport le moins cher vers '+d+' ? | OasisDeal';
-    return a+' ولا '+b+': شنو أرخص مطار للطيران ل'+d+'؟ | OasisDeal';
+    return a+' أم '+b+': ما أرخص مطار للطيران إلى '+d+'؟ | OasisDeal';
   } else {
     if(lang==='en') return 'Cheapest airport for '+d+' from Morocco | OasisDeal';
     if(lang==='fr') return 'Aéroport le moins cher pour '+d+' au départ du Maroc | OasisDeal';
-    return 'أرخص مطار ل'+d+' من المغرب | OasisDeal';
+    return 'أرخص مطار إلى '+d+' من المغرب | OasisDeal';
   }
 }
 function pageH1(cmp,lang){
@@ -62,31 +62,31 @@ function pageH1(cmp,lang){
     var a=apN(cmp.aps[0],lang), b=apN(cmp.aps[1],lang);
     if(lang==='en') return a+' vs '+b+': cheapest flights to '+d;
     if(lang==='fr') return a+' ou '+b+' : vols les moins chers vers '+d;
-    return a+' ولا '+b+': أرخص رحلات ل'+d;
+    return a+' أم '+b+': أرخص رحلات إلى '+d;
   } else {
     if(lang==='en') return 'Cheapest airport for '+d+' from Morocco';
     if(lang==='fr') return 'Aéroport le moins cher pour '+d+' depuis le Maroc';
-    return 'أرخص مطار ل'+d+' من المغرب';
+    return 'أرخص مطار إلى '+d+' من المغرب';
   }
 }
 function metaDesc(cmp,lang){
   var d=dstN(cmp.dst,lang), city=DST[cmp.dst].city[lang], names=cmp.aps.map(function(a){return apN(a,lang);}).join(lang==='ar'?'، ':', ');
   if(lang==='en') return 'Compare live flight prices from '+names+' to '+d+' (via '+city+') and see which Moroccan airport is cheapest right now, with airlines and booking tips.';
   if(lang==='fr') return 'Comparez les prix en direct des vols depuis '+names+' vers '+d+' (via '+city+') et voyez quel aéroport marocain est le moins cher en ce moment.';
-  return 'قارن أثمنة الرحلات المباشرة من '+names+' ل'+d+' (عبر '+city+') وشوف شنو أرخص مطار مغربي دابا.';
+  return 'قارن أسعار الرحلات المباشرة من '+names+' إلى '+d+' (عبر '+city+') واعرف أرخص مطار مغربي الآن.';
 }
 function intro(cmp,lang){
   var d=dstN(cmp.dst,lang);
   if(lang==='en') return 'Prices below are live, comparing each airport on a sample route to '+d+'. The cheapest is highlighted — but also consider how often each airport flies and which airlines serve it.';
   if(lang==='fr') return 'Les prix ci-dessous sont en direct, comparant chaque aéroport sur un vol type vers '+d+'. Le moins cher est mis en avant — pensez aussi à la fréquence des vols et aux compagnies.';
-  return 'الأثمنة لتحت مباشرة، كتقارن كل مطار على رحلة نموذجية ل'+d+'. الأرخص مْعَلّم — ولكن خود بعين الاعتبار شحال من مرة كل مطار كيطير وأشمن شركات كيخدمو فيه.';
+  return 'الأسعار أدناه مباشرة، تقارن كل مطار على رحلة نموذجية إلى '+d+'. الأرخص معلّم — لكن ضع في الحسبان عدد مرات تشغيل كل مطار للرحلات وأي شركات تعمل منه.';
 }
 function verdict(cmp,lang){
   // honest general guidance
   var hasCMN = cmp.aps.indexOf('CMN')!==-1;
   if(lang==='en') return (hasCMN?'Casablanca (CMN) usually has the most flights, the most airlines and the widest choice of dates, so it’s often cheapest and most flexible. ':'')+'A smaller airport can still win on price if you live nearby — you save the cost and time of reaching Casablanca. Use the live prices above for your exact dates, and check both before booking.';
   if(lang==='fr') return (hasCMN?'Casablanca (CMN) propose généralement le plus de vols, de compagnies et de dates, donc souvent le moins cher et le plus flexible. ':'')+'Un aéroport plus petit peut gagner sur le prix si vous habitez à côté — vous économisez le trajet jusqu’à Casablanca. Utilisez les prix en direct ci-dessus pour vos dates exactes.';
-  return (hasCMN?'الدار البيضاء (CMN) عادة عندها أكثر رحلات وأكثر شركات وأكثر تواريخ، إذن غالبا الأرخص والأكثر مرونة. ':'')+'مطار أصغر يقدر يربح فالثمن إلا كنتي ساكن قريب — كتوفر تكلفة ووقت الوصول للدار البيضاء. استعمل الأثمنة المباشرة لفوق للتواريخ ديالك، وشيك الزوج قبل ما تحجز.';
+  return (hasCMN?'الدار البيضاء (CMN) عادةً لديها رحلات أكثر وشركات أكثر وتواريخ أكثر، لذا غالبًا ما تكون الأرخص والأكثر مرونة. ':'')+'قد يفوز مطار أصغر في السعر إن كنت تسكن قريبًا منه — فتوفّر تكلفة ووقت الوصول إلى الدار البيضاء. استخدم الأسعار المباشرة أعلاه لتواريخك، وتحقّق من الاثنين قبل الحجز.';
 }
 function faqs(cmp,lang){
   var d=dstN(cmp.dst,lang), a=apN(cmp.aps[0],lang), b=apN(cmp.aps[1]||cmp.aps[0],lang);
@@ -101,9 +101,9 @@ function faqs(cmp,lang){
     ['Puis-je être indemnisé sur ces vols ?','Si un vol vers/depuis l’Europe est retardé de 3 h+ ou annulé, vous pouvez réclamer jusqu’à 600 €. Vérifiez gratuitement.'],
   ];
   return [
-    ['شنو أرخص مطار مغربي ل'+d+'؟','كيتبدل كل نهار — المقارنة المباشرة لفوق كتوري أرخص واحد اليوم. الدار البيضاء عادة عندها أكثر اختيار.'],
-    ['واش يستاهل تمشي لمطار أكبر؟','أحيانا. إلا التوفير كثر من تكلفة الطريق، إيه — وإلا طير من بلاصتك. قارن الأثمنة المباشرة الأول.'],
-    ['واش نقدر ناخد تعويض على هاد الرحلات؟','إلا رحلة ل/من أوروبا تأخرت 3 سوايع ولا تلغات، يمكن يكون ليك الحق ف حتى 600 يورو. شيك بلاش.'],
+    ['ما أرخص مطار مغربي إلى '+d+'؟','يتغيّر يوميًا — المقارنة المباشرة أعلاه تُظهر الأرخص اليوم. الدار البيضاء عادةً لديها خيارات أكثر.'],
+    ['هل يستحق الذهاب إلى مطار أكبر؟','أحيانًا. إن كان التوفير أكبر من تكلفة الطريق، فنعم — وإلا فسافر من مكانك. قارن الأسعار المباشرة أولًا.'],
+    ['هل يمكنني الحصول على تعويض عن هذه الرحلات؟','إذا تأخرت رحلة إلى/من أوروبا 3 ساعات أو أُلغيت، فقد يكون لك الحق في ما يصل إلى 600 يورو. تحقّق مجانًا.'],
   ];
 }
 

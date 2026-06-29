@@ -77,10 +77,10 @@ const L = {
       hotelH:'Où dormir à {city}',hotelCta:'Comparer les hôtels →',esimH:'Rester connecté à {city}',esimCta:'Comparer les eSIM →',
       note:'Tarif de départ en direct via nos partenaires ; le prix final est fixé par la compagnie. Nous pouvons percevoir une commission sans surcoût pour vous.',secure:'Sécurisé et gratuit · Sans frais'},
   ar:{dir:'rtl',lang:'ar',home:'/ar/',hotels:'/hotels',esim:'/esim',comp:'/compensation',nav:{flights:'رحلات',hotels:'فنادق',esim:'eSIM',comp:'تعويضات'},
-      from:'ابتداءً من',perRoute:'أرخص ثمن لقيناه دابا',search:'قلّب على هاد الرحلة →',airlines:'الشركات اللي كتطير فهاد الخط',flighttime:'مدة الرحلة',direct:'غالبا مباشرة',
-      tipsH:'إمتى كتكون أرخص؟',faqH:'أسئلة مكررة',compH:'رحلتك تأخرت ولا تلغات؟',compP:'فرحلات المغرب–أوروبا تقدر تطالب بحتى 600 يورو بقانون الاتحاد الأوروبي — حتى الرحلات القديمة. شيك ف دقيقتين.',compCta:'شيك على التعويض ديالي →',
-      hotelH:'فين تبات ف {city}',hotelCta:'قارن الفنادق →',esimH:'بقى متصل ف {city}',esimCta:'قارن الـ eSIM →',
-      note:'ثمن البداية مباشر من شركائنا؛ الثمن النهائي كتحددو شركة الطيران. يمكن ناخدو عمولة بلا أي زيادة عليك.',secure:'آمن ومجاني · بلا رسوم حجز'},
+      from:'ابتداءً من',perRoute:'أرخص سعر وجدناه الآن',search:'ابحث عن هذه الرحلة →',airlines:'شركات الطيران على هذا الخط',flighttime:'مدة الرحلة',direct:'غالبًا مباشرة',
+      tipsH:'متى تكون أرخص؟',faqH:'أسئلة شائعة',compH:'هل تأخرت رحلتك أو أُلغيت؟',compP:'في رحلات المغرب–أوروبا يمكنك المطالبة بما يصل إلى 600 يورو بموجب قانون الاتحاد الأوروبي — حتى الرحلات القديمة. تحقّق في دقيقتين.',compCta:'تحقّق من تعويضي →',
+      hotelH:'أين تقيم في {city}',hotelCta:'قارن الفنادق →',esimH:'ابقَ متصلًا في {city}',esimCta:'قارن الـ eSIM →',
+      note:'السعر المبدئي مباشر من شركائنا؛ السعر النهائي تحدّده شركة الطيران. قد نتقاضى عمولة دون أي زيادة عليك.',secure:'آمن ومجاني · دون رسوم حجز'},
 };
 
 function title(f,t,lang){var o=nm(f,lang),c=nm(t,lang);
@@ -90,7 +90,7 @@ function title(f,t,lang){var o=nm(f,lang),c=nm(t,lang);
 function metaDesc(f,t,lang){var o=nm(f,lang),c=nm(t,lang);
   if(lang==='en')return 'Compare cheap flights from '+o+' to '+c+' across hundreds of airlines and book the lowest fare — no booking fees. Airlines, best time to book'+(isEuro(t)?' and delay-compensation rights.':'.');
   if(lang==='fr')return 'Comparez les vols pas chers de '+o+' à '+c+' sur des centaines de compagnies et réservez le meilleur tarif — sans frais. Compagnies, meilleur moment pour réserver'+(isEuro(t)?' et droits à indemnisation.':'.');
-  return 'قارن تذاكر الطيران الرخيصة من '+o+' إلى '+c+' عبر مئات الشركات واحجز أرخص ثمن — بلا رسوم. الشركات، أحسن وقت للحجز'+(isEuro(t)?' وحقوق التعويض.':'.');}
+  return 'قارن تذاكر الطيران الرخيصة من '+o+' إلى '+c+' عبر مئات الشركات واحجز أرخص سعر — دون رسوم. شركات الطيران وأفضل وقت للحجز'+(isEuro(t)?' وحقوق التعويض.':'.');}
 function h1(f,t,lang){var o=nm(f,lang),c=nm(t,lang);
   if(lang==='en')return 'Cheap flights '+o+' → '+c;
   if(lang==='fr')return 'Vols pas chers '+o+' → '+c;
@@ -103,8 +103,8 @@ function tips(f,t,lang){var c=nm(t,lang);var dom=isDom(f,t);
     ? 'Les tarifs intérieurs vers '+c+' sont généralement bas mais montent le week-end et les jours fériés. Pour payer moins, voyagez en milieu de semaine et réservez deux semaines à l’avance.'
     : 'Les tarifs vers '+c+' grimpent l’été et pendant l’Aïd. Pour payer moins, voyagez en milieu de semaine (mar./mer.) et hors saison, et réservez 4 à 6 semaines à l’avance.';
   return dom
-    ? 'الأثمنة الداخلية ل'+c+' عادة رخيصة ولكن كتطلع فالويكاند والأعياد. باش تخلّص أرخص، سافر ف وسط الأسبوع واحجز جوج سيمانات قبل.'
-    : 'الأثمنة ل'+c+' كتطلع ف الصيف وف العيد. باش تخلّص أرخص، سافر ف وسط الأسبوع وخارج الموسم، واحجز 4–6 سيمانات قبل.';}
+    ? 'الأسعار الداخلية إلى '+c+' عادةً رخيصة لكنها ترتفع في عطلة نهاية الأسبوع والأعياد. لتدفع أقل، سافر في منتصف الأسبوع واحجز قبل أسبوعين.'
+    : 'الأسعار إلى '+c+' ترتفع في الصيف والأعياد. لتدفع أقل، سافر في منتصف الأسبوع وخارج الموسم، واحجز قبل 4–6 أسابيع.';}
 
 function faqs(f,t,lang){
   var o=nm(f,lang),c=nm(t,lang),air=airlines(f,t).join(lang==='ar'?'، ':', '),dur=DUR[f+'-'+t],euro=isEuro(t);
@@ -122,11 +122,11 @@ function faqs(f,t,lang){
     q.push(['Quand est-ce le moins cher ?', isDom(f,t)?'En milieu de semaine, hors week-ends et fêtes, réservé deux semaines à l’avance.':'Hors été et Aïd, en milieu de semaine, réservé 4 à 6 semaines à l’avance.']);
     if(euro)q.push(['Mon vol a été retardé — puis-je être indemnisé ?','Possiblement jusqu’à 600 € selon les règles européennes pour les vols Maroc–Europe. Vérifiez gratuitement.']);
   } else {
-    q.push(['شحال كيكلف تيكي من '+o+' ل'+c+'؟','الأثمنة كتبدا من الثمن المباشر اللي مبين لفوق وكتبدل كل نهار. قارن جميع الشركات ف بحث واحد.']);
-    q.push(['شنو هي الشركات اللي كتطير من '+o+' ل'+c+'؟',air+' كيخدمو هاد الخط.']);
-    if(dur)q.push(['شحال كتدوم رحلة '+o+'–'+c+'؟','الرحلة المباشرة كتدوم تقريبا '+dur+'.']);
-    q.push(['إمتى كتكون أرخص؟', isDom(f,t)?'ف وسط الأسبوع، خارج الويكاند والأعياد، محجوزة جوج سيمانات قبل.':'خارج الصيف والعيد، ف وسط الأسبوع، محجوزة 4–6 سيمانات قبل.']);
-    if(euro)q.push(['رحلتي تأخرت — واش نقدر ناخد تعويض؟','يمكن حتى 600 يورو بقوانين الاتحاد الأوروبي لرحلات المغرب–أوروبا. شيك بلاش.']);
+    q.push(['كم تكلّف تذكرة من '+o+' إلى '+c+'؟','تبدأ الأسعار من السعر المباشر المبيّن أعلاه وتتغيّر يوميًا. قارن جميع الشركات في بحث واحد.']);
+    q.push(['ما شركات الطيران التي تطير من '+o+' إلى '+c+'؟',air+' تخدم هذا الخط.']);
+    if(dur)q.push(['كم تستغرق رحلة '+o+'–'+c+'؟','تستغرق الرحلة المباشرة حوالي '+dur+'.']);
+    q.push(['متى تكون أرخص؟', isDom(f,t)?'في منتصف الأسبوع، خارج عطلة نهاية الأسبوع والأعياد، ومحجوزة قبل أسبوعين.':'خارج الصيف والأعياد، في منتصف الأسبوع، ومحجوزة قبل 4–6 أسابيع.']);
+    if(euro)q.push(['تأخرت رحلتي — هل يمكنني الحصول على تعويض؟','قد تصل إلى 600 يورو بموجب قوانين الاتحاد الأوروبي لرحلات المغرب–أوروبا. تحقّق مجانًا.']);
   }
   return q;
 }
@@ -180,18 +180,18 @@ var GUIDESH={en:'Travel guides & tips',fr:'Guides & conseils voyage',ar:'أدل�
 var GUIDES={
   en:[['/flight-rights','Flight delay compensation — know your rights'],['/airports/casablanca-vs-tangier-flights-europe','Casablanca vs Tangier — cheapest airport to Europe'],['/airports/casablanca-vs-marrakech-flights-europe','Casablanca vs Marrakesh — cheapest to Europe'],['/airports/tangier-vs-nador-flights-spain','Tangier vs Nador — flights to Spain'],['/airports/casablanca-vs-rabat-flights-europe','Casablanca vs Rabat — flights to Europe'],['/airports/cheapest-airport-umrah-morocco','Cheapest airport for Umrah from Morocco']],
   fr:[['/flight-rights','Indemnisation de vol — connaître vos droits'],['/airports/casablanca-vs-tangier-flights-europe','Casablanca ou Tanger — aéroport le moins cher vers l’Europe'],['/airports/casablanca-vs-marrakech-flights-europe','Casablanca ou Marrakech — le moins cher vers l’Europe'],['/airports/tangier-vs-nador-flights-spain','Tanger ou Nador — vols vers l’Espagne'],['/airports/casablanca-vs-rabat-flights-europe','Casablanca ou Rabat — vols vers l’Europe'],['/airports/cheapest-airport-umrah-morocco','Aéroport le moins cher pour la Omra']],
-  ar:[['/flight-rights','تعويض تأخر الرحلة — عرف حقوقك'],['/airports/casablanca-vs-tangier-flights-europe','الدار البيضاء ولا طنجة — أرخص مطار لأوروبا'],['/airports/casablanca-vs-marrakech-flights-europe','الدار البيضاء ولا مراكش — الأرخص لأوروبا'],['/airports/tangier-vs-nador-flights-spain','طنجة ولا الناظور — رحلات لإسبانيا'],['/airports/casablanca-vs-rabat-flights-europe','الدار البيضاء ولا الرباط — رحلات لأوروبا'],['/airports/cheapest-airport-umrah-morocco','أرخص مطار للعمرة من المغرب']],
+  ar:[['/flight-rights','تعويض تأخّر الرحلة — اعرف حقوقك'],['/airports/casablanca-vs-tangier-flights-europe','الدار البيضاء أم طنجة — أرخص مطار لأوروبا'],['/airports/casablanca-vs-marrakech-flights-europe','الدار البيضاء أم مراكش — الأرخص لأوروبا'],['/airports/tangier-vs-nador-flights-spain','طنجة أم الناظور — رحلات إلى إسبانيا'],['/airports/casablanca-vs-rabat-flights-europe','الدار البيضاء أم الرباط — رحلات إلى أوروبا'],['/airports/cheapest-airport-umrah-morocco','أرخص مطار للعمرة من المغرب']],
 };
 
 function hubPage(lang){
   var x=L[lang];
   var ttl=lang==='en'?'Cheap Flights from Morocco — All Routes | OasisDeal':lang==='fr'?'Vols pas chers depuis le Maroc — Toutes les lignes | OasisDeal':'تذاكر طيران رخيصة من المغرب — جميع الوجهات | OasisDeal';
-  var desc=lang==='en'?'Compare cheap flights from Casablanca, Rabat, Tangier, Agadir and Fes to Europe, the Gulf and across Morocco — live fares, cheapest first.':lang==='fr'?'Comparez les vols pas chers depuis Casablanca, Rabat, Tanger, Agadir et Fès vers l’Europe, le Golfe et à travers le Maroc — tarifs en direct.':'قارن تذاكر الطيران الرخيصة من الدار البيضاء، الرباط، طنجة، أكادير وفاس لأوروبا، الخليج وداخل المغرب — أثمنة مباشرة.';
+  var desc=lang==='en'?'Compare cheap flights from Casablanca, Rabat, Tangier, Agadir and Fes to Europe, the Gulf and across Morocco — live fares, cheapest first.':lang==='fr'?'Comparez les vols pas chers depuis Casablanca, Rabat, Tanger, Agadir et Fès vers l’Europe, le Golfe et à travers le Maroc — tarifs en direct.':'قارن تذاكر الطيران الرخيصة من الدار البيضاء، الرباط، طنجة، أكادير وفاس إلى أوروبا، الخليج وداخل المغرب — أسعار مباشرة.';
   var hubH=lang==='en'?'Cheap flights from Morocco':lang==='fr'?'Vols pas chers depuis le Maroc':'تذاكر طيران رخيصة من المغرب';
-  var intro=lang==='en'?'Pick your route to compare live fares across hundreds of airlines, with airlines and the best time to book.':lang==='fr'?'Choisissez votre trajet pour comparer les tarifs en direct, avec les compagnies et le meilleur moment pour réserver.':'اختر رحلتك باش تقارن الأثمنة المباشرة عبر مئات الشركات، مع الشركات وأحسن وقت للحجز.';
+  var intro=lang==='en'?'Pick your route to compare live fares across hundreds of airlines, with airlines and the best time to book.':lang==='fr'?'Choisissez votre trajet pour comparer les tarifs en direct, avec les compagnies et le meilleur moment pour réserver.':'اختر رحلتك لمقارنة الأسعار المباشرة عبر مئات الشركات، مع شركات الطيران وأفضل وقت للحجز.';
   var alts=['en','fr','ar'].map(function(lg){return '<link rel="alternate" hreflang="'+lg+'" href="https://oasisdeal.com'+(lg==='en'?'':'/'+lg)+'/flights/" />';}).join('\n');
   var self='https://oasisdeal.com'+(lang==='en'?'':'/'+lang)+'/flights/';
-  var seePrices=lang==='ar'?'شوف الأثمنة →':lang==='fr'?'Voir les prix →':'See prices →';
+  var seePrices=lang==='ar'?'اعرض الأسعار →':lang==='fr'?'Voir les prix →':'See prices →';
   var groups=ORIGINS.map(function(o){
     var rs=ROUTES.filter(function(r){return r[0]===o;});
     if(!rs.length)return '';
