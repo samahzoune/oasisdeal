@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://oasisdeal.com/</loc></url>
   <url><loc>https://oasisdeal.com/hotels</loc></url>
+  <url><loc>https://oasisdeal.com/cars</loc></url>
   <url><loc>https://oasisdeal.com/esim</loc></url>
   <url><loc>https://oasisdeal.com/compensation</loc></url>
   <url><loc>https://oasisdeal.com/flight-rights</loc></url>
@@ -251,6 +252,10 @@
   <url><loc>https://oasisdeal.com/destinations/bangkok</loc></url>
   <url><loc>https://oasisdeal.com/destinations/kuala-lumpur</loc></url>
   <url><loc>https://oasisdeal.com/destinations/cairo</loc></url>
+  <url><loc>https://oasisdeal.com/destinations/tokyo</loc></url>
+  <url><loc>https://oasisdeal.com/destinations/new-york</loc></url>
+  <url><loc>https://oasisdeal.com/destinations/bali</loc></url>
+  <url><loc>https://oasisdeal.com/destinations/rio-de-janeiro</loc></url>
   <url><loc>https://oasisdeal.com/fr/destinations/</loc></url>
   <url><loc>https://oasisdeal.com/fr/destinations/istanbul</loc></url>
   <url><loc>https://oasisdeal.com/fr/destinations/barcelona</loc></url>
@@ -264,6 +269,10 @@
   <url><loc>https://oasisdeal.com/fr/destinations/bangkok</loc></url>
   <url><loc>https://oasisdeal.com/fr/destinations/kuala-lumpur</loc></url>
   <url><loc>https://oasisdeal.com/fr/destinations/cairo</loc></url>
+  <url><loc>https://oasisdeal.com/fr/destinations/tokyo</loc></url>
+  <url><loc>https://oasisdeal.com/fr/destinations/new-york</loc></url>
+  <url><loc>https://oasisdeal.com/fr/destinations/bali</loc></url>
+  <url><loc>https://oasisdeal.com/fr/destinations/rio-de-janeiro</loc></url>
   <url><loc>https://oasisdeal.com/ar/destinations/</loc></url>
   <url><loc>https://oasisdeal.com/ar/destinations/istanbul</loc></url>
   <url><loc>https://oasisdeal.com/ar/destinations/barcelona</loc></url>
@@ -277,40 +286,32 @@
   <url><loc>https://oasisdeal.com/ar/destinations/bangkok</loc></url>
   <url><loc>https://oasisdeal.com/ar/destinations/kuala-lumpur</loc></url>
   <url><loc>https://oasisdeal.com/ar/destinations/cairo</loc></url>
+  <url><loc>https://oasisdeal.com/ar/destinations/tokyo</loc></url>
+  <url><loc>https://oasisdeal.com/ar/destinations/new-york</loc></url>
+  <url><loc>https://oasisdeal.com/ar/destinations/bali</loc></url>
+  <url><loc>https://oasisdeal.com/ar/destinations/rio-de-janeiro</loc></url>
   <url><loc>https://oasisdeal.com/blog/</loc></url>
   <url><loc>https://oasisdeal.com/blog/cheapest-time-to-book-flights-from-morocco</loc></url>
   <url><loc>https://oasisdeal.com/blog/10-tips-to-find-cheap-flights-from-morocco</loc></url>
   <url><loc>https://oasisdeal.com/blog/flight-delay-compensation-morocco-ec261</loc></url>
   <url><loc>https://oasisdeal.com/blog/travel-esim-vs-roaming</loc></url>
   <url><loc>https://oasisdeal.com/blog/umrah-from-morocco-guide</loc></url>
+  <url><loc>https://oasisdeal.com/blog/best-time-to-visit-europe-from-morocco</loc></url>
+  <url><loc>https://oasisdeal.com/blog/hand-luggage-rules-fly-carry-on-only</loc></url>
   <url><loc>https://oasisdeal.com/fr/blog/</loc></url>
   <url><loc>https://oasisdeal.com/fr/blog/cheapest-time-to-book-flights-from-morocco</loc></url>
   <url><loc>https://oasisdeal.com/fr/blog/10-tips-to-find-cheap-flights-from-morocco</loc></url>
   <url><loc>https://oasisdeal.com/fr/blog/flight-delay-compensation-morocco-ec261</loc></url>
   <url><loc>https://oasisdeal.com/fr/blog/travel-esim-vs-roaming</loc></url>
   <url><loc>https://oasisdeal.com/fr/blog/umrah-from-morocco-guide</loc></url>
+  <url><loc>https://oasisdeal.com/fr/blog/best-time-to-visit-europe-from-morocco</loc></url>
+  <url><loc>https://oasisdeal.com/fr/blog/hand-luggage-rules-fly-carry-on-only</loc></url>
   <url><loc>https://oasisdeal.com/ar/blog/</loc></url>
   <url><loc>https://oasisdeal.com/ar/blog/cheapest-time-to-book-flights-from-morocco</loc></url>
   <url><loc>https://oasisdeal.com/ar/blog/10-tips-to-find-cheap-flights-from-morocco</loc></url>
   <url><loc>https://oasisdeal.com/ar/blog/flight-delay-compensation-morocco-ec261</loc></url>
   <url><loc>https://oasisdeal.com/ar/blog/travel-esim-vs-roaming</loc></url>
   <url><loc>https://oasisdeal.com/ar/blog/umrah-from-morocco-guide</loc></url>
-  <url><loc>https://oasisdeal.com/blog/best-time-to-visit-europe-from-morocco</loc></url>
-  <url><loc>https://oasisdeal.com/blog/hand-luggage-rules-fly-carry-on-only</loc></url>
-  <url><loc>https://oasisdeal.com/fr/blog/best-time-to-visit-europe-from-morocco</loc></url>
-  <url><loc>https://oasisdeal.com/fr/blog/hand-luggage-rules-fly-carry-on-only</loc></url>
   <url><loc>https://oasisdeal.com/ar/blog/best-time-to-visit-europe-from-morocco</loc></url>
   <url><loc>https://oasisdeal.com/ar/blog/hand-luggage-rules-fly-carry-on-only</loc></url>
-  <url><loc>https://oasisdeal.com/destinations/tokyo</loc></url>
-  <url><loc>https://oasisdeal.com/destinations/new-york</loc></url>
-  <url><loc>https://oasisdeal.com/destinations/bali</loc></url>
-  <url><loc>https://oasisdeal.com/destinations/rio-de-janeiro</loc></url>
-  <url><loc>https://oasisdeal.com/fr/destinations/tokyo</loc></url>
-  <url><loc>https://oasisdeal.com/fr/destinations/new-york</loc></url>
-  <url><loc>https://oasisdeal.com/fr/destinations/bali</loc></url>
-  <url><loc>https://oasisdeal.com/fr/destinations/rio-de-janeiro</loc></url>
-  <url><loc>https://oasisdeal.com/ar/destinations/tokyo</loc></url>
-  <url><loc>https://oasisdeal.com/ar/destinations/new-york</loc></url>
-  <url><loc>https://oasisdeal.com/ar/destinations/bali</loc></url>
-  <url><loc>https://oasisdeal.com/ar/destinations/rio-de-janeiro</loc></url>
 </urlset>

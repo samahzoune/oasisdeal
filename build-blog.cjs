@@ -107,8 +107,8 @@ const ART = [
 ];
 
 const L = {
-  en:{dir:'ltr',lang:'en',home:'/',dest:'/destinations/',blog:'/blog/',hotels:'/hotels',esim:'/esim',comp:'/compensation',
-      nav:{flights:'Flights',hotels:'Hotels',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Compensation'},
+  en:{dir:'ltr',lang:'en',home:'/',dest:'/destinations/',blog:'/blog/',hotels:'/hotels',cars:'/cars',esim:'/esim',comp:'/compensation',
+      nav:{flights:'Flights',hotels:'Hotels',cars:'Cars',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Compensation'},
       hubTitle:'Travel Blog — Tips & Guides for Travellers from Morocco | OasisDeal',
       hubDesc:'Practical travel guides for travellers from Morocco: cheap flights, compensation rights, travel eSIMs, Umrah and more.',
       hubH:'Travel tips & guides', hubIntro:'Practical guides for travellers from Morocco — flights, rights, staying online, and getting more from every trip.',
@@ -116,8 +116,8 @@ const L = {
       readMore:'Read', back:'← All articles', published:'Published', by:'By the OasisDeal team',
       relatedH:'Keep exploring', secure:'Secure & free to use · No booking fees',
       mt:function(t){return t+' | OasisDeal';}},
-  fr:{dir:'ltr',lang:'fr',home:'/fr/',dest:'/fr/destinations/',blog:'/fr/blog/',hotels:'/hotels',esim:'/esim',comp:'/compensation',
-      nav:{flights:'Vols',hotels:'Hôtels',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Indemnisation'},
+  fr:{dir:'ltr',lang:'fr',home:'/fr/',dest:'/fr/destinations/',blog:'/fr/blog/',hotels:'/hotels',cars:'/cars',esim:'/esim',comp:'/compensation',
+      nav:{flights:'Vols',hotels:'Hôtels',cars:'Voitures',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Indemnisation'},
       hubTitle:'Blog voyage — Conseils & guides pour les voyageurs du Maroc | OasisDeal',
       hubDesc:'Guides pratiques pour les voyageurs du Maroc : vols pas chers, droits à indemnisation, eSIM voyage, Omra et plus.',
       hubH:'Conseils & guides voyage', hubIntro:'Guides pratiques pour les voyageurs du Maroc — vols, droits, rester connecté et profiter de chaque voyage.',
@@ -125,8 +125,8 @@ const L = {
       readMore:'Lire', back:'← Tous les articles', published:'Publié le', by:'Par l’équipe OasisDeal',
       relatedH:'Continuez à explorer', secure:'Sécurisé et gratuit · Sans frais',
       mt:function(t){return t+' | OasisDeal';}},
-  ar:{dir:'rtl',lang:'ar',home:'/ar/',dest:'/ar/destinations/',blog:'/ar/blog/',hotels:'/hotels',esim:'/esim',comp:'/compensation',
-      nav:{flights:'رحلات',hotels:'فنادق',esim:'eSIM',dest:'الوجهات',blog:'المدوّنة',comp:'تعويضات'},
+  ar:{dir:'rtl',lang:'ar',home:'/ar/',dest:'/ar/destinations/',blog:'/ar/blog/',hotels:'/hotels',cars:'/cars',esim:'/esim',comp:'/compensation',
+      nav:{flights:'رحلات',hotels:'فنادق',cars:'سيارات',esim:'eSIM',dest:'الوجهات',blog:'المدوّنة',comp:'تعويضات'},
       hubTitle:'مدوّنة السفر — نصائح وأدلة للمسافرين من المغرب | OasisDeal',
       hubDesc:'أدلة سفر عملية للمسافرين من المغرب: رحلات رخيصة، حقوق التعويض، شرائح eSIM للسفر، العمرة والمزيد.',
       hubH:'نصائح وأدلة السفر', hubIntro:'أدلة عملية للمسافرين من المغرب — الرحلات، الحقوق، البقاء متصلًا، والاستفادة أكثر من كل رحلة.',
@@ -161,7 +161,7 @@ var NAVJS='<script>(function(){var C=\'.nav-div{display:inline-block;width:1px;h
 
 function nav(lang, langsHtml){ var x=L[lang];
   return '<nav class="nav"><div class="container nav-row"><a class="logo" href="'+x.home+'">'+LOGO+'<span class="logo-word">Oasis<span class="pipe">|</span>Deal</span></a><div class="nav-links">'
-    +'<a class="nav-link" href="'+x.home+'">'+x.nav.flights+'</a><a class="nav-link" href="'+x.hotels+'">'+x.nav.hotels+'</a><a class="nav-link" href="'+x.esim+'">'+x.nav.esim+'</a><a class="nav-link" href="'+x.comp+'">'+x.nav.comp+'</a><span class="nav-div"></span><a class="nav-link" href="'+x.dest+'">'+x.nav.dest+'</a><a class="nav-link active" href="'+x.blog+'">'+x.nav.blog+'</a>'
+    +'<a class="nav-link" href="'+x.home+'">'+x.nav.flights+'</a><a class="nav-link" href="'+x.hotels+'">'+x.nav.hotels+'</a><a class="nav-link" href="'+x.cars+'">'+x.nav.cars+'</a><a class="nav-link" href="'+x.esim+'">'+x.nav.esim+'</a><a class="nav-link" href="'+x.comp+'">'+x.nav.comp+'</a><span class="nav-div"></span><a class="nav-link" href="'+x.dest+'">'+x.nav.dest+'</a><a class="nav-link active" href="'+x.blog+'">'+x.nav.blog+'</a>'
     +(langsHtml?'<span class="rp-langs">'+langsHtml+'</span>':'')+'</div></div></nav>'; }
 function footer(lang){ var x=L[lang]; return '<footer class="footer"><div class="container"><div class="footer-trust">🔒 '+x.secure+' · Travelpayouts · Stay22 · AirHelp</div><div class="footer-bottom"><span>© <span id="y"></span> OasisDeal</span></div></div></footer><script>document.getElementById("y").textContent=new Date().getFullYear();</script>'+NAVJS; }
 
@@ -273,9 +273,9 @@ fs.writeFileSync(path.join(ROOT,'.blog-urls.json'), JSON.stringify(blogUrls));
 /* ---- full multi-column footer (shared, appended to each generator) ---- */
 function fullFooter(lang){
   var P=lang==='en'?'':'/'+lang, H=lang==='en'?'/':'/'+lang+'/';
-  var T={en:{ex:'Explore',co:'Company',pr:'Popular routes',gu:'Guides',tag:'Find your savings oasis — flights, hotels and compensation, compared honestly.',flights:'Flights',hotels:'Hotels',esim:'eSIM',comp:'Compensation',dest:'Destinations',blog:'Blog',about:'About',contact:'Contact',privacy:'Privacy',rights:'Flight delay rights',umrah:'Cheapest Umrah airport',vs:'Casablanca vs Tangier',allr:'All routes →',secure:'Secure & free to use · No booking fees',r:[['casablanca-paris','Casablanca → Paris'],['casablanca-madrid','Casablanca → Madrid'],['tangier-madrid','Tangier → Madrid']]},
-    fr:{ex:'Explorer',co:'Société',pr:'Lignes populaires',gu:'Guides',tag:'Trouvez votre oasis d’économies — vols, hôtels et indemnisation, comparés honnêtement.',flights:'Vols',hotels:'Hôtels',esim:'eSIM',comp:'Indemnisation',dest:'Destinations',blog:'Blog',about:'À propos',contact:'Contact',privacy:'Confidentialité',rights:'Indemnisation de vol',umrah:'Aéroport le moins cher pour la Omra',vs:'Casablanca ou Tanger',allr:'Toutes les lignes →',secure:'Sécurisé et gratuit · Sans frais',r:[['casablanca-paris','Casablanca → Paris'],['casablanca-madrid','Casablanca → Madrid'],['tangier-madrid','Tanger → Madrid']]},
-    ar:{ex:'استكشف',co:'الشركة',pr:'رحلات شائعة',gu:'أدلة',tag:'اعثر على واحة التوفير — رحلات وفنادق وتعويضات، نقارنها بصدق.',flights:'رحلات',hotels:'فنادق',esim:'eSIM',comp:'تعويضات',dest:'الوجهات',blog:'المدوّنة',about:'من نحن',contact:'اتصل بنا',privacy:'الخصوصية',rights:'تعويض تأخّر الرحلة',umrah:'أرخص مطار للعمرة',vs:'الدار البيضاء أم طنجة',allr:'كل الوجهات →',secure:'آمن ومجاني · دون رسوم حجز',r:[['casablanca-paris','الدار البيضاء ← باريس'],['casablanca-madrid','الدار البيضاء ← مدريد'],['tangier-madrid','طنجة ← مدريد']]}}[lang];
+  var T={en:{ex:'Explore',co:'Company',pr:'Popular routes',gu:'Guides',tag:'Find your savings oasis — flights, hotels and compensation, compared honestly.',flights:'Flights',hotels:'Hotels',cars:'Cars',esim:'eSIM',comp:'Compensation',dest:'Destinations',blog:'Blog',about:'About',contact:'Contact',privacy:'Privacy',rights:'Flight delay rights',umrah:'Cheapest Umrah airport',vs:'Casablanca vs Tangier',allr:'All routes →',secure:'Secure & free to use · No booking fees',r:[['casablanca-paris','Casablanca → Paris'],['casablanca-madrid','Casablanca → Madrid'],['tangier-madrid','Tangier → Madrid']]},
+    fr:{ex:'Explorer',co:'Société',pr:'Lignes populaires',gu:'Guides',tag:'Trouvez votre oasis d’économies — vols, hôtels et indemnisation, comparés honnêtement.',flights:'Vols',hotels:'Hôtels',cars:'Voitures',esim:'eSIM',comp:'Indemnisation',dest:'Destinations',blog:'Blog',about:'À propos',contact:'Contact',privacy:'Confidentialité',rights:'Indemnisation de vol',umrah:'Aéroport le moins cher pour la Omra',vs:'Casablanca ou Tanger',allr:'Toutes les lignes →',secure:'Sécurisé et gratuit · Sans frais',r:[['casablanca-paris','Casablanca → Paris'],['casablanca-madrid','Casablanca → Madrid'],['tangier-madrid','Tanger → Madrid']]},
+    ar:{ex:'استكشف',co:'الشركة',pr:'رحلات شائعة',gu:'أدلة',tag:'اعثر على واحة التوفير — رحلات وفنادق وتعويضات، نقارنها بصدق.',flights:'رحلات',hotels:'فنادق',cars:'سيارات',esim:'eSIM',comp:'تعويضات',dest:'الوجهات',blog:'المدوّنة',about:'من نحن',contact:'اتصل بنا',privacy:'الخصوصية',rights:'تعويض تأخّر الرحلة',umrah:'أرخص مطار للعمرة',vs:'الدار البيضاء أم طنجة',allr:'كل الوجهات →',secure:'آمن ومجاني · دون رسوم حجز',r:[['casablanca-paris','الدار البيضاء ← باريس'],['casablanca-madrid','الدار البيضاء ← مدريد'],['tangier-madrid','طنجة ← مدريد']]}}[lang];
   function col(h,links){return '<div class="footer-col"><h4>'+h+'</h4>'+links.map(function(l){return '<a href="'+l[0]+'">'+l[1]+'</a>';}).join('')+'</div>';}
   var explore=col(T.ex,[[H,T.flights],['/hotels',T.hotels],['/esim',T.esim],['/compensation',T.comp],[P+'/destinations/',T.dest],[P+'/blog/',T.blog]]);
   var company=col(T.co,[['/about',T.about],['/contact',T.contact],['/privacy',T.privacy]]);

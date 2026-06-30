@@ -12,8 +12,8 @@ const LOGO = '<svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http
 
 const P = {
   en: {
-    dir:'ltr', lang:'en', home:'/', hotels:'/hotels', esim:'/esim', comp:'/compensation',
-    nav:{flights:'Flights',hotels:'Hotels',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Compensation'},
+    dir:'ltr', lang:'en', home:'/', hotels:'/hotels', cars:'/cars', esim:'/esim', comp:'/compensation',
+    nav:{flights:'Flights',hotels:'Hotels',cars:'Cars',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Compensation'},
     title:'Flight Delay Compensation Rights — Claim up to €600 | OasisDeal',
     desc:'Know your air passenger rights. If your flight was delayed 3+ hours, cancelled or overbooked, you can claim up to €600 under EU law — including many Morocco–Europe flights. Here’s how.',
     h1:'Know your flight rights', lead:'Most travellers never claim the money airlines owe them. If your flight was delayed, cancelled or overbooked, EU law (EC 261) can entitle you to up to €600 — even for flights from the last few years.',
@@ -36,8 +36,8 @@ const P = {
     secure:'Secure & free to use · No win, no fee'
   },
   fr: {
-    dir:'ltr', lang:'fr', home:'/fr/', hotels:'/hotels', esim:'/esim', comp:'/compensation',
-    nav:{flights:'Vols',hotels:'Hôtels',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Indemnisation'},
+    dir:'ltr', lang:'fr', home:'/fr/', hotels:'/hotels', cars:'/cars', esim:'/esim', comp:'/compensation',
+    nav:{flights:'Vols',hotels:'Hôtels',cars:'Voitures',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Indemnisation'},
     title:'Droits des passagers aériens — Réclamez jusqu’à 600 € | OasisDeal',
     desc:'Connaissez vos droits. Vol retardé de 3 h+, annulé ou surréservé ? Vous pouvez réclamer jusqu’à 600 € selon la loi européenne (CE 261) — y compris sur de nombreux vols Maroc–Europe.',
     h1:'Connaissez vos droits passager', lead:'La plupart des voyageurs ne réclament jamais l’argent que les compagnies leur doivent. Vol retardé, annulé ou surréservé ? La loi européenne (CE 261) peut vous donner droit à 600 € — même pour des vols des dernières années.',
@@ -60,8 +60,8 @@ const P = {
     secure:'Sécurisé et gratuit · Sans gain, sans frais'
   },
   ar: {
-    dir:'rtl', lang:'ar', home:'/ar/', hotels:'/hotels', esim:'/esim', comp:'/compensation',
-    nav:{flights:'رحلات',hotels:'فنادق',esim:'eSIM',dest:'الوجهات',blog:'المدوّنة',comp:'تعويضات'},
+    dir:'rtl', lang:'ar', home:'/ar/', hotels:'/hotels', cars:'/cars', esim:'/esim', comp:'/compensation',
+    nav:{flights:'رحلات',hotels:'فنادق',cars:'سيارات',esim:'eSIM',dest:'الوجهات',blog:'المدوّنة',comp:'تعويضات'},
     title:'حقوق المسافر الجوي — طالب بما يصل إلى 600 يورو | OasisDeal',
     desc:'اعرف حقوقك. إذا تأخرت رحلتك 3 ساعات أو أُلغيت أو تعرّضت لتجاوز الحجز، يمكنك المطالبة بما يصل إلى 600 يورو بموجب قانون الاتحاد الأوروبي (EC 261) — بما في ذلك كثير من رحلات المغرب–أوروبا.',
     h1:'اعرف حقوقك الجوية', lead:'معظم المسافرين لا يطالبون أبدًا بالأموال التي تدين بها لهم شركات الطيران. إذا تأخرت رحلتك أو أُلغيت أو تعرّضت لتجاوز الحجز، فقد يمنحك قانون الاتحاد الأوروبي (EC 261) الحق في ما يصل إلى 600 يورو — حتى على رحلات من سنوات ماضية.',
@@ -93,6 +93,7 @@ function nav(lang){
     + '<div class="nav-links">'
     + '<a class="nav-link" href="'+x.home+'">'+x.nav.flights+'</a>'
     + '<a class="nav-link" href="'+x.hotels+'">'+x.nav.hotels+'</a>'
+    + '<a class="nav-link" href="'+x.cars+'">'+x.nav.cars+'</a>'
     + '<a class="nav-link" href="'+x.esim+'">'+x.nav.esim+'</a><a class="nav-link" href="'+x.comp+'">'+x.nav.comp+'</a><span class="nav-div"></span>'
     + '<a class="nav-link" href="'+(lang==='en'?'':'/'+lang)+'/destinations/">'+x.nav.dest+'</a>'
     + '<a class="nav-link" href="'+(lang==='en'?'':'/'+lang)+'/blog/">'+x.nav.blog+'</a>'
@@ -161,9 +162,9 @@ console.log('Done: passenger-rights page in EN/FR/AR.');
 /* ---- full multi-column footer (shared, appended to each generator) ---- */
 function fullFooter(lang){
   var P=lang==='en'?'':'/'+lang, H=lang==='en'?'/':'/'+lang+'/';
-  var T={en:{ex:'Explore',co:'Company',pr:'Popular routes',gu:'Guides',tag:'Find your savings oasis — flights, hotels and compensation, compared honestly.',flights:'Flights',hotels:'Hotels',esim:'eSIM',comp:'Compensation',dest:'Destinations',blog:'Blog',about:'About',contact:'Contact',privacy:'Privacy',rights:'Flight delay rights',umrah:'Cheapest Umrah airport',vs:'Casablanca vs Tangier',allr:'All routes →',secure:'Secure & free to use · No booking fees',r:[['casablanca-paris','Casablanca → Paris'],['casablanca-madrid','Casablanca → Madrid'],['tangier-madrid','Tangier → Madrid']]},
-    fr:{ex:'Explorer',co:'Société',pr:'Lignes populaires',gu:'Guides',tag:'Trouvez votre oasis d’économies — vols, hôtels et indemnisation, comparés honnêtement.',flights:'Vols',hotels:'Hôtels',esim:'eSIM',comp:'Indemnisation',dest:'Destinations',blog:'Blog',about:'À propos',contact:'Contact',privacy:'Confidentialité',rights:'Indemnisation de vol',umrah:'Aéroport le moins cher pour la Omra',vs:'Casablanca ou Tanger',allr:'Toutes les lignes →',secure:'Sécurisé et gratuit · Sans frais',r:[['casablanca-paris','Casablanca → Paris'],['casablanca-madrid','Casablanca → Madrid'],['tangier-madrid','Tanger → Madrid']]},
-    ar:{ex:'استكشف',co:'الشركة',pr:'رحلات شائعة',gu:'أدلة',tag:'اعثر على واحة التوفير — رحلات وفنادق وتعويضات، نقارنها بصدق.',flights:'رحلات',hotels:'فنادق',esim:'eSIM',comp:'تعويضات',dest:'الوجهات',blog:'المدوّنة',about:'من نحن',contact:'اتصل بنا',privacy:'الخصوصية',rights:'تعويض تأخّر الرحلة',umrah:'أرخص مطار للعمرة',vs:'الدار البيضاء أم طنجة',allr:'كل الوجهات →',secure:'آمن ومجاني · دون رسوم حجز',r:[['casablanca-paris','الدار البيضاء ← باريس'],['casablanca-madrid','الدار البيضاء ← مدريد'],['tangier-madrid','طنجة ← مدريد']]}}[lang];
+  var T={en:{ex:'Explore',co:'Company',pr:'Popular routes',gu:'Guides',tag:'Find your savings oasis — flights, hotels and compensation, compared honestly.',flights:'Flights',hotels:'Hotels',cars:'Cars',esim:'eSIM',comp:'Compensation',dest:'Destinations',blog:'Blog',about:'About',contact:'Contact',privacy:'Privacy',rights:'Flight delay rights',umrah:'Cheapest Umrah airport',vs:'Casablanca vs Tangier',allr:'All routes →',secure:'Secure & free to use · No booking fees',r:[['casablanca-paris','Casablanca → Paris'],['casablanca-madrid','Casablanca → Madrid'],['tangier-madrid','Tangier → Madrid']]},
+    fr:{ex:'Explorer',co:'Société',pr:'Lignes populaires',gu:'Guides',tag:'Trouvez votre oasis d’économies — vols, hôtels et indemnisation, comparés honnêtement.',flights:'Vols',hotels:'Hôtels',cars:'Voitures',esim:'eSIM',comp:'Indemnisation',dest:'Destinations',blog:'Blog',about:'À propos',contact:'Contact',privacy:'Confidentialité',rights:'Indemnisation de vol',umrah:'Aéroport le moins cher pour la Omra',vs:'Casablanca ou Tanger',allr:'Toutes les lignes →',secure:'Sécurisé et gratuit · Sans frais',r:[['casablanca-paris','Casablanca → Paris'],['casablanca-madrid','Casablanca → Madrid'],['tangier-madrid','Tanger → Madrid']]},
+    ar:{ex:'استكشف',co:'الشركة',pr:'رحلات شائعة',gu:'أدلة',tag:'اعثر على واحة التوفير — رحلات وفنادق وتعويضات، نقارنها بصدق.',flights:'رحلات',hotels:'فنادق',cars:'سيارات',esim:'eSIM',comp:'تعويضات',dest:'الوجهات',blog:'المدوّنة',about:'من نحن',contact:'اتصل بنا',privacy:'الخصوصية',rights:'تعويض تأخّر الرحلة',umrah:'أرخص مطار للعمرة',vs:'الدار البيضاء أم طنجة',allr:'كل الوجهات →',secure:'آمن ومجاني · دون رسوم حجز',r:[['casablanca-paris','الدار البيضاء ← باريس'],['casablanca-madrid','الدار البيضاء ← مدريد'],['tangier-madrid','طنجة ← مدريد']]}}[lang];
   function col(h,links){return '<div class="footer-col"><h4>'+h+'</h4>'+links.map(function(l){return '<a href="'+l[0]+'">'+l[1]+'</a>';}).join('')+'</div>';}
   var explore=col(T.ex,[[H,T.flights],['/hotels',T.hotels],['/esim',T.esim],['/compensation',T.comp],[P+'/destinations/',T.dest],[P+'/blog/',T.blog]]);
   var company=col(T.co,[['/about',T.about],['/contact',T.contact],['/privacy',T.privacy]]);
