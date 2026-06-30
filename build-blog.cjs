@@ -137,6 +137,8 @@ const L = {
 };
 
 function pre(lang){ return lang==='en'?'':'/'+lang; }
+function homeName(lang){ return lang==='fr'?'Accueil':lang==='ar'?'الرئيسية':'Home'; }
+function breadcrumb(items){ return {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':items.map(function(it,i){var o={'@type':'ListItem','position':i+1,'name':it.n}; if(it.u) o.item=it.u; return o;})}; }
 const LOGO = '<svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#E8A33D"/><path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"/><path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#4B3FCB"/><rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"/></svg>';
 
 function featureImg(a, lang){
@@ -204,7 +206,8 @@ function articlePage(a, lang){
   // related: up to 3 other articles
   var rel=ART.filter(function(o){return o.slug!==a.slug;}).sort(function(x,z){return (x.img?0:1)-(z.img?0:1);}).slice(0,3);
   var related='<div class="blog-grid">'+rel.map(function(o){return blogCard(o,lang);}).join('')+'</div>';
-  return head(lang, x.mt(a.title[lang]), a.desc[lang], url, altsFor(p), ld)
+  var crumb=breadcrumb([{n:homeName(lang),u:'https://oasisdeal.com'+x.home},{n:x.nav.blog,u:'https://oasisdeal.com'+x.blog},{n:a.title[lang],u:url}]);
+  return head(lang, x.mt(a.title[lang]), a.desc[lang], url, altsFor(p), [ld, crumb])
     + nav(lang, langSwitch(lang,p))
     + '<header class="rp-hero"><div class="container"><div class="dg-col">'
     + '<div class="eyebrow">'+x.cats[a.cat]+'</div>'
@@ -233,7 +236,8 @@ function featureImgCard(a, lang){
 function hubPage(lang){
   var x=L[lang], p='/blog/';
   var cards=ART.slice().sort(function(a,b){return (a.img?0:1)-(b.img?0:1);}).map(function(a){return blogCard(a,lang);}).join('');
-  return head(lang, x.hubTitle, x.hubDesc, 'https://oasisdeal.com'+pre(lang)+p, altsFor(p), null)
+  var crumb=breadcrumb([{n:homeName(lang),u:'https://oasisdeal.com'+x.home},{n:x.nav.blog,u:'https://oasisdeal.com'+x.blog}]);
+  return head(lang, x.hubTitle, x.hubDesc, 'https://oasisdeal.com'+pre(lang)+p, altsFor(p), crumb)
     + nav(lang, langSwitch(lang,p))
     + '<header class="rp-hero"><div class="container"><h1>'+x.hubH+'</h1><p style="opacity:.92;max-width:640px;margin-top:10px;font-size:1.05rem">'+x.hubIntro+'</p></div></header>'
     + '<main class="container" style="padding-top:24px;padding-bottom:44px"><div class="blog-grid">'+cards+'</div></main>'

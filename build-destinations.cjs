@@ -171,6 +171,8 @@ function bt(d,lang){ return lang==='en'?d.bt_en : lang==='fr'?d.bt_fr : d.bt_ar;
 function langName(d,lang){ return lang==='en'?d.lang_en : lang==='fr'?d.lang_fr : d.lang_ar; }
 function isEuro(d){ return d.region==='eu'; }
 function pre(lang){ return lang==='en'?'':'/'+lang; }
+function homeName(lang){ return lang==='fr'?'Accueil':lang==='ar'?'الرئيسية':'Home'; }
+function breadcrumb(items){ return {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':items.map(function(it,i){var o={'@type':'ListItem','position':i+1,'name':it.n}; if(it.u) o.item=it.u; return o;})}; }
 
 const LOGO = '<svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#E8A33D"/><path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"/><path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#4B3FCB"/><rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"/></svg>';
 
@@ -278,10 +280,12 @@ function guidePage(d, lang){
     + (isEuro(d)? card(lang==='en'?'Your rights':lang==='fr'?'Vos droits':'حقوقك', (lang==='en'?'Delayed or cancelled flight?':lang==='fr'?'Vol retardé ou annulé ?':'رحلة متأخرة أو ملغاة؟'), 'btn-ghost', 'href="'+pre(lang)+'/flight-rights"', x.rights) : '')
     + '</div>';
   var todos='<ul class="dg-todo">'+todo(d,lang).map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul>';
+  var crumbLd=breadcrumb([{n:homeName(lang),u:'https://oasisdeal.com'+x.home},{n:x.nav.dest,u:'https://oasisdeal.com'+x.dest},{n:n,u:'https://oasisdeal.com'+pre(lang)+p}]);
 
   return head(lang, x.mt(n), x.md(n), 'https://oasisdeal.com'+pre(lang)+p, altsFor(p))
     + nav(lang, langSwitch(lang,p))
     + '<script type="application/ld+json">'+JSON.stringify(faqLd)+'</script>'
+    + '<script type="application/ld+json">'+JSON.stringify(crumbLd)+'</script>'
     + '<header class="rp-hero"><div class="container"><div class="dg-col">'
     + '<div class="eyebrow" style="margin-bottom:8px">'+d.flag+' '+x.regions[d.region]+' · '+x.guideTag+'</div>'
     + '<h1>'+n+'</h1>'
@@ -333,10 +337,12 @@ function hubPage(lang){
     if(!list.length) return '';
     return '<section class="dg-sec"><h2>'+x.regions[rk]+'</h2><div class="dg-grid">'+list.map(function(d){return destCard(d,lang);}).join('')+'</div></section>';
   }).join('');
+  var crumbLd=breadcrumb([{n:homeName(lang),u:'https://oasisdeal.com'+x.home},{n:x.nav.dest,u:'https://oasisdeal.com'+x.dest}]);
   return head(lang, x.hubTitle, x.hubDesc, 'https://oasisdeal.com'+pre(lang)+p, altsFor(p))
     + nav(lang, langSwitch(lang,p))
+    + '<script type="application/ld+json">'+JSON.stringify(crumbLd)+'</script>'
     + '<header class="rp-hero"><div class="container"><h1>'+x.hubH+'</h1><p style="opacity:.92;max-width:660px;margin-top:10px;font-size:1.05rem">'+x.hubIntro+'</p></div></header>'
-    + '<main class="container" style="padding:20px 0 44px">'+trendHtml+regionsHtml+'</main>'
+    + '<main class="container" style="padding-top:20px;padding-bottom:44px">'+trendHtml+regionsHtml+'</main>'
     + footer(lang) + liveScript() + '\n</body>\n</html>\n';
 }
 
