@@ -7,6 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 const ROOT = __dirname;
+const STAY22 = "<script>(function(s,t,a,y,o,n){s.Stay22=s.Stay22||{};s.Stay22.params={lmaID:'6a444061c151746f75b1b4ff'};o=t.createElement(a);n=t.getElementsByTagName(a)[0];o.async=1;o.src=y;n.parentNode.insertBefore(o,n);})(window,document,'script','https://scripts.stay22.com/letmeallez.js');</script>";
 
 // ---- cities (IATA -> slug + names). MA = Moroccan (domestic detection). ----
 const CITY = {
@@ -176,7 +177,7 @@ function routePage(f,t,lang){
     +'<div class="rp-card" style="margin-bottom:26px"><h2>'+x.tipsH+'</h2><p style="color:var(--ink-soft)">'+tips(f,t,lang)+'</p></div>'
     +'<div class="rp-cross">'+cross+'</div>'
     +'<section class="rp-faq"><h2 style="margin-bottom:6px">'+x.faqH+'</h2>'+faqHtml+'</section><p class="rp-note">'+x.note+'</p></main>'
-    +footer(lang)+liveScript(f,t)+'\n</body>\n</html>\n';
+    +footer(lang)+liveScript(f,t)+STAY22+'\n</body>\n</html>\n';
 }
 
 // ---- guides (rights + airport comparisons) for the hub ----
@@ -216,7 +217,7 @@ function hubPage(lang){
     +'<header class="rp-hero" style="background:linear-gradient(160deg,var(--majorelle) 0%,var(--majorelle-deep) 100%);color:#fff;padding:54px 0"><div class="container"><h1 style="color:#fff">'+hubH+'</h1><p style="opacity:.9;max-width:640px;margin-top:10px">'+intro+'</p></div></header>'
     +'<main class="container" style="padding:20px 0 36px">'+groups
     +'<section style="margin-top:40px"><h2 style="font-size:1.4rem;margin-bottom:14px">'+GUIDESH[lang]+'</h2><ul style="list-style:none;padding:0;line-height:2.1">'+guides+'</ul></section></main>'
-    +footer(lang)+reorderJs+'\n</body>\n</html>\n';
+    +footer(lang)+reorderJs+STAY22+'\n</body>\n</html>\n';
 }
 
 function ensure(p){fs.mkdirSync(p,{recursive:true});}

@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const ROOT = __dirname;
+const STAY22 = "<script>(function(s,t,a,y,o,n){s.Stay22=s.Stay22||{};s.Stay22.params={lmaID:'6a444061c151746f75b1b4ff'};o=t.createElement(a);n=t.getElementsByTagName(a)[0];o.async=1;o.src=y;n.parentNode.insertBefore(o,n);})(window,document,'script','https://scripts.stay22.com/letmeallez.js');</script>";
 
 const CMN_ROUTE = {PAR:1,LON:1,MAD:1,AMS:1,IST:1,DXB:1,JED:1,BRU:1,MIL:1,LYS:1,DUS:1,FRA:1};
 
@@ -312,7 +313,7 @@ function guidePage(d, lang){
     + '<p style="margin-top:18px"><a href="'+x.dest+'" style="color:var(--majorelle);font-weight:600;text-decoration:none">'+x.back+'</a></p>'
     + '</article>'
     + '</div></main>'
-    + footer(lang) + liveScript() + '\n</body>\n</html>\n';
+    + footer(lang) + liveScript() + STAY22+'\n</body>\n</html>\n';
 }
 
 function destCard(d, lang){
@@ -343,7 +344,7 @@ function hubPage(lang){
     + '<script type="application/ld+json">'+JSON.stringify(crumbLd)+'</script>'
     + '<header class="rp-hero"><div class="container"><h1>'+x.hubH+'</h1><p style="opacity:.92;max-width:660px;margin-top:10px;font-size:1.05rem">'+x.hubIntro+'</p></div></header>'
     + '<main class="container" style="padding-top:20px;padding-bottom:44px">'+trendHtml+regionsHtml+'</main>'
-    + footer(lang) + liveScript() + '\n</body>\n</html>\n';
+    + footer(lang) + liveScript() + STAY22+'\n</body>\n</html>\n';
 }
 
 function ensure(p){fs.mkdirSync(p,{recursive:true});}

@@ -7,6 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 const ROOT = __dirname;
+const STAY22 = "<script>(function(s,t,a,y,o,n){s.Stay22=s.Stay22||{};s.Stay22.params={lmaID:'6a444061c151746f75b1b4ff'};o=t.createElement(a);n=t.getElementsByTagName(a)[0];o.async=1;o.src=y;n.parentNode.insertBefore(o,n);})(window,document,'script','https://scripts.stay22.com/letmeallez.js');</script>";
 const PUB = '2026-06-29';
 
 // cat keys: flights / rights / esim / umrah / guide
@@ -220,7 +221,7 @@ function articlePage(a, lang){
     + '<p style="margin-top:18px"><a href="'+x.blog+'" style="color:var(--majorelle);font-weight:600;text-decoration:none">'+x.back+'</a></p>'
     + '<h2>'+x.relatedH+'</h2>'+related
     + '</article></div></main>'
-    + footer(lang)+'\n</body>\n</html>\n';
+    + footer(lang)+STAY22+'\n</body>\n</html>\n';
 }
 
 function blogCard(a, lang){
@@ -241,7 +242,7 @@ function hubPage(lang){
     + nav(lang, langSwitch(lang,p))
     + '<header class="rp-hero"><div class="container"><h1>'+x.hubH+'</h1><p style="opacity:.92;max-width:640px;margin-top:10px;font-size:1.05rem">'+x.hubIntro+'</p></div></header>'
     + '<main class="container" style="padding-top:24px;padding-bottom:44px"><div class="blog-grid">'+cards+'</div></main>'
-    + footer(lang)+'\n</body>\n</html>\n';
+    + footer(lang)+STAY22+'\n</body>\n</html>\n';
 }
 
 function ensure(p){fs.mkdirSync(p,{recursive:true});}

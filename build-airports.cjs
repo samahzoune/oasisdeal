@@ -3,6 +3,7 @@
    a verdict, FAQ + FAQPage schema, hreflang. Output: /airports/<slug> etc.
    Run: node build-airports.cjs */
 const fs = require('fs'); const path = require('path'); const ROOT = __dirname;
+const STAY22 = "<script>(function(s,t,a,y,o,n){s.Stay22=s.Stay22||{};s.Stay22.params={lmaID:'6a444061c151746f75b1b4ff'};o=t.createElement(a);n=t.getElementsByTagName(a)[0];o.async=1;o.src=y;n.parentNode.insertBefore(o,n);})(window,document,'script','https://scripts.stay22.com/letmeallez.js');</script>";
 const LOGO = '<svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#E8A33D"/><path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"/><path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#4B3FCB"/><rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"/></svg>';
 
 // Moroccan airports: code + name per lang + (optional) route-page slug for CMN routes.
@@ -158,7 +159,7 @@ function pageHtml(cmp,lang){
     +'<main class="container" style="padding:30px 0"><div class="rp-grid">'+cards+'</div>'
     +'<section class="rp-sec"><h2>'+x.verdictH+'</h2><p>'+verdict(cmp,lang)+'</p></section>'
     +'<section class="rp-sec rp-faq"><h2>'+x.faqH+'</h2>'+faqHtml+'</section>'
-    +'<p class="rp-note">'+x.note+'</p></main>'+footer(lang)+liveScript(cmp)+'\n</body>\n</html>\n';
+    +'<p class="rp-note">'+x.note+'</p></main>'+footer(lang)+liveScript(cmp)+STAY22+'\n</body>\n</html>\n';
 }
 
 function ensure(p){fs.mkdirSync(p,{recursive:true});}

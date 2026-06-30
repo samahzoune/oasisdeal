@@ -5,6 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const ROOT = __dirname;
+const STAY22 = "<script>(function(s,t,a,y,o,n){s.Stay22=s.Stay22||{};s.Stay22.params={lmaID:'6a444061c151746f75b1b4ff'};o=t.createElement(a);n=t.getElementsByTagName(a)[0];o.async=1;o.src=y;n.parentNode.insertBefore(o,n);})(window,document,'script','https://scripts.stay22.com/letmeallez.js');</script>";
 const AIRHELP = 'https://airhelp.tpx.lu/EkCWcqrW';
 const SLUG = 'flight-rights';
 
@@ -148,7 +149,7 @@ function page(lang){
       + '<div class="rp-cta"><h2>'+x.ctaH+'</h2><p>'+x.ctaP+'</p><a class="btn btn-primary" href="'+x.comp+'">'+x.cta+'</a><a class="btn btn-ghost" href="'+AIRHELP+'" target="_blank" rel="noopener sponsored">'+x.cta2+'</a></div>'
       + '<section class="rp-sec rp-faq"><h2>'+x.faqH+'</h2>'+faq+'</section>'
       + '<p class="rp-note">'+x.note+'</p>'
-    + '</main>'+footer(lang)+'\n</body>\n</html>\n';
+    + '</main>'+footer(lang)+STAY22+'\n</body>\n</html>\n';
 }
 
 function ensure(p){ fs.mkdirSync(p,{recursive:true}); }
