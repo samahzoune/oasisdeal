@@ -211,7 +211,7 @@ function articlePage(a, lang){
     + '<h1>'+a.title[lang]+'</h1>'
     + '<div class="blog-meta">'+x.published+' '+a.date+' · '+x.by+'</div>'
     + '</div></div></header>'
-    + '<main class="container" style="padding:0 0 40px"><div class="dg-col">'
+    + '<main class="container" style="padding-top:0;padding-bottom:40px"><div class="dg-col">'
     + '<figure class="dg-figure">'+featureImg(a,lang)+'</figure>'
     + '<article class="dg-article">'+bodyHtml(a,lang)
     + '<p style="margin-top:18px"><a href="'+x.blog+'" style="color:var(--majorelle);font-weight:600;text-decoration:none">'+x.back+'</a></p>'
@@ -236,7 +236,7 @@ function hubPage(lang){
   return head(lang, x.hubTitle, x.hubDesc, 'https://oasisdeal.com'+pre(lang)+p, altsFor(p), null)
     + nav(lang, langSwitch(lang,p))
     + '<header class="rp-hero"><div class="container"><h1>'+x.hubH+'</h1><p style="opacity:.92;max-width:640px;margin-top:10px;font-size:1.05rem">'+x.hubIntro+'</p></div></header>'
-    + '<main class="container" style="padding:24px 0 44px"><div class="blog-grid">'+cards+'</div></main>'
+    + '<main class="container" style="padding-top:24px;padding-bottom:44px"><div class="blog-grid">'+cards+'</div></main>'
     + footer(lang)+'\n</body>\n</html>\n';
 }
 

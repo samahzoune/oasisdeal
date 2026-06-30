@@ -288,7 +288,7 @@ function guidePage(d, lang){
     + '<p style="opacity:.92;margin-top:10px;font-size:1.05rem">'+hi(d,lang)+'</p>'
     + '<div class="rp-price"><span class="pre" id="dfrom" data-base="'+x.fromBase+'">'+x.fromCasa+'</span><span data-price="'+d.code+'">—</span><small>'+x.perGuide+'</small></div>'
     + '</div></div></header>'
-    + '<main class="container" style="padding:0 0 40px"><div class="dg-col">'
+    + '<main class="container" style="padding-top:0;padding-bottom:40px"><div class="dg-col">'
     + '<figure class="dg-figure">'+featureImg(d,lang)+'</figure>'
     + '<article class="dg-article">'
     + '<p class="dg-lead">'+lead(d,lang)+'</p>'

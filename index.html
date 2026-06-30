@@ -103,7 +103,7 @@
   .board-title{font-family:'IBM Plex Mono',monospace;color:var(--saffron);font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;}
   .board-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;display:inline-block;margin-right:6px;box-shadow:0 0 8px #4ADE80;}
   .board-cols{display:grid;grid-template-columns:1.4fr 1.4fr 1fr;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;color:rgba(255,255,255,0.45);text-transform:uppercase;padding:0 6px 8px;}
-  #boardRows{flex:1;display:flex;flex-direction:column;}
+  #boardRows{flex:1;display:flex;flex-direction:column;min-height:322px;}
   .board-row{display:grid;grid-template-columns:1.4fr 1.4fr 1fr;align-items:center;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,0.07);flex:1;cursor:pointer;transition:background .12s ease;}
   .board-row:hover{background:rgba(255,255,255,0.05);}
   .board-row:last-child{border-bottom:none;}
@@ -143,7 +143,7 @@
   @media (max-width:860px){ .stubs{grid-template-columns:1fr;} }
 
   /* ROUTES */
-  .routes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .routes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;min-height:300px;}
   .route-card{background:var(--paper);border-radius:14px;box-shadow:0 10px 26px rgba(24,26,46,0.06);display:flex;flex-direction:column;text-decoration:none;color:inherit;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;}
   .route-card:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(24,26,46,0.12);}
   .route-main{padding:22px 22px 16px;}
@@ -156,8 +156,8 @@
   .route-foot{padding:14px 22px 18px;display:flex;align-items:center;justify-content:space-between;}
   .route-from{font-size:0.72rem;color:var(--ink-soft);letter-spacing:0.06em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;}
   .route-go{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;color:var(--majorelle);letter-spacing:0.04em;}
-  @media (max-width:860px){ .routes{grid-template-columns:1fr 1fr;} }
-  @media (max-width:560px){ .routes{grid-template-columns:1fr;} }
+  @media (max-width:860px){ .routes{grid-template-columns:1fr 1fr;min-height:450px;} }
+  @media (max-width:560px){ .routes{grid-template-columns:1fr;min-height:930px;} }
 
   /* FAQ */
   .faq{max-width:760px;}
