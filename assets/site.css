@@ -141,7 +141,7 @@ p{margin:0;} button{font-family:inherit;cursor:pointer;}
 .footer-col a:hover{color:#fff;}
 .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:22px;font-size:0.82rem;color:rgba(255,255,255,0.45);}
 .footer-trust{padding-top:18px;font-size:0.82rem;color:rgba(255,255,255,0.5);}
-.footer-social{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:440px;margin:28px auto 10px;}
+.footer-social{display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:280px;margin:18px 0 0;}
 .footer-ig{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.72);text-decoration:none;font-size:0.9rem;font-weight:600;}
 .footer-ig:hover{color:#fff;}
 
