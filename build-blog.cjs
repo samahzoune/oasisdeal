@@ -282,7 +282,7 @@ var EXTRA = '<style>'
   +'</style>';
 
 function head(lang, title, desc, canon, alts, ld){
-  return '<!DOCTYPE html>\n<html lang="'+L[lang].lang+'" dir="'+L[lang].dir+'">\n<head>\n<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />\n'
+  return '<!DOCTYPE html>\n<html lang="'+L[lang].lang+'" dir="'+L[lang].dir+'">\n<head>\n<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="p:domain_verify" content="1f6676c70992e08fca792b0978b916b9" />\n'
     +'<title>'+title+'</title>\n<meta name="description" content="'+desc+'" />\n<link rel="canonical" href="'+canon+'" />\n'+alts+'\n'
     +'<meta property="og:title" content="'+title+'" /><meta property="og:description" content="'+desc+'" /><meta property="og:url" content="'+canon+'" /><meta property="og:type" content="article" />\n'
     +'<link rel="icon" type="image/svg+xml" href="/favicon.svg" />\n<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'

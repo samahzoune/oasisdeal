@@ -141,7 +141,7 @@ function pageHtml(cmp,lang){
       +'<div class="get"><a class="btn btn-ghost" id="b_'+code+'" data-fly href="https://fly.oasisdeal.com" target="_blank" rel="noopener">'+x.search+'</a></div></div>';
   }).join('');
   var faqHtml=faqs(cmp,lang).map(function(q){return '<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>';}).join('');
-  return '<!DOCTYPE html>\n<html lang="'+x.lang+'" dir="'+x.dir+'">\n<head>\n<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />\n'
+  return '<!DOCTYPE html>\n<html lang="'+x.lang+'" dir="'+x.dir+'">\n<head>\n<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="p:domain_verify" content="1f6676c70992e08fca792b0978b916b9" />\n'
     +'<title>'+pageTitle(cmp,lang)+'</title>\n<meta name="description" content="'+metaDesc(cmp,lang)+'" />\n<link rel="canonical" href="'+self+'" />\n'+alts+'\n<link rel="alternate" hreflang="x-default" href="https://oasisdeal.com/airports/'+slug+'" />\n'
     +'<meta property="og:title" content="'+pageTitle(cmp,lang)+'" /><meta property="og:description" content="'+metaDesc(cmp,lang)+'" /><meta property="og:url" content="'+self+'" /><meta property="og:type" content="website" />\n'
     +'<link rel="icon" type="image/svg+xml" href="/favicon.svg" />\n<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'

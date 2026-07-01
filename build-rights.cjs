@@ -120,7 +120,7 @@ function page(lang){
   var when=x.when.map(function(w){return '<li>'+w+'</li>';}).join('');
   var steps=x.steps.map(function(s,i){return '<div class="rp-step"><div class="rp-step-n">'+(i+1)+'</div><div><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div></div>';}).join('');
   var faq=x.faq.map(function(q){return '<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>';}).join('');
-  return '<!DOCTYPE html>\n<html lang="'+x.lang+'" dir="'+x.dir+'">\n<head>\n<meta charset="UTF-8" />\n<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n'
+  return '<!DOCTYPE html>\n<html lang="'+x.lang+'" dir="'+x.dir+'">\n<head>\n<meta charset="UTF-8" />\n<meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="p:domain_verify" content="1f6676c70992e08fca792b0978b916b9" />\n'
     + '<title>'+x.title+'</title>\n<meta name="description" content="'+x.desc+'" />\n<link rel="canonical" href="'+self+'" />\n'+alts+'\n<link rel="alternate" hreflang="x-default" href="https://oasisdeal.com/'+SLUG+'" />\n'
     + '<meta property="og:title" content="'+x.title+'" /><meta property="og:description" content="'+x.desc+'" /><meta property="og:url" content="'+self+'" /><meta property="og:type" content="website" />\n'
     + '<link rel="icon" type="image/svg+xml" href="/favicon.svg" />\n'
