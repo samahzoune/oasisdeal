@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cheap Flights — Compare Hundreds of Airlines | OasisDeal</title>
-<meta name="description" content="Search and compare cheap flights from hundreds of airlines and travel agencies in one place. Find the lowest fare for your route and book direct — no markup, no booking fees.">
+<meta name="description" content="Search and compare cheap flights from hundreds of airlines and travel agencies in one place. Find the lowest price for your route and book direct — no markup, no booking fees.">
 <link rel="canonical" href="https://oasisdeal.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cheap Flights — Compare & Book | OasisDeal">
-<meta property="og:description" content="Compare cheap flights from hundreds of airlines in one search and book the lowest fare.">
+<meta property="og:description" content="Compare cheap flights from hundreds of airlines in one search and book the lowest price.">
 <meta property="og:url" content="https://oasisdeal.com/">
 <meta property="og:site_name" content="OasisDeal">
 <meta property="og:image" content="https://oasisdeal.com/favicon.svg">
@@ -47,16 +47,17 @@
 
   /* NAV */
   .nav{position:sticky;top:0;z-index:50;background:rgba(244,236,221,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-  .nav-row{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
   .logo-mark{width:30px;height:30px;flex:none;}
   .logo-word{font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;letter-spacing:-0.01em;color:var(--ink);}
   .logo-word .pipe{color:var(--saffron);font-weight:400;}
-  .nav-links{display:flex;align-items:center;gap:30px;}
-  .nav-link{font-size:0.92rem;font-weight:500;text-decoration:none;color:var(--ink-soft);}
+  .nav-links{display:flex;align-items:center;gap:22px;}
+  .nav-link{font-size:0.9rem;font-weight:500;text-decoration:none;color:var(--ink-soft);white-space:nowrap;}
   .nav-link:hover{color:var(--ink);}
   .nav-link.active{color:var(--ink);font-weight:600;}
-  .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;font-weight:600;font-size:0.92rem;padding:12px 22px;text-decoration:none;transition:transform .15s ease, box-shadow .15s ease;}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;font-weight:600;font-size:0.92rem;padding:12px 22px;text-decoration:none;white-space:nowrap;transition:transform .15s ease, box-shadow .15s ease;}
+  .nav-links .btn{padding:10px 18px;}
   .btn-primary{background:var(--majorelle);color:#fff;box-shadow:0 6px 18px rgba(75,63,203,0.28);}
   .btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(75,63,203,0.34);}
   @media (max-width:720px){ .nav-links .nav-link{display:none;} }
@@ -229,7 +230,7 @@
         <span data-i18n="hero.eyebrow">300+ airlines &amp; agencies, one search</span>
       </div>
       <h1 data-i18n="hero.h1">Find your savings <em>oasis.</em></h1>
-      <p class="hero-sub" data-i18n="hero.sub">Search every airline and travel agency at once, watch the fares line up cheapest-first, and book straight through to the airline — no detour, no markup.</p>
+      <p class="hero-sub" data-i18n="hero.sub">Search every airline and travel agency at once, watch the prices line up cheapest-first, and book straight through to the airline — no detour, no markup.</p>
 
       <form class="ticket" id="searchTicket" autocomplete="off">
         <div class="ticket-form">
@@ -267,10 +268,10 @@
           <span class="board-title" id="boardOrigin">CMN</span>
         </div>
         <div class="board-cols">
-          <span data-i18n="board.from">From</span><span data-i18n="board.to">To</span><span data-i18n="board.fare">Fare</span>
+          <span data-i18n="board.from">From</span><span data-i18n="board.to">To</span><span data-i18n="board.fare">Price</span>
         </div>
         <div id="boardRows"></div>
-        <p class="board-foot" data-i18n="board.foot">Lowest fare &amp; date found — tap a route to search.</p>
+        <p class="board-foot" data-i18n="board.foot">Lowest price &amp; date found — tap a route to search.</p>
       </div>
     </div>
   </div>
@@ -302,12 +303,12 @@
         <div class="stub-bottom"><span data-i18n="how.gate">Gate</span><span data-i18n="how.open">Open</span></div>
       </div>
       <div class="stub">
-        <div class="stub-top"><div class="stub-index">02 / COMPARE</div><h3 data-i18n="how.s2t">We line up every fare</h3><p data-i18n="how.s2p">Hundreds of airlines and agencies, sorted cheapest-first, in seconds.</p></div>
+        <div class="stub-top"><div class="stub-index">02 / COMPARE</div><h3 data-i18n="how.s2t">We line up every price</h3><p data-i18n="how.s2p">Hundreds of airlines and agencies, sorted cheapest-first, in seconds.</p></div>
         <div class="stub-perf"></div>
         <div class="stub-bottom"><span data-i18n="how.gate">Gate</span><span data-i18n="how.boarding">Boarding</span></div>
       </div>
       <div class="stub">
-        <div class="stub-top"><div class="stub-index">03 / BOARD</div><h3 data-i18n="how.s3t">Book direct, same price</h3><p data-i18n="how.s3p">Pick your fare and finish on the airline's own site — we just pointed the way.</p></div>
+        <div class="stub-top"><div class="stub-index">03 / BOARD</div><h3 data-i18n="how.s3t">Book direct, same price</h3><p data-i18n="how.s3p">Pick your price and finish on the airline's own site — we just pointed the way.</p></div>
         <div class="stub-perf"></div>
         <div class="stub-bottom"><span data-i18n="how.gate">Gate</span><span data-i18n="how.final">Final call</span></div>
       </div>
@@ -320,10 +321,10 @@
     <div class="section-head">
       <div class="eyebrow" data-i18n="routes.eyebrow">Popular this month</div>
       <h2 id="routesTitle" data-i18n="routes.title">Popular trips</h2>
-      <p data-i18n="routes.sub">Tap a route to see the latest fares — cheapest first.</p>
+      <p data-i18n="routes.sub">Tap a route to see the latest prices — cheapest first.</p>
     </div>
     <div class="routes" id="routesGrid"></div>
-    <p style="margin-top:26px"><a class="btn btn-ghost" href="/flights/" data-i18n="routes.allcta">Browse all routes &amp; fares →</a></p>
+    <p style="margin-top:26px"><a class="btn btn-ghost" href="/flights/" data-i18n="routes.allcta">Browse all routes &amp; prices →</a></p>
   </div>
 </section>
 
@@ -336,15 +337,15 @@
     <div class="faq">
       <details class="faq-item" open>
         <summary><span data-i18n="faq.q1">Does OasisDeal charge a booking fee?</span><span class="plus">+</span></summary>
-        <p data-i18n="faq.a1">No. We compare fares and route you to the airline or agency — you pay the exact price they offer. We may earn a small commission behind the scenes, never added to your fare.</p>
+        <p data-i18n="faq.a1">No. We compare prices and route you to the airline or agency — you pay the exact price they offer. We may earn a small commission behind the scenes, never added to your price.</p>
       </details>
       <details class="faq-item">
-        <summary><span data-i18n="faq.q2">How do you find the cheapest fares?</span><span class="plus">+</span></summary>
-        <p data-i18n="faq.a2">Every search scans hundreds of airlines and online travel agencies at once and sorts the results from cheapest to priciest, so the best fare for your route floats straight to the top.</p>
+        <summary><span data-i18n="faq.q2">How do you find the cheapest prices?</span><span class="plus">+</span></summary>
+        <p data-i18n="faq.a2">Every search scans hundreds of airlines and online travel agencies at once and sorts the results from cheapest to priciest, so the best price for your route floats straight to the top.</p>
       </details>
       <details class="faq-item">
         <summary><span data-i18n="faq.q3">When's the best time to book?</span><span class="plus">+</span></summary>
-        <p data-i18n="faq.a3">For most routes, a few weeks to two months ahead gives the lowest fares. Staying flexible on dates helps too — try a few nearby days to spot the cheapest one to fly.</p>
+        <p data-i18n="faq.a3">For most routes, a few weeks to two months ahead gives the lowest prices. Staying flexible on dates helps too — try a few nearby days to spot the cheapest one to fly.</p>
       </details>
       <details class="faq-item">
         <summary><span data-i18n="faq.q4">Can I book hotels and claim compensation too?</span><span class="plus">+</span></summary>
