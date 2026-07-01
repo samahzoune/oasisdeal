@@ -189,7 +189,7 @@ function fullFooter(lang){
   return '<footer class="footer"><div class="container">'
     +'<div class="footer-top"><div class="footer-brand"><a class="logo footer-logo" href="'+H+'">'+LOGO+'<span class="logo-word">Oasis<span class="pipe">|</span>Deal</span></a><p class="footer-tag">'+T.tag+'</p></div>'
     +'<div class="footer-cols">'+explore+routes+guides+company+'</div></div>'
-    +'<div class="footer-trust">🔒 '+T.secure+' · Travelpayouts · Stay22 · AirHelp</div>'
+    +'<div class="footer-social"><script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script><div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6a425cb3f6d6bcdc734d3d22" data-style-height="52px" data-style-width="100%" data-token="da476c82-b569-4dfe-bb19-b4af4c691150"><a href="https://www.trustpilot.com/review/oasisdeal.com" target="_blank" rel="noopener">Trustpilot</a></div></div>'+'<div class="footer-trust">🔒 '+T.secure+' · Travelpayouts · Stay22 · AirHelp</div>'
     +'<div class="footer-bottom"><span>© <span id="y"></span> OasisDeal</span></div>'
     +'</div></footer><script>document.getElementById("y").textContent=new Date().getFullYear();</script>'+NAVJS;
 }
