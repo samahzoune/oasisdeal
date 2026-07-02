@@ -103,9 +103,9 @@
   .board-head{display:flex;align-items:center;justify-content:space-between;padding:4px 6px 14px;border-bottom:1px solid rgba(255,255,255,0.12);margin-bottom:10px;}
   .board-title{font-family:'IBM Plex Mono',monospace;color:var(--saffron);font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;}
   .board-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;display:inline-block;margin-right:6px;box-shadow:0 0 8px #4ADE80;}
-  .board-cols{display:grid;grid-template-columns:1.4fr 1.4fr 1fr;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;color:rgba(255,255,255,0.45);text-transform:uppercase;padding:0 6px 8px;}
+  .board-cols{display:grid;grid-template-columns:2fr 1fr;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;color:rgba(255,255,255,0.45);text-transform:uppercase;padding:0 6px 8px;}
   #boardRows{flex:1;display:flex;flex-direction:column;min-height:322px;}
-  .board-row{display:grid;grid-template-columns:1.4fr 1.4fr 1fr;align-items:center;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,0.07);flex:1;cursor:pointer;transition:background .12s ease;}
+  .board-row{display:grid;grid-template-columns:2fr 1fr;align-items:center;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,0.07);flex:1;cursor:pointer;transition:background .12s ease;}
   .board-row:hover{background:rgba(255,255,255,0.05);}
   .board-row:last-child{border-bottom:none;}
   .flap-cell{display:flex;gap:2px;}
@@ -115,7 +115,7 @@
   .bf-date{font-size:0.6rem;color:rgba(255,255,255,0.45);letter-spacing:0.04em;margin-top:1px;}
   .board-foot{padding:12px 6px 2px;font-size:0.7rem;color:rgba(255,255,255,0.38);}
   @media (prefers-reduced-motion: reduce){ .flap{transition:none;} }
-  @media (max-width:480px){ .board-cols, .board-row{grid-template-columns:1.3fr 1.3fr 1fr;} .flap{font-size:0.8rem;} }
+  @media (max-width:480px){ .board-cols, .board-row{grid-template-columns:2fr 1fr;} .flap{font-size:0.8rem;} }
 
   /* TRUST */
   .trust{background:var(--sand);padding:30px 0;}
@@ -272,7 +272,7 @@
           <span class="board-title" id="boardOrigin">CMN</span>
         </div>
         <div class="board-cols">
-          <span data-i18n="board.from">From</span><span data-i18n="board.to">To</span><span data-i18n="board.fare">Price</span>
+          <span data-i18n="board.to">Destination</span><span data-i18n="board.fare">Price</span>
         </div>
         <div id="boardRows"></div>
         <p class="board-foot" data-i18n="board.foot">Lowest price &amp; date found — tap a route to search.</p>
@@ -324,7 +324,7 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow" data-i18n="routes.eyebrow">Popular this month</div>
-      <h2 id="routesTitle" data-i18n="routes.title">Popular trips</h2>
+      <h2 id="routesTitle" data-i18n="routes.title">Popular destinations</h2>
       <p data-i18n="routes.sub">Tap a route to see the latest prices — cheapest first.</p>
     </div>
     <div class="routes" id="routesGrid"></div>
@@ -546,15 +546,14 @@
       row.setAttribute('role', 'link');
       row.addEventListener('click', function(){ window.location.href = routeHref(route.co, route.cd) || flyLink(route.co, route.cd, route._date || '', 1); });
 
-      var fromCell = document.createElement('div'); fromCell.className = 'flap-cell'; fromCell.appendChild(buildFlapGroup(origin.code));
       var toCell = document.createElement('div'); toCell.className = 'flap-cell'; toCell.appendChild(buildFlapGroup(d.code));
       var fare = document.createElement('span'); fare.className = 'board-fare'; fare.textContent = '···';
 
-      row.appendChild(fromCell); row.appendChild(toCell); row.appendChild(fare);
+      row.appendChild(toCell); row.appendChild(fare);
       boardRows.appendChild(row);
 
       var rowBase = rowIndex * 200;
-      [fromCell, toCell].forEach(function(cell){
+      [toCell].forEach(function(cell){
         Array.prototype.slice.call(cell.querySelectorAll('.flap[data-target]')).forEach(function(flap, idx){
           flipFlap(flap, flap.dataset.target, rowBase + idx * 55);
         });
@@ -586,10 +585,10 @@
       a.className = 'route-card';
       a.href = routeHref(origin.code, d.code) || flyLink(origin.code, d.code, '', 1);
       a.innerHTML =
-        '<div class="route-main"><div class="route-cities">' + origin.city + ' → ' + d.city + '</div>'
-        + '<div class="route-codes">' + origin.code + '<span class="arrow">→</span>' + d.code + '</div></div>'
+        '<div class="route-main"><div class="route-cities">' + d.city + '</div>'
+        + '<div class="route-codes">' + d.code + '</div></div>'
         + '<div class="route-perf"></div>'
-        + '<div class="route-foot"><span class="route-from">' + (window.odT ? odT('routes.oneway','One way') : 'One way') + '</span><span class="route-go">' + (window.odT ? odT('routes.search','Search →') : 'Search →') + '</span></div>';
+        + '<div class="route-foot"><span class="route-from">' + (window.odT ? odT('routes.fromShort','from') : 'from') + ' ' + origin.city + '</span><span class="route-go">' + (window.odT ? odT('routes.search','Search →') : 'Search →') + '</span></div>';
       grid.appendChild(a);
     });
   }
@@ -599,7 +598,7 @@
   function applyOrigin(origin){
     if(rendered) return; rendered = true;
     var oEl = document.getElementById('boardOrigin'); if(oEl) oEl.textContent = origin.code;
-    var tEl = document.getElementById('routesTitle'); if(tEl) tEl.textContent = (window.odT ? odT('routes.fromPrefix','Popular trips from ') : 'Popular trips from ') + origin.city;
+    var tEl = document.getElementById('routesTitle'); if(tEl) tEl.textContent = (window.odT ? odT('routes.title','Popular destinations') : 'Popular destinations');
     var dests = DESTS.filter(function(d){ return d.code !== origin.code; });
     renderBoard(origin, dests.slice(0, 7));
     renderCards(origin, dests.slice(0, 6));
