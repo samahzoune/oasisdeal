@@ -560,14 +560,14 @@
       });
 
       (function(el, r){
-        fetch('https://oasisdeal-fares.pages.dev/api/fares?origin=' + r.co + '&destination=' + r.cd + '&currency=mad&v=2')
+        fetch('https://oasisdeal-fares.pages.dev/api/fares?origin=' + r.co + '&destination=' + r.cd + '&currency=' + CUR + '&v=2')
           .then(function(res){ return res.json(); })
           .then(function(j){
             if(j && j.price){
               r._date = j.date || '';
               var lbl = '';
               if(j.date){ var dt = new Date(j.date); if(!isNaN(dt)){ lbl = dt.getDate() + ' ' + MONTHS[dt.getMonth()]; } }
-              el.innerHTML = '<span class="bf-price">' + Math.round(j.price).toLocaleString() + ' DH</span>'
+              el.innerHTML = '<span class="bf-price">' + money(j.price) + '</span>'
                 + (lbl ? '<span class="bf-date">' + lbl + '</span>' : '');
             } else { el.textContent = '—'; }
           })
@@ -593,6 +593,11 @@
     });
   }
 
+  // ---- currency: adapt to the visitor's country (USD default) ----
+  var CURMAP={US:['usd','$'],GB:['gbp','£'],IE:['eur','€'],FR:['eur','€'],DE:['eur','€'],ES:['eur','€'],IT:['eur','€'],NL:['eur','€'],BE:['eur','€'],PT:['eur','€'],AT:['eur','€'],GR:['eur','€'],CA:['cad','$'],AU:['aud','$'],CH:['chf','CHF'],JP:['jpy','¥'],CN:['cny','¥'],AE:['aed','AED'],SA:['sar','SAR'],QA:['qar','QAR'],MA:['mad','DH'],EG:['egp','E£'],BR:['brl','R$'],IN:['inr','₹'],TR:['try','₺'],RU:['rub','₽'],SE:['sek','kr'],NO:['nok','kr'],DK:['dkk','kr'],PL:['pln','zł']};
+  var CUR='usd', SYM='$';
+  function money(v){ var a=Math.round(v).toLocaleString(); return SYM.length===1 ? SYM+a : SYM+' '+a; }
+
   // ---- detect visitor's nearest city, then render board + cards from there ----
   var rendered = false;
   function applyOrigin(origin){
@@ -605,7 +610,7 @@
   }
   fetch('https://oasisdeal-fares.pages.dev/api/whereami')
     .then(function(r){ return r.json(); })
-    .then(function(g){ applyOrigin({ code: (g && g.origin) || 'CMN', city: (g && g.city) || 'Casablanca' }); })
+    .then(function(g){ if(g && g.country && CURMAP[g.country]){ CUR=CURMAP[g.country][0]; SYM=CURMAP[g.country][1]; } applyOrigin({ code: (g && g.origin) || 'CMN', city: (g && g.city) || 'Casablanca' }); })
     .catch(function(){ applyOrigin({ code: 'CMN', city: 'Casablanca' }); });
   // safety fallback if geo is slow / unavailable
   setTimeout(function(){ applyOrigin({ code: 'CMN', city: 'Casablanca' }); }, 3500);
