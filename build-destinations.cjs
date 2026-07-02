@@ -14,6 +14,12 @@ const CMN_ROUTE = {PAR:1,LON:1,MAD:1,AMS:1,IST:1,DXB:1,JED:1,BRU:1,MIL:1,LYS:1,D
 
 // region keys: eu / me / as / af
 const DEST = [
+  {code:'ZRH', slug:'zurich', region:'eu', trend:1, flag:'🇨🇭', cur:'CHF', rslug:'',
+    lang_en:'German', lang_fr:'Allemand', lang_ar:'الألمانية', ar_name:'زيورخ', fr_name:'Zurich',
+    bt_en:'Jun–Sep · Dec–Mar for snow', bt_fr:'juin–sep. · déc.–mars pour la neige', bt_ar:'يونيو–سبتمبر · ديسمبر–مارس للثلج',
+    en:'A lakeside city framed by snow-capped Alps, old-town charm and Swiss chocolate.', fr:'Une ville au bord du lac, entourée d’Alpes enneigées, au charme médiéval et au chocolat suisse.', ar:'مدينة على ضفاف البحيرة تحيط بها جبال الألب المكسوّة بالثلج، بسحر بلدتها القديمة والشوكولاتة السويسرية.',
+    lead_en:'Zurich pairs a beautifully preserved old town on the Limmat river with a crystal-clear lake and the Alps on the horizon. Summer is best for the lake and hiking, while December to March brings snow and easy access to the ski resorts.', lead_fr:'Zurich associe une vieille ville magnifiquement préservée sur la Limmat à un lac limpide et aux Alpes à l’horizon. L’été est idéal pour le lac et la randonnée, tandis que de décembre à mars la neige et les stations de ski sont à portée de main.', lead_ar:'تجمع زيورخ بين بلدة قديمة محفوظة بجمال على نهر الليمات، وبحيرة صافية، وجبال الألب في الأفق. الصيف الأفضل للبحيرة والمشي، ومن ديسمبر إلى مارس يأتي الثلج وتقترب منتجعات التزلّج.',
+    todo_en:['Stroll the old town & Bahnhofstrasse','Cruise or swim in Lake Zurich','Ride up to snow-capped Alpine peaks','Taste Swiss chocolate & fondue'], todo_fr:['Flâner dans la vieille ville et la Bahnhofstrasse','Naviguer ou nager dans le lac de Zurich','Monter vers les sommets alpins enneigés','Goûter chocolat suisse et fondue'], todo_ar:['التجوّل في البلدة القديمة وشارع Bahnhofstrasse','جولة بالقارب أو سباحة في بحيرة زيورخ','الصعود إلى قمم الألب المكسوّة بالثلج','تذوّق الشوكولاتة السويسرية والفوندو']},
   {code:'IST', slug:'istanbul', region:'eu', trend:1, flag:'🇹🇷', cur:'TRY', rslug:'casablanca-istanbul',
     lang_en:'Turkish', lang_fr:'Turc', lang_ar:'التركية', ar_name:'إسطنبول', fr_name:'Istanbul',
     bt_en:'Apr–May & Sep–Oct', bt_fr:'avr.–mai & sep.–oct.', bt_ar:'أبريل–مايو وسبتمبر–أكتوبر',
