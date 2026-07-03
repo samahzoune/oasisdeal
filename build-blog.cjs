@@ -101,7 +101,7 @@ const ART = [
          ar:['قارن كل الشركات في بحث واحد، لا واحدة تلو الأخرى','اختر تواريخ في منتصف الأسبوع (الثلاثاء/الأربعاء)','احجز قبل 4–8 أسابيع للرحلات الدولية','سافر خارج الصيف والعيد متى أمكن','تحقّق من المطارات القريبة — الدار البيضاء، الرباط، طنجة، أكادير، فاس','فكّر في تذكرتي ذهاب فقط على شركتين مختلفتين','امسح الفلاتر ورتّب من الأرخص إلى الأغلى','كن مستعدًّا للحجز — أفضل الأسعار لا تدوم','سافر بأمتعة خفيفة لتجنّب رسوم الحقائب','اعرف حقوقك إذا تأخرت رحلتك أو أُلغيت']},
    cta:{href:'/flights/', label:{en:'Find your cheapest route →', fr:'Trouvez votre trajet le moins cher →', ar:'اعثر على أرخص رحلاتك →'}, sub:{en:'Compare hundreds of airlines in one search.', fr:'Comparez des centaines de compagnies en une recherche.', ar:'قارن مئات الشركات في بحث واحد.'}}},
 
-  {slug:'flight-delay-compensation-morocco-ec261', cat:'rights', img:'', date:PUB,
+  {slug:'flight-delay-compensation-morocco-ec261', cat:'rights', img:'flight-delay', date:PUB,
    title:{en:'Flight Delayed or Cancelled? Know Your EC 261 Rights', fr:'Vol retardé ou annulé ? Connaissez vos droits (EC 261)', ar:'رحلة متأخرة أو ملغاة؟ اعرف حقوقك (EC 261)'},
    desc:{en:'How much you can claim for a delayed, cancelled or overbooked flight under EU law — and when it covers Morocco flights.', fr:'Combien réclamer pour un vol retardé, annulé ou surréservé selon la loi européenne — et quand cela couvre les vols du Maroc.', ar:'كم يمكنك المطالبة به عن رحلة متأخرة أو ملغاة أو متجاوزة الحجز بموجب القانون الأوروبي — ومتى يشمل ذلك رحلات المغرب.'},
    lead:{en:'Most travellers never claim the money airlines owe them. If your flight was delayed, cancelled or overbooked, EU regulation EC 261 may entitle you to up to €600 — including on many flights to and from Morocco.', fr:'La plupart des voyageurs ne réclament jamais l’argent que leur doivent les compagnies. Si votre vol a été retardé, annulé ou surréservé, le règlement européen EC 261 peut vous donner droit à 600 € — y compris sur de nombreux vols de et vers le Maroc.', ar:'معظم المسافرين لا يطالبون أبدًا بالأموال التي تدين بها لهم شركات الطيران. إذا تأخرت رحلتك أو أُلغيت أو تعرّضت لتجاوز الحجز، فقد يمنحك قانون الاتحاد الأوروبي EC 261 حقًّا في ما يصل إلى 600 يورو — بما في ذلك كثير من رحلات المغرب.'},
@@ -115,7 +115,7 @@ const ART = [
    ],
    cta:{href:'/flight-rights', label:{en:'Know your rights →', fr:'Connaître vos droits →', ar:'اعرف حقوقك →'}, sub:{en:'Free 30-second eligibility check.', fr:'Vérification d’éligibilité gratuite en 30 secondes.', ar:'فحص أهلية مجاني في 30 ثانية.'}}},
 
-  {slug:'travel-esim-vs-roaming', cat:'esim', img:'', date:PUB,
+  {slug:'travel-esim-vs-roaming', cat:'esim', img:'esim-roaming', date:PUB,
    title:{en:'Travel eSIM vs Roaming: Stay Online Abroad for Less', fr:'eSIM voyage vs itinérance : rester connecté à l’étranger pour moins cher', ar:'eSIM السفر مقابل التجوال: ابقَ متصلًا في الخارج بأقل تكلفة'},
    desc:{en:'What a travel eSIM is, why it beats roaming on price, and how to set one up before you fly.', fr:'Ce qu’est une eSIM voyage, pourquoi elle bat l’itinérance sur le prix, et comment l’installer avant de partir.', ar:'ما هي eSIM السفر، ولماذا تتفوّق على التجوال في السعر، وكيف تجهّزها قبل السفر.'},
    lead:{en:'Coming home to a huge roaming bill is one of travel’s worst surprises. A travel eSIM fixes that: a local data plan you install in minutes, usually for a fraction of roaming.', fr:'Rentrer avec une facture d’itinérance énorme est l’une des pires surprises du voyage. Une eSIM voyage règle le problème : un forfait data local que vous installez en quelques minutes, souvent pour une fraction du prix de l’itinérance.', ar:'العودة إلى فاتورة تجوال ضخمة من أسوأ مفاجآت السفر. تحلّ eSIM السفر هذه المشكلة: باقة بيانات محلية تُركّبها في دقائق، وغالبًا بجزء بسيط من تكلفة التجوال.'},
@@ -157,7 +157,7 @@ const ART = [
    ],
    cta:{href:'/destinations/', label:{en:'Browse destinations →', fr:'Parcourir les destinations →', ar:'تصفّح الوجهات →'}, sub:{en:'Best time & live prices for each city.', fr:'Meilleure période et tarifs en direct par ville.', ar:'أفضل وقت وأسعار مباشرة لكل مدينة.'}}},
 
-  {slug:'hand-luggage-rules-fly-carry-on-only', cat:'guide', img:'', date:PUB,
+  {slug:'hand-luggage-rules-fly-carry-on-only', cat:'guide', img:'hand-luggage', date:PUB,
    title:{en:'Carry-On Only: Hand Luggage Rules & Packing Tips', fr:'Bagage cabine uniquement : règles et astuces de préparation', ar:'حقيبة يد فقط: قواعد الأمتعة ونصائح التحضير'},
    desc:{en:'How to fly carry-on only from Morocco: typical size and liquid rules, what to pack, and how to dodge baggage fees.', fr:'Comment voyager en cabine uniquement depuis le Maroc : tailles et règles sur les liquides, quoi emporter et comment éviter les frais de bagage.', ar:'كيف تسافر بحقيبة يد فقط من المغرب: المقاسات وقواعد السوائل، وماذا تحزم، وكيف تتجنّب رسوم الأمتعة.'},
    lead:{en:'Flying with just a carry-on is faster, cheaper and stress-free — no waiting at the belt, no baggage fees. A little planning makes it easy.', fr:'Voyager avec un seul bagage cabine est plus rapide, moins cher et sans stress — pas d’attente au tapis, pas de frais de bagage. Un peu d’organisation suffit.', ar:'السفر بحقيبة يد فقط أسرع وأرخص وبلا توتّر — لا انتظار عند السير المتحرّك ولا رسوم أمتعة. وقليل من التخطيط يجعله سهلًا.'},
@@ -191,7 +191,7 @@ const ART = [
          ar:['قارن بين مواقع الحجز في بحث واحد بدل الاعتماد على منصّة واحدة — تتفاوت أسعار الغرفة نفسها كثيرًا.','كن مرنًا في التواريخ؛ ليالي منتصف الأسبوع والموسم المنخفض أرخص عادةً.','احجز قبل أسابيع، لكن تحقّق مجدّدًا قرب موعدك — تظهر عروض اللحظة الأخيرة حين تريد الفنادق ملء غرفها.','ابحث قليلًا خارج وسط المدينة وتحقّق من وسائل النقل؛ غالبًا تحصل على أكثر مقابل مالك.','اقرأ المراجعات الحديثة (النظافة، الموقع، الرسوم الخفية) قبل الحجز.']},
    cta:{href:'/hotels', label:{en:'Compare hotel prices →', fr:'Comparer les prix des hôtels →', ar:'قارن أسعار الفنادق →'}, sub:{en:'Hundreds of sites, best deal first.', fr:'Des centaines de sites, la meilleure offre d’abord.', ar:'مئات المواقع، أفضل عرض أولًا.'}}},
 
-  {slug:'how-to-set-up-a-travel-esim', cat:'esim', img:'', date:'2026-07-01',
+  {slug:'how-to-set-up-a-travel-esim', cat:'esim', img:'esim-setup', date:'2026-07-01',
    title:{en:'How to Set Up a Travel eSIM (Step by Step)', fr:'Comment configurer une eSIM de voyage (étape par étape)', ar:'كيف تُفعّل شريحة eSIM للسفر (خطوة بخطوة)'},
    desc:{en:'A simple guide to buying, installing and activating a travel eSIM so you’re online the moment you land.', fr:'Un guide simple pour acheter, installer et activer une eSIM de voyage afin d’être connecté dès l’atterrissage.', ar:'دليل بسيط لشراء شريحة eSIM للسفر وتثبيتها وتفعيلها لتكون متّصلًا فور هبوطك.'},
    lead:{en:'An eSIM gives you mobile data abroad without swapping your physical SIM or paying roaming. Setup takes a few minutes — here’s how.', fr:'Une eSIM vous donne des données mobiles à l’étranger sans changer votre carte SIM ni payer l’itinérance. L’installation prend quelques minutes — voici comment.', ar:'تمنحك eSIM بيانات هاتفية في الخارج دون تبديل شريحتك أو دفع رسوم التجوال. والإعداد يستغرق دقائق — وإليك الطريقة.'},
@@ -201,7 +201,7 @@ const ART = [
          ar:['تأكّد أن هاتفك يدعم eSIM (معظم أجهزة آيفون الحديثة وهواتف أندرويد الرائدة) وأنه غير مقفل على شركة.','اختر وجهتك وقارن المزوّدين لأفضل حجم باقة وسعر قبل السفر.','اشترِ الباقة عبر الإنترنت؛ ستصلك رمز QR بالبريد أو في تطبيق المزوّد.','ثبّتها قبل السفر: امسح رمز QR في إعدادات بيانات الهاتف وأنت متّصل بالـ Wi-Fi.','عند الوصول، فعّل eSIM للبيانات واحتفظ بشريحتك المعتادة للمكالمات ورقمك.','أوقف تجوال البيانات على شريحتك الأصلية كي لا تُحاسَب بالخطأ.']},
    cta:{href:'/esim', label:{en:'Compare travel eSIMs →', fr:'Comparer les eSIM de voyage →', ar:'قارن شرائح eSIM للسفر →'}, sub:{en:'Top providers, cheapest first.', fr:'Meilleurs fournisseurs, les moins chers d’abord.', ar:'أفضل المزوّدين، الأرخص أولًا.'}}},
 
-  {slug:'what-to-do-if-your-flight-is-cancelled', cat:'rights', img:'', date:'2026-07-01',
+  {slug:'what-to-do-if-your-flight-is-cancelled', cat:'rights', img:'flight-cancelled', date:'2026-07-01',
    title:{en:'What to Do if Your Flight Is Cancelled', fr:'Que faire si votre vol est annulé', ar:'ماذا تفعل إذا أُلغيت رحلتك'},
    desc:{en:'Your rights when a flight is cancelled, how to get rebooked or refunded, and when you can claim compensation.', fr:'Vos droits en cas d’annulation de vol, comment être réacheminé ou remboursé, et quand réclamer une indemnisation.', ar:'حقوقك عند إلغاء رحلتك، وكيف تُعاد جدولتك أو تُسترد أموالك، ومتى يمكنك المطالبة بتعويض.'},
    lead:{en:'A cancelled flight is stressful, but you have clear rights. Acting calmly and knowing what to ask for can save your trip — and money.', fr:'Un vol annulé est stressant, mais vous avez des droits clairs. Agir calmement et savoir quoi demander peut sauver votre voyage — et votre argent.', ar:'إلغاء الرحلة مرهق، لكن لديك حقوق واضحة. والتصرّف بهدوء ومعرفة ما تطلبه قد ينقذ رحلتك — وأموالك.'},
@@ -231,7 +231,7 @@ const ART = [
          ar:['لرحلات المدن الشائعة، الحجز قبل أسابيع يمنح توازنًا جيّدًا بين الخيار والسعر.','في الموسم الأعلى أو الفعاليات الكبرى، احجز مبكرًا — الأسعار ترتفع كلّما نفدت الغرف.','للرحلات المرنة، قد تربح اللحظة الأخيرة: تخفّض الفنادق الأسعار لملء الغرف قبل يوم أو يومين.','اختر دائمًا سعرًا قابلًا للإلغاء المجّاني متى أمكن، ثم أعد الحجز إن انخفض السعر لاحقًا.','الإقامات في منتصف الأسبوع والموسم الانتقالي أرخص دائمًا تقريبًا من نهايات الأسبوع والموسم المرتفع.']},
    cta:{href:'/hotels', label:{en:'Compare hotel prices →', fr:'Comparer les prix des hôtels →', ar:'قارن أسعار الفنادق →'}, sub:{en:'Hundreds of sites, best deal first.', fr:'Des centaines de sites, la meilleure offre d’abord.', ar:'مئات المواقع، أفضل عرض أولًا.'}}},
 
-  {slug:'how-to-get-through-airport-security-faster', cat:'guide', img:'', date:'2026-07-01',
+  {slug:'how-to-get-through-airport-security-faster', cat:'guide', img:'airport-security', date:'2026-07-01',
    title:{en:'How to Get Through Airport Security Faster', fr:'Comment passer la sécurité de l’aéroport plus vite', ar:'كيف تجتاز أمن المطار أسرع'},
    desc:{en:'Simple tips to breeze through airport security — what to wear, how to pack, and what to have ready.', fr:'Des astuces simples pour passer la sécurité sans stress — quoi porter, comment préparer, quoi avoir prêt.', ar:'نصائح بسيطة لاجتياز أمن المطار بسلاسة — ماذا ترتدي، وكيف تحزم، وما الذي تجهّزه.'},
    lead:{en:'Security lines are where trips slow down. A little preparation gets you through quickly and keeps the stress low.', fr:'Les files de sécurité ralentissent les voyages. Un peu de préparation vous fait passer vite et garde le stress au minimum.', ar:'طوابير الأمن هي ما يبطّئ الرحلات. وقليل من التحضير يجعلك تعبر بسرعة ويُبقي التوتّر منخفضًا.'},
@@ -241,7 +241,7 @@ const ART = [
          ar:['ارتدِ حذاءً سهل اللبس وملابس بلا حزام كي لا تتعثّر عند الصينية.','ضع السوائل (100 مل أو أقل) في كيس شفّاف أعلى حقيبة يدك للوصول السريع.','أخرج الحواسيب والأجهزة الكبيرة وضعها في صينية منفصلة.','أفرغ جيوبك في حقيبتك قبل وصولك للماسح، لا عنده.','جهّز بطاقة الصعود والهوية في يدك، وتحقّق مسبقًا من قواعد مطار مغادرتك.']},
    cta:{href:'/flights/', label:{en:'Find your next flight →', fr:'Trouvez votre prochain vol →', ar:'ابحث عن رحلتك القادمة →'}, sub:{en:'Compare hundreds of airlines.', fr:'Comparez des centaines de compagnies.', ar:'قارن مئات الشركات.'}}},
 
-  {slug:'travel-money-tips-avoid-fees-abroad', cat:'guide', img:'', date:'2026-07-01',
+  {slug:'travel-money-tips-avoid-fees-abroad', cat:'guide', img:'travel-money', date:'2026-07-01',
    title:{en:'Travel Money Tips: Avoid Fees Abroad', fr:'Argent en voyage : éviter les frais à l’étranger', ar:'نصائح مال السفر: تجنّب الرسوم في الخارج'},
    desc:{en:'How to spend abroad without losing money to bad exchange rates and hidden card fees.', fr:'Comment dépenser à l’étranger sans perdre d’argent en mauvais taux de change et frais cachés.', ar:'كيف تنفق في الخارج دون خسارة المال بأسعار صرف سيّئة ورسوم خفيّة.'},
    lead:{en:'Exchange rates and card fees quietly eat into your travel budget. A few smart choices keep more money in your pocket.', fr:'Les taux de change et les frais de carte grignotent discrètement votre budget. Quelques bons choix gardent plus d’argent dans votre poche.', ar:'تلتهم أسعار الصرف ورسوم البطاقات ميزانيتك بهدوء. وبضعة خيارات ذكية تُبقي مالًا أكثر في جيبك.'},
