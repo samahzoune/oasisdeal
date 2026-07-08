@@ -153,7 +153,7 @@ function pageHtml(cmp,lang){
     +'.rp-card .tag{position:absolute;top:-12px;inset-inline-start:24px;background:var(--saffron);color:var(--ink);font-weight:700;font-size:.72rem;text-transform:uppercase;padding:5px 12px;border-radius:100px}'
     +'.rp-card .price{font-family:Fraunces,serif;font-size:2.1rem;font-weight:600;color:var(--majorelle)}.rp-card .from-pre{font-family:"IBM Plex Mono",monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}.rp-card .days{color:var(--ink-soft);font-size:.9rem}.rp-card .get{margin-top:auto;padding-top:12px}.rp-card .btn{width:100%;justify-content:center}'
     +'.rp-card h2{font-size:1.3rem}.rp-sec{padding:26px 0;border-top:1px solid var(--line)}.rp-sec h2{font-size:1.4rem;margin-bottom:10px}.rp-sec p{color:var(--ink-soft);line-height:1.7}'
-    +'.rp-faq details{border-bottom:1px solid var(--line);padding:14px 0}.rp-faq summary{cursor:pointer;font-weight:600}.rp-faq p{margin-top:8px}.rp-note{font-size:.82rem;color:var(--ink-soft);margin-top:20px}</style>\n</head>\n<body>\n'
+    +'.rp-faq details{border-bottom:1px solid var(--line);padding:14px 0}.rp-faq summary{cursor:pointer;font-weight:600}.rp-faq p{margin-top:8px}.rp-note{font-size:.82rem;color:var(--ink-soft);margin-top:20px}</style>\n<script data-cfasync="false">(function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NTQzNDkw.js?t=543490";document.head.appendChild(s);})();</script></head>\n<body>\n'
     +nav(lang,slug)
     +'<header class="rp-hero"><div class="container"><h1>'+pageH1(cmp,lang)+'</h1><p>'+intro(cmp,lang)+'</p></div></header>'
     +'<main class="container" style="padding:30px 0"><div class="rp-grid">'+cards+'</div>'

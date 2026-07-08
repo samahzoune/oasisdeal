@@ -139,7 +139,7 @@ function page(lang){
     + '.rp-cta{background:var(--sand);border:1px solid var(--line);border-radius:18px;padding:30px;text-align:center;margin:30px 0}.rp-cta h2{font-size:1.5rem;margin-bottom:8px}.rp-cta p{color:var(--ink-soft);margin-bottom:18px}.rp-cta .btn{margin:6px}'
     + 'ul.rp-list{list-style:none;padding:0}ul.rp-list li{padding:8px 0 8px 26px;position:relative;color:var(--ink-soft)}ul.rp-list li:before{content:"✓";position:absolute;inset-inline-start:0;color:var(--clay-deep);font-weight:700}'
     + '.rp-faq details{border-bottom:1px solid var(--line);padding:14px 0}.rp-faq summary{cursor:pointer;font-weight:600}.rp-faq p{color:var(--ink-soft);margin-top:8px}.rp-note{font-size:.82rem;color:var(--ink-soft);margin-top:22px}'
-    + '</style>\n</head>\n<body>\n'+nav(lang)
+    + '</style>\n<script data-cfasync="false">(function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NTQzNDkw.js?t=543490";document.head.appendChild(s);})();</script></head>\n<body>\n'+nav(lang)
     + '<header class="rp-hero"><div class="container"><h1>'+x.h1+'</h1><p>'+x.lead+'</p>'
       + '<div style="margin-top:22px"><a class="btn btn-primary" href="'+x.comp+'">'+x.cta+'</a></div></div></header>'
     + '<main class="container">'
