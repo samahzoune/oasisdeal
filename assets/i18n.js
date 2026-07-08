@@ -28,7 +28,7 @@
       "routes.oneway": "Aller simple", "routes.search": "Rechercher →",
       "faq.eyebrow": "Bon à savoir", "faq.title": "Questions fréquentes",
       "faq.q1": "OasisDeal facture-t-il des frais de réservation ?",
-      "faq.a1": "Non. Nous comparons les prix et vous redirigeons vers la compagnie ou l’agence — vous payez exactement leur prix. Nous percevons parfois une petite commission en coulisses, jamais ajoutée à votre billet.",
+      "faq.a1": "Non. Nous comparons les prix et vous redirigeons vers la compagnie ou l’agence — vous payez exactement leur prix. Si vous réservez via nos liens, la compagnie ou le site de réservation nous verse une petite commission, et votre prix ne change jamais.",
       "faq.q2": "Comment trouvez-vous les prix les moins chers ?",
       "faq.a2": "Chaque recherche analyse des centaines de compagnies et d’agences en même temps et les classe du moins cher au plus cher, pour que le meilleur prix remonte tout en haut.",
       "faq.q3": "Quel est le meilleur moment pour réserver ?",

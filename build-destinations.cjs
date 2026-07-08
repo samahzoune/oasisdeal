@@ -239,7 +239,7 @@ function nav(lang, langsHtml){ var x=L[lang];
   return '<nav class="nav"><div class="container nav-row"><a class="logo" href="'+x.home+'">'+LOGO+'<span class="logo-word">Oasis<span class="pipe">|</span>Deal</span></a><div class="nav-links">'
     +'<a class="nav-link" href="'+x.home+'">'+x.nav.flights+'</a><a class="nav-link" href="'+x.hotels+'">'+x.nav.hotels+'</a><a class="nav-link" href="'+x.cars+'">'+x.nav.cars+'</a><a class="nav-link" href="'+x.transfers+'">'+x.nav.transfers+'</a><a class="nav-link" href="'+x.esim+'">'+x.nav.esim+'</a><a class="nav-link" href="'+x.comp+'">'+x.nav.comp+'</a><span class="nav-div"></span><a class="nav-link active" href="'+x.dest+'">'+x.nav.dest+'</a><a class="nav-link" href="'+(lang==='en'?'':'/'+lang)+'/blog/">'+x.nav.blog+'</a>'
     +(langsHtml?'<span class="rp-langs">'+langsHtml+'</span>':'')+'</div></div></nav>'; }
-function footer(lang){ var x=L[lang]; return '<footer class="footer"><div class="container"><div class="footer-trust">🔒 '+x.secure+' · Travelpayouts · Stay22 · AirHelp</div><div class="footer-bottom"><span>© <span id="y"></span> OasisDeal</span></div></div></footer><script>document.getElementById("y").textContent=new Date().getFullYear();</script>'+NAVJS; }
+function footer(lang){ var x=L[lang]; return '<footer class="footer"><div class="container"><div class="footer-trust">🔒 '+x.secure+' · Travelpayouts · Stay22 · AirHelp</div><div class="footer-bottom"><span>© <span id="y">2026</span> OasisDeal</span></div></div></footer><script>document.getElementById("y").textContent=new Date().getFullYear();</script>'+NAVJS; }
 
 var EXTRA = '<style>'
   +'.rp-hero{background:linear-gradient(160deg,var(--majorelle) 0%,var(--majorelle-deep) 100%);color:#fff;padding:54px 0 48px}.rp-hero h1{color:#fff;font-size:clamp(2rem,5vw,3.1rem)}.rp-hero .eyebrow{color:rgba(255,255,255,.85)}'
@@ -364,7 +364,7 @@ function hubPage(lang){
   var trendHtml = '<section class="dg-sec"><h2>🔥 '+x.trending+'</h2><div class="dg-grid">'+trend.map(function(d){return destCard(d,lang);}).join('')+'</div></section>';
   var order=['eu','me','as','af','am'];
   var regionsHtml = order.map(function(rk){
-    var list=DEST.filter(function(d){return d.region===rk;});
+    var list=DEST.filter(function(d){return d.region===rk && !d.trend;});
     if(!list.length) return '';
     return '<section class="dg-sec"><h2>'+x.regions[rk]+'</h2><div class="dg-grid">'+list.map(function(d){return destCard(d,lang);}).join('')+'</div></section>';
   }).join('');
@@ -423,7 +423,7 @@ function fullFooter(lang){
     +'<div class="footer-top"><div class="footer-brand"><a class="logo footer-logo" href="'+H+'">'+LOGO+'<span class="logo-word">Oasis<span class="pipe">|</span>Deal</span></a><p class="footer-tag">'+T.tag+'</p>'+'<div class="footer-social"><a class="footer-ig" href="https://www.instagram.com/oasisdealtravel/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg><span>Follow us on Instagram</span></a><script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script><div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6a425cb3f6d6bcdc734d3d22" data-style-height="52px" data-style-width="100%" data-token="da476c82-b569-4dfe-bb19-b4af4c691150"><a href="https://www.trustpilot.com/review/oasisdeal.com" target="_blank" rel="noopener">Trustpilot</a></div></div>'+'</div>'
     +'<div class="footer-cols">'+explore+routes+guides+company+'</div></div>'
     +'<div class="footer-trust">🔒 '+T.secure+' · Travelpayouts · Stay22 · AirHelp</div>'
-    +'<div class="footer-bottom"><span>© <span id="y"></span> OasisDeal</span></div>'
+    +'<div class="footer-bottom"><span>© <span id="y">2026</span> OasisDeal</span></div>'
     +'</div></footer><script>document.getElementById("y").textContent=new Date().getFullYear();</script>'+NAVJS;
 }
 function footer(lang){return fullFooter(lang);}

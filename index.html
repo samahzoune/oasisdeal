@@ -112,6 +112,8 @@
   .flap{display:inline-flex;align-items:center;justify-content:center;background:#1B1750;color:#F4ECDD;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:0.92rem;width:1.05em;height:1.5em;border-radius:3px;transform-style:preserve-3d;}
   .board-fare{display:flex;flex-direction:column;line-height:1.15;justify-self:start;font-family:'IBM Plex Mono',monospace;}
   .bf-price{font-size:0.82rem;font-weight:600;color:var(--saffron);}
+  .bf-skel{display:inline-block;width:44px;height:11px;border-radius:4px;background:linear-gradient(90deg,rgba(255,255,255,.08) 25%,rgba(255,255,255,.22) 50%,rgba(255,255,255,.08) 75%);background-size:200% 100%;animation:bfshimmer 1.2s ease-in-out infinite;}
+  @keyframes bfshimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
   .bf-date{font-size:0.6rem;color:rgba(255,255,255,0.45);letter-spacing:0.04em;margin-top:1px;}
   .board-foot{padding:12px 6px 2px;font-size:0.7rem;color:rgba(255,255,255,0.38);}
   @media (prefers-reduced-motion: reduce){ .flap{transition:none;} }
@@ -342,7 +344,7 @@
     <div class="faq">
       <details class="faq-item" open>
         <summary><span data-i18n="faq.q1">Does OasisDeal charge a booking fee?</span><span class="plus">+</span></summary>
-        <p data-i18n="faq.a1">No. We compare prices and route you to the airline or agency — you pay the exact price they offer. We may earn a small commission behind the scenes, never added to your price.</p>
+        <p data-i18n="faq.a1">No. We compare prices and route you to the airline or agency — you pay the exact price they offer. If you book through our links, the airline or booking site pays us a small commission, and your price never changes.</p>
       </details>
       <details class="faq-item">
         <summary><span data-i18n="faq.q2">How do you find the cheapest prices?</span><span class="plus">+</span></summary>
@@ -411,7 +413,7 @@
     
     <div class="footer-trust" data-i18n="footer.trust">🔒 Secure &amp; free to use · No booking fees · Powered by Travelpayouts, Stay22 &amp; AirHelp</div>
     <div class="footer-bottom">
-      <span>© <span id="year"></span> OasisDeal — find your savings oasis.</span>
+      <span>© <span id="year">2026</span> OasisDeal — find your savings oasis.</span>
     </div>
   </div>
 </footer>
@@ -549,7 +551,7 @@
       row.addEventListener('click', function(){ window.location.href = routeHref(route.co, route.cd) || flyLink(route.co, route.cd, route._date || '', 1); });
 
       var toCell = document.createElement('div'); toCell.className = 'flap-cell'; toCell.appendChild(buildFlapGroup(d.code));
-      var fare = document.createElement('span'); fare.className = 'board-fare'; fare.textContent = '···';
+      var fare = document.createElement('span'); fare.className = 'board-fare'; fare.innerHTML = '<span class="bf-skel"></span>';
 
       row.appendChild(toCell); row.appendChild(fare);
       boardRows.appendChild(row);
