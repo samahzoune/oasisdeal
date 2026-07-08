@@ -154,7 +154,7 @@ const L = {
       todoH:'Top things to do', gettingH:'Getting there',
       gettingP:'The cheapest prices from your city are shown live above and change daily. Compare hundreds of airlines in one search and book directly, with no booking fees from us.',
       planH:'Plan your trip',
-      flights:'Find flights →', hotels:'Compare hotels →', esim:'Get a travel eSIM →', rights:'Know your rights →',
+      ctaFlights:'Find flights →', ctaHotels:'Compare hotels →', ctaEsim:'Get a travel eSIM →', ctaRights:'Know your rights →',
       faqH:'Frequently asked questions', back:'← All destinations', guideTag:'Destination guide', imgcredit:'Illustration',
       note:'Live starting price from our partners; the final price is set by the airline. Visa and entry rules change — always confirm with official sources before booking.', secure:'Secure & free to use · No booking fees',
       mt:function(n){return n+' Travel Guide — Best Time, Things to Do & Cheap Flights | OasisDeal';},
@@ -170,7 +170,7 @@ const L = {
       todoH:'À faire absolument', gettingH:'Comment y aller',
       gettingP:'Les tarifs les moins chers depuis votre ville sont affichés en direct ci-dessus et changent chaque jour. Comparez des centaines de compagnies en une recherche et réservez directement, sans frais de réservation de notre part.',
       planH:'Planifiez votre voyage',
-      flights:'Trouver des vols →', hotels:'Comparer les hôtels →', esim:'Obtenir une eSIM voyage →', rights:'Connaître vos droits →',
+      ctaFlights:'Trouver des vols →', ctaHotels:'Comparer les hôtels →', ctaEsim:'Obtenir une eSIM voyage →', ctaRights:'Connaître vos droits →',
       faqH:'Questions fréquentes', back:'← Toutes les destinations', guideTag:'Guide de destination', imgcredit:'Illustration',
       note:'Tarif de départ en direct via nos partenaires ; le prix final est fixé par la compagnie. Les règles de visa et d’entrée changent — vérifiez toujours auprès des sources officielles avant de réserver.', secure:'Sécurisé et gratuit · Sans frais',
       mt:function(n){return 'Guide de voyage à '+n+' — Meilleure période, à faire & vols pas chers | OasisDeal';},
@@ -186,7 +186,7 @@ const L = {
       todoH:'أبرز ما تفعله', gettingH:'كيف تصل',
       gettingP:'أرخص الأسعار من مدينتك مبيّنة مباشرة أعلاه وتتغيّر يوميًا. قارن مئات شركات الطيران في بحث واحد واحجز مباشرةً، دون أي رسوم حجز من جهتنا.',
       planH:'خطّط لرحلتك',
-      flights:'ابحث عن رحلات →', hotels:'قارن الفنادق →', esim:'احصل على eSIM للسفر →', rights:'اعرف حقوقك →',
+      ctaFlights:'ابحث عن رحلات →', ctaHotels:'قارن الفنادق →', ctaEsim:'احصل على eSIM للسفر →', ctaRights:'اعرف حقوقك →',
       faqH:'أسئلة شائعة', back:'→ كل الوجهات', guideTag:'دليل وجهة', imgcredit:'رسم توضيحي',
       note:'سعر البداية مباشر من شركائنا؛ السعر النهائي تحدّده شركة الطيران. قواعد التأشيرة والدخول تتغيّر — تأكّد دائمًا من المصادر الرسمية قبل الحجز.', secure:'آمن ومجاني · دون رسوم حجز',
       mt:function(n){return 'دليل السفر إلى '+n+' — أفضل وقت، أبرز الأنشطة، ورحلات رخيصة | OasisDeal';},
@@ -305,10 +305,10 @@ function guidePage(d, lang){
   var flightsAttr = 'href="#" data-fly="'+d.code+'"';
   var flightsSub = lang==='en'?'Cheapest prices to '+n : lang==='fr'?'Tarifs les moins chers vers '+n : 'أرخص الأسعار إلى '+n;
   var crossHtml = '<div class="rp-cross">'
-    + card(lang==='en'?'Flights':lang==='fr'?'Vols':'الرحلات', flightsSub, 'btn-primary', flightsAttr, x.flights)
-    + card(lang==='en'?'Hotels':lang==='fr'?'Hôtels':'الفنادق', (lang==='en'?'Compare stays in '+n:lang==='fr'?'Comparez les hôtels à '+n:'قارن الإقامة في '+n), 'btn-ghost', 'href="'+x.hotels+'"', x.hotels)
-    + card('eSIM', (lang==='en'?'Stay online in '+n:lang==='fr'?'Restez connecté à '+n:'ابقَ متصلًا في '+n), 'btn-ghost', 'href="'+x.esim+'"', x.esim)
-    + (isEuro(d)? card(lang==='en'?'Your rights':lang==='fr'?'Vos droits':'حقوقك', (lang==='en'?'Delayed or cancelled flight?':lang==='fr'?'Vol retardé ou annulé ?':'رحلة متأخرة أو ملغاة؟'), 'btn-ghost', 'href="'+pre(lang)+'/flight-rights"', x.rights) : '')
+    + card(lang==='en'?'Flights':lang==='fr'?'Vols':'الرحلات', flightsSub, 'btn-primary', flightsAttr, x.ctaFlights)
+    + card(lang==='en'?'Hotels':lang==='fr'?'Hôtels':'الفنادق', (lang==='en'?'Compare stays in '+n:lang==='fr'?'Comparez les hôtels à '+n:'قارن الإقامة في '+n), 'btn-ghost', 'href="'+x.hotels+'"', x.ctaHotels)
+    + card('eSIM', (lang==='en'?'Stay online in '+n:lang==='fr'?'Restez connecté à '+n:'ابقَ متصلًا في '+n), 'btn-ghost', 'href="'+x.esim+'"', x.ctaEsim)
+    + (isEuro(d)? card(lang==='en'?'Your rights':lang==='fr'?'Vos droits':'حقوقك', (lang==='en'?'Delayed or cancelled flight?':lang==='fr'?'Vol retardé ou annulé ?':'رحلة متأخرة أو ملغاة؟'), 'btn-ghost', 'href="'+pre(lang)+'/flight-rights"', x.ctaRights) : '')
     + '</div>';
   var todos='<ul class="dg-todo">'+todo(d,lang).map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul>';
   var crumbLd=breadcrumb([{n:homeName(lang),u:'https://oasisdeal.com'+x.home},{n:x.nav.dest,u:'https://oasisdeal.com'+x.dest},{n:n,u:'https://oasisdeal.com'+pre(lang)+p}]);
