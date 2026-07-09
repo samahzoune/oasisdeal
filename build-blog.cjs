@@ -607,10 +607,10 @@ var EXTRA = '<style>'
   +'.blog-card .bc-img{width:100%;height:160px;object-fit:cover;display:block}.blog-card .bc-body{padding:16px}.blog-card .bc-cat{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);font-weight:600}.blog-card h2{font-size:1.12rem;margin:8px 0 6px;line-height:1.3}.blog-card p{color:var(--ink-soft);font-size:.9rem;line-height:1.5;margin:0}'
   +'</style>';
 
-function head(lang, title, desc, canon, alts, ld){
+function head(lang, title, desc, canon, alts, ld, og){ og=og||'https://oasisdeal.com/images/og-default.png';
   return '<!DOCTYPE html>\n<html lang="'+L[lang].lang+'" dir="'+L[lang].dir+'">\n<head>\n<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="p:domain_verify" content="1f6676c70992e08fca792b0978b916b9" />\n'
     +'<title>'+title+'</title>\n<meta name="description" content="'+desc+'" />\n<link rel="canonical" href="'+canon+'" />\n'+alts+'\n'
-    +'<meta property="og:title" content="'+title+'" /><meta property="og:description" content="'+desc+'" /><meta property="og:url" content="'+canon+'" /><meta property="og:type" content="article" />\n'
+    +'<meta property="og:title" content="'+title+'" /><meta property="og:description" content="'+desc+'" /><meta property="og:url" content="'+canon+'" /><meta property="og:type" content="article" /><meta property="og:image" content="'+og+'" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="'+og+'" />\n'
     +'<link rel="icon" type="image/svg+xml" href="/favicon.svg" />\n<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
     +'<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/assets/site.css" />\n'+EXTRA
     +(ld?'\n<script type="application/ld+json">'+JSON.stringify(ld)+'</script>':'')+'\n<script data-cfasync="false">(function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NTQzNDkw.js?t=543490";document.head.appendChild(s);})();</script></head>\n<body>\n';
@@ -634,7 +634,7 @@ function articlePage(a, lang){
   var rel=ART.filter(function(o){return o.slug!==a.slug;}).sort(function(x,z){return (x.img?0:1)-(z.img?0:1);}).slice(0,3);
   var related='<div class="blog-grid">'+rel.map(function(o){return blogCard(o,lang);}).join('')+'</div>';
   var crumb=breadcrumb([{n:homeName(lang),u:'https://oasisdeal.com'+x.home},{n:x.nav.blog,u:'https://oasisdeal.com'+x.blog},{n:a.title[lang],u:url}]);
-  return head(lang, x.mt(a.title[lang]), a.desc[lang], url, altsFor(p), [ld, crumb])
+  return head(lang, x.mt(a.title[lang]), a.desc[lang], url, altsFor(p), [ld, crumb], a.img?'https://oasisdeal.com/images/destinations/'+a.img+'.jpg':'https://oasisdeal.com/images/og-default.png')
     + nav(lang, langSwitch(lang,p))
     + '<header class="rp-hero"><div class="container"><div class="dg-col">'
     + '<div class="eyebrow">'+x.cats[a.cat]+'</div>'

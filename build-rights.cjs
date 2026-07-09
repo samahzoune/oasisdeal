@@ -123,7 +123,7 @@ function page(lang){
   var faq=x.faq.map(function(q){return '<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>';}).join('');
   return '<!DOCTYPE html>\n<html lang="'+x.lang+'" dir="'+x.dir+'">\n<head>\n<meta charset="UTF-8" />\n<meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="p:domain_verify" content="1f6676c70992e08fca792b0978b916b9" />\n'
     + '<title>'+x.title+'</title>\n<meta name="description" content="'+x.desc+'" />\n<link rel="canonical" href="'+self+'" />\n'+alts+'\n<link rel="alternate" hreflang="x-default" href="https://oasisdeal.com/'+SLUG+'" />\n'
-    + '<meta property="og:title" content="'+x.title+'" /><meta property="og:description" content="'+x.desc+'" /><meta property="og:url" content="'+self+'" /><meta property="og:type" content="website" />\n'
+    + '<meta property="og:title" content="'+x.title+'" /><meta property="og:description" content="'+x.desc+'" /><meta property="og:url" content="'+self+'" /><meta property="og:type" content="website" /><meta property="og:image" content="https://oasisdeal.com/images/og-default.png" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="https://oasisdeal.com/images/og-default.png" />\n'
     + '<link rel="icon" type="image/svg+xml" href="/favicon.svg" />\n'
     + '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
     + '<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">\n'

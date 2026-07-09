@@ -288,10 +288,10 @@ function liveScript(){
     +'})();</script>';
 }
 
-function head(lang, title, desc, canon, alts){
+function head(lang, title, desc, canon, alts, og){ og=og||'https://oasisdeal.com/images/og-default.png';
   return '<!DOCTYPE html>\n<html lang="'+L[lang].lang+'" dir="'+L[lang].dir+'">\n<head>\n<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="p:domain_verify" content="1f6676c70992e08fca792b0978b916b9" />\n'
     +'<title>'+title+'</title>\n<meta name="description" content="'+desc+'" />\n<link rel="canonical" href="'+canon+'" />\n'+alts+'\n'
-    +'<meta property="og:title" content="'+title+'" /><meta property="og:description" content="'+desc+'" /><meta property="og:url" content="'+canon+'" /><meta property="og:type" content="website" />\n'
+    +'<meta property="og:title" content="'+title+'" /><meta property="og:description" content="'+desc+'" /><meta property="og:url" content="'+canon+'" /><meta property="og:type" content="website" /><meta property="og:image" content="'+og+'" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="'+og+'" />\n'
     +'<link rel="icon" type="image/svg+xml" href="/favicon.svg" />\n<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
     +'<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/assets/site.css" />\n'+EXTRA+'\n<script data-cfasync="false">(function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NTQzNDkw.js?t=543490";document.head.appendChild(s);})();</script></head>\n<body>\n';
 }
@@ -325,7 +325,7 @@ function guidePage(d, lang){
   var todos='<ul class="dg-todo">'+todo(d,lang).map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul>';
   var crumbLd=breadcrumb([{n:homeName(lang),u:'https://oasisdeal.com'+x.home},{n:x.nav.dest,u:'https://oasisdeal.com'+x.dest},{n:n,u:'https://oasisdeal.com'+pre(lang)+p}]);
 
-  return head(lang, x.mt(n), x.md(n), 'https://oasisdeal.com'+pre(lang)+p, altsFor(p))
+  return head(lang, x.mt(n), x.md(n), 'https://oasisdeal.com'+pre(lang)+p, altsFor(p), 'https://oasisdeal.com/images/destinations/'+d.slug+'.jpg')
     + nav(lang, langSwitch(lang,p))
     + '<script type="application/ld+json">'+JSON.stringify(faqLd)+'</script>'
     + '<script type="application/ld+json">'+JSON.stringify(crumbLd)+'</script>'
