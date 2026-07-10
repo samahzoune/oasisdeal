@@ -165,7 +165,7 @@ const L = {
       bestTime:'Best time to visit', why:'Why go', currency:'Currency', language:'Language', region:'Region',
       todoH:'Top things to do', gettingH:'Getting there',
       gettingP:'The cheapest prices from your city are shown live above and change daily. Compare hundreds of airlines in one search and book directly, with no booking fees from us.',
-      planH:'Plan your trip',
+      planH:'Plan your trip', relatedH:'You might also like',
       ctaFlights:'Find flights →', ctaHotels:'Compare hotels →', ctaEsim:'Get a travel eSIM →', ctaRights:'Know your rights →',
       faqH:'Frequently asked questions', back:'← All destinations', guideTag:'Destination guide', imgcredit:'Illustration',
       note:'Live starting price from our partners; the final price is set by the airline. Visa and entry rules change — always confirm with official sources before booking.', secure:'Secure & free to use · No booking fees',
@@ -181,7 +181,7 @@ const L = {
       bestTime:'Meilleure période', why:'Pourquoi y aller', currency:'Devise', language:'Langue', region:'Région',
       todoH:'À faire absolument', gettingH:'Comment y aller',
       gettingP:'Les tarifs les moins chers depuis votre ville sont affichés en direct ci-dessus et changent chaque jour. Comparez des centaines de compagnies en une recherche et réservez directement, sans frais de réservation de notre part.',
-      planH:'Planifiez votre voyage',
+      planH:'Planifiez votre voyage', relatedH:'Vous aimerez aussi',
       ctaFlights:'Trouver des vols →', ctaHotels:'Comparer les hôtels →', ctaEsim:'Obtenir une eSIM voyage →', ctaRights:'Connaître vos droits →',
       faqH:'Questions fréquentes', back:'← Toutes les destinations', guideTag:'Guide de destination', imgcredit:'Illustration',
       note:'Tarif de départ en direct via nos partenaires ; le prix final est fixé par la compagnie. Les règles de visa et d’entrée changent — vérifiez toujours auprès des sources officielles avant de réserver.', secure:'Sécurisé et gratuit · Sans frais',
@@ -197,7 +197,7 @@ const L = {
       bestTime:'أفضل وقت للزيارة', why:'لماذا تزورها', currency:'العملة', language:'اللغة', region:'المنطقة',
       todoH:'أبرز ما تفعله', gettingH:'كيف تصل',
       gettingP:'أرخص الأسعار من مدينتك مبيّنة مباشرة أعلاه وتتغيّر يوميًا. قارن مئات شركات الطيران في بحث واحد واحجز مباشرةً، دون أي رسوم حجز من جهتنا.',
-      planH:'خطّط لرحلتك',
+      planH:'خطّط لرحلتك', relatedH:'قد يعجبك أيضًا',
       ctaFlights:'ابحث عن رحلات →', ctaHotels:'قارن الفنادق →', ctaEsim:'احصل على eSIM للسفر →', ctaRights:'اعرف حقوقك →',
       faqH:'أسئلة شائعة', back:'→ كل الوجهات', guideTag:'دليل وجهة', imgcredit:'رسم توضيحي',
       note:'سعر البداية مباشر من شركائنا؛ السعر النهائي تحدّده شركة الطيران. قواعد التأشيرة والدخول تتغيّر — تأكّد دائمًا من المصادر الرسمية قبل الحجز.', secure:'آمن ومجاني · دون رسوم حجز',
@@ -206,6 +206,13 @@ const L = {
 };
 
 function nameEN(d){ return d.slug.split('-').map(function(w){return w.charAt(0).toUpperCase()+w.slice(1);}).join(' '); }
+// Related picks: same region first (topical cluster), then trending elsewhere, then fill — 4 total.
+function related(d){
+  var same=DEST.filter(function(o){return o.slug!==d.slug && o.region===d.region;});
+  var trendElse=DEST.filter(function(o){return o.slug!==d.slug && o.region!==d.region && o.trend;});
+  var rest=DEST.filter(function(o){return o.slug!==d.slug && o.region!==d.region && !o.trend;});
+  return same.concat(trendElse, rest).slice(0,4);
+}
 function dname(d,lang){ return lang==='en'?nameEN(d): lang==='fr'?d.fr_name : d.ar_name; }
 function hi(d,lang){ return lang==='en'?d.en : lang==='fr'?d.fr : d.ar; }
 function lead(d,lang){ return lang==='en'?d.lead_en : lang==='fr'?d.lead_fr : d.lead_ar; }
@@ -348,6 +355,7 @@ function guidePage(d, lang){
     + '<div class="rp-card"><h2>'+x.region+'</h2><p style="color:var(--ink-soft)">'+x.regions[d.region]+'</p></div>'
     + '</div>'
     + '<h2>'+x.planH+'</h2>'+crossHtml
+    + '<section class="dg-sec" style="margin-top:26px"><h2>'+x.relatedH+'</h2><div class="dg-grid">'+related(d).map(function(o){return destCard(o,lang);}).join('')+'</div></section>'
     + '<section class="rp-faq" style="margin-top:24px"><h2>'+x.faqH+'</h2>'
     + faqs.map(function(q){return '<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>';}).join('')
     + '</section>'
