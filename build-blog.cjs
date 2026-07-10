@@ -942,7 +942,7 @@ function featureImg(a, lang){
     var exts=['webp','jpg','jpeg','png'];
     for(var i=0;i<exts.length;i++){
       var rel='images/destinations/'+a.img+'.'+exts[i];
-      if(fs.existsSync(path.join(ROOT,rel))) return '<img class="dg-photo" src="/'+rel+'" alt="'+a.title[lang]+'" loading="lazy" decoding="async" width="1280" height="540" />';
+      if(fs.existsSync(path.join(ROOT,rel))) return '<img class="dg-photo" src="/'+rel+'" alt="'+a.title[lang]+'" fetchpriority="high" decoding="async" width="1280" height="720" />';
     }
   }
   return '<svg class="dg-photo dg-svg" viewBox="0 0 1280 460" role="img" aria-label="'+a.title.en+'" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'

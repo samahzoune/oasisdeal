@@ -232,7 +232,7 @@ function featureImg(d, lang){
   for(var i=0;i<exts.length;i++){
     var rel='images/destinations/'+d.slug+'.'+exts[i];
     if(fs.existsSync(path.join(ROOT,rel))){
-      return '<img class="dg-photo" src="/'+rel+'" alt="'+dname(d,lang)+'" loading="lazy" decoding="async" width="1280" height="540" />';
+      return '<img class="dg-photo" src="/'+rel+'" alt="'+dname(d,lang)+'" fetchpriority="high" decoding="async" width="1280" height="720" />';
     }
   }
   return svgBanner(d);
