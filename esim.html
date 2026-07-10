@@ -72,6 +72,7 @@
   .plan .price-unl.approx{color:var(--ink-soft);}
   .plan .price-unl.approx .from-pre{color:var(--ink-soft);}
   .plan .price-unl.approx .plan-tag{color:var(--ink-soft);background:rgba(24,26,46,.07);}
+  .plan .unl-days{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:500;color:var(--ink-soft);white-space:nowrap;margin-left:2px;}
   .live-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#2e9e5b;padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .est-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(24,26,46,.07);padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
   .plan .get{margin-top:auto;padding-top:16px;}
@@ -291,9 +292,9 @@
   // o = [provider name, indicative price USD, Travelpayouts tracked deep-link to that
   //      provider's country page]. The cheapest is highlighted automatically.
   var PROV = {
-    Yesim:  {perk:'esim.perk_yesim',  perkEn:'Flexible plans · easy top-ups'},
-    Airalo: {perk:'esim.perk_airalo', perkEn:'Most trusted · 200+ countries'},
-    Saily:  {perk:'esim.perk_saily',  perkEn:'Built-in ad-blocker by NordVPN'}
+    Yesim:  {perk:'esim.perk_yesim',  perkEn:'Flexible plans · easy top-ups', unlDays:1},
+    Airalo: {perk:'esim.perk_airalo', perkEn:'Most trusted · 200+ countries', unlDays:3},
+    Saily:  {perk:'esim.perk_saily',  perkEn:'Built-in ad-blocker by NordVPN', unlDays:5}
   };
   // Real "from" (starting) price per provider, per country (USD). Yesim = null → fetched
   // LIVE from its API; Airalo (read from its own pages) and Saily (their published
@@ -479,8 +480,10 @@
       var promoHtml = code
         ? '<div class="card-promo"><span class="cp-label">'+odT('esim.promo_word','Promo')+'</span><span class="cp-code">'+code+'</span><button type="button" class="cp-copy" data-code="'+code+'">'+odT('esim.copy','Copy')+'</button></div>'
         : '<div class="card-promo cp-empty">🎟 '+odT('esim.soon','Promo code coming soon')+'</div>';
+      var unlDays = PROV[row.name].unlDays;
+      var unlDaysHtml = unlDays ? ' <span class="unl-days">'+odT('esim.from_only','from')+' '+unlDays+' '+(unlDays>1?odT('esim.days','days'):odT('esim.day','day'))+'</span>' : '';
       var unlLine = (row.unl!=null)
-        ? '<div class="price-unl'+(row.approx?' approx':'')+'"><span class="from-pre">'+odT('esim.from_only','from')+'</span> '+(row.approx?'~':'')+'$'+fmtUsd(row.unl)+' <span class="plan-tag">'+odT('esim.unlimited','Unlimited')+'</span></div>'
+        ? '<div class="price-unl'+(row.approx?' approx':'')+'"><span class="from-pre">'+odT('esim.from_only','from')+'</span> '+(row.approx?'~':'')+'$'+fmtUsd(row.unl)+' <span class="plan-tag">'+odT('esim.unlimited','Unlimited')+'</span>'+unlDaysHtml+'</div>'
         : '';
       var priceBlock = priced
         ? '<div class="price"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.from)+' <span class="plan-tag">'+odT('esim.standard','standard')+'</span>'+(row.live?'<span class="live-tag">'+odT('esim.live','Live')+'</span>':'')+'</div>'+unlLine
