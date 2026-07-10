@@ -293,7 +293,7 @@
   //      provider's country page]. The cheapest is highlighted automatically.
   var PROV = {
     Yesim:  {perk:'esim.perk_yesim',  perkEn:'Flexible plans · easy top-ups', unlDays:1},
-    Airalo: {perk:'esim.perk_airalo', perkEn:'Most trusted · 200+ countries', unlDays:3},
+    Airalo: {perk:'esim.perk_airalo', perkEn:'Most trusted · 200+ countries', unlDays:3, unlFrom:11.5},
     Saily:  {perk:'esim.perk_saily',  perkEn:'Built-in ad-blocker by NordVPN', unlDays:5}
   };
   // Real "from" (starting) price per provider, per country (USD). Yesim = null → fetched
@@ -457,7 +457,7 @@
     var rows = dst.o.map(function(r){
       var name=r[0], from=r[1], unl=null, live=false, approx=false;
       if(name==='Yesim'){ var v = key ? yesimCache[key] : null; if(v && v.std!=null){ from=v.std; unl=v.unl; live=true; } else { from=null; } }
-      else if(from!=null){ unl = Math.round(from*3); approx=true; }   // est. unlimited until their feed is live
+      else if(from!=null){ var uf=PROV[name].unlFrom; unl = (uf!=null)?uf:Math.round(from*3); approx=true; }   // real unlimited "from" if known, else estimate
       return {name:name, from:from, unl:unl, aff:r[2], live:live, approx:approx};
     });
     rows.sort(function(a,b){
