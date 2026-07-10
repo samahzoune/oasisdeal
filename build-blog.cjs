@@ -893,6 +893,7 @@ const L = {
       cats:{flights:'Flights',rights:'Your rights',esim:'eSIM',umrah:'Umrah',guide:'Guide'},
       readMore:'Read', back:'← All articles', published:'Published', by:'By the OasisDeal team',
       relatedH:'Keep exploring', secure:'Secure & free to use · No booking fees',
+      book:{pre:'Planning the rest of your trip? ',h:'Compare hotels',e:'get a travel eSIM',t:'book an airport transfer',sep:', ',last:', or '},
       mt:function(t){return t+' | OasisDeal';}},
   fr:{dir:'ltr',lang:'fr',home:'/fr/',dest:'/fr/destinations/',blog:'/fr/blog/',hotels:'/hotels',cars:'/cars',transfers:'/transfers',esim:'/esim',comp:'/compensation',
       nav:{flights:'Vols',hotels:'Hôtels',cars:'Voitures',transfers:'Transferts',esim:'eSIM',dest:'Destinations',blog:'Blog',comp:'Indemnisation'},
@@ -902,6 +903,7 @@ const L = {
       cats:{flights:'Vols',rights:'Vos droits',esim:'eSIM',umrah:'Omra',guide:'Guide'},
       readMore:'Lire', back:'← Tous les articles', published:'Publié le', by:'Par l’équipe OasisDeal',
       relatedH:'Continuez à explorer', secure:'Sécurisé et gratuit · Sans frais',
+      book:{pre:'Vous préparez le reste du voyage ? ',h:'Comparez les hôtels',e:'prenez une eSIM voyage',t:'réservez un transfert aéroport',sep:', ',last:', ou '},
       mt:function(t){return t+' | OasisDeal';}},
   ar:{dir:'rtl',lang:'ar',home:'/ar/',dest:'/ar/destinations/',blog:'/ar/blog/',hotels:'/hotels',cars:'/cars',transfers:'/transfers',esim:'/esim',comp:'/compensation',
       nav:{flights:'رحلات',hotels:'فنادق',cars:'سيارات',transfers:'النقل',esim:'eSIM',dest:'الوجهات',blog:'المدوّنة',comp:'تعويضات'},
@@ -911,10 +913,26 @@ const L = {
       cats:{flights:'رحلات',rights:'حقوقك',esim:'eSIM',umrah:'العمرة',guide:'دليل'},
       readMore:'اقرأ', back:'→ كل المقالات', published:'نُشر في', by:'فريق OasisDeal',
       relatedH:'واصل الاستكشاف', secure:'آمن ومجاني · دون رسوم حجز',
+      book:{pre:'تخطّط لبقية رحلتك؟ ',h:'قارن الفنادق',e:'احصل على eSIM للسفر',t:'احجز نقلًا من المطار',sep:'، ',last:'، أو '},
       mt:function(t){return t+' | OasisDeal';}},
 };
 
 function pre(lang){ return lang==='en'?'':'/'+lang; }
+// Natural money-page sentence (hotels · eSIM · transfers) — money pages are host-served, no lang prefix.
+function bookLine(lang){ var b=L[lang].book;
+  return '<p class="blog-book">'+b.pre
+    +'<a href="/hotels">'+b.h+'</a>'+b.sep
+    +'<a href="/esim">'+b.e+'</a>'+b.last
+    +'<a href="/transfers">'+b.t+'</a>.</p>';
+}
+// Related articles: same category first, rotated by index so each article links to a different trio.
+function relatedArts(a){
+  var idx=ART.indexOf(a); if(idx<0)idx=0;
+  function rot(arr){ if(arr.length<2) return arr; var k=idx%arr.length; return arr.slice(k).concat(arr.slice(0,k)); }
+  var same=rot(ART.filter(function(o){return o.slug!==a.slug && o.cat===a.cat;}));
+  var diff=rot(ART.filter(function(o){return o.slug!==a.slug && o.cat!==a.cat;}));
+  return same.concat(diff).slice(0,3);
+}
 function homeName(lang){ return lang==='fr'?'Accueil':lang==='ar'?'الرئيسية':'Home'; }
 function breadcrumb(items){ return {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':items.map(function(it,i){var o={'@type':'ListItem','position':i+1,'name':it.n}; if(it.u) o.item=it.u; return o;})}; }
 const LOGO = '<svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#E8A33D"/><path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"/><path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#4B3FCB"/><rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"/></svg>';
@@ -950,6 +968,7 @@ var EXTRA = '<style>'
   +'.dg-figure{margin:-26px 0 0}.dg-photo{display:block;width:100%;height:auto;max-height:420px;object-fit:cover;border-radius:18px;border:1px solid var(--line);box-shadow:0 20px 44px rgba(24,26,46,.12)}.dg-svg{aspect-ratio:1280/460}'
   +'.dg-article{font-size:1.04rem}.dg-article h2{font-size:1.4rem;margin:32px 0 10px}.dg-lead{font-size:1.15rem;line-height:1.7;color:var(--ink);margin-top:26px;font-weight:500}.dg-article p{line-height:1.75;color:var(--ink-soft);margin-bottom:6px}'
   +'.dg-blist{list-style:none;padding:0;margin:12px 0;display:grid;gap:9px}.dg-blist li{position:relative;padding-inline-start:22px;line-height:1.6;color:var(--ink-soft)}.dg-blist li::before{content:"";position:absolute;inset-inline-start:2px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--saffron)}.dg-blist li strong{color:var(--ink);font-weight:600}'
+  +'.blog-book{margin:14px 0 4px;color:var(--ink-soft);line-height:1.7}.blog-book a{color:var(--majorelle);font-weight:600;text-decoration:none}.blog-book a:hover{text-decoration:underline}'
   +'.dg-todo{list-style:none;padding:0;margin:8px 0;display:grid;gap:10px;counter-reset:t}.dg-todo li{position:relative;padding:13px 16px 13px 48px;background:var(--paper);border:1px solid var(--line);border-radius:12px;color:var(--ink)}.dg-todo li::before{counter-increment:t;content:counter(t);position:absolute;inset-inline-start:14px;top:11px;width:22px;height:22px;border-radius:50%;background:var(--majorelle);color:#fff;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center}'
   +'[dir=rtl] .dg-todo li{padding:13px 48px 13px 16px}'
   +'.blog-cta{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px;margin:30px 0;display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:space-between}.blog-cta p{margin:0;color:var(--ink-soft)}.blog-cta strong{color:var(--ink);font-size:1.05rem}'
@@ -976,14 +995,16 @@ function bodyHtml(a, lang){
   if(a.tips){ html+='<h2>'+a.tipsH[lang]+'</h2><ol class="dg-todo">'+a.tips[lang].map(function(t){return '<li>'+t+'</li>';}).join('')+'</ol>'; }
   var c=a.cta, href=(c.href.charAt(0)==='/'&&!/^\/(hotels|esim|compensation)(\/|$)/.test(c.href)? pre(lang):'')+c.href;
   html+='<div class="blog-cta"><div><strong>'+c.sub[lang]+'</strong></div><a class="btn btn-primary" href="'+href+'">'+c.label[lang]+'</a></div>';
+  // City guides: nudge to the money pages with natural anchor text.
+  if(/^\/destinations\//.test(c.href)) html+=bookLine(lang);
   return html;
 }
 
 function articlePage(a, lang){
   var x=L[lang], p='/blog/'+a.slug, url='https://oasisdeal.com'+pre(lang)+p;
   var ld={'@context':'https://schema.org','@type':'BlogPosting','headline':a.title[lang],'description':a.desc[lang],'datePublished':a.date,'dateModified':a.date,'inLanguage':lang,'author':{'@type':'Organization','name':'OasisDeal'},'publisher':{'@type':'Organization','name':'OasisDeal','logo':{'@type':'ImageObject','url':'https://oasisdeal.com/favicon.svg'}},'mainEntityOfPage':url};
-  // related: up to 3 other articles
-  var rel=ART.filter(function(o){return o.slug!==a.slug;}).sort(function(x,z){return (x.img?0:1)-(z.img?0:1);}).slice(0,3);
+  // related: 3 topical articles, rotated so each page links to a different trio
+  var rel=relatedArts(a);
   var related='<div class="blog-grid">'+rel.map(function(o){return blogCard(o,lang);}).join('')+'</div>';
   var crumb=breadcrumb([{n:homeName(lang),u:'https://oasisdeal.com'+x.home},{n:x.nav.blog,u:'https://oasisdeal.com'+x.blog},{n:a.title[lang],u:url}]);
   return head(lang, x.mt(a.title[lang]), a.desc[lang], url, altsFor(p), [ld, crumb], a.img?'https://oasisdeal.com/images/destinations/'+a.img+'.jpg':'https://oasisdeal.com/images/og-default.png')
