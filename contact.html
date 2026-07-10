@@ -64,7 +64,9 @@
     <input id="email" name="email" type="email" placeholder="you@example.com" required />
     <label for="message" data-i18n="ct.message">Message</label>
     <textarea id="message" name="message" placeholder="How can we help?" data-i18n-ph="ct.message_ph" required></textarea>
+    <input type="text" name="company" id="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" />
     <button class="btn btn-primary" type="submit" data-i18n="ct.send">Send message →</button>
+    <p id="formStatus" role="status" aria-live="polite" style="margin-top:8px;font-size:.95rem;min-height:1.2em;font-weight:500"></p>
   </form>
 
   <div class="contact-methods">
@@ -133,15 +135,43 @@
 </footer>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  // No backend yet: open the user's email client pre-filled. Swap for Formspree/Web3Forms later.
-  document.getElementById('contactForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    var name = encodeURIComponent(document.getElementById('name').value);
-    var email = encodeURIComponent(document.getElementById('email').value);
-    var msg = encodeURIComponent(document.getElementById('message').value);
-    var body = 'From: ' + name + ' (' + email + ')%0D%0A%0D%0A' + msg;
-    window.location.href = 'mailto:hello@oasisdeal.com?subject=OasisDeal%20message&body=' + body;
-  });
+  // Contact form → /api/contact (Cloudflare Worker → Resend).
+  (function(){
+    var form = document.getElementById('contactForm');
+    var btn = form.querySelector('button[type="submit"]');
+    var status = document.getElementById('formStatus');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      status.textContent = ''; status.style.color = '';
+      var orig = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…';
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          message: document.getElementById('message').value,
+          company: document.getElementById('company').value
+        })
+      })
+      .then(function(r){ return r.json().catch(function(){ return { ok:false }; }); })
+      .then(function(j){
+        if (j && j.ok) {
+          form.reset();
+          status.style.color = '#2e9e5b';
+          status.textContent = '✓ Thanks! Your message is on its way — we usually reply within 24 hours.';
+        } else {
+          status.style.color = '#c0392b';
+          status.textContent = ((j && j.error) || 'Something went wrong.') + ' You can also email hello@oasisdeal.com.';
+        }
+      })
+      .catch(function(){
+        status.style.color = '#c0392b';
+        status.textContent = 'Something went wrong. Please email hello@oasisdeal.com.';
+      })
+      .then(function(){ btn.disabled = false; btn.textContent = orig; });
+    });
+  })();
 </script>
 <script>(function(s,t,a,y,o,n){s.Stay22=s.Stay22||{};s.Stay22.params={lmaID:'6a444061c151746f75b1b4ff'};o=t.createElement(a);n=t.getElementsByTagName(a)[0];o.async=1;o.src=y;n.parentNode.insertBefore(o,n);})(window,document,'script','https://scripts.stay22.com/letmeallez.js');</script>
 <script src="assets/consent.js" defer></script>
