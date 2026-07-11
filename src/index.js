@@ -1,6 +1,7 @@
 // OasisDeal Worker — API routes (contact form + newsletter via Resend),
 // with a fallback to the static site assets for every other request.
 // Requires a secret: RESEND_API_KEY (set in the Cloudflare dashboard).
+// (redeploy 2026-07-11 to bind RESEND_API_KEY secret)
 
 export default {
   async fetch(request, env, ctx) {
