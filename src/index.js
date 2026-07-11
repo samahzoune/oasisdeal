@@ -89,7 +89,8 @@ async function handleSubscribe(request, env) {
       });
       // 200/201 = added; 409 = already a contact — both are "success" for the visitor.
       if (r.ok || r.status === 409) return json({ ok: true });
-      return json({ ok: false, error: 'Could not subscribe right now.' }, 502);
+      const detail = await r.text().catch(() => '');
+      return json({ ok: false, error: 'Could not subscribe right now.', upstream: r.status, detail: detail.slice(0, 300) }, 502);
     }
     // Fallback until an Audience is configured: notify the owner by email.
     const r = await sendEmail(env, {
