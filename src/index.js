@@ -79,7 +79,19 @@ async function handleSubscribe(request, env) {
   if (!env.RESEND_API_KEY) return json({ ok: false, error: 'Email service is not configured yet.' }, 503);
 
   try {
-    // Simple approach: notify the owner. Upgrade to Resend Audiences/Broadcasts later.
+    // Preferred: add to a real Resend Audience (a proper list you can broadcast to).
+    // Set RESEND_AUDIENCE_ID as a Worker secret to enable this.
+    if (env.RESEND_AUDIENCE_ID) {
+      const r = await fetch('https://api.resend.com/audiences/' + env.RESEND_AUDIENCE_ID + '/contacts', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + env.RESEND_API_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, unsubscribed: false })
+      });
+      // 200/201 = added; 409 = already a contact — both are "success" for the visitor.
+      if (r.ok || r.status === 409) return json({ ok: true });
+      return json({ ok: false, error: 'Could not subscribe right now.' }, 502);
+    }
+    // Fallback until an Audience is configured: notify the owner by email.
     const r = await sendEmail(env, {
       from: 'OasisDeal <hello@oasisdeal.com>',
       to: ['hello@oasisdeal.com'],

@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const ROOT = __dirname;
-const STAY22 = "<script>(function(s,t,a,y,o,n){s.Stay22=s.Stay22||{};s.Stay22.params={lmaID:'6a444061c151746f75b1b4ff'};o=t.createElement(a);n=t.getElementsByTagName(a)[0];o.async=1;o.src=y;n.parentNode.insertBefore(o,n);})(window,document,'script','https://scripts.stay22.com/letmeallez.js');</script><script src='/assets/consent.js' defer></script>";
+const STAY22 = "<script>(function(s,t,a,y,o,n){s.Stay22=s.Stay22||{};s.Stay22.params={lmaID:'6a444061c151746f75b1b4ff'};o=t.createElement(a);n=t.getElementsByTagName(a)[0];o.async=1;o.src=y;n.parentNode.insertBefore(o,n);})(window,document,'script','https://scripts.stay22.com/letmeallez.js');</script><script src='/assets/consent.js' defer></script><script src='/assets/newsletter.js' defer></script>";
 
 const CMN_ROUTE = {PAR:1,LON:1,MAD:1,AMS:1,IST:1,DXB:1,JED:1,BRU:1,MIL:1,LYS:1,DUS:1,FRA:1};
 
