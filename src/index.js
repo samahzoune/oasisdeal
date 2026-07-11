@@ -12,6 +12,9 @@ export default {
     if (request.method === 'POST' && url.pathname === '/api/subscribe') {
       return handleSubscribe(request, env);
     }
+    if (url.pathname === '/api/_diag') {
+      return json({ key: !!env.RESEND_API_KEY, audience: !!env.RESEND_AUDIENCE_ID });
+    }
     // Everything else → the static site.
     return env.ASSETS.fetch(request);
   }
