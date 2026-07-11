@@ -12,6 +12,11 @@ export default {
     if (request.method === 'POST' && url.pathname === '/api/subscribe') {
       return handleSubscribe(request, env);
     }
+    if (url.pathname === '/api/_audiences') {
+      const r = await fetch('https://api.resend.com/audiences', { headers: { 'Authorization': 'Bearer ' + env.RESEND_API_KEY } });
+      const t = await r.text();
+      return json({ status: r.status, body: t.slice(0, 600) });
+    }
     // Everything else → the static site.
     return env.ASSETS.fetch(request);
   }
