@@ -12,11 +12,6 @@ export default {
     if (request.method === 'POST' && url.pathname === '/api/subscribe') {
       return handleSubscribe(request, env);
     }
-    if (url.pathname === '/api/_audiences') {
-      const r = await fetch('https://api.resend.com/audiences', { headers: { 'Authorization': 'Bearer ' + env.RESEND_API_KEY } });
-      const t = await r.text();
-      return json({ status: r.status, body: t.slice(0, 600) });
-    }
     // Everything else → the static site.
     return env.ASSETS.fetch(request);
   }
@@ -94,8 +89,7 @@ async function handleSubscribe(request, env) {
       });
       // 200/201 = added; 409 = already a contact — both are "success" for the visitor.
       if (r.ok || r.status === 409) return json({ ok: true });
-      const detail = await r.text().catch(() => '');
-      return json({ ok: false, error: 'Could not subscribe right now.', upstream: r.status, detail: detail.slice(0, 300) }, 502);
+      return json({ ok: false, error: 'Could not subscribe right now.' }, 502);
     }
     // Fallback until an Audience is configured: notify the owner by email.
     const r = await sendEmail(env, {
