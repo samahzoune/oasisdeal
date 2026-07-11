@@ -1,7 +1,7 @@
 // OasisDeal Worker — API routes (contact form + newsletter via Resend),
 // with a fallback to the static site assets for every other request.
-// Requires a secret: RESEND_API_KEY (set in the Cloudflare dashboard).
-// (redeploy 2026-07-11 to bind RESEND_API_KEY secret)
+// Requires secret RESEND_API_KEY. Optional: RESEND_AUDIENCE_ID (adds
+// newsletter subscribers to a Resend Audience instead of emailing the owner).
 
 export default {
   async fetch(request, env, ctx) {
@@ -89,8 +89,7 @@ async function handleSubscribe(request, env) {
       });
       // 200/201 = added; 409 = already a contact — both are "success" for the visitor.
       if (r.ok || r.status === 409) return json({ ok: true });
-      const detail = await r.text().catch(() => '');
-      return json({ ok: false, error: 'Could not subscribe right now.', upstream: r.status, detail: detail.slice(0, 300) }, 502);
+      return json({ ok: false, error: 'Could not subscribe right now.' }, 502);
     }
     // Fallback until an Audience is configured: notify the owner by email.
     const r = await sendEmail(env, {
