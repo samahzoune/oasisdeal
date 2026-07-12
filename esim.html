@@ -56,12 +56,14 @@
   .plan.best{border-color:var(--saffron);box-shadow:0 14px 34px rgba(232,163,61,.18);}
   .plan .tag{position:absolute;top:-12px;left:24px;background:var(--saffron);color:var(--ink);font-weight:700;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;padding:5px 12px;border-radius:100px;}
   .plan .prov-name{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;line-height:1;}
-  .plan .prov-perk{color:var(--ink-soft);font-size:.9rem;margin-top:2px;}
+  .plan .prov-perk{color:var(--ink-soft);font-size:.9rem;margin-top:2px;min-height:2.6em;}
   .plan .data{font-family:'Fraunces',serif;font-size:2.3rem;font-weight:600;line-height:1;}
   .plan .days{color:var(--ink-soft);font-size:.95rem;}
   .plan .price{margin-top:14px;font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;color:var(--majorelle);line-height:1;}
   .plan .price small{font-size:.95rem;color:var(--ink-soft);font-family:'Inter',sans-serif;font-weight:400;}
   .plan .price-na{margin-top:14px;font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--ink-soft);}
+  .plan .price-trial{margin-top:14px;display:flex;flex-direction:column;gap:2px;}
+  .plan .trial-badge{font-family:'Fraunces',serif;font-size:1.55rem;font-weight:600;color:var(--clay-deep);line-height:1.05;}
   .plan .from-pre{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);vertical-align:middle;margin-right:2px;}
   .plan .price-sub{font-size:.8rem;color:var(--ink-soft);margin-top:2px;}
   .plan .plan-tag{font-family:'Inter',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(24,26,46,.07);padding:3px 7px;border-radius:100px;vertical-align:middle;position:relative;top:-3px;}
@@ -315,7 +317,7 @@
     Yesim:  {perk:'esim.perk_yesim',  perkEn:'Flexible plans · easy top-ups', unlDays:1},
     Airalo: {perk:'esim.perk_airalo', perkEn:'Most trusted · 200+ countries', unlDays:3, unlFrom:11.5},
     Saily:  {perk:'esim.perk_saily',  perkEn:'Built-in ad-blocker by NordVPN', unlDays:5},
-    GigSky: {perk:'esim.perk_gigsky', perkEn:'Widest coverage · free eSIM trial'}
+    GigSky: {perk:'esim.perk_gigsky', perkEn:'Widest coverage · 190+ countries', trial:true}
   };
   // Real "from" (starting) price per provider, per country (USD). Yesim = null → fetched
   // LIVE from its API; Airalo (read from its own pages) and Saily (their published
@@ -506,10 +508,13 @@
       var unlLine = (row.unl!=null)
         ? '<div class="price-unl'+(row.approx?' approx':'')+'"><span class="from-pre">'+odT('esim.from_only','from')+'</span> '+(row.approx?'~':'')+'$'+fmtUsd(row.unl)+' <span class="plan-tag">'+odT('esim.unlimited','Unlimited')+'</span>'+unlDaysHtml+'</div>'
         : '';
+      var trial = PROV[row.name].trial;
       var priceBlock = priced
         ? '<div class="price"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.from)+' <span class="plan-tag">'+odT('esim.standard','standard')+'</span>'+(row.live?'<span class="live-tag">'+odT('esim.live','Live')+'</span>':'')+'</div>'+unlLine
-        : '<div class="price-na">'+odT('esim.seeprice','See live price')+'</div>';
-      var btnLabel = priced ? odT('esim.get','See plans →') : odT('esim.checkprice','Check price →');
+        : (trial
+            ? '<div class="price-trial"><span class="trial-badge">'+odT('esim.freetrial','🎁 Free trial')+'</span><span class="price-sub">'+odT('esim.trialsub','100 MB · then paid plans')+'</span></div>'
+            : '<div class="price-na">'+odT('esim.seeprice','See live price')+'</div>');
+      var btnLabel = (priced || trial) ? odT('esim.get','See plans →') : odT('esim.checkprice','Check price →');
       html += '<div class="plan'+(isCheap?' best':'')+'">'
         + (isCheap?'<span class="tag">'+odT('esim.cheapest','Cheapest')+'</span>':'')
         + '<div class="prov-name">'+row.name+'</div>'
