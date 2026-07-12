@@ -49,7 +49,7 @@
   .res-head .flag{font-size:2.4rem;}
   .res-head h2{font-size:1.7rem;font-weight:600;}
   .res-head p{color:var(--ink-soft);font-size:.95rem;}
-  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
   @media(max-width:780px){.plan-grid{grid-template-columns:1fr;}}
   .plan{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:6px;transition:.18s;}
   .plan:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(24,26,46,.10);border-color:rgba(75,63,203,.35);}
@@ -137,7 +137,7 @@
         <span data-i18n="esim.eyebrow">200+ countries · no roaming fees</span>
       </div>
       <h1 data-i18n="esim.h1">Travel data that just works. <em>Connect the moment you land.</em></h1>
-      <p class="hero-sub" data-i18n="esim.sub">Skip the roaming bills and the SIM-card kiosks. Pick your destination and we compare the top eSIM providers — Yesim, Airalo &amp; Saily — so you get the cheapest plan. Installs in minutes, your normal number keeps working.</p>
+      <p class="hero-sub" data-i18n="esim.sub">Skip the roaming bills and the SIM-card kiosks. Pick your destination and we compare the top eSIM providers — Yesim, Airalo, Saily &amp; GigSky — so you get the cheapest plan. Installs in minutes, your normal number keeps working.</p>
 
       <div class="esim-search" id="esim">
         <label for="esim-country" data-i18n="esim.where">Where are you travelling?</label>
@@ -314,30 +314,31 @@
   var PROV = {
     Yesim:  {perk:'esim.perk_yesim',  perkEn:'Flexible plans · easy top-ups', unlDays:1},
     Airalo: {perk:'esim.perk_airalo', perkEn:'Most trusted · 200+ countries', unlDays:3, unlFrom:11.5},
-    Saily:  {perk:'esim.perk_saily',  perkEn:'Built-in ad-blocker by NordVPN', unlDays:5}
+    Saily:  {perk:'esim.perk_saily',  perkEn:'Built-in ad-blocker by NordVPN', unlDays:5},
+    GigSky: {perk:'esim.perk_gigsky', perkEn:'Widest coverage · free eSIM trial'}
   };
   // Real "from" (starting) price per provider, per country (USD). Yesim = null → fetched
   // LIVE from its API; Airalo (read from its own pages) and Saily (their published
   // listings) are real starting prices. o = [name, fromUSD|null, tracked link].
   var sel = {dst:null};
   var DEST = [
-    {c:'Turkey', f:'🇹🇷', o:[['Yesim',null,'https://yesim.tpx.lu/hDmBiUY3'],['Airalo',4.00,'https://airalo.tpx.lu/h9w9HwWP'],['Saily',3.99,'https://saily.tpx.lu/NeT4XSTS']]},
-    {c:'France', f:'🇫🇷', o:[['Yesim',null,'https://yesim.tpx.lu/BEhCKOl6'],['Airalo',4.00,'https://airalo.tpx.lu/teRm5Zw9'],['Saily',3.99,'https://saily.tpx.lu/KRm2s2Fr']]},
-    {c:'Spain', f:'🇪🇸', o:[['Yesim',null,'https://yesim.tpx.lu/E6EcHLsM'],['Airalo',4.00,'https://airalo.tpx.lu/eaVfdLwE'],['Saily',3.99,'https://saily.tpx.lu/m8t1lhqq']]},
-    {c:'Italy', f:'🇮🇹', o:[['Yesim',null,'https://yesim.tpx.lu/Vv7Wpv9h'],['Airalo',4.00,'https://airalo.tpx.lu/vfHxDcDi'],['Saily',3.99,'https://saily.tpx.lu/vqT0eZeT']]},
-    {c:'United Kingdom', f:'🇬🇧', o:[['Yesim',null,'https://yesim.tpx.lu/TpX7mArW'],['Airalo',4.00,'https://airalo.tpx.lu/vrTfWqrT'],['Saily',4.49,'https://saily.tpx.lu/5WSWMOnZ']]},
-    {c:'United States', f:'🇺🇸', o:[['Yesim',null,'https://yesim.tpx.lu/ap862SxK'],['Airalo',4.00,'https://airalo.tpx.lu/afu6lsg2'],['Saily',3.99,'https://saily.tpx.lu/I29BBlbo']]},
-    {c:'United Arab Emirates', f:'🇦🇪', o:[['Yesim',null,'https://yesim.tpx.lu/27IHYZD9'],['Airalo',4.00,'https://airalo.tpx.lu/itapLJGB'],['Saily',8.99,'https://saily.tpx.lu/a2hF9Sbv']]},
-    {c:'Saudi Arabia', f:'🇸🇦', o:[['Yesim',null,'https://yesim.tpx.lu/yOHQxb9q'],['Airalo',4.50,'https://airalo.tpx.lu/0xfcRE2M'],['Saily',6.99,'https://saily.tpx.lu/aTq5KKvH']]},
-    {c:'Egypt', f:'🇪🇬', o:[['Yesim',null,'https://yesim.tpx.lu/iJOoxIUN'],['Airalo',5.50,'https://airalo.tpx.lu/ciVUrmKO'],['Saily',6.99,'https://saily.tpx.lu/PILP1cbg']]},
-    {c:'Morocco', f:'🇲🇦', o:[['Yesim',null,'https://yesim.tpx.lu/kGaV4Lsp'],['Airalo',6.50,'https://airalo.tpx.lu/UEAm2DPl'],['Saily',6.99,'https://saily.tpx.lu/Qg7eyjV1']]},
-    {c:'Germany', f:'🇩🇪', o:[['Yesim',null,'https://yesim.tpx.lu/Vry0jkk2'],['Airalo',4.00,'https://airalo.tpx.lu/JffN9Bp9'],['Saily',4.49,'https://saily.tpx.lu/TRcKGSQS']]},
-    {c:'Netherlands', f:'🇳🇱', o:[['Yesim',null,'https://yesim.tpx.lu/lhOnPBYk'],['Airalo',4.00,'https://airalo.tpx.lu/qII8HyTe'],['Saily',3.99,'https://saily.tpx.lu/UkBw76Ge']]},
-    {c:'Thailand', f:'🇹🇭', o:[['Yesim',null,'https://yesim.tpx.lu/6srNEWFM'],['Airalo',4.00,'https://airalo.tpx.lu/Zk83ST9A'],['Saily',3.99,'https://saily.tpx.lu/gj9RFWGq']]},
-    {c:'Japan', f:'🇯🇵', o:[['Yesim',null,'https://yesim.tpx.lu/qNNzknJM'],['Airalo',4.00,'https://airalo.tpx.lu/jWLxKnBE'],['Saily',3.99,'https://saily.tpx.lu/taDurnbB']]},
-    {c:'Canada', f:'🇨🇦', o:[['Yesim',null,'https://yesim.tpx.lu/YIdNbQqJ'],['Airalo',7.00,'https://airalo.tpx.lu/vJHHSG3Y'],['Saily',5.29,'https://saily.tpx.lu/iXFVlBeC']]},
-    {c:'Europe', f:'🇪🇺', o:[['Yesim',null,'https://yesim.tpx.lu/l3kmy4fs'],['Airalo',5.00,'https://airalo.tpx.lu/HSrq9hO9'],['Saily',4.99,'https://saily.tpx.lu/C0cKexnS']]},
-    {c:'Global', f:'🌍', o:[['Yesim',null,'https://yesim.tpx.lu/ylsEszk4'],['Airalo',9.00,'https://airalo.tpx.lu/rAtBPjLI'],['Saily',8.99,'https://saily.tpx.lu/7UUKzW0D']]}
+    {c:'Turkey', f:'🇹🇷', o:[['Yesim',null,'https://yesim.tpx.lu/hDmBiUY3'],['Airalo',4.00,'https://airalo.tpx.lu/h9w9HwWP'],['Saily',3.99,'https://saily.tpx.lu/NeT4XSTS'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'France', f:'🇫🇷', o:[['Yesim',null,'https://yesim.tpx.lu/BEhCKOl6'],['Airalo',4.00,'https://airalo.tpx.lu/teRm5Zw9'],['Saily',3.99,'https://saily.tpx.lu/KRm2s2Fr'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Spain', f:'🇪🇸', o:[['Yesim',null,'https://yesim.tpx.lu/E6EcHLsM'],['Airalo',4.00,'https://airalo.tpx.lu/eaVfdLwE'],['Saily',3.99,'https://saily.tpx.lu/m8t1lhqq'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Italy', f:'🇮🇹', o:[['Yesim',null,'https://yesim.tpx.lu/Vv7Wpv9h'],['Airalo',4.00,'https://airalo.tpx.lu/vfHxDcDi'],['Saily',3.99,'https://saily.tpx.lu/vqT0eZeT'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'United Kingdom', f:'🇬🇧', o:[['Yesim',null,'https://yesim.tpx.lu/TpX7mArW'],['Airalo',4.00,'https://airalo.tpx.lu/vrTfWqrT'],['Saily',4.49,'https://saily.tpx.lu/5WSWMOnZ'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'United States', f:'🇺🇸', o:[['Yesim',null,'https://yesim.tpx.lu/ap862SxK'],['Airalo',4.00,'https://airalo.tpx.lu/afu6lsg2'],['Saily',3.99,'https://saily.tpx.lu/I29BBlbo'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'United Arab Emirates', f:'🇦🇪', o:[['Yesim',null,'https://yesim.tpx.lu/27IHYZD9'],['Airalo',4.00,'https://airalo.tpx.lu/itapLJGB'],['Saily',8.99,'https://saily.tpx.lu/a2hF9Sbv'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Saudi Arabia', f:'🇸🇦', o:[['Yesim',null,'https://yesim.tpx.lu/yOHQxb9q'],['Airalo',4.50,'https://airalo.tpx.lu/0xfcRE2M'],['Saily',6.99,'https://saily.tpx.lu/aTq5KKvH'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Egypt', f:'🇪🇬', o:[['Yesim',null,'https://yesim.tpx.lu/iJOoxIUN'],['Airalo',5.50,'https://airalo.tpx.lu/ciVUrmKO'],['Saily',6.99,'https://saily.tpx.lu/PILP1cbg'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Morocco', f:'🇲🇦', o:[['Yesim',null,'https://yesim.tpx.lu/kGaV4Lsp'],['Airalo',6.50,'https://airalo.tpx.lu/UEAm2DPl'],['Saily',6.99,'https://saily.tpx.lu/Qg7eyjV1'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Germany', f:'🇩🇪', o:[['Yesim',null,'https://yesim.tpx.lu/Vry0jkk2'],['Airalo',4.00,'https://airalo.tpx.lu/JffN9Bp9'],['Saily',4.49,'https://saily.tpx.lu/TRcKGSQS'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Netherlands', f:'🇳🇱', o:[['Yesim',null,'https://yesim.tpx.lu/lhOnPBYk'],['Airalo',4.00,'https://airalo.tpx.lu/qII8HyTe'],['Saily',3.99,'https://saily.tpx.lu/UkBw76Ge'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Thailand', f:'🇹🇭', o:[['Yesim',null,'https://yesim.tpx.lu/6srNEWFM'],['Airalo',4.00,'https://airalo.tpx.lu/Zk83ST9A'],['Saily',3.99,'https://saily.tpx.lu/gj9RFWGq'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Japan', f:'🇯🇵', o:[['Yesim',null,'https://yesim.tpx.lu/qNNzknJM'],['Airalo',4.00,'https://airalo.tpx.lu/jWLxKnBE'],['Saily',3.99,'https://saily.tpx.lu/taDurnbB'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Canada', f:'🇨🇦', o:[['Yesim',null,'https://yesim.tpx.lu/YIdNbQqJ'],['Airalo',7.00,'https://airalo.tpx.lu/vJHHSG3Y'],['Saily',5.29,'https://saily.tpx.lu/iXFVlBeC'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Europe', f:'🇪🇺', o:[['Yesim',null,'https://yesim.tpx.lu/l3kmy4fs'],['Airalo',5.00,'https://airalo.tpx.lu/HSrq9hO9'],['Saily',4.99,'https://saily.tpx.lu/C0cKexnS'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]},
+    {c:'Global', f:'🌍', o:[['Yesim',null,'https://yesim.tpx.lu/ylsEszk4'],['Airalo',9.00,'https://airalo.tpx.lu/rAtBPjLI'],['Saily',8.99,'https://saily.tpx.lu/7UUKzW0D'],['GigSky',null,'https://gigsky.tpx.lu/q5EKDwhd']]}
   ];
   var POPULAR = ['Turkey','Spain','United Kingdom','United States','United Arab Emirates','Europe','Global'];
 
