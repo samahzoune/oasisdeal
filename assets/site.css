@@ -1,4 +1,8 @@
 /* OasisDeal — shared design system (warm Moroccan editorial) */
+/* Metric-matched fallback fonts: the fallback occupies ~the same space as the
+   web font, so when Fraunces/Inter swap in there is little/no layout shift (CLS). */
+@font-face{font-family:'Inter-fb';src:local('Arial');size-adjust:107%;ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%;}
+@font-face{font-family:'Fraunces-fb';src:local('Georgia');size-adjust:104%;ascent-override:94%;descent-override:26%;line-gap-override:0%;}
 :root{
   --ink:#181A2E; --ink-soft:rgba(24,26,46,0.66);
   --majorelle:#4B3FCB; --majorelle-deep:#241F5E;
@@ -8,9 +12,9 @@
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{margin:0;background:var(--sand);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:'Inter','Inter-fb',sans-serif;-webkit-font-smoothing:antialiased;}
 img,svg{display:block;} a{color:inherit;}
-h1,h2,h3,h4{font-family:'Fraunces',serif;margin:0;color:var(--ink);}
+h1,h2,h3,h4{font-family:'Fraunces','Fraunces-fb',serif;margin:0;color:var(--ink);}
 p{margin:0;} button{font-family:inherit;cursor:pointer;}
 :focus-visible{outline:2px solid var(--majorelle);outline-offset:3px;border-radius:4px;}
 .container{max-width:1140px;margin:0 auto;padding:0 24px;}
@@ -21,7 +25,7 @@ p{margin:0;} button{font-family:inherit;cursor:pointer;}
 .nav-row{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .logo-mark{width:30px;height:30px;flex:none;}
-.logo-word{font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;letter-spacing:-0.01em;color:var(--ink);}
+.logo-word{font-family:'Fraunces','Fraunces-fb',serif;font-weight:600;font-size:1.32rem;letter-spacing:-0.01em;color:var(--ink);}
 .logo-word .pipe{color:var(--saffron);font-weight:400;}
 .nav-links{display:flex;align-items:center;gap:22px;}
 .nav-link{font-size:0.9rem;font-weight:500;text-decoration:none;color:var(--ink-soft);white-space:nowrap;}
@@ -86,7 +90,7 @@ p{margin:0;} button{font-family:inherit;cursor:pointer;}
 /* AMOUNTS (compensation) */
 .amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .amount{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px 20px;text-align:center;}
-.amount .big{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;color:var(--majorelle-deep);}
+.amount .big{font-family:'Fraunces','Fraunces-fb',serif;font-size:2.4rem;font-weight:600;color:var(--majorelle-deep);}
 .amount p{margin-top:8px;color:var(--ink-soft);font-size:0.95rem;}
 @media (max-width:700px){ .amounts{grid-template-columns:1fr;} }
 
@@ -98,7 +102,7 @@ p{margin:0;} button{font-family:inherit;cursor:pointer;}
 /* FAQ */
 .faq{max-width:760px;}
 .faq-item{border-bottom:1px solid var(--line);}
-.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:22px 4px;font-weight:600;font-size:1.04rem;font-family:'Fraunces',serif;}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:22px 4px;font-weight:600;font-size:1.04rem;font-family:'Fraunces','Fraunces-fb',serif;}
 .faq-item summary::-webkit-details-marker{display:none;}
 .faq-item summary .plus{font-family:'IBM Plex Mono',monospace;color:var(--clay);font-size:1.2rem;flex:none;margin-left:18px;transition:transform .2s ease;}
 .faq-item[open] summary .plus{transform:rotate(45deg);}
