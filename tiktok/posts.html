@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>OasisDeal — TikTok Posts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root{ --ink:#181A2E; --majorelle:#4B3FCB; --majorelle-deep:#241F5E; --saffron:#E8A33D; --sand:#F4ECDD; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#211d3b;color:#fff;font-family:'Inter',sans-serif;padding:32px 16px 80px;}
+  .head{max-width:900px;margin:0 auto 24px;text-align:center;}
+  .head h1{font-family:'Fraunces',serif;font-size:2rem;margin-bottom:8px;}
+  .head p{opacity:.75;line-height:1.6;font-size:.95rem;}
+  #dlall{display:block;margin:0 auto 24px;background:var(--saffron);color:var(--ink);border:none;padding:12px 24px;border-radius:999px;font-size:.95rem;font-weight:700;cursor:pointer;}
+  .grid{display:flex;flex-wrap:wrap;gap:36px;justify-content:center;align-items:flex-start;max-width:1500px;margin:0 auto;}
+  .card{background:#2b2650;border-radius:16px;padding:16px;width:380px;}
+  .frame{width:348px;height:619px;overflow:hidden;border-radius:10px;box-shadow:0 14px 34px rgba(0,0,0,.4);}
+  .stage{width:1080px;height:1920px;transform-origin:top left;transform:scale(.322222);position:relative;overflow:hidden;background:var(--majorelle-deep);}
+  .stage img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .stage .grad-top{position:absolute;top:0;left:0;right:0;height:420px;background:linear-gradient(180deg,rgba(20,16,45,.78),rgba(20,16,45,0));}
+  .stage .grad-bot{position:absolute;left:0;right:0;bottom:0;height:1180px;background:linear-gradient(0deg,rgba(16,12,40,.96) 0%,rgba(16,12,40,.78) 46%,rgba(16,12,40,0) 100%);}
+  .stage.plain .grad-bot{height:1920px;background:linear-gradient(160deg,var(--majorelle) 0%,var(--majorelle-deep) 100%);}
+  .stage .inner{position:absolute;inset:0;padding:88px;display:flex;flex-direction:column;}
+  .brand{display:flex;align-items:center;gap:18px;}
+  .brand .mark{width:66px;height:66px;flex:none;}
+  .brand .word{font-family:'Fraunces',serif;font-weight:600;font-size:44px;letter-spacing:-.01em;}
+  .brand .word .pipe{color:var(--saffron);font-weight:400;}
+  .body{margin-top:auto;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:30px;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron);font-weight:600;margin-bottom:30px;}
+  .title{font-family:'Fraunces',serif;font-weight:600;font-size:112px;line-height:1.0;margin-bottom:30px;}
+  .title em{font-style:italic;color:var(--saffron);}
+  .sub{font-size:44px;line-height:1.42;color:rgba(255,255,255,.9);max-width:920px;}
+  .pill{margin-top:56px;display:inline-flex;align-items:center;gap:14px;background:var(--saffron);color:var(--ink);font-weight:700;font-size:37px;padding:26px 44px;border-radius:999px;align-self:flex-start;}
+  .plain .badge{position:absolute;top:88px;right:88px;background:var(--saffron);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:28px;letter-spacing:.1em;padding:15px 28px;border-radius:999px;text-transform:uppercase;}
+  .capbox{margin-top:14px;background:#211d3b;border-radius:8px;padding:12px;font-size:.82rem;line-height:1.5;white-space:pre-line;color:rgba(255,255,255,.9);max-height:200px;overflow:auto;}
+  .btns{display:flex;gap:8px;margin-top:12px;}
+  button.act{font-family:inherit;cursor:pointer;border:none;border-radius:8px;padding:10px 14px;font-weight:600;font-size:.85rem;}
+  .dl{background:var(--saffron);color:var(--ink);flex:1;}
+  .cp{background:#43407a;color:#fff;}
+  button.act:hover{opacity:.9;}
+</style>
+</head>
+<body>
+<div class="head">
+  <h1>OasisDeal — TikTok Posts</h1>
+  <p>12 vertical 9:16 graphics (1080×1920) for TikTok photo/carousel posts &amp; video covers. Click <b>Download PNG</b>, then in TikTok: <b>+ → Upload → Photo</b> (or carousel), paste the caption (Copy caption). Keep <b>oasisdeal.com</b> in your bio (captions say "link in bio"). Lead with the <b>€600 compensation</b> ones — they're your best hook. Post ~1/day.</p>
+</div>
+<button id="dlall">⬇ Download all 12 PNGs</button>
+<div class="grid" id="grid"></div>
+
+<script>
+var LOGO = '<svg class="mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#E8A33D"/><path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"/><path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#4B3FCB"/><rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"/></svg>';
+
+var POSTS = [
+  {file:'tt-comp-1', plain:true, badge:'Your rights', eyebrow:'Nobody tells you this', title:'Your Delayed Flight Owes You <em>€600</em>', sub:'Delayed 3+ hrs on a European route? The airline owes you cash — and hopes you never find out.',
+   cap:"Your flight got delayed and you just… went home? 😳\n\nUnder EU law (EC261), a 3+ hour delay can owe you up to €600 — cash, not a voucher. Works for flights up to 3 years ago.\n\nCheck free in 2 min → link in bio 💸\n\n#flightdelay #traveltips #travelhack #ec261 #knowyourrights"},
+  {file:'tt-comp-2', plain:true, badge:'Cash, not a voucher', eyebrow:'Flight delayed 3+ hrs?', title:'They Owe You <em>Cash</em> — Not a Voucher', sub:'A "sorry" voucher isn’t the compensation you’re legally owed. You can claim the difference.',
+   cap:"They gave you a voucher and called it even? 🚫\n\nThat's NOT the cash compensation you're legally owed under EC261 — up to €600 for a 3+ hour delay. No win, no fee.\n\nCheck what you're owed → link in bio\n\n#passengerrights #flightdelay #traveltips #moneytok #travelhack"},
+  {file:'tt-comp-3', plain:true, badge:'Up to 3 years back', eyebrow:'Did this happen to you?', title:'Past Flight Delayed? Still Claim <em>€600</em>', sub:'It’s not just today’s flight — delayed, cancelled or bumped flights up to 3 years ago can still qualify.',
+   cap:"Had a flight delayed or cancelled in the last 3 years? ✈️\n\nYou might STILL be owed up to €600. Most people never claim it because the airline definitely won't remind you.\n\nFree 2-min check → link in bio 💶\n\n#flightcancelled #travelhack #traveltips #knowyourrights #ec261"},
+  {file:'tt-esim', plain:true, badge:'eSIM', eyebrow:'Stop doing this abroad', title:'Stop Paying <em>$10/Day</em> to Use Your Phone', sub:'A travel eSIM = data the second you land. No roaming bills, no SIM kiosk. About $5 a week.',
+   cap:"Please stop paying $10/day roaming abroad 😭\n\nA travel eSIM gives you data the second you land — scan a QR before you fly, your normal number still works. A week is like $5, not $70.\n\nCompare eSIMs → link in bio 📲\n\n#esim #travelhacks #traveltips #roaming #digitalnomad"},
+  {file:'tt-cheapdays', img:'istanbul', eyebrow:'Flight hacks', title:'The Cheapest Days to <em>Fly</em>', sub:'Fly Tue / Wed / Sat, book 2–4 months out, and always search flexible dates.',
+   cap:"The cheapest days to fly (save this 📌)\n\n✅ Fly Tue, Wed or Sat\n✅ Book Europe 2–4 months out, long-haul 3–6\n✅ Flexible dates = big savings\n\nCompare every airline in one search → link in bio ✈️\n\n#cheapflights #flighthacks #traveltips #travelhack"},
+  {file:'tt-mythbook', img:'paris', eyebrow:'Don’t fall for this', title:'"Book Tuesday Midnight" is a <em>Myth</em>', sub:'Prices change many times a day. What actually works: flexible dates + comparing every airline.',
+   cap:"The 'book on Tuesday at midnight' thing is a LIE 😤\n\nFares change many times a day — there's no magic minute. What actually works: fly mid-week, search flexible dates, compare every airline in one place.\n\nDo it right → link in bio ✈️\n\n#flighthacks #cheapflights #traveltips #travelsmart"},
+  {file:'tt-japancost', img:'tokyo', eyebrow:'2026 budget', title:'A Week in <em>Japan</em>: The Real Cost', sub:'Flights $700–1,300 · hotels from $80/night · all-in ~$1,600–3,300pp. Cheaper than you think.',
+   cap:"How much a week in Japan ACTUALLY costs in 2026 🇯🇵\n\n✈️ Flights: $700–1,300\n🏨 Hotels: from $80/night\n🍜 Food: $5 meals\n= about $1,600–3,300 per person\n\nFull breakdown → link in bio\n\n#japantravel #travelbudget #traveltiktok #howmuch #traveltips"},
+  {file:'tt-dubaicost', img:'dubai', eyebrow:'2026 budget', title:'How Much <em>Dubai</em> Really Costs', sub:'A week can be a smart mid-range trip or a luxury blowout — here’s the real breakdown.',
+   cap:"How much a week in Dubai really costs in 2026 🌇\n\n✈️ Flights: $700–1,200\n🏨 Hotels: from $90/night\n🐪 Desert safari, Burj Khalifa & more\n= about $1,670–3,420 per person\n\nFull breakdown → link in bio\n\n#dubai #dubaitravel #travelbudget #howmuch #traveltips"},
+  {file:'tt-thaicost', img:'bangkok', eyebrow:'Cheaper than you think', title:'<em>Thailand</em> for a Week: Real Cost', sub:'One of the best-value trips on earth — the flight is basically the whole budget.',
+   cap:"A week in Thailand costs less than you think 🇹🇭\n\n✈️ Flight is the main cost ($900–1,500)\n🏨 Hotels from $20/night\n🍜 Street food for a couple dollars\n= as little as ~$400 on the ground\n\nFull breakdown → link in bio\n\n#thailand #travelbudget #traveltiktok #howmuch #backpacking"},
+  {file:'tt-transfer', img:'dubai', eyebrow:'Travel tip', title:'Don’t Get <em>Scammed</em> at Arrivals', sub:'A pre-booked transfer = fixed price, driver waiting, no meter, no "cash only" scam.',
+   cap:"Don't get scammed at the airport taxi rank 🚕\n\nA pre-booked transfer is a fixed price agreed before you fly, with a driver waiting holding your name — no meter, no surge, no 'machine is broken' cash-only games. Often cheaper than the taxi line.\n\nBook one → link in bio\n\n#traveltips #airporttips #travelhacks #traveltiktok"},
+  {file:'tt-jetlag', img:'bangkok', eyebrow:'Long-haul tip', title:'Beat <em>Jet Lag</em> in 4 Steps', sub:'Hydrate, switch to destination time on the plane, get daylight on arrival, skip the day-one nap.',
+   cap:"Beat jet lag like a pro ✈️😴\n\n💧 Hydrate, skip the alcohol\n🕐 Switch to destination time on the plane\n☀️ Get daylight the moment you land\n🚫 No long naps on day one\n\nMore tips → link in bio. Save for your next long-haul!\n\n#traveltips #jetlag #travelhacks #longhaulflight"},
+  {file:'tt-brand', plain:true, badge:'OasisDeal', eyebrow:'Follow for travel hacks', title:'Cheap Flights, <em>Compared</em>', sub:'Hundreds of sites, one search. Cheapest first. No booking fees. Plus honest travel tips.',
+   cap:"Meet OasisDeal — your savings oasis for travel 🌍\n\nCompare cheap flights, hotels, eSIMs & airport transfers in one search. Cheapest first, no booking fees. Plus flight-compensation checks & honest travel guides.\n\nFollow for cheap-flight hacks ✈️ Start → link in bio\n\n#cheapflights #traveldeals #budgettravel #traveltips #travelhacks"}
+];
+
+var grid = document.getElementById('grid');
+POSTS.forEach(function(p, i){
+  var card = document.createElement('div'); card.className='card';
+  var stage =
+    '<div class="stage '+(p.plain?'plain':'')+'" id="stage'+i+'">'
+    + (p.plain? '' : '<img class="bg" crossorigin="anonymous" src="../images/destinations/'+p.img+'.jpg" />')
+    + '<div class="grad-top"></div><div class="grad-bot"></div>'
+    + (p.plain? '<div class="badge">'+p.badge+'</div>' : '')
+    + '<div class="inner"><div class="brand">'+LOGO+'<span class="word">Oasis<span class="pipe">|</span>Deal</span></div>'
+    +   '<div class="body"><div class="eyebrow">'+p.eyebrow+'</div><div class="title">'+p.title+'</div>'
+    +   '<div class="sub">'+p.sub+'</div><div class="pill">oasisdeal.com</div></div></div></div>';
+  card.appendChild(el('div','frame',stage));
+  var cap = document.createElement('div'); cap.className='capbox'; cap.id='cap'+i; cap.textContent=p.cap; card.appendChild(cap);
+  card.appendChild(el('div','btns',
+      '<button class="act dl" data-i="'+i+'" data-f="'+p.file+'">⬇ Download PNG</button>'
+    + '<button class="act cp" data-c="'+i+'">Copy caption</button>'));
+  grid.appendChild(card);
+});
+function el(t,c,h){var d=document.createElement(t);d.className=c;d.innerHTML=h;return d;}
+
+function shoot(i, file){
+  var stage=document.getElementById('stage'+i); var prev=stage.style.transform; stage.style.transform='none';
+  return html2canvas(stage,{useCORS:true,backgroundColor:null,width:1080,height:1920,scale:1}).then(function(c){
+    stage.style.transform=prev;
+    var a=document.createElement('a'); a.download=file+'.png'; a.href=c.toDataURL('image/png'); a.click();
+  }).catch(function(e){ stage.style.transform=prev; alert('Export failed: '+e); });
+}
+document.addEventListener('click', function(e){
+  if(e.target.classList.contains('dl')){ shoot(+e.target.dataset.i, e.target.dataset.f); }
+  if(e.target.classList.contains('cp')){ var t=document.getElementById('cap'+e.target.dataset.c).textContent; navigator.clipboard.writeText(t); e.target.textContent='Copied!'; setTimeout(function(){e.target.textContent='Copy caption';},1200); }
+});
+document.getElementById('dlall').addEventListener('click', function(){
+  var i=0; (function next(){ if(i>=POSTS.length)return; shoot(i,POSTS[i].file).then(function(){ i++; setTimeout(next,600); }); })();
+});
+</script>
+</body>
+</html>
