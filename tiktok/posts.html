@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-  :root{ --ink:#181A2E; --majorelle:#4B3FCB; --majorelle-deep:#241F5E; --saffron:#E8A33D; --sand:#F4ECDD; }
+  :root{ --ink:#181A2E; --majorelle:#4B3FCB; --majorelle-deep:#241F5E; --clay-deep:#9a4620; --saffron:#E8A33D; --sand:#F4ECDD; }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:#211d3b;color:#fff;font-family:'Inter',sans-serif;padding:32px 16px 80px;}
   .head{max-width:940px;margin:0 auto 22px;text-align:center;}
@@ -22,100 +22,93 @@
   .car .cmeta{opacity:.6;font-size:.85rem;margin-bottom:14px;}
   .slides{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;}
   .slide{flex:none;}
+  .slabel{font-family:'IBM Plex Mono',monospace;font-size:.68rem;opacity:.5;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;}
   .frame{width:232px;height:412px;overflow:hidden;border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,.45);position:relative;}
   .stage{width:1080px;height:1920px;transform-origin:top left;transform:scale(.2148);position:relative;overflow:hidden;background:var(--majorelle-deep);}
   .stage img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-  .stage .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,12,40,.62) 0%,rgba(16,12,40,.42) 40%,rgba(16,12,40,.86) 100%);}
-  .stage.plain .grad{background:linear-gradient(160deg,var(--majorelle) 0%,var(--majorelle-deep) 100%);}
+  .stage .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,12,40,.30) 0%,rgba(16,12,40,.20) 38%,rgba(16,12,40,.80) 100%);}
+  /* solid tones for the non-cover slides */
+  .stage.t-maj{background:linear-gradient(160deg,var(--majorelle) 0%,var(--majorelle-deep) 100%);}
+  .stage.t-sand{background:var(--sand);}
   /* SAFE ZONE: TikTok covers top (~150), right (~190 icons), bottom (~430 caption/username) */
-  .inner{position:absolute;top:170px;left:96px;right:200px;bottom:430px;display:flex;flex-direction:column;}
-  .brand{display:flex;align-items:center;gap:14px;}
-  .brand .mark{width:52px;height:52px;flex:none;}
-  .brand .word{font-family:'Fraunces',serif;font-weight:600;font-size:35px;letter-spacing:-.01em;}
-  .brand .word .pipe{color:var(--saffron);font-weight:400;}
-  .num{position:absolute;top:170px;right:200px;background:rgba(255,255,255,.16);color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:24px;padding:9px 18px;border-radius:999px;}
-  .body{margin-top:auto;margin-bottom:auto;}
-  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron);font-weight:600;margin-bottom:22px;}
-  .title{font-family:'Fraunces',serif;font-weight:600;font-size:78px;line-height:1.04;margin-bottom:22px;}
-  .title em{font-style:italic;color:var(--saffron);}
-  .sub{font-size:34px;line-height:1.45;color:rgba(255,255,255,.92);}
-  .pill{margin-top:34px;display:inline-flex;background:var(--saffron);color:var(--ink);font-weight:700;font-size:29px;padding:20px 34px;border-radius:999px;align-self:flex-start;}
-  .swipe{margin-top:26px;font-family:'IBM Plex Mono',monospace;font-size:26px;color:rgba(255,255,255,.75);letter-spacing:.08em;}
-  .badge{position:absolute;top:170px;left:96px;background:var(--saffron);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:24px;letter-spacing:.1em;padding:12px 22px;border-radius:999px;text-transform:uppercase;}
-  .badge+.inner .brand{margin-top:74px;}
+  .inner{position:absolute;top:180px;left:96px;right:210px;bottom:440px;display:flex;flex-direction:column;justify-content:center;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:.16em;text-transform:uppercase;color:var(--saffron);font-weight:600;margin-bottom:24px;}
+  .t-sand .eyebrow{color:var(--clay-deep);}
+  .title{font-family:'Fraunces',serif;font-weight:600;font-size:82px;line-height:1.08;color:#fff;}
+  .t-sand .title{color:var(--ink);}
+  .pill{margin-top:40px;display:inline-flex;background:var(--saffron);color:var(--ink);font-weight:700;font-size:31px;padding:22px 38px;border-radius:999px;align-self:flex-start;font-family:'Inter',sans-serif;}
   /* preview-only guide showing where TikTok's UI covers the image */
   .guide{position:absolute;inset:0;pointer-events:none;}
-  .guide i{position:absolute;background:rgba(255,60,60,.16);border:2px dashed rgba(255,90,90,.5);}
+  .guide i{position:absolute;background:rgba(255,60,60,.14);border:2px dashed rgba(255,90,90,.45);}
   .guide .g-top{top:0;left:0;right:0;height:150px;}
   .guide .g-right{top:0;right:0;bottom:0;width:190px;}
   .guide .g-bot{left:0;right:0;bottom:0;height:430px;}
   .capbox{margin-top:14px;background:#211d3b;border-radius:8px;padding:12px;font-size:.8rem;line-height:1.55;white-space:pre-line;color:rgba(255,255,255,.9);max-height:220px;overflow:auto;}
-  .btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+  .btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center;}
   button.act{font-family:inherit;cursor:pointer;border:none;border-radius:8px;padding:10px 16px;font-weight:600;font-size:.85rem;}
   .dl{background:var(--saffron);color:var(--ink);}
   .cp{background:#43407a;color:#fff;}
   .tg{background:#3a3568;color:#fff;}
   button.act:hover{opacity:.9;}
-  .cc{font-size:.76rem;opacity:.55;margin-left:auto;align-self:center;}
+  .cc{font-size:.76rem;opacity:.55;margin-left:auto;}
 </style>
 </head>
 <body>
 <div class="head">
   <h1>OasisDeal — TikTok Carousels</h1>
-  <p>4 ready carousels (1080×1920, 9:16). Click <b>⬇ Download all slides</b> — they save numbered in order (1,2,3…). In TikTok: <b>+ → Upload → Photo</b>, select the slides <b>in order</b>, then <b>Copy caption</b> and paste. Keep <b>oasisdeal.com</b> in your bio.</p>
-  <p class="note">🔴 The red dashed areas show where TikTok's UI (icons / caption / username) covers the image — all text is kept safely inside. The guides are NOT exported.</p>
+  <p>4 carousels (1080×1920). <b>Cover = photo</b>, the rest alternate <b>majorelle</b> / <b>sand</b> — same format as your best post. Click <b>⬇ Download all slides</b> (saved numbered 01, 02, 03…). In TikTok: <b>+ → Upload → Photo</b>, select them <b>in order</b>, then <b>Copy caption</b> and paste.</p>
+  <p class="note">🔴 Red dashed = where TikTok's UI (icons / caption / username) covers the image. All text sits clear of it — this fixes the "cheapest first" / "flight again" text getting hidden. Guides are NOT exported. TikTok adds its own 1/5 counter, so there's none baked in.</p>
 </div>
 <div id="wrap"></div>
 
 <script>
-var LOGO = '<svg class="mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#E8A33D"/><path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"/><path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#4B3FCB"/><rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"/></svg>';
-
 var CAROUSELS = [
 {
   id:'comp', name:'Flight compensation (€600) — your best hook',
   caption:"Your flight got delayed and you just… went home? You might have left €600 on the table 😳\n\nUnder EU regulation EC261, if your flight was delayed 3 hours or more, cancelled at the last minute, or you were denied boarding because the flight was overbooked — the airline legally owes you compensation. Up to €600 per passenger. Not a voucher. Not air miles. Actual cash.\n\nHere's what most travellers never find out:\n✈️ It applies to any flight departing the EU or UK, on any airline\n✈️ And to flights arriving in the EU on an EU airline\n✈️ It still counts for flights up to 3 YEARS in the past\n✈️ A \"sorry\" voucher is NOT the same as the compensation you're legally owed\n✈️ The amount depends on the distance: €250, €400 or €600\n✈️ It's per person — so a family of 4 could be owed thousands\n\nAirlines are never going to email you about this. They're counting on you not knowing your rights, and millions of passengers leave this money unclaimed every single year.\n\nChecking takes about 2 minutes, it's free, and if you qualify it's no win, no fee. You just enter your flight and see.\n\nCheck if you're owed 👉 link in bio 💸\n\nSave this for the next time your flight is a mess ✈️ and send it to the friend who's always stuck at an airport.\n\n#flightdelay #flightdelaycompensation #ec261 #passengerrights #knowyourrights #delayedflight #flightcancelled #airlinecompensation #travelhack #travelhacks #traveltips #traveltiktok #traveltok #airporthacks #flighttips #travelmoney #moneytok #travelsmart #budgettravel #traveladvice #flightrights #compensation",
   slides:[
-    {plain:true, badge:'Your rights', eyebrow:'Nobody tells you this', title:'Your Delayed Flight Owes You <em>€600</em>', sub:'And the airline is hoping you never find out.', swipe:'Swipe →'},
-    {plain:true, eyebrow:'Rule 1', title:'Delayed <em>3+ Hours</em>?', sub:'That qualifies. Under EU law (EC261) the airline owes you compensation — in cash.'},
-    {plain:true, eyebrow:'Rule 2', title:'Cancelled or <em>Overbooked</em>?', sub:'Also qualifies. Last-minute cancellation or denied boarding counts too.'},
-    {plain:true, eyebrow:'Rule 3', title:'Even Flights From <em>3 Years Ago</em>', sub:'It’s not just today’s flight. Old delays can still be claimed.'},
-    {plain:true, eyebrow:'The catch', title:'A Voucher Is <em>Not</em> Your Compensation', sub:'“Sorry, here’s a voucher” isn’t the cash you’re legally owed. You can still claim.'},
-    {plain:true, badge:'Free check', eyebrow:'Takes 2 minutes', title:'Check If You’re <em>Owed</em>', sub:'Free, 2-minute check. No win, no fee.', pill:'oasisdeal.com — link in bio'}
+    {cover:'paris',  eyebrow:'Your rights', title:'Your delayed flight owes you €600'},
+    {tone:'maj',     eyebrow:'Rule 1',      title:'Delayed 3+ hours? That qualifies'},
+    {tone:'sand',    eyebrow:'Rule 2',      title:'Cancelled or overbooked counts too'},
+    {tone:'maj',     eyebrow:'Rule 3',      title:'Even flights from 3 years ago still count'},
+    {tone:'sand',    eyebrow:'The catch',   title:'A voucher is not your compensation'},
+    {tone:'maj',     eyebrow:'Free 2-min check', title:'Check if you’re owed', pill:'Link in bio ✈️'}
   ]
 },
 {
   id:'esim', name:'eSIM — stop paying roaming',
   caption:"Please stop paying $10 a day to use your phone abroad 😭\n\nEvery trip, people land in a new country, switch on roaming, and quietly hand their carrier $70+ for a week of data they could've had for about $5. Or they queue at a SIM kiosk in the airport and hand over their passport. There's a much easier way.\n\nA travel eSIM is a digital SIM you install BEFORE you fly:\n📲 You scan a QR code at home while on WiFi\n✈️ You land, switch it on, and you're online instantly\n📞 Your normal number keeps working for calls and texts\n💸 A week of data is roughly $5 instead of $70 in roaming\n🌍 One plan can cover a whole region (like all of Europe)\n🚫 No SIM kiosk, no passport, no swapping tiny cards\n\nWhat to look for: check the plan covers every country on your itinerary, buy over home WiFi a day before you fly, and only activate it when you land so the clock starts in the right place.\n\nWe compare the top travel eSIM providers side by side — cheapest first, real prices, no fluff.\n\nCompare eSIMs 👉 link in bio 📲\n\nSave this before your next trip ✈️\n\n#esim #travelesim #roaming #travelhack #travelhacks #traveltips #traveltiktok #traveltok #digitalnomad #travelgadgets #traveltech #travelessentials #budgettravel #travelsmart #internationaltravel #travelmoney #phoneabroad #travelplanning",
   slides:[
-    {plain:true, badge:'eSIM', eyebrow:'Stop doing this abroad', title:'Stop Paying <em>$10/Day</em> to Use Your Phone', sub:'There’s a way cheaper way to get data abroad.', swipe:'Swipe →'},
-    {plain:true, eyebrow:'The fix', title:'A Travel <em>eSIM</em>', sub:'A digital SIM you install before you fly. Scan a QR code at home — done.'},
-    {plain:true, eyebrow:'The moment you land', title:'Online in <em>60 Seconds</em>', sub:'No SIM kiosk. No passport. No swapping tiny cards. Your number still works.'},
-    {plain:true, eyebrow:'The price', title:'~$5 a Week, Not <em>$70</em>', sub:'One plan can cover a whole region — like all of Europe.'},
-    {plain:true, badge:'Compare', eyebrow:'Cheapest first', title:'We Compare Them <em>For You</em>', sub:'Real prices, side by side, cheapest first.', pill:'oasisdeal.com — link in bio'}
+    {cover:'tokyo', eyebrow:'Travel hack', title:'Stop paying $10 a day to use your phone abroad'},
+    {tone:'maj',    eyebrow:'The fix',     title:'A travel eSIM — install it before you fly'},
+    {tone:'sand',   eyebrow:'On arrival',  title:'Online in 60 seconds. No SIM kiosk'},
+    {tone:'maj',    eyebrow:'The price',   title:'~$5 a week, not $70 in roaming'},
+    {tone:'sand',   eyebrow:'One plan',    title:'Cover a whole region — like all of Europe'},
+    {tone:'maj',    eyebrow:'Compare free', title:'Find your cheapest eSIM', pill:'Link in bio 📲'}
   ]
 },
 {
   id:'cheap', name:'Cheap flights — days & myths',
   caption:"The cheapest day to fly isn't a myth — but the advice everyone repeats definitely is 😤\n\nLet's kill the big one first: \"book on Tuesday at midnight\" is dead. Airline prices change many times a day based on demand — there is no magic minute where fares drop. Same for \"use incognito mode\" — prices move with demand, not your cookies.\n\nHere's what actually lowers what you pay:\n\n✅ FLY MID-WEEK — Tuesday, Wednesday and Saturday departures are usually cheaper than Friday/Sunday, when business and weekend travellers push fares up.\n\n✅ BOOK IN THE RIGHT WINDOW — roughly 1–3 months ahead for short-haul, 2–6 months for long-haul. Peak seasons (summer, holidays) sell their cheap seats first, so book earlier.\n\n✅ SEARCH FLEXIBLE DATES — moving your trip by one or two days is often worth more than any \"hack.\" Always check the flexible-date view.\n\n✅ CHECK A NEARBY AIRPORT — the extra drive can be worth hundreds.\n\n✅ COMPARE WIDELY — checking hundreds of airlines in one search beats loyalty to one carrier or opening 12 tabs.\n\n❌ And don't wait for \"last-minute deals\" on international flights — waiting almost always costs more, not less. Prices climb as seats sell.\n\nCompare every airline in one search 👉 link in bio ✈️\n\nSave this before you book your next trip 📌\n\n#cheapflights #flighthacks #flightdeals #travelhack #travelhacks #traveltips #traveltiktok #traveltok #budgettravel #travelsmart #flighttips #airfare #travelonabudget #traveladvice #travelplanning #wanderlust #travelmoney #bookflights",
   slides:[
-    {img:'istanbul', eyebrow:'Flight hacks', title:'The Cheapest Days to <em>Fly</em>', sub:'And the “hack” everyone repeats that’s completely fake.', swipe:'Swipe →'},
-    {img:'paris', eyebrow:'Myth', title:'“Book Tuesday Midnight” is a <em>Lie</em>', sub:'Fares change many times a day. There’s no magic minute.'},
-    {img:'barcelona', eyebrow:'What works', title:'Fly <em>Tue · Wed · Sat</em>', sub:'Usually cheaper than Friday and Sunday peaks.'},
-    {img:'rome', eyebrow:'What works', title:'Book <em>2–4 Months</em> Out', sub:'Short-haul 1–3 months, long-haul 2–6. Earlier for peak season.'},
-    {img:'amsterdam', eyebrow:'The biggest lever', title:'Search <em>Flexible Dates</em>', sub:'Moving one day can beat every “hack” combined.'},
-    {img:'tokyo', eyebrow:'Do this', title:'Compare <em>Every Airline</em>', sub:'Hundreds of sites, one search, cheapest first.', pill:'oasisdeal.com — link in bio'}
+    {cover:'barcelona', eyebrow:'Travel hack', title:'The cheapest days to fly'},
+    {tone:'maj',        eyebrow:'The myth',    title:'“Book Tuesday at midnight” is a lie'},
+    {tone:'sand',       eyebrow:'Tip 1',       title:'Fly Tuesday, Wednesday or Saturday'},
+    {tone:'maj',        eyebrow:'Tip 2',       title:'Book 2–4 months ahead — not last-minute'},
+    {tone:'sand',       eyebrow:'Tip 3',       title:'Search flexible dates — the biggest lever'},
+    {tone:'maj',        eyebrow:'Compare free', title:'Every airline, one search', pill:'Link in bio ✈️'}
   ]
 },
 {
-  id:'japan', name:'Japan trip cost (repeat for other cities)',
+  id:'japan', name:'Japan trip cost (repeat this format for other cities)',
   caption:"How much a week in Japan ACTUALLY costs in 2026 🇯🇵 (the real numbers, not vibes)\n\nEveryone assumes Japan is wildly expensive. It's genuinely not — the flight is the main cost, and once you land your money goes further than most of Europe. Here's the honest breakdown, per person, for 7 days:\n\n✈️ FLIGHTS from the US: $700–1,300 round-trip. This is the big one. Shoulder months (late spring, autumn) beat cherry-blossom and New Year peaks.\n\n🏨 HOTELS, 6 nights: $480–1,080. Business hotels are clean, central and cheap. Capsule hotels are even less.\n\n🍜 FOOD: $210–420 for the week. Ramen, donburi and konbini meals cost a few dollars. Department-store food halls discount heavily near closing.\n\n🚄 TRANSPORT: $120–300 — metro plus a bullet train or two. Get a rechargeable IC card; only buy a rail pass if the maths works for your route.\n\n🎟️ ATTRACTIONS: $80–200.\n\n📲 TRAVEL eSIM: $10–25 for the week.\n\n💰 TOTAL on the ground: about $900–2,025\n💰 TOTAL with flights: about $1,600–3,300 per person\n\nBudget version: hostels, konbini food and local trains keep the whole week under $1,500 all-in. Comfort version: mid-range hotels and a few great dinners lands around $2,500–3,300.\n\nFull breakdown + live flight prices from your city 👉 link in bio\n\nSave this for your Japan trip 📌\n\n#japan #japantravel #tokyo #travelbudget #howmuchdoesitcost #traveltiktok #traveltok #traveltips #travelhack #budgettravel #japantrip #travelplanning #wanderlust #cheapflights #travelmoney #japan2026 #traveladvice #bucketlist",
   slides:[
-    {img:'tokyo', eyebrow:'2026 · real numbers', title:'A Week in <em>Japan</em>: The Real Cost', sub:'Everyone thinks it’s expensive. Here are the actual numbers.', swipe:'Swipe →'},
-    {img:'tokyo', eyebrow:'The big one', title:'Flights: <em>$700–1,300</em>', sub:'From the US, round-trip. Shoulder months beat the peaks.'},
-    {img:'tokyo', eyebrow:'6 nights', title:'Hotels: from <em>$80</em>/night', sub:'Business hotels are clean, central and cheap.'},
-    {img:'tokyo', eyebrow:'Per week', title:'Food: <em>$210–420</em>', sub:'Ramen, donburi and konbini meals cost a few dollars each.'},
-    {img:'tokyo', eyebrow:'All in, per person', title:'Total: <em>$1,600–3,300</em>', sub:'Cheaper than most people think — the flight is the main cost.'},
-    {img:'tokyo', eyebrow:'Plan it', title:'Full Breakdown + <em>Live Prices</em>', sub:'Real flight prices from your own city.', pill:'oasisdeal.com — link in bio'}
+    {cover:'tokyo', eyebrow:'Real 2026 budget', title:'A week in Japan: the real cost'},
+    {tone:'maj',    eyebrow:'Flights',   title:'$700–1,300 round-trip from the US'},
+    {tone:'sand',   eyebrow:'Hotels',    title:'From $80 a night — business hotels'},
+    {tone:'maj',    eyebrow:'Food',      title:'$210–420 for the week. Ramen is $5'},
+    {tone:'sand',   eyebrow:'The total', title:'$1,600–3,300 per person, all in'},
+    {tone:'maj',    eyebrow:'Plan it',   title:'Live flight prices from your city', pill:'Link in bio ✈️'}
   ]
 }
 ];
@@ -126,18 +119,16 @@ CAROUSELS.forEach(function(c, ci){
   var slidesHtml = '';
   c.slides.forEach(function(s, si){
     var sid = 'st-'+ci+'-'+si;
+    var cls = s.cover ? '' : (s.tone==='sand' ? 't-sand' : 't-maj');
     slidesHtml +=
-      '<div class="slide"><div class="frame"><div class="stage '+(s.plain?'plain':'')+'" id="'+sid+'">'
-      + (s.plain? '' : '<img class="bg" crossorigin="anonymous" src="../images/destinations/'+s.img+'.jpg" />')
-      + '<div class="grad"></div>'
-      + (s.badge? '<div class="badge">'+s.badge+'</div>' : '')
-      + '<div class="num">'+(si+1)+'/'+c.slides.length+'</div>'
-      + '<div class="inner"><div class="brand">'+LOGO+'<span class="word">Oasis<span class="pipe">|</span>Deal</span></div>'
-      +   '<div class="body"><div class="eyebrow">'+s.eyebrow+'</div><div class="title">'+s.title+'</div>'
-      +   '<div class="sub">'+s.sub+'</div>'
+      '<div class="slide"><div class="slabel">'+(si===0?'Cover · photo':(s.tone==='sand'?'Sand':'Majorelle'))+'</div>'
+      + '<div class="frame"><div class="stage '+cls+'" id="'+sid+'">'
+      + (s.cover? '<img class="bg" crossorigin="anonymous" src="../images/destinations/'+s.cover+'.jpg" /><div class="grad"></div>' : '')
+      + '<div class="inner">'
+      +   '<div class="eyebrow">'+s.eyebrow+'</div>'
+      +   '<div class="title">'+s.title+'</div>'
       +   (s.pill? '<div class="pill">'+s.pill+'</div>' : '')
-      +   (s.swipe? '<div class="swipe">'+s.swipe+'</div>' : '')
-      + '</div></div>'
+      + '</div>'
       + '<div class="guide"><i class="g-top"></i><i class="g-right"></i><i class="g-bot"></i></div>'
       + '</div></div></div>';
   });
@@ -149,10 +140,9 @@ CAROUSELS.forEach(function(c, ci){
     +   '<button class="act dl" data-c="'+ci+'">⬇ Download all '+c.slides.length+' slides</button>'
     +   '<button class="act cp" data-c="'+ci+'">Copy caption</button>'
     +   '<button class="act tg" data-t="'+ci+'">Toggle safe-zone guide</button>'
-    +   '<span class="cc" id="cc-'+ci+'"></span>'
+    +   '<span class="cc">'+c.caption.length+' / 2200 chars</span>'
     + '</div>';
   wrap.appendChild(sec);
-  var cc=document.getElementById('cc-'+ci); cc.textContent=c.caption.length+' / 2200 chars';
 });
 
 function shoot(sid, file){
@@ -176,9 +166,8 @@ document.addEventListener('click', function(e){
     })();
   }
   if(t.classList.contains('cp')){
-    var txt=CAROUSELS[+t.dataset.c].caption;
-    navigator.clipboard.writeText(txt); t.textContent='Copied!';
-    setTimeout(function(){t.textContent='Copy caption';},1200);
+    navigator.clipboard.writeText(CAROUSELS[+t.dataset.c].caption);
+    t.textContent='Copied!'; setTimeout(function(){t.textContent='Copy caption';},1200);
   }
   if(t.classList.contains('tg')){
     var ci=+t.dataset.t;
