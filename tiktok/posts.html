@@ -23,15 +23,17 @@
   .slides{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;}
   .slide{flex:none;}
   .slabel{font-family:'IBM Plex Mono',monospace;font-size:.68rem;opacity:.5;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;}
-  .frame{width:232px;height:412px;overflow:hidden;border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,.45);position:relative;}
-  .stage{width:1080px;height:1920px;transform-origin:top left;transform:scale(.2148);position:relative;overflow:hidden;background:var(--majorelle-deep);}
+  .frame{width:232px;height:290px;overflow:hidden;border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,.45);position:relative;}
+  .stage{width:1080px;height:1350px;transform-origin:top left;transform:scale(.2148);position:relative;overflow:hidden;background:var(--majorelle-deep);}
   .stage img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
   .stage .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,12,40,.30) 0%,rgba(16,12,40,.20) 38%,rgba(16,12,40,.80) 100%);}
   /* solid tones for the non-cover slides */
   .stage.t-maj{background:linear-gradient(160deg,var(--majorelle) 0%,var(--majorelle-deep) 100%);}
   .stage.t-sand{background:var(--sand);}
-  /* SAFE ZONE: TikTok covers top (~150), right (~190 icons), bottom (~430 caption/username) */
-  .inner{position:absolute;top:180px;left:96px;right:210px;bottom:440px;display:flex;flex-direction:column;justify-content:center;}
+  /* 4:5 letterboxed on TikTok: the caption/username sit BELOW the image (on the black bar).
+     What still overlaps the image: the right icon column (~190px), the bottom-left avatar,
+     and TikTok's own slide counter top-right. */
+  .inner{position:absolute;top:110px;left:90px;right:200px;bottom:150px;display:flex;flex-direction:column;justify-content:center;}
   .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:.16em;text-transform:uppercase;color:var(--saffron);font-weight:600;margin-bottom:24px;}
   .t-sand .eyebrow{color:var(--clay-deep);}
   .title{font-family:'Fraunces',serif;font-weight:600;font-size:82px;line-height:1.08;color:#fff;}
@@ -40,9 +42,9 @@
   /* preview-only guide showing where TikTok's UI covers the image */
   .guide{position:absolute;inset:0;pointer-events:none;}
   .guide i{position:absolute;background:rgba(255,60,60,.14);border:2px dashed rgba(255,90,90,.45);}
-  .guide .g-top{top:0;left:0;right:0;height:150px;}
+  .guide .g-top{top:0;right:0;width:190px;height:100px;}
   .guide .g-right{top:0;right:0;bottom:0;width:190px;}
-  .guide .g-bot{left:0;right:0;bottom:0;height:430px;}
+  .guide .g-bot{left:0;bottom:0;width:190px;height:140px;}
   .capbox{margin-top:14px;background:#211d3b;border-radius:8px;padding:12px;font-size:.8rem;line-height:1.55;white-space:pre-line;color:rgba(255,255,255,.9);max-height:220px;overflow:auto;}
   .btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center;}
   button.act{font-family:inherit;cursor:pointer;border:none;border-radius:8px;padding:10px 16px;font-weight:600;font-size:.85rem;}
@@ -56,8 +58,8 @@
 <body>
 <div class="head">
   <h1>OasisDeal — TikTok Carousels</h1>
-  <p>4 carousels (1080×1920). <b>Cover = photo</b>, the rest alternate <b>majorelle</b> / <b>sand</b> — same format as your best post. Click <b>⬇ Download all slides</b> (saved numbered 01, 02, 03…). In TikTok: <b>+ → Upload → Photo</b>, select them <b>in order</b>, then <b>Copy caption</b> and paste.</p>
-  <p class="note">🔴 Red dashed = where TikTok's UI (icons / caption / username) covers the image. All text sits clear of it — this fixes the "cheapest first" / "flight again" text getting hidden. Guides are NOT exported. TikTok adds its own 1/5 counter, so there's none baked in.</p>
+  <p>4 carousels · <b>1080×1350 (4:5)</b> — same size &amp; format as your best-performing post. <b>Cover = photo</b>, the rest alternate <b>majorelle</b> / <b>sand</b>. Click <b>⬇ Download all slides</b> (saved numbered 01, 02, 03…). In TikTok: <b>+ → Upload → Photo</b>, select them <b>in order</b>, then <b>Copy caption</b> and paste.</p>
+  <p class="note">📐 Why 4:5 and not full-screen: TikTok <b>letterboxes</b> a 4:5 image (black bars top &amp; bottom), so the caption &amp; username sit <b>below</b> the picture instead of on top of it. 🔴 Red dashed = what still overlaps the image — the right icon column, the bottom-left avatar, and TikTok's own 1/5 counter (top-right). All text is kept clear of those. Guides are NOT exported.</p>
 </div>
 <div id="wrap"></div>
 
@@ -133,7 +135,7 @@ CAROUSELS.forEach(function(c, ci){
       + '</div></div></div>';
   });
   sec.innerHTML =
-      '<h2>'+c.name+'</h2><div class="cmeta">'+c.slides.length+' slides · 1080×1920 · post in order 1→'+c.slides.length+'</div>'
+      '<h2>'+c.name+'</h2><div class="cmeta">'+c.slides.length+' slides · 1080×1350 (4:5) · post in order 1→'+c.slides.length+'</div>'
     + '<div class="slides">'+slidesHtml+'</div>'
     + '<div class="capbox" id="cap-'+ci+'">'+c.caption.replace(/</g,'&lt;')+'</div>'
     + '<div class="btns">'
@@ -149,7 +151,7 @@ function shoot(sid, file){
   var stage=document.getElementById(sid);
   var prev=stage.style.transform; stage.style.transform='none';
   var g=stage.querySelector('.guide'); var gp=g?g.style.display:null; if(g)g.style.display='none';
-  return html2canvas(stage,{useCORS:true,backgroundColor:null,width:1080,height:1920,scale:1}).then(function(c){
+  return html2canvas(stage,{useCORS:true,backgroundColor:null,width:1080,height:1350,scale:1}).then(function(c){
     stage.style.transform=prev; if(g)g.style.display=gp;
     var a=document.createElement('a'); a.download=file+'.png'; a.href=c.toDataURL('image/png'); a.click();
   }).catch(function(e){ stage.style.transform=prev; if(g)g.style.display=gp; alert('Export failed: '+e); });
