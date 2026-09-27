@@ -13,9 +13,9 @@
   var rtl = (document.documentElement.dir === 'rtl');
 
   var css = ''
-    + '.od-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:720px;margin:0 auto;'
+    + '.od-consent{position:relative;max-width:1140px;margin:12px auto;'
     + 'background:#241F5E;color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:16px;'
-    + 'box-shadow:0 18px 44px rgba(10,8,40,.4);padding:18px 20px;font-family:Inter,system-ui,sans-serif;'
+    + 'padding:14px 20px;font-family:Inter,system-ui,sans-serif;'
     + 'display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;animation:odc-in .3s ease;}'
     + '@keyframes odc-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}'
     + '.od-consent p{margin:0;flex:1 1 320px;font-size:.9rem;line-height:1.5;color:rgba(255,255,255,.9)}'
@@ -25,6 +25,7 @@
     + '.od-consent .od-accept{background:#E8A33D;color:#241F5E}'
     + '.od-consent .od-decline{background:rgba(255,255,255,.12);color:#fff}'
     + '.od-consent .od-decline:hover{background:rgba(255,255,255,.2)}'
+    + '@media(max-width:1180px){.od-consent{margin:12px 16px}}'
     + '@media(max-width:520px){.od-consent .od-btns{width:100%}.od-consent button{flex:1}}';
 
   function build() {
@@ -32,8 +33,8 @@
     var box = document.createElement('div');
     box.className = 'od-consent';
     if (rtl) box.setAttribute('dir', 'rtl');
-    box.setAttribute('role', 'dialog');
-    box.setAttribute('aria-label', 'Cookie consent');
+    box.setAttribute('role', 'region');
+    box.setAttribute('aria-label', t('Cookie preferences', 'Préférences cookies', 'تفضيلات ملفات تعريف الارتباط'));
     box.innerHTML =
       '<p>' + t(
         'We use essential cookies to run the site and, with your consent, cookies from our travel partners. See our <a href="/cookies">Cookie Policy</a>.',
@@ -44,7 +45,9 @@
       + '<button class="od-decline">' + t('Decline', 'Refuser', 'رفض') + '</button>'
       + '<button class="od-accept">' + t('Accept', 'Accepter', 'موافق') + '</button>'
       + '</div>';
-    document.body.appendChild(box);
+    var nav = document.querySelector('nav.nav');
+    if (nav) nav.insertAdjacentElement('afterend', box);
+    else document.body.prepend(box);
     function choose(v) {
       try { localStorage.setItem(KEY, v); } catch (e) {}
       window.odConsent = v;

@@ -7,8 +7,11 @@
       "nav.flights": "Vols", "nav.hotels": "Hôtels", "nav.cars": "Voitures", "nav.transfers": "Transferts", "nav.esim": "eSIM", "nav.destinations": "Destinations", "nav.blog": "Blog", "nav.compensation": "Indemnisation",
       "nav.faq": "FAQ", "nav.search": "Rechercher des vols →",
       "hero.eyebrow": "300+ compagnies et agences, une seule recherche",
-      "hero.h1": "Trouvez votre oasis d’économies.",
-      "hero.sub": "Cherchez toutes les compagnies et agences à la fois, comparez les prix du moins cher au plus cher, et réservez en direct — sans détour, sans surcoût.",
+      "hero.h1": "Comparez les vols. Trouvez votre meilleur prix.",
+      "hero.sub": "Comparez des centaines de compagnies et d’agences en une recherche. Réservez auprès de celle de votre choix — sans frais supplémentaires de notre part.",
+      "nav.more": "Plus", "form.trip": "Type de trajet", "form.roundtrip": "Aller-retour", "form.oneway": "Aller simple", "form.return": "Retour",
+      "form.error": "Choisissez deux villes ou aéroports différents dans les suggestions, puis réessayez.",
+      "city.PAR": "Paris", "city.MAD": "Madrid", "city.DXB": "Dubaï", "city.IST": "Istanbul", "city.BRU": "Bruxelles", "city.AMS": "Amsterdam", "city.MRS": "Marseille", "city.LON": "Londres", "city.BCN": "Barcelone", "city.CMN": "Casablanca",
       "form.from": "Départ", "form.to": "Arrivée", "form.depart": "Date", "form.travellers": "Voyageurs",
       "form.ph": "Ville ou aéroport",
       "form.note": "Sans frais — payez le même prix qu’en réservant en direct.",
@@ -20,7 +23,7 @@
       "how.sub": "Sans compte, sans attente, sans frais surprise au paiement.",
       "how.s1t": "Dites-nous où vous allez", "how.s1p": "Trajet, dates et nombre de voyageurs — c’est tout ce qu’il nous faut.",
       "how.s2t": "Nous alignons tous les prix", "how.s2p": "Des centaines de compagnies et d’agences, du moins cher au plus cher, en quelques secondes.",
-      "how.s3t": "Réservez en direct, même prix", "how.s3p": "Choisissez votre prix et finalisez sur le site de la compagnie — on vous a juste montré le chemin.",
+      "how.s3t": "Réservez en direct, même prix", "how.s3p": "Choisissez une offre et finalisez votre réservation sur le site de la compagnie aérienne ou de l’agence de voyages.",
       "how.gate": "Porte", "how.open": "Ouverte", "how.boarding": "Embarquement", "how.final": "Dernier appel",
       "routes.eyebrow": "Populaire ce mois-ci", "routes.fromPrefix": "Trajets populaires depuis ", "routes.fromShort": "depuis", "routes.title": "Destinations populaires",
       "routes.sub": "Touchez un trajet pour voir les derniers prix — les moins chers d’abord.",
@@ -227,8 +230,11 @@
       "nav.flights": "رحلات", "nav.hotels": "فنادق", "nav.cars": "سيارات", "nav.transfers": "النقل", "nav.esim": "eSIM", "nav.destinations": "الوجهات", "nav.blog": "المدوّنة", "nav.compensation": "تعويضات",
       "nav.faq": "أسئلة شائعة", "nav.search": "ابحث عن رحلات →",
       "hero.eyebrow": "أكثر من 300 شركة ووكالة في بحث واحد",
-      "hero.h1": "اعثر على واحة التوفير.",
-      "hero.sub": "ابحث في جميع شركات الطيران والوكالات دفعة واحدة، قارن الأسعار من الأرخص إلى الأغلى، واحجز مباشرة — دون وسيط ودون رسوم إضافية.",
+      "hero.h1": "قارن الرحلات. واعثر على أفضل سعر لك.",
+      "hero.sub": "قارن مئات شركات الطيران ووكالات السفر في بحث واحد. احجز لدى الشركة أو الوكالة التي تختارها — دون رسوم إضافية من طرفنا.",
+      "nav.more": "المزيد", "form.trip": "نوع الرحلة", "form.roundtrip": "ذهاب وعودة", "form.oneway": "ذهاب فقط", "form.return": "العودة",
+      "form.error": "اختر مدينتين أو مطارين مختلفين من الاقتراحات، ثم حاول مجددًا.",
+      "city.PAR": "باريس", "city.MAD": "مدريد", "city.DXB": "دبي", "city.IST": "إسطنبول", "city.BRU": "بروكسل", "city.AMS": "أمستردام", "city.MRS": "مرسيليا", "city.LON": "لندن", "city.BCN": "برشلونة", "city.CMN": "الدار البيضاء",
       "form.from": "من", "form.to": "إلى", "form.depart": "تاريخ المغادرة", "form.travellers": "المسافرون",
       "form.ph": "مدينة أو مطار",
       "form.note": "بدون رسوم — ادفع نفس السعر كما في الحجز المباشر.",
@@ -240,7 +246,7 @@
       "how.sub": "بدون حساب، بدون انتظار، وبدون رسوم مفاجئة عند الدفع.",
       "how.s1t": "أخبرنا إلى أين تسافر", "how.s1p": "الوجهة والتواريخ وعدد المسافرين — هذا كل ما نحتاجه للبدء.",
       "how.s2t": "نعرض لك جميع الأسعار", "how.s2p": "مئات الشركات والوكالات، من الأرخص إلى الأغلى، في ثوانٍ.",
-      "how.s3t": "احجز مباشرة، نفس السعر", "how.s3p": "اختر سعرك وأكمل على موقع شركة الطيران — نحن فقط دللناك على الطريق.",
+      "how.s3t": "احجز مباشرة، نفس السعر", "how.s3p": "اختر عرضًا وأكمل الحجز على موقع شركة الطيران أو وكالة السفر.",
       "how.gate": "البوابة", "how.open": "مفتوحة", "how.boarding": "صعود", "how.final": "النداء الأخير",
       "routes.eyebrow": "الأكثر رواجًا هذا الشهر", "routes.fromPrefix": "وجهات شائعة من ", "routes.fromShort": "من", "routes.title": "وجهات شائعة",
       "routes.sub": "اضغط على وجهة لرؤية أحدث الأسعار — الأرخص أولًا.",
@@ -522,7 +528,12 @@
     });
     row.appendChild(b);
     links.addEventListener("click", function (e) {
-      if (e.target.closest("a")) row.classList.remove("menu-open");
+      if (e.target.closest("a")) { row.classList.remove("menu-open"); b.setAttribute("aria-expanded", "false"); }
+    });
+    row.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && row.classList.contains("menu-open")) {
+        row.classList.remove("menu-open"); b.setAttribute("aria-expanded", "false"); b.focus();
+      }
     });
   }
   if (document.readyState !== "loading") init();
