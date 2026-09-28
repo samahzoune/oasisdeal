@@ -71,8 +71,12 @@
     </div>
   </div>
 </header><div class="container embed-wrap">
-  <div class="embed-frame">
-    <iframe id="stay22-widget" width="100%" height="520" src="https://stay22.com/embed/6a3e952c51cc0bc7a8f8f298" frameborder="0" title="Compare hotel prices"></iframe>
+  <div class="embed-frame hotel-frame">
+    <iframe id="stay22-widget" width="100%" height="520" data-consent-src="https://stay22.com/embed/6a3e952c51cc0bc7a8f8f298" frameborder="0" title="Compare hotel prices"></iframe>
+    <div class="hotel-consent-placeholder" data-consent-frame-note="">
+      <p data-i18n="htl.consent_frame">وافق على ملفات تعريف الارتباط الاختيارية لتحميل مقارنة الفنادق المباشرة.</p>
+      <button class="btn btn-primary" type="button" data-open-consent="" data-i18n="htl.consent_btn">إدارة تفضيلات الكوكيز</button>
+    </div>
   </div>
   <p class="embed-note" data-i18n="htl.embednote">ابحث عن أي مدينة على الخريطة — الأسعار من مئات مواقع الحجز، أفضل عرض أولًا.</p>
 </div><section class="section">
@@ -228,7 +232,12 @@
 (function(){
   var BASE = "https://stay22.com/embed/6a3e952c51cc0bc7a8f8f298";
   var frame = document.getElementById("stay22-widget");
-  function setMap(addr){ if(frame && addr) frame.src = BASE + "?address=" + encodeURIComponent(addr); }
+  function setMap(addr){
+    if(!frame || !addr) return;
+    var url = BASE + "?address=" + encodeURIComponent(addr);
+    frame.dataset.consentSrc = url;
+    if(window.odConsent === "accepted") frame.src = url;
+  }
   // Default: center on the visitor's location (IP-based, no permission prompt).
   var requestedCity = new URLSearchParams(location.search).get("city");
   if(requestedCity) setMap(requestedCity);
@@ -246,4 +255,6 @@
 <script src="/assets/consent.js" defer=""></script><script src="/assets/newsletter.js" defer=""></script>
 
 
-<script src="/assets/affiliate-tracking.js" defer=""></script></body></html>
+<script src="/assets/affiliate-tracking.js" defer=""></script>
+
+</body></html>
