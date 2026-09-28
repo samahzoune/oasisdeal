@@ -48,6 +48,7 @@ for(const file of walk(root)){
  if($('nav.nav').length)$('nav.nav').first().after(banner);else $('body').prepend(banner);
  $('footer').first().append(`<button class="od-consent-preference" type="button">${t[0]}</button>`);
  if(!$('script[src="/assets/consent.js"]').length)$('body').append('<script src="/assets/consent.js" defer></script>');
+ if(!$('script[src="/assets/affiliate-tracking.js"]').length)$('body').append('<script src="/assets/affiliate-tracking.js" defer></script>');
  if(!$('main').length&&$('header.hero').length)$('header.hero').nextUntil('footer').addBack().wrapAll('<main id="main-content"></main>');
  for(let attempt=0;;attempt++){try{fs.writeFileSync(file,$.html());break;}catch(e){if(attempt===4)throw e;Atomics.wait(new Int32Array(new SharedArrayBuffer(4)),0,0,100);}}
 }

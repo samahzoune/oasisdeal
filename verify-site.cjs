@@ -6,5 +6,6 @@ for(const url of urls){const p=new URL(url).pathname,f=resolve(p);if(!f){errors.
 $('a[href],link[hreflang]').each((_,a)=>{const href=$(a).attr('href');if(!href||href.startsWith('//')||!/^(\/|https:\/\/oasisdeal.com\/)/.test(href))return;const dest=new URL(href,'https://oasisdeal.com');if(!resolve(dest.pathname))errors.push(p+' -> '+dest.pathname);links++;});
 $('script[type="application/ld+json"]').each((_,e)=>{let d=JSON.parse($(e).html());for(const item of (Array.isArray(d)?d:[d]))if(item['@type']==='BlogPosting'){assert(item.image&&item.author.url);posts++;}});
 $('script:not([type="text/plain"])').each((_,e)=>{if(/tpembars\.com|scripts\.stay22\.com|widget\.trustpilot\.com/.test(($(e).attr('src')||'')+$(e).html()))errors.push('ungated '+p);});
+if(!$('script[src="/assets/affiliate-tracking.js"]').length)errors.push('missing affiliate tracking '+p);
 }
 console.log(JSON.stringify({pages:urls.length,links,posts,errors:errors.slice(0,20),totalErrors:errors.length}));if(errors.length)process.exitCode=1;

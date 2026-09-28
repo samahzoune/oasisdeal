@@ -18,6 +18,9 @@ export default {
     if (request.method === 'POST' && url.pathname === '/api/subscribe') {
       return handleSubscribe(request, env);
     }
+    if (request.method === 'POST' && url.pathname === '/api/event') {
+      return recordEvent(request, url);
+    }
     // Everything else → the static site.
     return env.ASSETS.fetch(request);
   }
@@ -28,6 +31,27 @@ function json(obj, status) {
     status: status || 200,
     headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
   });
+}
+
+async function recordEvent(request, url) {
+  const origin = request.headers.get('Origin');
+  if (origin) {
+    try {
+      const originUrl = new URL(origin);
+      if (originUrl.hostname !== url.hostname && originUrl.hostname !== 'www.oasisdeal.com') {
+        return json({ ok: false, error: 'Invalid origin.' }, 403);
+      }
+    } catch (e) { return json({ ok: false, error: 'Invalid origin.' }, 403); }
+  }
+  let data;
+  try { data = JSON.parse(await request.text()); } catch (e) { return json({ ok: false, error: 'Bad request.' }, 400); }
+  const safe = value => typeof value === 'string' && /^[a-z0-9_/-]{1,120}$/i.test(value);
+  if (data.event !== 'affiliate_click' || !safe(data.partner) || !safe(data.page) || !safe(data.placement)) {
+    return json({ ok: false, error: 'Bad event.' }, 400);
+  }
+  // No identifier, query string, contact information, or full outbound URL is recorded.
+  console.log(JSON.stringify({ event: data.event, partner: data.partner, page: data.page, placement: data.placement }));
+  return new Response(null, { status: 204, headers: { 'Cache-Control': 'no-store' } });
 }
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
