@@ -486,9 +486,13 @@
     return prefix + '/flights/' + R.slug[from] + '-' + R.slug[to];
   }
   function resolveIata(term){
-    return fetch(AC + encodeURIComponent(term)).then(function(r){return r.json();})
+    var controller = window.AbortController ? new AbortController() : null;
+    var timeout = setTimeout(function(){ if(controller) controller.abort(); }, 8000);
+    return fetch(AC + encodeURIComponent(term), controller ? {signal: controller.signal} : {})
+      .then(function(r){return r.json();})
       .then(function(list){ return (list && list[0] && list[0].code) || ''; })
-      .catch(function(){ return ''; });
+      .catch(function(){ return ''; })
+      .then(function(code){ clearTimeout(timeout); return code; });
   }
 
   // ---- airport autocomplete on From / To ----
@@ -555,6 +559,8 @@
     error.hidden = true;
     var submit = this.querySelector('button[type="submit"]');
     submit.disabled = true;
+    submit.setAttribute('aria-busy', 'true');
+    submit.textContent = window.odT ? odT('form.loading', 'Opening live comparison…') : 'Opening live comparison…';
     var fromTerm = document.getElementById('from').value;
     var toTerm = document.getElementById('to').value;
     Promise.all([ fromI ? Promise.resolve(fromI) : resolveIata(fromTerm),
@@ -565,6 +571,8 @@
           error.textContent = window.odT('form.error', 'Choose two different cities or airports from the suggestions, then try again.');
           error.hidden = false;
         }
+        submit.removeAttribute('aria-busy');
+        submit.textContent = window.odT ? odT('nav.search', 'Search flights →') : 'Search flights →';
         submit.disabled = false;
       });
   });
@@ -697,4 +705,5 @@
 <script src="/assets/consent.js" defer=""></script><script src="/assets/newsletter.js" defer=""></script>
 
 
-<script src="/assets/affiliate-tracking.js" defer=""></script></body></html>
+<script src="/assets/affiliate-tracking.js" defer=""></script>
+</body></html>
