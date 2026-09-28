@@ -4,7 +4,8 @@
   "scripts": {
     "build": "node build-site.cjs",
     "test:site": "node verify-site.cjs",
-    "optimize:images": "node optimize-images.cjs"
+    "optimize:images": "node optimize-images.cjs",
+    "report:affiliate": "node travelpayouts-report.cjs"
   },
   "devDependencies": {
     "cheerio": "1.1.2",
