@@ -31,7 +31,7 @@ for(const name of base){
   const out=path.join(root,lang==='en'?'':lang,name+'.html');fs.mkdirSync(path.dirname(out),{recursive:true});write(out,$.html());
  }
 }
-const words={en:['Cookie preferences','Optional partner scripts load only if you accept.','Cookie Policy','Decline','Accept'],fr:['Préférences cookies','Les scripts partenaires facultatifs ne se chargent qu’avec votre accord.','Politique cookies','Refuser','Accepter'],ar:['تفضيلات الكوكيز','لا تُحمّل برامج الشركاء الاختيارية إلا بعد موافقتك.','سياسة الكوكيز','رفض','موافق']};
+const words={en:['Cookie preferences','Flight search stays available if you decline; only optional partner tools and analytics load after consent.','Cookie Policy','Decline','Accept'],fr:['Préférences cookies','La recherche de vols reste disponible si vous refusez ; seuls les outils partenaires et les statistiques facultatifs se chargent après votre accord.','Politique cookies','Refuser','Accepter'],ar:['تفضيلات الكوكيز','البحث عن الرحلات يبقى متاحًا حتى إذا رفضت؛ تُحمّل فقط أدوات الشركاء والإحصائيات الاختيارية بعد موافقتك.','سياسة الكوكيز','رفض','موافق']};
 function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.name.startsWith('.')||['node_modules','src','instagram','pinterest','tiktok'].includes(e.name)?[]:e.isDirectory()?walk(path.join(dir,e.name)):e.name.endsWith('.html')?[path.join(dir,e.name)]:[]);}
 for(const file of walk(root)){
  if(path.basename(file).startsWith('google'))continue;
