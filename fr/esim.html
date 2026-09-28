@@ -1,0 +1,536 @@
+<!DOCTYPE html><html lang="fr" dir="ltr"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Une data qui marche, point. Connecté dès l’atterrissage. | OasisDeal</title>
+<meta name="description" content="Fini les factures d’itinérance et les kiosques à cartes SIM. Choisissez votre destination et nous comparons les meilleurs fournisseurs d’eSIM — Yesim, Airalo et Saily — pour vous trouver le forfait le moins cher. Installation en quelques minutes, votre numéro habituel continue de fonctionner.">
+<link rel="canonical" href="https://oasisdeal.com/fr/esim">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Une data qui marche, point. Connecté dès l’atterrissage. | OasisDeal">
+<meta property="og:description" content="Fini les factures d’itinérance et les kiosques à cartes SIM. Choisissez votre destination et nous comparons les meilleurs fournisseurs d’eSIM — Yesim, Airalo et Saily — pour vous trouver le forfait le moins cher. Installation en quelques minutes, votre numéro habituel continue de fonctionner.">
+<meta property="og:url" content="https://oasisdeal.com/fr/esim">
+<meta property="og:site_name" content="OasisDeal">
+<meta property="og:image" content="https://oasisdeal.com/images/og-default.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://oasisdeal.com/images/og-default.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/i18n.js" defer=""></script>
+<style>
+  /* eSIM search + results */
+  .esim-search{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px;max-width:620px;margin:0 auto;box-shadow:0 16px 40px rgba(24,26,46,.08);}
+  .esim-search label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;}
+  .ac-wrap{position:relative;}
+  #esim-country{width:100%;font-family:'Inter','Inter-fb',sans-serif;font-size:1.1rem;color:var(--ink);padding:15px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;}
+  #esim-country:focus{outline:none;border-color:var(--majorelle);box-shadow:0 0 0 3px rgba(75,63,203,.15);}
+  .ac-list{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 16px 40px rgba(24,26,46,.14);z-index:30;max-height:300px;overflow:auto;display:none;}
+  .ac-list.open{display:block;}
+  .ac-item{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;font-size:1rem;line-height:1.2;color:var(--ink);white-space:nowrap;border-bottom:1px solid var(--line);}
+  .ac-item:last-child{border-bottom:none;}
+  .ac-item:hover,.ac-item.active{background:var(--sand);}
+  .ac-item .flag{font-size:1.3rem;line-height:1;}
+  .plan-controls{margin-top:18px;display:flex;flex-direction:column;gap:14px;align-items:center;}
+  .pc-row{display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .pc-label{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+  .pc-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+  .pc-chip{background:#fff;border:1px solid var(--line);border-radius:100px;padding:7px 15px;font-size:.92rem;cursor:pointer;transition:.15s;color:var(--ink);}
+  .pc-chip:hover{border-color:var(--majorelle);}
+  .pc-chip.active{background:var(--majorelle);border-color:var(--majorelle);color:#fff;font-weight:600;}
+  .esim-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px;}
+  .esim-disclosure{text-align:center;font-size:.8rem;color:rgba(255,255,255,.72);margin-top:16px;max-width:560px;margin-left:auto;margin-right:auto;}
+  .esim-chip{background:#fff;border:1px solid var(--line);border-radius:100px;padding:8px 16px;font-size:.92rem;cursor:pointer;display:flex;align-items:center;gap:7px;transition:.15s;}
+  .esim-chip:hover{border-color:var(--majorelle);background:var(--sand);}
+
+  #esim-results{margin-top:14px;}
+  .res-head{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+  .res-head .flag{font-size:2.4rem;}
+  .res-head h2{font-size:1.7rem;font-weight:600;}
+  .res-head p{color:var(--ink-soft);font-size:.95rem;}
+  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media(max-width:780px){.plan-grid{grid-template-columns:1fr;}}
+  .plan{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:6px;transition:.18s;}
+  .plan:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(24,26,46,.10);border-color:rgba(75,63,203,.35);}
+  .plan.best{border-color:var(--saffron);box-shadow:0 14px 34px rgba(232,163,61,.18);}
+  .plan .tag{position:absolute;top:-12px;left:24px;background:var(--saffron);color:var(--ink);font-weight:700;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;padding:5px 12px;border-radius:100px;}
+  .plan .prov-name{font-family:'Fraunces','Fraunces-fb',serif;font-size:1.8rem;font-weight:600;line-height:1;}
+  .plan .prov-perk{color:var(--ink-soft);font-size:.9rem;margin-top:2px;min-height:2.6em;}
+  .plan .data{font-family:'Fraunces','Fraunces-fb',serif;font-size:2.3rem;font-weight:600;line-height:1;}
+  .plan .days{color:var(--ink-soft);font-size:.95rem;}
+  .plan .price{margin-top:14px;font-family:'Fraunces','Fraunces-fb',serif;font-size:2.4rem;font-weight:600;color:var(--majorelle);line-height:1;}
+  .plan .price small{font-size:.95rem;color:var(--ink-soft);font-family:'Inter','Inter-fb',sans-serif;font-weight:400;}
+  .plan .price-na{margin-top:14px;font-family:'Fraunces','Fraunces-fb',serif;font-size:1.4rem;font-weight:600;color:var(--ink-soft);}
+  .plan .from-pre{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);vertical-align:middle;margin-right:2px;}
+  .plan .price-sub{font-size:.8rem;color:var(--ink-soft);margin-top:2px;}
+  .plan .plan-tag{font-family:'Inter','Inter-fb',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(24,26,46,.07);padding:3px 7px;border-radius:100px;vertical-align:middle;position:relative;top:-3px;}
+  .plan .price-unl{margin-top:8px;font-family:'Fraunces','Fraunces-fb',serif;font-size:1.15rem;font-weight:600;color:var(--clay-deep);}
+  .plan .price-unl .from-pre{color:var(--clay-deep);opacity:.8;}
+  .plan .price-unl .plan-tag{color:#fff;background:var(--clay-deep);top:-2px;}
+  .plan .price-unl.muted{color:var(--ink-soft);font-size:.95rem;font-weight:500;}
+  .plan .price-unl.approx{color:var(--ink-soft);}
+  .plan .price-unl.approx .from-pre{color:var(--ink-soft);}
+  .plan .price-unl.approx .plan-tag{color:var(--ink-soft);background:rgba(24,26,46,.07);}
+  .plan .unl-days{font-family:'Inter','Inter-fb',sans-serif;font-size:.72rem;font-weight:500;color:var(--ink-soft);white-space:nowrap;margin-left:2px;}
+  .live-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter','Inter-fb',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#2e9e5b;padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
+  .est-tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Inter','Inter-fb',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(24,26,46,.07);padding:3px 7px;border-radius:100px;position:relative;top:-4px;}
+  .plan .get{margin-top:auto;padding-top:16px;}
+  .plan .get .btn{width:100%;justify-content:center;}
+  .res-note{margin-top:18px;font-size:.85rem;color:var(--ink-soft);text-align:center;}
+  .res-empty{text-align:center;padding:30px;color:var(--ink-soft);}
+
+  /* in-card promo code */
+  .card-promo{display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;border:1.5px dashed var(--majorelle);background:var(--sand);border-radius:9px;padding:7px 10px;font-size:.88rem;}
+  .card-promo.cp-empty{border-color:var(--line);color:var(--ink-soft);font-style:italic;}
+  .cp-label{font-size:.78rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;font-family:'IBM Plex Mono',monospace;}
+  .cp-code{font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.05em;color:var(--majorelle-deep);}
+  .cp-copy{border:none;background:var(--majorelle);color:#fff;border-radius:6px;padding:4px 11px;font-size:.76rem;font-weight:600;cursor:pointer;font-family:'Inter','Inter-fb',sans-serif;}
+  .cp-copy:hover{filter:brightness(1.07);}
+</style>
+<script nowprocket="" data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" type="text/plain" data-partner-script="">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.src = 'https://tpembars.com/NTQzNDkw.js?t=543490';
+      document.head.appendChild(script);
+  })();
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a travel eSIM?","acceptedAnswer":{"@type":"Answer","text":"An eSIM is a digital SIM card you install on your phone by scanning a QR code. It lets you get a local data plan in another country without a physical SIM, so you avoid expensive roaming."}},{"@type":"Question","name":"Will an eSIM work on my phone?","acceptedAnswer":{"@type":"Answer","text":"Most phones from the last few years support eSIM, including iPhone XS and newer, Google Pixel 3 and newer, and recent Samsung Galaxy models. Your phone also needs to be carrier-unlocked."}},{"@type":"Question","name":"When should I install the eSIM?","acceptedAnswer":{"@type":"Answer","text":"You can install it before you travel. It activates when you connect to a network at your destination, so you have data the moment you land."}},{"@type":"Question","name":"Can I keep my normal number?","acceptedAnswer":{"@type":"Answer","text":"Yes. The eSIM is for data only and runs alongside your regular SIM, so you keep your usual number for calls and texts while using the eSIM for internet."}}]}</script>
+<meta name="p:domain_verify" content="1f6676c70992e08fca792b0978b916b9">
+<link rel="alternate" hreflang="en" href="https://oasisdeal.com/esim"><link rel="alternate" hreflang="fr" href="https://oasisdeal.com/fr/esim"><link rel="alternate" hreflang="ar" href="https://oasisdeal.com/ar/esim"><link rel="alternate" hreflang="x-default" href="https://oasisdeal.com/esim"><link id="od-consent-style" rel="stylesheet" href="/assets/consent.css"><script id="od-consent-init">try{if(/^(accepted|declined)$/.test(localStorage.getItem("od_consent")))document.documentElement.classList.add("od-consent-saved")}catch(e){}</script></head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-row">
+    <a class="logo" href="/fr/">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="15" fill="#E8A33D"></circle>
+        <path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"></path>
+        <path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#4B3FCB"></path>
+        <rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"></rect>
+      </svg>
+      <span class="logo-word">Oasis<span class="pipe">|</span>Deal</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="/fr/" data-i18n="nav.flights">Vols</a>
+      <a class="nav-link" href="/fr/hotels" data-i18n="nav.hotels">Hôtels</a>
+      <a class="nav-link" href="/fr/cars" data-i18n="nav.cars">Voitures</a>
+      <a class="nav-link" href="/fr/transfers" data-i18n="nav.transfers">Transferts</a>
+      <a class="nav-link" href="/fr/esim" data-i18n="nav.esim">eSIM</a><a class="nav-link" href="/fr/compensation" data-i18n="nav.compensation">Indemnisation</a><span class="nav-div"></span><a class="nav-link" href="/fr/destinations/" data-i18n="nav.destinations">Destinations</a><a class="nav-link" href="/fr/blog/" data-i18n="nav.blog">Blog</a>
+      
+      <a class="btn btn-primary" href="https://fly.oasisdeal.com" data-i18n="nav.search" rel="sponsored noopener">Rechercher des vols →</a>
+      <div class="lang-switch">
+        <a class="lang-btn" data-lang="en" href="/esim">EN</a>
+        <a class="lang-btn active" data-lang="fr" href="/fr/esim">FR</a>
+        <a class="lang-btn" data-lang="ar" href="/ar/esim">AR</a>
+      </div>
+    </div>
+  </div>
+</nav><aside class="od-consent" aria-label="Préférences cookies"><p>Les scripts partenaires facultatifs ne se chargent qu’avec votre accord. <a href="/cookies">Politique cookies</a>.</p><div class="od-btns"><button type="button" class="od-decline">Refuser</button><button type="button" class="od-accept">Accepter</button></div></aside>
+
+<main id="main-content"><header class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-eyebrow eyebrow">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"></path></svg>
+        <span data-i18n="esim.eyebrow">200+ pays · sans frais d’itinérance</span>
+      </div>
+      <h1 data-i18n="esim.h1">Une data qui marche, point. Connecté dès l’atterrissage.</h1>
+      <p class="hero-sub" data-i18n="esim.sub">Fini les factures d’itinérance et les kiosques à cartes SIM. Choisissez votre destination et nous comparons les meilleurs fournisseurs d’eSIM — Yesim, Airalo et Saily — pour vous trouver le forfait le moins cher. Installation en quelques minutes, votre numéro habituel continue de fonctionner.</p>
+
+      <div class="esim-search" id="esim">
+        <label for="esim-country" data-i18n="esim.where">Où voyagez-vous ?</label>
+        <div class="ac-wrap">
+          <input id="esim-country" type="text" autocomplete="off" placeholder="Cherchez un pays…" data-i18n-ph="esim.ph">
+          <div class="ac-list" id="esim-ac"></div>
+        </div>
+        <div class="esim-chips" id="esim-chips"></div>
+      </div>
+      <p class="esim-disclosure" data-i18n="esim.disclosure">OasisDeal peut percevoir une commission lorsque vous achetez via nos liens — sans surcoût pour vous.</p>
+    </div>
+  </div>
+</header><section class="section" id="esim-results-section" hidden="">
+  <div class="container">
+    <div id="esim-results"></div>
+  </div>
+</section><section class="section section--paper" id="how">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" data-i18n="how.eyebrow">Comment ça marche</div>
+      <h2 data-i18n="esim.how_title">En ligne en trois étapes.</h2>
+    </div>
+    <div class="stubs">
+      <div class="stub">
+        <div class="stub-top"><div class="stub-index">01 / PICK</div><h3 data-i18n="esim.s1t">Choisissez votre destination</h3><p data-i18n="esim.s1p">Cherchez le pays que vous visitez et comparez les forfaits data par prix, volume et durée.</p></div>
+        <div class="stub-perf"></div>
+        <div class="stub-bottom"><span data-i18n="htl.step">Étape</span><span data-i18n="esim.free">Sans changer de SIM</span></div>
+      </div>
+      <div class="stub">
+        <div class="stub-top"><div class="stub-index">02 / INSTALL</div><h3 data-i18n="esim.s2t">Scannez un QR code</h3><p data-i18n="esim.s2p">Après l’achat, vous recevez un QR code. Scannez-le une fois et l’eSIM s’installe sur votre téléphone — faites-le avant de partir.</p></div>
+        <div class="stub-perf"></div>
+        <div class="stub-bottom"><span data-i18n="htl.step">Étape</span><span data-i18n="esim.instant">2 minutes</span></div>
+      </div>
+      <div class="stub">
+        <div class="stub-top"><div class="stub-index">03 / LAND</div><h3 data-i18n="esim.s3t">Connectez-vous à l’arrivée</h3><p data-i18n="esim.s3p">Elle s’active automatiquement à destination. Vous avez de la data dès que vous descendez de l’avion.</p></div>
+        <div class="stub-perf"></div>
+        <div class="stub-bottom"><span data-i18n="htl.step">Étape</span><span data-i18n="esim.online">Data instantanée</span></div>
+      </div>
+    </div>
+  </div>
+</section><section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow" data-i18n="esim.why_eyebrow">Pourquoi une eSIM</div>
+      <h2 data-i18n="esim.why_title">Moins chère que l’itinérance. Plus simple qu’une SIM.</h2>
+    </div>
+    <div class="amounts">
+      <div class="amount"><div class="big">$0</div><p data-i18n="esim.b1">Pas de mauvaise surprise sur la facture au retour</p></div>
+      <div class="amount"><div class="big">2 min</div><p data-i18n="esim.b2">Installez avant le vol, connectez-vous à l’atterrissage</p></div>
+      <div class="amount"><div class="big">200+</div><p data-i18n="esim.b3">Plus de 200 pays et régions couverts dans le monde</p></div>
+    </div>
+  </div>
+</section><section class="section" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" data-i18n="faq.eyebrow">Bon à savoir</div>
+      <h2 data-i18n="esim.faqtitle">FAQ eSIM</h2>
+    </div>
+    <div class="faq">
+      <details class="faq-item" open="">
+        <summary><span data-i18n="esim.q1">Qu’est-ce qu’une eSIM de voyage ?</span><span class="plus">+</span></summary>
+        <p data-i18n="esim.a1">Une eSIM est une SIM numérique que vous installez en scannant un QR code — sans carte plastique. Elle vous donne un forfait data local à l’étranger, vous évitez l’itinérance coûteuse et restez connecté dès l’atterrissage.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="esim.q2">Est-ce que ça marche sur mon téléphone ?</span><span class="plus">+</span></summary>
+        <p data-i18n="esim.a2">La plupart des téléphones récents gèrent l’eSIM — iPhone XS et plus récents, Google Pixel 3 et plus récents, et les modèles Samsung Galaxy récents. Votre téléphone doit aussi être désimlocké. En cas de doute, cherchez l’option « Ajouter une eSIM » dans vos réglages.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="esim.q3">Puis-je garder mon numéro habituel ?</span><span class="plus">+</span></summary>
+        <p data-i18n="esim.a3">Oui. L’eSIM gère uniquement la data et fonctionne en parallèle de votre SIM habituelle, vous gardez donc votre numéro pour les appels et les SMS tout en utilisant l’eSIM pour Internet.</p>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="esim.q4">Quand dois-je l’installer ?</span><span class="plus">+</span></summary>
+        <p data-i18n="esim.a4">Installez-la chez vous avant de partir, pendant que vous avez le Wi-Fi. Elle reste inactive jusqu’à votre arrivée, puis se connecte automatiquement — vous atterrissez avec une data fonctionnelle.</p>
+      </details>
+    </div>
+  </div>
+</section><section class="section section--paper">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" data-i18n="links.eyebrow">Continuez à planifier</div>
+      <h2 data-i18n="links.title">Planifiez le reste de votre voyage</h2>
+    </div>
+    <div class="chips">
+      <a class="chip" href="/fr/destinations/tokyo">Tokyo</a>
+      <a class="chip" href="/fr/destinations/bali">Bali</a>
+      <a class="chip" href="/fr/destinations/bangkok">Bangkok</a>
+      <a class="chip" href="/fr/destinations/dubai">Dubai</a>
+      <a class="chip" href="/fr/destinations/new-york">New York</a>
+      <a class="chip" href="/fr/blog/how-to-set-up-a-travel-esim">How to set up a travel eSIM</a>
+      <a class="chip" href="/fr/blog/travel-esim-vs-roaming">eSIM vs roaming</a>
+      <a class="chip" href="/fr/hotels">Compare hotels</a>
+      <a class="chip" href="/fr/transfers">Book an airport transfer</a>
+    </div>
+  </div>
+</section></main>
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <a class="logo" href="/fr/">
+          <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="15" fill="#E8A33D"></circle>
+            <path d="M16 22c0-7 3-10 8-11-1 6-3 9-8 11z" fill="#241F5E"></path>
+            <path d="M16 22c0-7-3-10-8-11 1 6 3 9 8 11z" fill="#4B3FCB"></path>
+            <rect x="14.6" y="20" width="2.8" height="5" rx="1" fill="#241F5E"></rect>
+          </svg>
+          <span class="logo-word">Oasis<span class="pipe">|</span>Deal</span>
+        </a>
+        <p class="footer-tag">Find your savings oasis — flights, hotels, eSIM, and compensation, compared honestly.</p><div class="footer-social"><a class="footer-ig" href="https://www.instagram.com/oasisdealtravel/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle></svg><span>Follow us on Instagram</span></a><script type="text/plain" async="" data-consent-src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" data-partner-script=""></script><div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6a425cb3f6d6bcdc734d3d22" data-style-height="52px" data-style-width="100%" data-token="da476c82-b569-4dfe-bb19-b4af4c691150"><a href="https://www.trustpilot.com/review/oasisdeal.com" target="_blank" rel="noopener">Trustpilot</a></div></div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3>Top destinations</h3>
+          <a href="/fr/destinations/dubai">Dubai</a>
+          <a href="/fr/destinations/tokyo">Tokyo</a>
+          <a href="/fr/destinations/paris">Paris</a>
+          <a href="/fr/destinations/new-york">New York</a>
+          <a href="/fr/destinations/">All destinations →</a>
+        </div>
+        <div class="footer-col">
+          <h3>Travel guides</h3>
+          <a href="/flight-rights">Flight delay rights</a>
+          <a href="/fr/blog/how-to-avoid-jet-lag">How to avoid jet lag</a>
+          <a href="/fr/blog/best-winter-sun-destinations">Best winter sun spots</a>
+        </div>
+        <div class="footer-col">
+          <h3>Explore</h3>
+          <a href="/fr/">Flights</a>
+          <a href="/fr/hotels">Hotels</a>
+          <a href="/fr/cars">Cars</a>
+          <a href="/fr/transfers">Transfers</a>
+          <a href="/fr/esim">eSIM</a>
+          <a href="/fr/compensation">Compensation</a>
+        </div>
+        <div class="footer-col">
+          <h3>Company</h3>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/cookies">Cookies</a>
+          <a href="/disclosure">Affiliate disclosure</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-trust" data-i18n="footer.trust">🔒 Sécurisé et gratuit · Aucuns frais de réservation · Propulsé par Travelpayouts, Stay22 et AirHelp</div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> OasisDeal — find your savings oasis.</span>
+    </div>
+  </div>
+<button class="od-consent-preference" type="button">Préférences cookies</button></footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // --- eSIM PROVIDER COMPARISON ---
+  // Each destination compares 3 providers on the SAME plan (5 GB / 30 days).
+  // Prices are indicative USD; the live price is shown on each provider's page.
+  // o = [provider name, indicative price USD, Travelpayouts tracked deep-link to that
+  //      provider's country page]. The cheapest is highlighted automatically.
+  var PROV = {
+    Yesim:  {perk:'esim.perk_yesim',  perkEn:'Flexible plans · easy top-ups', unlDays:1},
+    Airalo: {perk:'esim.perk_airalo', perkEn:'Most trusted · 200+ countries', unlDays:3, unlFrom:11.5},
+    Saily:  {perk:'esim.perk_saily',  perkEn:'Built-in ad-blocker by NordVPN', unlDays:5}
+  };
+  // Real "from" (starting) price per provider, per country (USD). Yesim = null → fetched
+  // LIVE from its API; Airalo (read from its own pages) and Saily (their published
+  // listings) are real starting prices. o = [name, fromUSD|null, tracked link].
+  var sel = {dst:null};
+  var DEST = [
+    {c:'Turkey', f:'🇹🇷', o:[['Yesim',null,'https://yesim.tpx.lu/hDmBiUY3'],['Airalo',4.00,'https://airalo.tpx.lu/h9w9HwWP'],['Saily',3.99,'https://saily.tpx.lu/NeT4XSTS']]},
+    {c:'France', f:'🇫🇷', o:[['Yesim',null,'https://yesim.tpx.lu/BEhCKOl6'],['Airalo',4.00,'https://airalo.tpx.lu/teRm5Zw9'],['Saily',3.99,'https://saily.tpx.lu/KRm2s2Fr']]},
+    {c:'Spain', f:'🇪🇸', o:[['Yesim',null,'https://yesim.tpx.lu/E6EcHLsM'],['Airalo',4.00,'https://airalo.tpx.lu/eaVfdLwE'],['Saily',3.99,'https://saily.tpx.lu/m8t1lhqq']]},
+    {c:'Italy', f:'🇮🇹', o:[['Yesim',null,'https://yesim.tpx.lu/Vv7Wpv9h'],['Airalo',4.00,'https://airalo.tpx.lu/vfHxDcDi'],['Saily',3.99,'https://saily.tpx.lu/vqT0eZeT']]},
+    {c:'United Kingdom', f:'🇬🇧', o:[['Yesim',null,'https://yesim.tpx.lu/TpX7mArW'],['Airalo',4.00,'https://airalo.tpx.lu/vrTfWqrT'],['Saily',4.49,'https://saily.tpx.lu/5WSWMOnZ']]},
+    {c:'United States', f:'🇺🇸', o:[['Yesim',null,'https://yesim.tpx.lu/ap862SxK'],['Airalo',4.00,'https://airalo.tpx.lu/afu6lsg2'],['Saily',3.99,'https://saily.tpx.lu/I29BBlbo']]},
+    {c:'United Arab Emirates', f:'🇦🇪', o:[['Yesim',null,'https://yesim.tpx.lu/27IHYZD9'],['Airalo',4.00,'https://airalo.tpx.lu/itapLJGB'],['Saily',8.99,'https://saily.tpx.lu/a2hF9Sbv']]},
+    {c:'Saudi Arabia', f:'🇸🇦', o:[['Yesim',null,'https://yesim.tpx.lu/yOHQxb9q'],['Airalo',4.50,'https://airalo.tpx.lu/0xfcRE2M'],['Saily',6.99,'https://saily.tpx.lu/aTq5KKvH']]},
+    {c:'Egypt', f:'🇪🇬', o:[['Yesim',null,'https://yesim.tpx.lu/iJOoxIUN'],['Airalo',5.50,'https://airalo.tpx.lu/ciVUrmKO'],['Saily',6.99,'https://saily.tpx.lu/PILP1cbg']]},
+    {c:'Morocco', f:'🇲🇦', o:[['Yesim',null,'https://yesim.tpx.lu/kGaV4Lsp'],['Airalo',6.50,'https://airalo.tpx.lu/UEAm2DPl'],['Saily',6.99,'https://saily.tpx.lu/Qg7eyjV1']]},
+    {c:'Germany', f:'🇩🇪', o:[['Yesim',null,'https://yesim.tpx.lu/Vry0jkk2'],['Airalo',4.00,'https://airalo.tpx.lu/JffN9Bp9'],['Saily',4.49,'https://saily.tpx.lu/TRcKGSQS']]},
+    {c:'Netherlands', f:'🇳🇱', o:[['Yesim',null,'https://yesim.tpx.lu/lhOnPBYk'],['Airalo',4.00,'https://airalo.tpx.lu/qII8HyTe'],['Saily',3.99,'https://saily.tpx.lu/UkBw76Ge']]},
+    {c:'Thailand', f:'🇹🇭', o:[['Yesim',null,'https://yesim.tpx.lu/6srNEWFM'],['Airalo',4.00,'https://airalo.tpx.lu/Zk83ST9A'],['Saily',3.99,'https://saily.tpx.lu/gj9RFWGq']]},
+    {c:'Japan', f:'🇯🇵', o:[['Yesim',null,'https://yesim.tpx.lu/qNNzknJM'],['Airalo',4.00,'https://airalo.tpx.lu/jWLxKnBE'],['Saily',3.99,'https://saily.tpx.lu/taDurnbB']]},
+    {c:'Canada', f:'🇨🇦', o:[['Yesim',null,'https://yesim.tpx.lu/YIdNbQqJ'],['Airalo',7.00,'https://airalo.tpx.lu/vJHHSG3Y'],['Saily',5.29,'https://saily.tpx.lu/iXFVlBeC']]},
+    {c:'Europe', f:'🇪🇺', o:[['Yesim',null,'https://yesim.tpx.lu/l3kmy4fs'],['Airalo',5.00,'https://airalo.tpx.lu/HSrq9hO9'],['Saily',4.99,'https://saily.tpx.lu/C0cKexnS']]},
+    {c:'Global', f:'🌍', o:[['Yesim',null,'https://yesim.tpx.lu/ylsEszk4'],['Airalo',9.00,'https://airalo.tpx.lu/rAtBPjLI'],['Saily',8.99,'https://saily.tpx.lu/7UUKzW0D']]}
+  ];
+  var POPULAR = ['Turkey','Spain','United Kingdom','United States','United Arab Emirates','Europe','Global'];
+
+  var input = document.getElementById('esim-country');
+  var acList = document.getElementById('esim-ac');
+  var chips = document.getElementById('esim-chips');
+  var resSection = document.getElementById('esim-results-section');
+  var results = document.getElementById('esim-results');
+  var activeIdx = -1, matches = [];
+
+  // popular-destination chips
+  POPULAR.forEach(function(name){
+    var dst = DEST.find(function(x){return x.c===name;});
+    if(!dst) return;
+    var chip = document.createElement('button');
+    chip.className = 'esim-chip';
+    chip.innerHTML = '<span>'+dst.f+'</span> '+dst.c;
+    chip.addEventListener('click', function(){ select(dst); });
+    chips.appendChild(chip);
+  });
+
+  // --- PROMO CODES (shown inside each provider's comparison card) ---
+  // Paste a real code per provider; leave '' to show "Promo code coming soon".
+  var PROMO = { Yesim:'', Airalo:'', Saily:'' };
+  // Wire copy buttons inside a freshly-rendered scope.
+  function attachCopy(scope){
+    scope.querySelectorAll('.cp-copy').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var code = btn.getAttribute('data-code');
+        var orig = btn.textContent;
+        var done = function(){ btn.textContent = odT('esim.copied','Copied!'); setTimeout(function(){ btn.textContent = orig; }, 1600); };
+        if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(code).then(done, done); }
+        else { done(); }
+      });
+    });
+  }
+
+  function render(list){
+    acList.innerHTML = '';
+    if(!list.length){ acList.classList.remove('open'); return; }
+    list.forEach(function(d,i){
+      var el = document.createElement('div');
+      el.className = 'ac-item' + (i===activeIdx?' active':'');
+      el.innerHTML = '<span class="flag">'+d.f+'</span><span>'+d.c+'</span>';
+      el.addEventListener('mousedown', function(e){ e.preventDefault(); select(d); });
+      acList.appendChild(el);
+    });
+    acList.classList.add('open');
+  }
+
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase();
+    activeIdx = -1;
+    if(!q){ acList.classList.remove('open'); return; }
+    // Rank: country starts with q (0) > a word in the name starts with q (1) > q appears anywhere (2).
+    function score(name){
+      var n = name.toLowerCase();
+      if(n.indexOf(q) === 0) return 0;
+      if(n.split(/[\s(]+/).some(function(w){ return w.indexOf(q) === 0; })) return 1;
+      if(n.indexOf(q) !== -1) return 2;
+      return 99;
+    }
+    matches = DEST
+      .map(function(d){ return {d:d, s:score(d.c)}; })
+      .filter(function(x){ return x.s < 99; })
+      .sort(function(a,b){ return a.s - b.s; })
+      .map(function(x){ return x.d; })
+      .slice(0,8);
+    render(matches);
+  });
+  input.addEventListener('keydown', function(e){
+    if(!acList.classList.contains('open')) return;
+    if(e.key==='ArrowDown'){ e.preventDefault(); activeIdx=Math.min(activeIdx+1,matches.length-1); render(matches); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); activeIdx=Math.max(activeIdx-1,0); render(matches); }
+    else if(e.key==='Enter'){ e.preventDefault(); if(matches[activeIdx]) select(matches[activeIdx]); else if(matches[0]) select(matches[0]); }
+    else if(e.key==='Escape'){ acList.classList.remove('open'); }
+  });
+  input.addEventListener('blur', function(){ setTimeout(function(){ acList.classList.remove('open'); }, 120); });
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var countries={edinburgh:'United Kingdom',paris:'France',madrid:'Spain',barcelona:'Spain',amsterdam:'Netherlands',rome:'Italy',dolomites:'Italy',london:'United Kingdom',istanbul:'Turkey',dubai:'United Arab Emirates',jeddah:'Saudi Arabia',bangkok:'Thailand',cairo:'Egypt',tokyo:'Japan','new-york':'United States',banff:'Canada'};
+    var requested=new URLSearchParams(location.search).get('destination');
+    var match=DEST.find(function(d){return d.c===(countries[requested]||requested);});
+    if(match)select(match);
+  });
+  function select(dst){
+    input.value = dst.c;
+    acList.classList.remove('open');
+    renderResults(dst);
+  }
+
+  // --- LIVE YESIM PRICES (api.yesim.app, CORS-open) ---
+  // Country → ISO-2 for the API; Europe/Global use a regional filter on a EU response.
+  var ISO = {Turkey:'tr',France:'fr',Spain:'es',Italy:'it','United Kingdom':'gb','United States':'us','United Arab Emirates':'ae','Saudi Arabia':'sa',Egypt:'eg',Morocco:'ma',Germany:'de',Netherlands:'nl',Thailand:'th',Japan:'jp',Canada:'ca'};
+  var EURUSD = 1.08;                 // indicative EUR→USD
+  var yesimCache = {};               // key -> from-price USD (number) or null (no data)
+
+  function yesimKey(c){ if(ISO[c]) return ISO[c]; if(c==='Europe') return 'eu'; if(c==='Global') return 'gl'; return null; }
+  function yesimUrl(key){ return 'https://api.yesim.app/api_v0.1/api/prices?coverages=' + (key==='eu'||key==='gl' ? 'fr' : key); }
+  function yesimLocal(key, p){
+    var t=(p.targets||'').toLowerCase(), cc=(p.country_code||'').toLowerCase(), cn=(p.country||'');
+    if(key==='eu') return cn==='Europe & UK';
+    if(key==='gl') return /Global/i.test(cn);
+    return t===key || cc===key;
+  }
+  // Live Yesim "from" prices (USD): cheapest STANDARD plan (>=1 GB, excl. sub-1GB
+  // teasers) and cheapest UNLIMITED plan. Returns {std, unl} (either may be null).
+  function getYesimFrom(key){
+    if(yesimCache[key] !== undefined) return Promise.resolve(yesimCache[key]);
+    return fetch(yesimUrl(key))
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        var local = data.filter(function(p){ return yesimLocal(key, p); });
+        function minUsd(filterFn){
+          var arr = local.filter(filterFn).map(function(p){ return +p.price; }).filter(function(x){ return x>0; });
+          return arr.length ? Math.round(Math.min.apply(null, arr) * EURUSD * 100)/100 : null;
+        }
+        var v = { std: minUsd(function(p){ return +p.capacity>=1024; }), unl: minUsd(function(p){ return +p.capacity===-1; }) };
+        yesimCache[key] = v;
+        return v;
+      })
+      .catch(function(){ yesimCache[key] = {std:null,unl:null}; return yesimCache[key]; });
+  }
+  function fmtUsd(n){ return (n % 1 === 0) ? n : n.toFixed(2); }
+
+  function renderResults(dst){
+    sel.dst = dst;
+    var key = yesimKey(dst.c);
+    if(key && yesimCache[key] === undefined){
+      results.innerHTML = '<p class="res-note">'+ odT('esim.loading','Fetching live prices…') +'</p>';
+      resSection.hidden = false;
+      resSection.scrollIntoView({behavior:'smooth', block:'start'});
+      getYesimFrom(key).then(function(){ if(sel.dst===dst) paintResults(dst); });
+    } else {
+      paintResults(dst);
+    }
+  }
+
+  // Country-only search → each provider's real "from" (starting) price, cheapest first.
+  // Yesim is live; Airalo & Saily are their real published starting prices.
+  function paintResults(dst){
+    var key = yesimKey(dst.c);
+    var rows = dst.o.map(function(r){
+      var name=r[0], from=r[1], unl=null, live=false, approx=false;
+      if(name==='Yesim'){ var v = key ? yesimCache[key] : null; if(v && v.std!=null){ from=v.std; unl=v.unl; live=true; } else { from=null; } }
+      else if(from!=null){ var uf=PROV[name].unlFrom; unl = (uf!=null)?uf:Math.round(from*3); approx=true; }   // real unlimited "from" if known, else estimate
+      return {name:name, from:from, unl:unl, aff:r[2], live:live, approx:approx};
+    });
+    rows.sort(function(a,b){
+      if(a.from==null && b.from==null) return 0;
+      if(a.from==null) return 1;
+      if(b.from==null) return -1;
+      return a.from - b.from;
+    });
+    var firstPriced = rows.filter(function(r){ return r.from!=null; })[0];
+    var cheapest = firstPriced ? firstPriced.from : null;
+    var html = '<div class="res-head"><span class="flag">'+dst.f+'</span><div>'
+      + '<h2>'+ odT('esim.res_title','Best eSIM for {c}').replace('{c}',dst.c) +'</h2>'
+      + '<p>'+ odT('esim.cmp_sub','Starting prices · {n} top eSIM providers').replace('{n}',dst.o.length) +'</p>'
+      + '</div></div><div class="plan-grid">';
+    rows.forEach(function(row){
+      var priced = row.from != null;
+      var isCheap = priced && row.from === cheapest;
+      var perk = odT(PROV[row.name].perk, PROV[row.name].perkEn);
+      var code = PROMO[row.name];
+      var promoHtml = code
+        ? '<div class="card-promo"><span class="cp-label">'+odT('esim.promo_word','Promo')+'</span><span class="cp-code">'+code+'</span><button type="button" class="cp-copy" data-code="'+code+'">'+odT('esim.copy','Copy')+'</button></div>'
+        : '<div class="card-promo cp-empty">🎟 '+odT('esim.soon','Promo code coming soon')+'</div>';
+      var unlDays = PROV[row.name].unlDays;
+      var unlDaysHtml = unlDays ? ' <span class="unl-days">'+odT('esim.from_only','from')+' '+unlDays+' '+(unlDays>1?odT('esim.days','days'):odT('esim.day','day'))+'</span>' : '';
+      var unlLine = (row.unl!=null)
+        ? '<div class="price-unl'+(row.approx?' approx':'')+'"><span class="from-pre">'+odT('esim.from_only','from')+'</span> '+(row.approx?'~':'')+'$'+fmtUsd(row.unl)+' <span class="plan-tag">'+odT('esim.unlimited','Unlimited')+'</span>'+unlDaysHtml+'</div>'
+        : '';
+      var priceBlock = priced
+        ? '<div class="price"><span class="from-pre">'+odT('esim.from_only','from')+'</span> $'+fmtUsd(row.from)+' <span class="plan-tag">'+odT('esim.standard','standard')+'</span>'+(row.live?'<span class="live-tag">'+odT('esim.live','Live')+'</span>':'')+'</div>'+unlLine
+        : '<div class="price-na">'+odT('esim.seeprice','See live price')+'</div>';
+      var btnLabel = priced ? odT('esim.get','See plans →') : odT('esim.checkprice','Check price →');
+      html += '<div class="plan'+(isCheap?' best':'')+'">'
+        + (isCheap?'<span class="tag">'+odT('esim.cheapest','Cheapest')+'</span>':'')
+        + '<div class="prov-name">'+row.name+'</div>'
+        + '<div class="prov-perk">'+perk+'</div>'
+        + priceBlock
+        + promoHtml
+        + '<div class="get"><a class="btn '+(isCheap?'btn-primary':'btn-ghost')+'" href="'+row.aff+'" target="_blank" rel="noopener sponsored">'+btnLabel+'</a></div>'
+        + '</div>';
+    });
+    html += '</div><p class="res-note">'+ odT('esim.note','“From” = cheapest standard plan (used to rank). Unlimited prices: Yesim is live; Airalo & Saily are approximate (~) until their feeds are live. Pick your exact plan on the provider’s site.') +'</p>';
+    results.innerHTML = html;
+    attachCopy(results);
+    resSection.hidden = false;
+    resSection.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+</script>
+<script type="text/plain" data-partner-script="">(function(s,t,a,y,o,n){s.Stay22=s.Stay22||{};s.Stay22.params={lmaID:'6a444061c151746f75b1b4ff'};o=t.createElement(a);n=t.getElementsByTagName(a)[0];o.async=1;o.src=y;n.parentNode.insertBefore(o,n);})(window,document,'script','https://scripts.stay22.com/letmeallez.js');</script>
+<script src="/assets/consent.js" defer=""></script><script src="/assets/newsletter.js" defer=""></script>
+
+
+</body></html>

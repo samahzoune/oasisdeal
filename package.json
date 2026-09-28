@@ -1,0 +1,13 @@
+{
+  "name": "oasisdeal",
+  "private": true,
+  "scripts": {
+    "build": "node build-site.cjs",
+    "test:site": "node verify-site.cjs",
+    "optimize:images": "node optimize-images.cjs"
+  },
+  "devDependencies": {
+    "cheerio": "1.1.2",
+    "sharp": "^0.35.5"
+  }
+}

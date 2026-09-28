@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://oasisdeal.com/</loc></url>
   <url><loc>https://oasisdeal.com/hotels</loc></url>
-  <url><loc>https://oasisdeal.com/cars</loc></url>
+
   <url><loc>https://oasisdeal.com/transfers</loc></url>
   <url><loc>https://oasisdeal.com/esim</loc></url>
   <url><loc>https://oasisdeal.com/compensation</loc></url>
@@ -480,4 +480,14 @@
   <url><loc>https://oasisdeal.com/ar/blog/travel-money-tips-avoid-fees-abroad</loc></url>
   <url><loc>https://oasisdeal.com/ar/blog/best-winter-sun-destinations</loc></url>
   <url><loc>https://oasisdeal.com/ar/blog/first-time-flyer-tips</loc></url>
+<url><loc>https://oasisdeal.com/fr/</loc></url>
+<url><loc>https://oasisdeal.com/fr/hotels</loc></url>
+<url><loc>https://oasisdeal.com/fr/transfers</loc></url>
+<url><loc>https://oasisdeal.com/fr/esim</loc></url>
+<url><loc>https://oasisdeal.com/fr/compensation</loc></url>
+<url><loc>https://oasisdeal.com/ar/</loc></url>
+<url><loc>https://oasisdeal.com/ar/hotels</loc></url>
+<url><loc>https://oasisdeal.com/ar/transfers</loc></url>
+<url><loc>https://oasisdeal.com/ar/esim</loc></url>
+<url><loc>https://oasisdeal.com/ar/compensation</loc></url>
 </urlset>

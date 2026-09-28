@@ -6,6 +6,12 @@
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    if ((url.hostname === 'oasisdeal.com' || url.hostname === 'www.oasisdeal.com') &&
+        (url.protocol !== 'https:' || url.hostname !== 'oasisdeal.com')) {
+      url.protocol = 'https:';
+      url.hostname = 'oasisdeal.com';
+      return Response.redirect(url.toString(), 301);
+    }
     if (request.method === 'POST' && url.pathname === '/api/contact') {
       return handleContact(request, env);
     }

@@ -5,13 +5,13 @@
   if (window.__odNews) return; window.__odNews = true;
 
   var T = {
-    en: { h: 'Never miss a cheap flight', p: 'Get travel tips and price-drop alerts in your inbox. No spam — unsubscribe anytime.',
+    en: { h: 'Never miss a cheap flight', p: 'Get travel tips and OasisDeal updates in your inbox. No spam — unsubscribe anytime.',
           ph: 'you@example.com', btn: 'Subscribe', sending: 'Subscribing…',
           ok: '✓ You’re in! We’ll be in touch soon.', bad: 'Please enter a valid email.', err: 'Something went wrong — please try again.' },
-    fr: { h: 'Ne ratez plus un vol pas cher', p: 'Recevez nos astuces voyage et alertes de baisse de prix par e-mail. Pas de spam — désabonnement à tout moment.',
+    fr: { h: 'Ne ratez plus un vol pas cher', p: 'Recevez nos astuces voyage et les actualités OasisDeal par e-mail. Pas de spam — désabonnement à tout moment.',
           ph: 'vous@exemple.com', btn: 'S’abonner', sending: 'Inscription…',
           ok: '✓ C’est fait ! On revient vers vous très vite.', bad: 'Entrez un e-mail valide.', err: 'Une erreur est survenue — réessayez.' },
-    ar: { h: 'لا تفوّت رحلة رخيصة بعد الآن', p: 'استقبل نصائح السفر وتنبيهات انخفاض الأسعار في بريدك. بدون إزعاج — وألغِ الاشتراك متى شئت.',
+    ar: { h: 'لا تفوّت رحلة رخيصة بعد الآن', p: 'استقبل نصائح السفر وأخبار OasisDeal في بريدك. بدون إزعاج — وألغِ الاشتراك متى شئت.',
           ph: 'you@example.com', btn: 'اشترك', sending: 'جارٍ الاشتراك…',
           ok: '✓ تمّ! سنتواصل معك قريبًا.', bad: 'أدخل بريدًا صحيحًا.', err: 'حدث خطأ ما — حاول مجددًا.' }
   };

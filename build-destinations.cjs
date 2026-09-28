@@ -285,14 +285,7 @@ var EXTRA = '<style>'
   +'.dg-sec h2{font-size:1.4rem;margin:34px 0 14px}</style>';
 
 function liveScript(){
-  // Universal: detect the visitor's nearest airport, then show fares + label from THEIR city.
-  return '<script>(function(){var FLY="https://fly.oasisdeal.com/?flightSearch=",ORIG="CMN",CITY="";function ddmm(){var x=new Date(Date.now()+21*864e5);return ("0"+x.getDate()).slice(-2)+("0"+(x.getMonth()+1)).slice(-2);}'
-    +'function wire(){'
-    +'Array.prototype.forEach.call(document.querySelectorAll("[data-fly]"),function(a){a.href=FLY+ORIG+ddmm()+a.getAttribute("data-fly")+"1";});'
-    +'if(CITY){var fl=document.getElementById("dfrom");if(fl)fl.textContent=fl.getAttribute("data-base")+" "+CITY;}'
-    +'Array.prototype.forEach.call(document.querySelectorAll("[data-price]"),function(el){fetch("https://oasisdeal-fares.pages.dev/api/fares?origin="+ORIG+"&destination="+el.getAttribute("data-price")+"&currency=usd").then(function(r){return r.json();}).then(function(d){el.textContent=(d&&d.price)?("$"+Math.round(d.price)):"";}).catch(function(){el.textContent="";});});}'
-    +'fetch("https://oasisdeal-fares.pages.dev/api/whereami").then(function(r){return r.json();}).then(function(g){if(g&&g.origin)ORIG=g.origin;if(g&&g.city)CITY=g.city;wire();}).catch(function(){wire();});'
-    +'})();</script>';
+  return '<script src="/assets/destination-fares.js" defer></script>';
 }
 
 function head(lang, title, desc, canon, alts, og){ og=og||'https://oasisdeal.com/images/og-default.png';
@@ -325,8 +318,8 @@ function guidePage(d, lang){
   var flightsSub = lang==='en'?'Cheapest prices to '+n : lang==='fr'?'Tarifs les moins chers vers '+n : 'أرخص الأسعار إلى '+n;
   var crossHtml = '<div class="rp-cross">'
     + card(lang==='en'?'Flights':lang==='fr'?'Vols':'الرحلات', flightsSub, 'btn-primary', flightsAttr, x.ctaFlights)
-    + card(lang==='en'?'Hotels':lang==='fr'?'Hôtels':'الفنادق', (lang==='en'?'Compare stays in '+n:lang==='fr'?'Comparez les hôtels à '+n:'قارن الإقامة في '+n), 'btn-ghost', 'href="'+x.hotels+'"', x.ctaHotels)
-    + card('eSIM', (lang==='en'?'Stay online in '+n:lang==='fr'?'Restez connecté à '+n:'ابقَ متصلًا في '+n), 'btn-ghost', 'href="'+x.esim+'"', x.ctaEsim)
+    + card(lang==='en'?'Hotels':lang==='fr'?'Hôtels':'الفنادق', (lang==='en'?'Compare stays in '+n:lang==='fr'?'Comparez les hôtels à '+n:'قارن الإقامة في '+n), 'btn-ghost', 'href="'+x.hotels+'?city='+encodeURIComponent(nameEN(d))+'"', x.ctaHotels)
+    + card('eSIM', (lang==='en'?'Stay online in '+n:lang==='fr'?'Restez connecté à '+n:'ابقَ متصلًا في '+n), 'btn-ghost', 'href="'+x.esim+'?destination='+encodeURIComponent(d.slug)+'"', x.ctaEsim)
     + (isEuro(d)? card(lang==='en'?'Your rights':lang==='fr'?'Vos droits':'حقوقك', (lang==='en'?'Delayed or cancelled flight?':lang==='fr'?'Vol retardé ou annulé ?':'رحلة متأخرة أو ملغاة؟'), 'btn-ghost', 'href="'+pre(lang)+'/flight-rights"', x.ctaRights) : '')
     + '</div>';
   var todos='<ul class="dg-todo">'+todo(d,lang).map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul>';

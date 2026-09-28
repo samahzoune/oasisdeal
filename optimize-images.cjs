@@ -1,0 +1,2 @@
+const sharp=require('sharp'),fs=require('fs'),path=require('path');
+(async()=>{let before=0,after=0;for(const f of fs.readdirSync('images/destinations').filter(f=>f.endsWith('.jpg'))){let input=path.join('images/destinations',f),output=input.replace(/\.jpg$/,'.webp');before+=fs.statSync(input).size;await sharp(input).resize({width:1280,withoutEnlargement:true}).webp({quality:78}).toFile(output);after+=fs.statSync(output).size;}console.log({before,after,saved:before-after});})();
