@@ -8,8 +8,7 @@ const META_DEFAULT_SCOPES = [
   'pages_read_engagement',
   'pages_manage_posts',
   'instagram_basic',
-  'instagram_content_publish',
-  'business_management'
+  'instagram_content_publish'
 ];
 
 class SocialError extends Error {
