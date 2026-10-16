@@ -240,7 +240,12 @@ async function beginOAuth(request, env, platform) {
   redirect.searchParams.set('response_type', 'code');
   redirect.searchParams.set('state', state);
   redirect.searchParams.set('scope', config.scopes);
-  if (config.configId) redirect.searchParams.set('config_id', config.configId);
+  // Business Login's asset selector can reject partner-owned Pages even when
+  // the partner is visibly granted full access. Fall back to the standard
+  // Facebook OAuth consent flow unless explicitly enabled for this deployment.
+  if (config.configId && String(env.META_USE_BUSINESS_LOGIN || '').toLowerCase() === 'true') {
+    redirect.searchParams.set('config_id', config.configId);
+  }
   return Response.redirect(redirect.toString(), 302);
 }
 
