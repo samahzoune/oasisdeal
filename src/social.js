@@ -239,12 +239,16 @@ async function beginOAuth(request, env, platform) {
   redirect.searchParams.set('redirect_uri', callbackUrl(request, platform, env));
   redirect.searchParams.set('response_type', 'code');
   redirect.searchParams.set('state', state);
-  redirect.searchParams.set('scope', config.scopes);
   // Business Login's asset selector can reject partner-owned Pages even when
   // the partner is visibly granted full access. Fall back to the standard
   // Facebook OAuth consent flow unless explicitly enabled for this deployment.
   if (config.configId && String(env.META_USE_BUSINESS_LOGIN || '').toLowerCase() === 'true') {
     redirect.searchParams.set('config_id', config.configId);
+    // Login for Business configurations own the permission set. Explicitly
+    // override Meta's default response type so the callback receives a code.
+    redirect.searchParams.set('override_default_response_type', 'true');
+  } else {
+    redirect.searchParams.set('scope', config.scopes);
   }
   return Response.redirect(redirect.toString(), 302);
 }
