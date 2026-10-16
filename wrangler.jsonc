@@ -9,6 +9,12 @@
   "triggers": {
     "crons": ["*/5 * * * *"]
   },
+  "routes": [
+    {
+      "pattern": "oasisdeal.com",
+      "custom_domain": true
+    }
+  ],
   "vars": {
     "SOCIAL_PUBLIC_BASE_URL": "https://oasisdeal.com",
     "SOCIAL_DASHBOARD_URL": "http://localhost:4173/",
