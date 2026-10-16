@@ -185,6 +185,7 @@ function providerConfig(platform, env) {
     return {
       clientId: env.META_APP_ID,
       clientSecret: env.META_APP_SECRET,
+      configId: env.META_CONFIG_ID,
       authUrl: `https://www.facebook.com/${version}/dialog/oauth`,
       tokenUrl: `https://graph.facebook.com/${version}/oauth/access_token`,
       scopes: String(env.META_OAUTH_SCOPES || META_DEFAULT_SCOPES.join(','))
@@ -239,6 +240,7 @@ async function beginOAuth(request, env, platform) {
   redirect.searchParams.set('response_type', 'code');
   redirect.searchParams.set('state', state);
   redirect.searchParams.set('scope', config.scopes);
+  if (config.configId) redirect.searchParams.set('config_id', config.configId);
   return Response.redirect(redirect.toString(), 302);
 }
 

@@ -21,6 +21,7 @@
     "SOCIAL_ALLOWED_ORIGINS": "https://oasisdeal.com,http://localhost:4173",
     "META_GRAPH_VERSION": "v24.0",
     "META_APP_ID": "853973081832202",
+    "META_CONFIG_ID": "1781041163172618",
     "META_PAGE_ID": "272673759945603"
   },
   "d1_databases": [
