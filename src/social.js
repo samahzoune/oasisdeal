@@ -226,7 +226,7 @@ async function apiJson(url, options = {}) {
   return data;
 }
 
-async function beginOAuth(request, env, platform) {
+async function buildOAuthInfo(request, env, platform) {
   const config = providerConfig(platform, env);
   ensureClient(config);
   const existing = await getSession(request, env);
@@ -250,7 +250,12 @@ async function beginOAuth(request, env, platform) {
   } else {
     redirect.searchParams.set('scope', config.scopes);
   }
-  return Response.redirect(redirect.toString(), 302);
+  return { url: redirect.toString(), state, clientId: config.clientId, configId: config.configId || '', redirectUri: callbackUrl(request, platform, env), version: String(env.META_GRAPH_VERSION || 'v24.0') };
+}
+
+async function beginOAuth(request, env, platform) {
+  const info = await buildOAuthInfo(request, env, platform);
+  return Response.redirect(info.url, 302);
 }
 
 async function exchangeMeta(code, redirectUri, env) {
@@ -558,6 +563,20 @@ export async function handleSocialRequest(request, env) {
     // Await async route handlers so their failures stay inside this try/catch
     // and become a useful JSON error instead of an uncaught Worker 1101.
     if (request.method === 'GET' && action === 'connect') return await beginOAuth(request, env, platform);
+    if (request.method === 'GET' && action === 'connect-info' && platform === 'meta') return json(await buildOAuthInfo(request, env, platform), 200, request, env);
+    if (request.method === 'POST' && action === 'oauth-complete' && platform === 'meta') {
+      const body = await request.json().catch(() => null);
+      const state = await readSignedPayload(body?.state, env.SOCIAL_SESSION_SECRET);
+      const code = String(body?.code || '');
+      if (!state || state.platform !== 'meta') throw new SocialError('OAuth state expired. Please start the connection again.', 400);
+      if (!code) throw new SocialError('OAuth authorization did not return a code.', 400);
+      const connections = await exchangeMeta(code, callbackUrl(request, platform, env), env);
+      for (const connection of connections) await upsertConnection(env, state.ownerId, connection);
+      const session = await signedPayload({ ownerId: state.ownerId, exp: Date.now() + 7 * 24 * 60 * 60 * 1000 }, env.SOCIAL_SESSION_SECRET);
+      const response = json({ ok: true, social_connected: connections.map(item => item.platform).join(','), social_session: session }, 200, request, env);
+      response.headers.set('Set-Cookie', `${SESSION_COOKIE}=${encodeURIComponent(session)}; Max-Age=604800; Path=/; HttpOnly; Secure; SameSite=None`);
+      return response;
+    }
     if (request.method === 'GET' && action === 'callback') return await handleCallback(request, env, platform);
     const session = await requireSession(request, env);
     if (request.method === 'GET' && action === 'status') return json({ ok: true, connections: await listConnections(env, session.ownerId) }, 200, request, env);
