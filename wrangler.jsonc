@@ -6,6 +6,24 @@
   "observability": {
     "enabled": true
   },
+  "triggers": {
+    "crons": ["*/5 * * * *"]
+  },
+  "vars": {
+    "SOCIAL_PUBLIC_BASE_URL": "https://oasisdeal.com",
+    "SOCIAL_DASHBOARD_URL": "http://localhost:4173/",
+    "SOCIAL_ALLOWED_ORIGINS": "https://oasisdeal.com,http://localhost:4173",
+    "META_GRAPH_VERSION": "v24.0",
+    "META_APP_ID": "853973081832202",
+    "META_PAGE_ID": "272673759945603"
+  },
+  "d1_databases": [
+    {
+      "binding": "SOCIAL_DB",
+      "database_name": "oasisdeal-social",
+      "database_id": "7670381c-ca88-4dfa-a2e1-4ebbe5e638d9"
+    }
+  ],
   "assets": {
     "directory": ".",
     "binding": "ASSETS",

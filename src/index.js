@@ -1,3 +1,5 @@
+import { handleSocialRequest, runSocialScheduler } from './social.js';
+
 // OasisDeal Worker — API routes (contact form + newsletter via Resend),
 // with a fallback to the static site assets for every other request.
 // Requires secret RESEND_API_KEY. Optional: RESEND_AUDIENCE_ID (adds
@@ -5,6 +7,8 @@
 
 export default {
   async fetch(request, env, ctx) {
+    const socialResponse = await handleSocialRequest(request, env);
+    if (socialResponse) return socialResponse;
     const url = new URL(request.url);
     if ((url.hostname === 'oasisdeal.com' || url.hostname === 'www.oasisdeal.com') &&
         (url.protocol !== 'https:' || url.hostname !== 'oasisdeal.com')) {
@@ -23,6 +27,10 @@ export default {
     }
     // Everything else → the static site.
     return env.ASSETS.fetch(request);
+  },
+
+  async scheduled(controller, env, ctx) {
+    ctx.waitUntil(runSocialScheduler(env));
   }
 };
 
