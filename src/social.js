@@ -545,8 +545,10 @@ export async function handleSocialRequest(request, env) {
     const parts = url.pathname.split('/').filter(Boolean);
     const action = parts[2] || '';
     const platform = parts[3] || '';
-    if (request.method === 'GET' && action === 'connect') return beginOAuth(request, env, platform);
-    if (request.method === 'GET' && action === 'callback') return handleCallback(request, env, platform);
+    // Await async route handlers so their failures stay inside this try/catch
+    // and become a useful JSON error instead of an uncaught Worker 1101.
+    if (request.method === 'GET' && action === 'connect') return await beginOAuth(request, env, platform);
+    if (request.method === 'GET' && action === 'callback') return await handleCallback(request, env, platform);
     const session = await requireSession(request, env);
     if (request.method === 'GET' && action === 'status') return json({ ok: true, connections: await listConnections(env, session.ownerId) }, 200, request, env);
     if (request.method === 'POST' && action === 'posts') {
