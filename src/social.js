@@ -258,12 +258,9 @@ async function beginOAuth(request, env, platform) {
   return Response.redirect(info.url, 302);
 }
 
-async function exchangeMeta(code, redirectUri, env) {
+async function connectionsFromMetaToken(userToken, env) {
   const config = providerConfig('meta', env);
-  const first = await apiJson(`${config.tokenUrl}?${new URLSearchParams({ client_id: config.clientId, client_secret: config.clientSecret, redirect_uri: redirectUri, code })}`);
   const version = String(env.META_GRAPH_VERSION || 'v24.0');
-  const longLived = await apiJson(`https://graph.facebook.com/${version}/oauth/access_token?${new URLSearchParams({ grant_type: 'fb_exchange_token', client_id: config.clientId, client_secret: config.clientSecret, fb_exchange_token: first.access_token })}`);
-  const userToken = longLived.access_token || first.access_token;
   const accounts = await apiJson(`https://graph.facebook.com/${version}/me/accounts?fields=id,name,access_token,instagram_business_account&access_token=${encodeURIComponent(userToken)}`);
   const selected = (accounts.data || []).find(page => env.META_PAGE_ID && String(page.id) === String(env.META_PAGE_ID)) || ((accounts.data || []).length === 1 ? accounts.data[0] : null);
   if (!selected) throw new SocialError('Meta returned multiple Pages. Configure META_PAGE_ID before connecting.', 400);
@@ -285,6 +282,21 @@ async function exchangeMeta(code, redirectUri, env) {
     metadata: { pageId: String(selected.id), instagramUserId: String(igId), pageName: selected.name || '' }
   });
   return connections;
+}
+
+async function exchangeMeta(code, redirectUri, env) {
+  const config = providerConfig('meta', env);
+  const first = await apiJson(`${config.tokenUrl}?${new URLSearchParams({ client_id: config.clientId, client_secret: config.clientSecret, redirect_uri: redirectUri, code })}`);
+  const version = String(env.META_GRAPH_VERSION || 'v24.0');
+  const longLived = await apiJson(`https://graph.facebook.com/${version}/oauth/access_token?${new URLSearchParams({ grant_type: 'fb_exchange_token', client_id: config.clientId, client_secret: config.clientSecret, fb_exchange_token: first.access_token })}`);
+  return connectionsFromMetaToken(longLived.access_token || first.access_token, env);
+}
+
+async function exchangeMetaAccessToken(accessToken, env) {
+  const config = providerConfig('meta', env);
+  const version = String(env.META_GRAPH_VERSION || 'v24.0');
+  const longLived = await apiJson(`https://graph.facebook.com/${version}/oauth/access_token?${new URLSearchParams({ grant_type: 'fb_exchange_token', client_id: config.clientId, client_secret: config.clientSecret, fb_exchange_token: accessToken })}`);
+  return connectionsFromMetaToken(longLived.access_token || accessToken, env);
 }
 
 async function exchangePinterest(code, redirectUri, env) {
@@ -568,9 +580,12 @@ export async function handleSocialRequest(request, env) {
       const body = await request.json().catch(() => null);
       const state = await readSignedPayload(body?.state, env.SOCIAL_SESSION_SECRET);
       const code = String(body?.code || '');
+      const accessToken = String(body?.accessToken || '');
       if (!state || state.platform !== 'meta') throw new SocialError('OAuth state expired. Please start the connection again.', 400);
-      if (!code) throw new SocialError('OAuth authorization did not return a code.', 400);
-      const connections = await exchangeMeta(code, callbackUrl(request, platform, env), env);
+      if (!code && !accessToken) throw new SocialError('OAuth authorization did not return a code or access token.', 400);
+      const connections = code
+        ? await exchangeMeta(code, callbackUrl(request, platform, env), env)
+        : await exchangeMetaAccessToken(accessToken, env);
       for (const connection of connections) await upsertConnection(env, state.ownerId, connection);
       const session = await signedPayload({ ownerId: state.ownerId, exp: Date.now() + 7 * 24 * 60 * 60 * 1000 }, env.SOCIAL_SESSION_SECRET);
       const response = json({ ok: true, social_connected: connections.map(item => item.platform).join(','), social_session: session }, 200, request, env);
