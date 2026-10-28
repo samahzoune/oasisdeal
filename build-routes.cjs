@@ -231,7 +231,7 @@ var count=0;
 console.log('wrote',count,'route pages +',3,'hubs');
 
 // ---- sitemap ----
-var urls=['/','/hotels','/cars','/transfers','/esim','/compensation','/terms','/cookies','/disclosure','/flight-rights','/fr/flight-rights','/ar/flight-rights','/about','/contact','/privacy'].map(function(p){return 'https://oasisdeal.com'+p;});
+var urls=['/','/hotels','/cars','/transfers','/esim','/compensation','/flight-rights','/fr/flight-rights','/ar/flight-rights','/about','/contact'].map(function(p){return 'https://oasisdeal.com'+p;});
 ['','/fr','/ar'].forEach(function(pre){
   urls.push('https://oasisdeal.com'+pre+'/flights/');
   ROUTES.forEach(function(r){ urls.push('https://oasisdeal.com'+pre+'/flights/'+slugOf(r[0],r[1])); });

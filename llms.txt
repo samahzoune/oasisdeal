@@ -1,0 +1,23 @@
+# OasisDeal
+
+> OasisDeal compares flights and travel services for international travellers. It shows route guidance, destination planning, hotel comparisons, airport transfers, travel eSIM options, and flight-delay compensation information. Flight and partner prices are starting prices; the airline or partner sets the final price.
+
+## Main sections
+
+- Flights: https://oasisdeal.com/
+- Flight routes: https://oasisdeal.com/flights/
+- Destinations: https://oasisdeal.com/destinations/
+- Travel guides: https://oasisdeal.com/blog/
+- Hotels: https://oasisdeal.com/hotels
+- Airport transfers: https://oasisdeal.com/transfers
+- Travel eSIM: https://oasisdeal.com/esim
+- Flight rights: https://oasisdeal.com/flight-rights
+- About OasisDeal: https://oasisdeal.com/about
+
+## Languages
+
+English, French, and Arabic versions use `/fr/` and `/ar/` paths and are linked with hreflang metadata.
+
+## Editorial and commercial notes
+
+Content is written for travellers and should be checked against official airline, airport, government, and embassy sources before booking. OasisDeal may earn a commission from partner links at no extra cost to the traveller.

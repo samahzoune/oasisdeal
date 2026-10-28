@@ -1,3 +1,4 @@
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no, use=reference
 Allow: /
 Sitemap: https://oasisdeal.com/sitemap.xml
