@@ -8,8 +8,7 @@ const META_DEFAULT_SCOPES = [
   'pages_read_engagement',
   'pages_manage_posts',
   'instagram_basic',
-  'instagram_content_publish',
-  'business_management'
+  'instagram_content_publish'
 ];
 
 class SocialError extends Error {
@@ -186,6 +185,7 @@ function providerConfig(platform, env) {
     return {
       clientId: env.META_APP_ID,
       clientSecret: env.META_APP_SECRET,
+      configId: env.META_CONFIG_ID,
       authUrl: `https://www.facebook.com/${version}/dialog/oauth`,
       tokenUrl: `https://graph.facebook.com/${version}/oauth/access_token`,
       scopes: String(env.META_OAUTH_SCOPES || META_DEFAULT_SCOPES.join(','))
@@ -226,7 +226,7 @@ async function apiJson(url, options = {}) {
   return data;
 }
 
-async function beginOAuth(request, env, platform) {
+async function buildOAuthInfo(request, env, platform) {
   const config = providerConfig(platform, env);
   ensureClient(config);
   const existing = await getSession(request, env);
@@ -239,16 +239,28 @@ async function beginOAuth(request, env, platform) {
   redirect.searchParams.set('redirect_uri', callbackUrl(request, platform, env));
   redirect.searchParams.set('response_type', 'code');
   redirect.searchParams.set('state', state);
-  redirect.searchParams.set('scope', config.scopes);
-  return Response.redirect(redirect.toString(), 302);
+  // Business Login's asset selector can reject partner-owned Pages even when
+  // the partner is visibly granted full access. Fall back to the standard
+  // Facebook OAuth consent flow unless explicitly enabled for this deployment.
+  if (config.configId && String(env.META_USE_BUSINESS_LOGIN || '').toLowerCase() === 'true') {
+    redirect.searchParams.set('config_id', config.configId);
+    // Login for Business configurations own the permission set. Explicitly
+    // override Meta's default response type so the callback receives a code.
+    redirect.searchParams.set('override_default_response_type', 'true');
+  } else {
+    redirect.searchParams.set('scope', config.scopes);
+  }
+  return { url: redirect.toString(), state, clientId: config.clientId, configId: config.configId || '', redirectUri: callbackUrl(request, platform, env), version: String(env.META_GRAPH_VERSION || 'v24.0') };
 }
 
-async function exchangeMeta(code, redirectUri, env) {
+async function beginOAuth(request, env, platform) {
+  const info = await buildOAuthInfo(request, env, platform);
+  return Response.redirect(info.url, 302);
+}
+
+async function connectionsFromMetaToken(userToken, env) {
   const config = providerConfig('meta', env);
-  const first = await apiJson(`${config.tokenUrl}?${new URLSearchParams({ client_id: config.clientId, client_secret: config.clientSecret, redirect_uri: redirectUri, code })}`);
   const version = String(env.META_GRAPH_VERSION || 'v24.0');
-  const longLived = await apiJson(`https://graph.facebook.com/${version}/oauth/access_token?${new URLSearchParams({ grant_type: 'fb_exchange_token', client_id: config.clientId, client_secret: config.clientSecret, fb_exchange_token: first.access_token })}`);
-  const userToken = longLived.access_token || first.access_token;
   const accounts = await apiJson(`https://graph.facebook.com/${version}/me/accounts?fields=id,name,access_token,instagram_business_account&access_token=${encodeURIComponent(userToken)}`);
   const selected = (accounts.data || []).find(page => env.META_PAGE_ID && String(page.id) === String(env.META_PAGE_ID)) || ((accounts.data || []).length === 1 ? accounts.data[0] : null);
   if (!selected) throw new SocialError('Meta returned multiple Pages. Configure META_PAGE_ID before connecting.', 400);
@@ -270,6 +282,21 @@ async function exchangeMeta(code, redirectUri, env) {
     metadata: { pageId: String(selected.id), instagramUserId: String(igId), pageName: selected.name || '' }
   });
   return connections;
+}
+
+async function exchangeMeta(code, redirectUri, env) {
+  const config = providerConfig('meta', env);
+  const first = await apiJson(`${config.tokenUrl}?${new URLSearchParams({ client_id: config.clientId, client_secret: config.clientSecret, redirect_uri: redirectUri, code })}`);
+  const version = String(env.META_GRAPH_VERSION || 'v24.0');
+  const longLived = await apiJson(`https://graph.facebook.com/${version}/oauth/access_token?${new URLSearchParams({ grant_type: 'fb_exchange_token', client_id: config.clientId, client_secret: config.clientSecret, fb_exchange_token: first.access_token })}`);
+  return connectionsFromMetaToken(longLived.access_token || first.access_token, env);
+}
+
+async function exchangeMetaAccessToken(accessToken, env) {
+  const config = providerConfig('meta', env);
+  const version = String(env.META_GRAPH_VERSION || 'v24.0');
+  const longLived = await apiJson(`https://graph.facebook.com/${version}/oauth/access_token?${new URLSearchParams({ grant_type: 'fb_exchange_token', client_id: config.clientId, client_secret: config.clientSecret, fb_exchange_token: accessToken })}`);
+  return connectionsFromMetaToken(longLived.access_token || accessToken, env);
 }
 
 async function exchangePinterest(code, redirectUri, env) {
@@ -545,8 +572,27 @@ export async function handleSocialRequest(request, env) {
     const parts = url.pathname.split('/').filter(Boolean);
     const action = parts[2] || '';
     const platform = parts[3] || '';
-    if (request.method === 'GET' && action === 'connect') return beginOAuth(request, env, platform);
-    if (request.method === 'GET' && action === 'callback') return handleCallback(request, env, platform);
+    // Await async route handlers so their failures stay inside this try/catch
+    // and become a useful JSON error instead of an uncaught Worker 1101.
+    if (request.method === 'GET' && action === 'connect') return await beginOAuth(request, env, platform);
+    if (request.method === 'GET' && action === 'connect-info' && platform === 'meta') return json(await buildOAuthInfo(request, env, platform), 200, request, env);
+    if (request.method === 'POST' && action === 'oauth-complete' && platform === 'meta') {
+      const body = await request.json().catch(() => null);
+      const state = await readSignedPayload(body?.state, env.SOCIAL_SESSION_SECRET);
+      const code = String(body?.code || '');
+      const accessToken = String(body?.accessToken || '');
+      if (!state || state.platform !== 'meta') throw new SocialError('OAuth state expired. Please start the connection again.', 400);
+      if (!code && !accessToken) throw new SocialError('OAuth authorization did not return a code or access token.', 400);
+      const connections = code
+        ? await exchangeMeta(code, callbackUrl(request, platform, env), env)
+        : await exchangeMetaAccessToken(accessToken, env);
+      for (const connection of connections) await upsertConnection(env, state.ownerId, connection);
+      const session = await signedPayload({ ownerId: state.ownerId, exp: Date.now() + 7 * 24 * 60 * 60 * 1000 }, env.SOCIAL_SESSION_SECRET);
+      const response = json({ ok: true, social_connected: connections.map(item => item.platform).join(','), social_session: session }, 200, request, env);
+      response.headers.set('Set-Cookie', `${SESSION_COOKIE}=${encodeURIComponent(session)}; Max-Age=604800; Path=/; HttpOnly; Secure; SameSite=None`);
+      return response;
+    }
+    if (request.method === 'GET' && action === 'callback') return await handleCallback(request, env, platform);
     const session = await requireSession(request, env);
     if (request.method === 'GET' && action === 'status') return json({ ok: true, connections: await listConnections(env, session.ownerId) }, 200, request, env);
     if (request.method === 'POST' && action === 'posts') {

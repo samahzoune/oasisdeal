@@ -9,12 +9,20 @@
   "triggers": {
     "crons": ["*/5 * * * *"]
   },
+  "routes": [
+    {
+      "pattern": "oasisdeal.com",
+      "custom_domain": true
+    }
+  ],
   "vars": {
     "SOCIAL_PUBLIC_BASE_URL": "https://oasisdeal.com",
     "SOCIAL_DASHBOARD_URL": "http://localhost:4173/",
     "SOCIAL_ALLOWED_ORIGINS": "https://oasisdeal.com,http://localhost:4173",
     "META_GRAPH_VERSION": "v24.0",
     "META_APP_ID": "853973081832202",
+    "META_CONFIG_ID": "1781041163172618",
+    "META_USE_BUSINESS_LOGIN": "true",
     "META_PAGE_ID": "272673759945603"
   },
   "d1_databases": [
