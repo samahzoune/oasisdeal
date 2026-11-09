@@ -43,6 +43,8 @@ for(const file of walk(root)){
  $('script').each((_,e)=>{const el=$(e);if(!el.attr('src')&&el.text().includes('.nav-toggle{display:none;flex-direction:column')){el.remove();return;}if(/tpembars\.com|scripts\.stay22\.com|widget\.trustpilot\.com/.test((el.attr('src')||'')+el.html())){if(el.attr('src')){el.attr('data-consent-src',el.attr('src'));el.removeAttr('src');}el.attr({'type':'text/plain','data-partner-script':''});}});
  if(!$('script[src="/assets/i18n.js"]').length&&!$('script[src="/assets/navigation.js"]').length)$('body').append('<script src="/assets/navigation.js" defer></script>');
  $('.od-consent,.od-consent-preference,#od-consent-style,#od-consent-init').remove();
+ $('head meta[name="google-adsense-account"]').remove();
+ $('head').append('<meta name="google-adsense-account" content="ca-pub-8556495111116569">');
  $('head').append('<link id="od-consent-style" rel="stylesheet" href="/assets/consent.css"><script id="od-consent-init">try{if(/^(accepted|declined)$/.test(localStorage.getItem("od_consent")))document.documentElement.classList.add("od-consent-saved")}catch(e){}</script>');
  $('head script[data-adsense-loader]').remove();
  $('head').append('<script type="text/plain" data-partner-script data-adsense-loader data-consent-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8556495111116569" crossorigin="anonymous"></script>');
