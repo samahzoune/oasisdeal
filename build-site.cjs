@@ -47,7 +47,10 @@ for(const file of walk(root)){
  $('head').append('<meta name="google-adsense-account" content="ca-pub-8556495111116569">');
  $('head').append('<link id="od-consent-style" rel="stylesheet" href="/assets/consent.css"><script id="od-consent-init">try{if(/^(accepted|declined)$/.test(localStorage.getItem("od_consent")))document.documentElement.classList.add("od-consent-saved")}catch(e){}</script>');
  $('head script[data-adsense-loader]').remove();
- $('head').append('<script type="text/plain" data-partner-script data-adsense-loader data-consent-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8556495111116569" crossorigin="anonymous"></script>');
+ const pagePath=path.relative(root,file).replace(/\\/g,'/');
+ const isEditorialArticle=/^(?:fr\/|ar\/)?blog\/(?!index\.html$)[^/]+\.html$/i.test(pagePath);
+ const isNoindex=/\bnoindex\b/i.test($('meta[name="robots"]').attr('content')||'');
+ if(isEditorialArticle&&!isNoindex)$('head').append('<script type="text/plain" data-partner-script data-adsense-loader data-consent-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8556495111116569" crossorigin="anonymous"></script>');
  const banner=`<aside class="od-consent" aria-label="${t[0]}"><p>${t[1]} <a href="/cookies">${t[2]}</a>.</p><div class="od-btns"><button type="button" class="od-decline">${t[3]}</button><button type="button" class="od-accept">${t[4]}</button></div></aside>`;
  if($('nav.nav').length)$('nav.nav').first().after(banner);else $('body').prepend(banner);
  $('footer').first().append(`<button class="od-consent-preference" type="button">${t[0]}</button>`);
