@@ -453,6 +453,7 @@
     }
   };
   var RTL = { ar: true };
+  if (window.OD_ES_DICT) T.es = window.OD_ES_DICT;
 
   var saved = document.documentElement.lang || "en";
   window.OD_LANG = saved;

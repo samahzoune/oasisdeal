@@ -63,3 +63,4 @@ let sitemap=fs.readFileSync('sitemap.xml','utf8').replace(/<url>\s*<loc>https:\/
 for(const lang of ['fr','ar'])for(const name of base.filter(n=>n!=='cars')){const url='https://oasisdeal.com'+route(name,lang);if(!sitemap.includes('<loc>'+url+'</loc>'))sitemap=sitemap.replace('</urlset>',`<url><loc>${url}</loc></url>\n</urlset>`);}
 sitemap=sitemap.split(/\r?\n/).map(line=>line.trimEnd()).filter((line,index,all)=>line!==''||all[index-1]!=='').join('\n').trimEnd()+'\n';
 fs.writeFileSync('sitemap.xml',sitemap);console.log('Localised landing pages and checked static HTML.');
+require('./build-spanish.cjs');
